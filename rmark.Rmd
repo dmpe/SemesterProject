@@ -1,0 +1,37 @@
+---
+title: 'R: Presenting unlimited power for statistics'
+author: "Me, Paladin, Morakin, Albadin"
+date: "1.6.2015"
+output:
+  ioslides_presentation:
+    fig_height: 6
+    fig_width: 8
+    highlight: zenburn
+    logo: hs_logo_besser.png
+    transition: faster
+    widescreen: yes
+---
+
+## Agenda | 10 Pages / 10 Minutes / 10 Code examples / 4 People
+
+1. Introduction to R
+2. Theme
+3. Solution
+
+## Slide with R Code and Output
+
+```{r}
+summary(cars)
+```
+
+## Slide with Plot
+
+```{r, echo=FALSE}
+plot(cars)
+```
+
+## Thank you for your attention
+
+Created with [R Markdown](http://rmarkdown.rstudio.com/) & [ioslides](http://rmarkdown.rstudio.com/ioslides_presentation_format.html) by RStudio
+
+

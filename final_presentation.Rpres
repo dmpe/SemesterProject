@@ -1,17 +1,21 @@
-final_presentation
+R language: Unlimited power of statistics in Big Data Context
 ========================================================
-author: JOhn Malc
-date: Today()
+author: Me, Paladin, Morakin, Albadin
+date: 1.6.2015
 
-First Slide
+Agenda
 ========================================================
 
-For more details on authoring R presentations click the
-**Help** button on the toolbar.
+### 10 Pages / 10 Minutes / 10 Code examples / 4 People
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+
+* Introduction to R
+* Bullet 2
+* Bullet 3
+
+
+
+
 
 Slide With Code
 ========================================================
@@ -26,3 +30,8 @@ Slide With Plot
 ```{r, echo=FALSE}
 plot(cars)
 ```
+
+
+
+
+
