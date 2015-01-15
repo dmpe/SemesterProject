@@ -1,4 +1,20 @@
 SemesterProject
 ===============
 
-This is repo for semester project in SS2015
+This is repo for semester project in SS2015.
+
+### Content:
+
+- Final R Markdow ioslide presentation
+- Code scripts for our project
+
+### Authors:
+
+- Me
+
+
+
+
+
+
+

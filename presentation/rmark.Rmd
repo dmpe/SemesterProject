@@ -7,7 +7,7 @@ output:
     fig_height: 6
     fig_width: 8
     highlight: zenburn
-    logo: hs_logo_besser.png
+    logo: ~/SemesterProject6/pictures/hs_logo_besser.png
     transition: faster
     widescreen: yes
 ---
