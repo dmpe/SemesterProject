@@ -1,4 +1,4 @@
-Semester Project Summer 2015
+Semester Project for the summer 2015
 ===============
 
 This is repo for semester project in SS2015.
