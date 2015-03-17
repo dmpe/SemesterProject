@@ -11,6 +11,8 @@ This is repo for semester project in SS2015.
 ### Authors:
 
 - Me
+- 2 Guys
+- 1 Girl 
 
 
 
