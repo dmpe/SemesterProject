@@ -1,18 +1,21 @@
-SemesterProject
+Semester Project Summer 2015
 ===============
 
 This is repo for semester project in SS2015.
 
 ### Content:
 
-- Final R Markdow ioslide presentation
+- Exercises with R
 - Code scripts for our project
+- Final R Markdown ioslide presentation
+
 
 ### Authors:
 
 - Me
-- 2 Guys
-- 1 Girl 
+- R.G.
+- S.M.
+- J.F.M.S.
 
 
 
