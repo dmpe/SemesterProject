@@ -30,5 +30,20 @@ attach(trees)
 
 # we'd have used a 1 instead of a 2 if we wanted the mean of every row
 apply(joinedDB.7, 2, mean)
-m<-matrix(c(1,0,4,2,-1,1), byrow = T, nrow = 2)
+m<-matrix(c(1,4,1,0,2,-1), byrow = T, nrow = 2)
+m
+apply(m[,2:3],1,mean)
+
+
+
+x<- (-10):10
+n<-length(x)
+y<-rnorm(n,x,4)
+plot(x,y)
+abline(0,1)
+
+
+
+
+
 
