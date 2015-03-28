@@ -1,7 +1,6 @@
-Semester Project for the summer 2015
+"Marketing-Statistical" Project for the Summer Semester 2015
 ===============
 
-This is repo for semester project in SS2015.
 
 ### Content:
 
