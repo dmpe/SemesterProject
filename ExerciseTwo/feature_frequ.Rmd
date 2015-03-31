@@ -1,12 +1,13 @@
 ---
-title: 'Day 1 '
+title: 'Day 2 + Exercise Two '
 author: "Dmitrij Petrov"
 date: "March 30, 2015"
 output:
   html_document:
     fig_caption: yes
+    highlight: null
     self_contained: no
-    theme: cerulean
+    toc: yes
 ---
 
 #### Load and read excel file.
@@ -109,7 +110,12 @@ w
 Thanks: <http://elkhartgroup.com/tutorials/modelsinr.html>
 
 ```{r}
-relLC <- lm(Likes~Comments, data=datasetM)
+relLC <- lm(Likes ~ Comments, data=datasetM)
+relLC
+
+relLC2 <- lm(Comments ~ Total.Reach, data=datasetM)
+relLC2
+
 
 likesComm <- ggplot(datasetM, aes(x=Likes, y=Comments))
 likesComm <- likesComm + stat_smooth() + geom_point()
@@ -124,6 +130,7 @@ likesComm2
 ```
 
 Thanks: <http://www.ling.upenn.edu/~joseff/rstudy/summer2010_ggplot2_intro.html>
+
 <http://www.unomaha.edu/mahbubulmajumder/data-science/fall-2014/lectures/05-data-visualization/05-data-visualization.html>
 
 ```{r}
@@ -132,4 +139,31 @@ likesComm3 <- likesComm3 + geom_point() + stat_smooth(method = "lm")
 likesComm3 <- likesComm3 + facet_grid(~Duration) # Gender~Duration might be better too
 likesComm3
 ```
+
+#### Relationship between Fan page and Earned Reach
+
+
+```{r}
+# With Gender groupings
+fanEarned <- ggplot(datasetM, aes(x=Fanpage.Reach, y=Earned.Reach, color = factor(Gender)))
+fanEarned <- fanEarned + geom_point() + stat_smooth(method = "lm")
+fanEarned
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -7,4 +7,5 @@
 .Rproj.user
 .RData
 /feature_frequ_files/
-*.html
+feature_frequ.html
+.html
