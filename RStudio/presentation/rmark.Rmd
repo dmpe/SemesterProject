@@ -1,13 +1,13 @@
 ---
 title: 'R: Presenting unlimited power for statistics'
-author: "D.P., R.G., S.M., J.F.M.S."
+author: "Dmitrij Petrov, R.G., S.M., J.F.M.S."
 date: "1.6.2015"
 output:
   ioslides_presentation:
     fig_height: 6
     fig_width: 8
     highlight: zenburn
-    logo: ~/Documents/SemesterProject/RStudio/pictures/hs_logo_besser.png
+    logo: /srv/shiny-server/SemesterProject/RStudio/pictures/hs_logo_besser.png
     smaller: yes
     transition: faster
     widescreen: yes
@@ -15,22 +15,31 @@ output:
     highlight: zenburn
 ---
 
-## Agenda | 10 Pages / 10 Minutes / 10 Code examples / 4 People
+## Agenda | 15 Slides | 15 Minutes | 5 Code snippets | 4 People
 
 1. Introduction to R
 2. Theme
-3. Solution
+3. Outcomes
+
+## Introduction to R
+
+```{r}
+
+```
+
 
 ## Slide with R Code and Output
 
-```{r}
-summary(cars)
+```{r, echo=TRUE, eval=TRUE}
+library(xlsx)
 ```
 
-## Slide with Plot
+## Read, Load and Parse Excel dataset
 
-```{r, echo=FALSE}
-plot(cars)
+```{r}
+
+datasetM <- read.xlsx("/srv/shiny-server/SemesterProject/Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
+
 ```
 
 ## Thank you for your attention
