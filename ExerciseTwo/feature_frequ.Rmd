@@ -9,7 +9,7 @@ output:
     theme: cerulean
 ---
 
-### Load and read excel file.
+#### Load and read excel file.
 
 ```{r}
 
@@ -19,17 +19,34 @@ library(ggplot2)
 datasetM <- read.xlsx("/srv/shiny-server/SemesterProject/Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
 ```
 
-### Example
+#### Example
+
+Post.ID - ID of a Facebook post
+
+Fanpage Reach -
+
+Earned Reach - The "real" stuff that comes automatically from non-facebook. Cross-sharing. 
+
+Total Reach - Sum of both
+
+X-Match -
+
+Duration - 
+
+Acquaintance - <https://www.academia.edu/2758533/Personal_acquaintance_measure_distinguishing_among_friends_and_good_and_bad_customers>
 
 ```{r}
 head(datasetM)
+
+summary(datasetM)
 ```
+
 
 #### What type of variables we have ? Alles zu diskret
 
 <https://www.wiwiweb.de/statistik/grundbegriff/merkmale/stetige.html>
 
-Documentation says 
+**Documentation says**:
 
 **fixed** : varaibles that contain only one value
 
@@ -71,6 +88,7 @@ m <- ggplot(datasetM, aes(x=Likes))
 m <- m + geom_histogram(binwidth = 0.5)
 m <- m + coord_cartesian(xlim = c(0, 40), ylim=c(0,33)) + scale_x_continuous(breaks = seq(0, 40, 1)) 
 m <- m + scale_y_continuous(breaks = seq(0, 33, 1))
+m <- m + geom_vline(xintercept = mean(datasetM$Likes), size = 2, colour = "red")
 m
 
 ```
@@ -82,13 +100,36 @@ w <- ggplot(datasetM, aes(x=Comments))
 w <- w + geom_histogram(binwidth = 0.5)
 w <- w + coord_cartesian(xlim = c(0, 40), ylim=c(0,50)) + scale_x_continuous(breaks = seq(0, 40, 1))
 w <- w + scale_y_continuous(breaks = seq(0, 50, 1))
+w <- w + geom_vline(xintercept = mean(datasetM$Comments), size = 2, colour = "red")
 w
 ```
 
-#### Cluster
+#### Relationship between Likes and Comments
+
+Thanks: <http://elkhartgroup.com/tutorials/modelsinr.html>
 
 ```{r}
+relLC <- lm(Likes~Comments, data=datasetM)
+
+likesComm <- ggplot(datasetM, aes(x=Likes, y=Comments))
+likesComm <- likesComm + stat_smooth() + geom_point()
+likesComm <- likesComm + geom_abline(intercept = coef(relLC)[1], slope = coef(relLC)[2])
+likesComm
+
+# With Gender groupings
+likesComm2 <- ggplot(datasetM, aes(x=Likes, y=Comments, color = factor(Gender)))
+likesComm2 <- likesComm2 + geom_point() + stat_smooth(method = "lm")
+likesComm2
 
 ```
 
+Thanks: <http://www.ling.upenn.edu/~joseff/rstudy/summer2010_ggplot2_intro.html>
+<http://www.unomaha.edu/mahbubulmajumder/data-science/fall-2014/lectures/05-data-visualization/05-data-visualization.html>
+
+```{r}
+likesComm3 <- ggplot(datasetM, aes(x=Likes, y=Comments, color = factor(Gender)))
+likesComm3 <- likesComm3 + geom_point() + stat_smooth(method = "lm")
+likesComm3 <- likesComm3 + facet_grid(~Duration) # Gender~Duration might be better too
+likesComm3
+```
 
