@@ -29,7 +29,7 @@ w <- w + coord_cartesian(xlim = c(0, 40), ylim=c(0,50)) + scale_x_continuous(bre
 w <- w + scale_y_continuous(breaks = seq(0, 50, 1))
 w
 
-sapply(datasetM, table)
+sapply(datasetM, class)
 
 
 regre <- lm(datasetM$User.Engage ~ datasetM$Acquaintance + datasetM$Total.Reach, data = datasetM)
@@ -57,3 +57,50 @@ likesComm <- likesComm + stat_smooth() + geom_point()
 likesComm
 
 plot(lm(Likes~Comments, data=datasetM))
+
+
+
+# # Intervals User Eng.
+# 180-360
+# 361-720
+# 721-1080
+# 1081-1440
+# 1441-1840
+# 
+# # Intervals Aquita
+# 0-200
+# 201-400
+# 401-600
+# 601-800
+# http://www.r-bloggers.com/r-function-of-the-day-cut/
+
+# breaks = seq(180, 1840, by = 260)
+rota2 <- cut(datasetM$User.Engage,5,  dig.lab = 4)
+table(rota2)
+
+# an Prof
+# Wie die Ergebsniess am Ende aussehen sollen
+# Genaue beschreibung von Aufgabe- nicht nur mit Merkmale
+# Feedback geben konnte? 361, 721, 1080, 1081,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
