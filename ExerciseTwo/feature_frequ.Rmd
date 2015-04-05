@@ -7,7 +7,6 @@ output:
     fig_caption: yes
     highlight: null
     self_contained: no
-    toc: yes
 ---
 
 #### Load and read excel file.
@@ -15,10 +14,10 @@ output:
 
 ```{r}
 
-library(xlsx)
+library("xlsx")
 library(mi)
-library(ggplot2)
-library(modeest)
+library("ggplot2")
+library("modeest")
 
 datasetM <- read.xlsx("/srv/shiny-server/SemesterProject/Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
 ```
@@ -44,6 +43,7 @@ Acquaintance - <https://www.academia.edu/2758533/Personal_acquaintance_measure_d
 ```{r}
 head(datasetM)
 
+# print without 3 cols
 summary(datasetM[, !names(datasetM) %in% c("Experience", "Gender", "Duration")])
 
 # Mode
