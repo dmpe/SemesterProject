@@ -12,11 +12,14 @@ output:
 
 #### Load and read excel file.
 
+
 ```{r}
 
 library(xlsx)
 library(mi)
 library(ggplot2)
+library(modeest)
+
 datasetM <- read.xlsx("/srv/shiny-server/SemesterProject/Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
 ```
 
@@ -36,10 +39,16 @@ Duration -
 
 Acquaintance - <https://www.academia.edu/2758533/Personal_acquaintance_measure_distinguishing_among_friends_and_good_and_bad_customers>
 
+<http://stackoverflow.com/questions/12868581/list-all-column-except-for-one-in-r>
+
 ```{r}
 head(datasetM)
 
-summary(datasetM)
+summary(datasetM[, !names(datasetM) %in% c("Experience", "Gender", "Duration")])
+
+# Mode
+mlv(datasetM$User.Engage, method = "mfv")
+
 ```
 
 
@@ -150,8 +159,12 @@ fanEarned <- fanEarned + geom_point() + stat_smooth(method = "lm")
 fanEarned
 ```
 
+Principal Component Analysis
 
-
+```{r}
+pca <- prcomp(datasetM, scale = TRUE)
+summary(pca)
+```
 
 
 

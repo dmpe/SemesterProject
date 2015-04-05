@@ -31,6 +31,22 @@ w
 
 sapply(datasetM, class)
 
+pCA <- prcomp(datasetM, scale = TRUE)
+summary(pCA)
+
+# http://stackoverflow.com/questions/2547402/standard-library-function-in-r-for-finding-the-mode
+Mode.SD <- function(x) {
+ux <- unique(x)
+#ux[which.max(tabulate(match(x, ux)))]
+  tab <- tabulate(match(x, ux))
+  ux[tab == max(tab)] 
+}
+
+sdas <- Mode.SD(datasetM$User.Engage)
+sdas
+
+library(modeest)
+mlv(datasetM$User.Engage, method = "mfv")
 
 regre <- lm(datasetM$User.Engage ~ datasetM$Acquaintance + datasetM$Total.Reach, data = datasetM)
 
