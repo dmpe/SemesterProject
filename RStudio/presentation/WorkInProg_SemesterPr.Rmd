@@ -83,7 +83,7 @@ mlv(datasetM$User.Engage, method = "mfv")
 cbind(c1 = typecast(datasetM))
 ```
 
-![see](/srv/shiny-server/SemesterProject/RStudio/pictures/RStudio/typesofData.png)
+![see](/pictures/typesofData.png)
 
 <http://www.gs.washington.edu/academics/courses/akey/56008/lecture/lecture2.pdf>
 
