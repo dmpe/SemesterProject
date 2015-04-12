@@ -7,7 +7,7 @@ output:
     fig_height: 6
     fig_width: 8
     highlight: zenburn
-    logo: /srv/shiny-server/SemesterProject/RStudio/pictures/hs_logo_besser.png
+    logo: /srv/shiny-server/SemesterProject/Presentations/pictures/hs_logo_besser.png
     smaller: yes
     transition: faster
     widescreen: yes
@@ -15,11 +15,13 @@ output:
     highlight: zenburn
 ---
 
-## Agenda | 15 Slides | 15 Minutes | 5 Code snippets | 4 People
+## Agenda | 24 Slides | 12 Minutes | 4 Code snippets | 4 People
 
-1. Introduction to R
-2. Theme
-3. Outcomes
+1. Introduc. to the Project
+2. Introduc. to R
+3. Dataset/Topic
+4. Explanatory Data Analysis
+5. Outcomes
 
 ## Introduction to R
 

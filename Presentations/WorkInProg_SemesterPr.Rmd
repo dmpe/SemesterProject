@@ -55,11 +55,13 @@ mlv(datasetM$User.Engage, method = "mfv")
 ```
 
 
-#### What type of variables we have ? Alles zu diskret
+#### What type of variables we have ?
 
 <https://www.wiwiweb.de/statistik/grundbegriff/merkmale/stetige.html>
 
-**Documentation says**:
+![<http://www.gs.washington.edu/academics/courses/akey/56008/lecture/lecture2.pdf>](pictures/typesofData.png)
+
+**Documentation of `mi` library says**:
 
 **fixed** : varaibles that contain only one value
 
@@ -77,15 +79,14 @@ mlv(datasetM$User.Engage, method = "mfv")
 
 **log-continuous** : 	log-scaled continuous variable
 
+
 ```{r}
-# mi.info(datasetM)
+# mi.info(datasetM) ## larger output
 
 cbind(c1 = typecast(datasetM))
 ```
 
-![see](/pictures/typesofData.png)
 
-<http://www.gs.washington.edu/academics/courses/akey/56008/lecture/lecture2.pdf>
 
 #### How many cases of each variable do we have ? 
 
