@@ -16,6 +16,8 @@
 - S.M.
 - J.F.M.S.
 
+### Ideas ?
+
 1.	Merkmale (Feature)
 2.  Haufigkeiten (Frequencies, e.g. histograms)
 3.  Korrelation
