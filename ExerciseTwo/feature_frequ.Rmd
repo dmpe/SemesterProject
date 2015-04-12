@@ -83,6 +83,10 @@ mlv(datasetM$User.Engage, method = "mfv")
 cbind(c1 = typecast(datasetM))
 ```
 
+![see link for source](/srv/shiny-server/SemesterProject/RStudio/typesofData.PNG)
+
+<http://www.gs.washington.edu/academics/courses/akey/56008/lecture/lecture2.pdf>
+
 #### How many cases of each variable do we have ? 
 
 >  0 for female and 1 for male

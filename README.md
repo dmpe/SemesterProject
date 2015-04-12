@@ -17,26 +17,10 @@
 - J.F.M.S.
 
 1.	Merkmale (Feature)
-2.  Haufigkeiten (Frequencies)
-
-
-**Lecture**
-
-
-Famillien-Stand 
-
-1. Nominal - 
-	1. ledig = 1, aber nicht keine Ordnung
-	2. 
-
-
-2. Ordinal 
-	1. schullnote = mit Ordnung
-	2. metrisch
-		1. termperatur = Unterschied ist gleich
-		
-
-
+2.  Haufigkeiten (Frequencies, e.g. histograms)
+3.  Korrelation
+4.  Cluster Ana.
+5.  Linear Model
 
 
 
