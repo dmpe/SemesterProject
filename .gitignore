@@ -7,7 +7,10 @@
 .Rproj.user
 .RData
 *.html
+*.css
+*.js
+
 ExerciseTwo/feature_frequ_files/
 feature_frequ.html
 RStudio/presentation/rmark.html
-rmark.html
+SemesterProject/RStudio/presentation/rmark.html
