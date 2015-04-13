@@ -191,9 +191,9 @@ likesComm2 <- ggplot(datasetM, aes(x=Likes, y=Comments, color = factor(Gender)))
 likesComm2 <- likesComm2 + geom_point() + stat_smooth(method = "lm")
 likesComm2
 
-likesComm2 <- ggplot(datasetM, aes(x=Likes, y=Earned.Reach))
-likesComm2 <- likesComm2 + geom_point() + stat_smooth(method = "lm")
-likesComm2
+likesComm3 <- ggplot(datasetM, aes(x=Likes, y=Earned.Reach))
+likesComm3 <- likesComm3 + geom_point() + stat_smooth(method = "lm")
+likesComm3
 
 ```
 
