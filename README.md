@@ -20,7 +20,7 @@
 
 1.	Merkmale (Feature) - Finished
 2.  Haufigkeiten (Frequencies, e.g. histograms) - Finished
-3.  Correlation
+3.  Correlation -> Done
 4.  Cluster Ana.
 5.  Linear Model
 

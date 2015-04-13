@@ -68,7 +68,7 @@ clust <- names(sort(table(klust$clust)))
 row.names(dataWithCluster[klust$clust==clust[1],]) 
 row.names(dataWithCluster[klust$clust==clust[2],])
 
-datasetM
+head(datasetM)
 
 likesComm <- ggplot(datasetM, aes(x=Likes, y=Comments))
 likesComm <- likesComm + stat_smooth() + geom_point()

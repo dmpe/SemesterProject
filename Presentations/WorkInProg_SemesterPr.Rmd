@@ -83,13 +83,7 @@ mlv(datasetM$User.Engage, method = "mfv")
 
 **Documentation of `mi` library says**:
 
-**fixed** : varaibles that contain only one value
-
 **binary** :  	variables that contain two values
-
-**ordered-categorical** : variables that contain 3 to 5 postive values
-
-**unorderd-categorial** : variables that contain characters or more than 5 postive levels
 
 **positive-continuous** : variables that contain more than 5 postive values, NOT including 0s
 
@@ -97,14 +91,13 @@ mlv(datasetM$User.Engage, method = "mfv")
 
 **continuous** : 	variables that are not belong to any of the above types
 
-**log-continuous** : 	log-scaled continuous variable
 
 <https://www.wiwiweb.de/statistik/grundbegriff/merkmale/stetige.html>
 
 ```{r}
 # mi.info(datasetM) ## larger output
 
-cbind(c1 = typecast(datasetM))
+cbind(type = typecast(datasetM))
 
 ```
 
@@ -121,11 +114,14 @@ table(datasetM$Duration)
 ### Some correlations ?
 
 ```{r}
-corrplot(cor(datasetM[2:11]), order = "hclust", type = "lower",  method = "number")
+# http://cran.r-project.org/web/packages/corrplot/vignettes/corrplot-intro.html
+without4 <- datasetM[, !names(datasetM) %in% c("Post.ID", "Experience", "Gender", "Duration")]
+
+corrplot(cor(without4), order = "hclust", type = "lower", method = "number")
 ```
 
 
-### 'Likes' histogram ?
+### Histograms ?
 
 ```{r}
 m <- ggplot(datasetM, aes(x=Likes))
@@ -153,6 +149,9 @@ dr3 <- dr3 + geom_density()
 # dr3 <- dr3 + geodr3_vline(xintercept = dr3ean(datasetM$Likes), size = 2, colour = "red")
 dr3
 
+```
+
+```{r}
 
 # Log-normal ?
 
@@ -163,9 +162,7 @@ dr2 <- dr2 + geom_density()
 # dr2 <- dr2 + scale_y_continuous(breaks = seq(0, 33, 1))
 # dr2 <- dr2 + geodr2_vline(xintercept = dr2ean(datasetM$Likes), size = 2, colour = "red")
 dr2
-
 ```
-
 
 
 ```{r}
@@ -203,9 +200,11 @@ m
 ```
 
 
-### 'Comments' histogram ?
+
 
 ```{r}
+# 'Comments' histogram ?
+
 w <- ggplot(datasetM, aes(x=Comments))
 w <- w + geom_histogram(binwidth = 0.5)
 w <- w + coord_cartesian(xlim = c(0, 40), ylim=c(0,50)) + scale_x_continuous(breaks = seq(0, 40, 1))
