@@ -98,6 +98,7 @@ table(rota2)
 
 # an Prof
 # Wie die Ergebsniess am Ende aussehen sollen
+# Mit leuten entscheidung uber Presentatino
 # Genaue beschreibung von Aufgabe- nicht nur mit Merkmale
 # Feedback geben konnte? 361, 721, 1080, 1081,
 
@@ -105,6 +106,13 @@ table(rota2)
 # Correlation
 # http://cran.r-project.org/web/packages/corrplot/vignettes/corrplot-intro.html
 corrplot(cor(datasetM[2:11]), order = "hclust", type = "lower",  method = "number")
+
+Principal Component Analysis
+
+```{r}
+pca <- prcomp(datasetM[2:11], scale = TRUE)
+summary(pca)
+```
 
 
 

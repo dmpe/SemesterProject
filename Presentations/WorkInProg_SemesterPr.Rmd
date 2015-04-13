@@ -1,18 +1,20 @@
 ---
 title: 'Day 2 + Exercise Two '
-author: "Dmitrij Petrov"
-date: "March 30, 2015"
+author: "Dmitrij Petrov et al."
+date: "1st of June 2015"
 output:
   html_document:
     fig_caption: yes
     fig_height: 7
     fig_width: 9
-    highlight: null
+    number_sections: yes
     self_contained: no
+    theme: spacelab
+    toc: yes
 ---
 
-#### Load and read excel file.
 
+### Load libraries.
 
 ```{r}
 
@@ -21,43 +23,61 @@ library(mi)
 library("ggplot2")
 library("modeest")
 library(corrplot)
-
-datasetM <- read.xlsx("/srv/shiny-server/SemesterProject/Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
 ```
 
-#### Example
+### Read excel file
+
+```{r}
+datasetM <- read.xlsx("/srv/shiny-server/SemesterProject/Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
+
+```
+
+### Meaning of variables
 
 Post.ID - ID of a Facebook post
+
+User Engagement - Number of ((Likes + Comments) diveded by Total Reach) multiplied by 100 000
+
+Acquaintance - User NW *	%Match
+ <https://www.academia.edu/2758533/Personal_acquaintance_measure_distinguishing_among_friends_and_good_and_bad_customers>
+ 
+Experience - 
+
+Likes -
+
+Comments -
 
 Fanpage Reach -
 
 Earned Reach - The "real" stuff that comes automatically from non-facebook. Cross-sharing. 
 
-Total Reach - Sum of both
+Total Reach - Sum of Fanpage + Earned Reach
 
-X-Match -
+User NW - 
+
+%-Match (X-Match) - 
 
 Duration - 
 
-Acquaintance - <https://www.academia.edu/2758533/Personal_acquaintance_measure_distinguishing_among_friends_and_good_and_bad_customers>
+Gender - think about it :) [0 for female and 1 for male]
+
 
 <http://stackoverflow.com/questions/12868581/list-all-column-except-for-one-in-r>
 
 ```{r}
 head(datasetM)
 
-# print without 3 cols
+# print without 3 last cols
 summary(datasetM[, !names(datasetM) %in% c("Experience", "Gender", "Duration")])
+```
 
-# Mode
+```{r, eval=FALSE}
+#Mode
 mlv(datasetM$User.Engage, method = "mfv")
-
 ```
 
 
-#### What type of variables we have ?
-
-<https://www.wiwiweb.de/statistik/grundbegriff/merkmale/stetige.html>
+### What type of variables we have ?
 
 ![<http://www.gs.washington.edu/academics/courses/akey/56008/lecture/lecture2.pdf>](pictures/typesofData.png)
 
@@ -79,33 +99,33 @@ mlv(datasetM$User.Engage, method = "mfv")
 
 **log-continuous** : 	log-scaled continuous variable
 
+<https://www.wiwiweb.de/statistik/grundbegriff/merkmale/stetige.html>
 
 ```{r}
 # mi.info(datasetM) ## larger output
 
-cbind(c1 = typecast(datasetM))
+cbind(c1 = typecast(datasetM), c2 = c("test", "tests"))
+
 ```
 
 
 
-#### How many cases of each variable do we have ? 
-
->  0 for female and 1 for male
+### How many cases of each variable do we have ? 
 
 ```{r}
 table(datasetM$Gender)
 
 table(datasetM$Duration)
-
 ```
 
-#### Some correlations ?
+### Some correlations ?
+
 ```{r}
 corrplot(cor(datasetM[2:11]), order = "hclust", type = "lower",  method = "number")
 ```
 
 
-#### 'Likes' histogram ?
+### 'Likes' histogram ?
 
 ```{r}
 m <- ggplot(datasetM, aes(x=Likes))
@@ -117,7 +137,7 @@ m
 
 ```
 
-#### 'Comments' histogram ?
+### 'Comments' histogram ?
 
 ```{r}
 w <- ggplot(datasetM, aes(x=Comments))
@@ -128,7 +148,7 @@ w <- w + geom_vline(xintercept = mean(datasetM$Comments), size = 2, colour = "re
 w
 ```
 
-#### Relationship between Likes and Comments
+### Relationship between Likes and Comments
 
 Thanks: <http://elkhartgroup.com/tutorials/modelsinr.html>
 
@@ -163,7 +183,7 @@ likesComm3 <- likesComm3 + facet_grid(~Duration) # Gender~Duration might be bett
 likesComm3
 ```
 
-#### Relationship between Fan page and Earned Reach
+### Relationship between Fan page and Earned Reach
 
 
 ```{r}
@@ -171,13 +191,6 @@ likesComm3
 fanEarned <- ggplot(datasetM, aes(x=Fanpage.Reach, y=Earned.Reach, color = factor(Gender)))
 fanEarned <- fanEarned + geom_point() + stat_smooth(method = "lm")
 fanEarned
-```
-
-Principal Component Analysis
-
-```{r}
-pca <- prcomp(datasetM[2:11], scale = TRUE)
-summary(pca)
 ```
 
 
