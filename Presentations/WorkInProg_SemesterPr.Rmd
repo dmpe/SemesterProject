@@ -104,7 +104,7 @@ mlv(datasetM$User.Engage, method = "mfv")
 ```{r}
 # mi.info(datasetM) ## larger output
 
-cbind(c1 = typecast(datasetM), c2 = c("test", "tests"))
+cbind(c1 = typecast(datasetM))
 
 ```
 
@@ -132,9 +132,48 @@ m <- ggplot(datasetM, aes(x=Likes))
 m <- m + geom_histogram(aes(y=..density..), colour="black", fill="white")
 m <- m + geom_density()
 # m <- m + coord_cartesian(xlim = c(0, 40), ylim=c(0,33)) + scale_x_continuous(breaks = seq(0, 40, 1)) 
-# m <- m + scale_y_continuous(breaks = seq(0, 33, 1)) +
+# m <- m + scale_y_continuous(breaks = seq(0, 33, 1)) 
 # m <- m + geom_vline(xintercept = mean(datasetM$Likes), size = 2, colour = "red")
 m
+
+
+dr1 <- ggplot(datasetM, aes(x=User.Engage))
+dr1 <- dr1 + geom_histogram(aes(y=..density..), colour="black", fill="white")
+dr1 <- dr1 + geom_density()
+# dr1 <- dr1 + coord_cartesian(xlidr1 = c(0, 40), ylidr1=c(0,33)) + scale_x_continuous(breaks = seq(0, 40, 1)) 
+# dr1 <- dr1 + scale_y_continuous(breaks = seq(0, 33, 1))
+# dr1 <- dr1 + geodr1_vline(xintercept = dr1ean(datasetM$Likes), size = 2, colour = "red")
+dr1
+
+dr3 <- ggplot(datasetM, aes(x=Earned.Reach))
+dr3 <- dr3 + geom_histogram(aes(y=..density..), colour="black", fill="white")
+dr3 <- dr3 + geom_density()
+# dr3 <- dr3 + coord_cartesian(xlidr3 = c(0, 40), ylidr3=c(0,33)) + scale_x_continuous(breaks = seq(0, 40, 1)) 
+# dr3 <- dr3 + scale_y_continuous(breaks = seq(0, 33, 1))
+# dr3 <- dr3 + geodr3_vline(xintercept = dr3ean(datasetM$Likes), size = 2, colour = "red")
+dr3
+
+
+dr2 <- ggplot(datasetM, aes(x=Comments))
+dr2 <- dr2 + geom_histogram(aes(y=..density..), colour="black", fill="white")
+dr2 <- dr2 + geom_density()
+# dr2 <- dr2 + coord_cartesian(xlidr2 = c(0, 40), ylidr2=c(0,33)) + scale_x_continuous(breaks = seq(0, 40, 1)) 
+# dr2 <- dr2 + scale_y_continuous(breaks = seq(0, 33, 1))
+# dr2 <- dr2 + geodr2_vline(xintercept = dr2ean(datasetM$Likes), size = 2, colour = "red")
+dr2
+
+```
+
+
+
+```{r}
+po1 <- ggplot(datasetM, aes(x=X.Match))
+po1 <- po1 + geom_histogram(aes(y=..density..), colour="black", fill="white")
+po1 <- po1 + geom_density()
+# po1 <- po1 + coord_cartesian(xlipo1 = c(0, 40), ylipo1=c(0,33)) + scale_x_continuous(breaks = seq(0, 40, 1)) 
+# po1 <- po1 + scale_y_continuous(breaks = seq(0, 33, 1))
+# po1 <- po1 + geopo1_vline(xintercept = po1ean(datasetM$Likes), size = 2, colour = "red")
+po1
 ```
 
 
@@ -219,6 +258,14 @@ fanEarned
 ```
 
 
+### Probability distributions
+
+![](https://2.bp.blogspot.com/-SpjgitfNMb0/TteevRR_Y2I/AAAAAAAAAFQ/IZgd32z2AI8/s1600/distributions.png)
+
+<https://en.wikipedia.org/wiki/List_of_probability_distributions>
+<https://de.wikipedia.org/wiki/Liste_univariater_Wahrscheinlichkeitsverteilungen>
+<http://cran.r-project.org/web/views/Distributions.html>
+<http://digitheadslabnotebook.blogspot.de/2011/02/using-r-for-introductory-statistics.html>
 
 
 
