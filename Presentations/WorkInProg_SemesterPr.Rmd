@@ -154,6 +154,8 @@ dr3 <- dr3 + geom_density()
 dr3
 
 
+# Log-normal ?
+
 dr2 <- ggplot(datasetM, aes(x=Comments))
 dr2 <- dr2 + geom_histogram(aes(y=..density..), colour="black", fill="white")
 dr2 <- dr2 + geom_density()
@@ -178,6 +180,7 @@ po1
 
 
 ```{r}
+# Log-normal ? 
 m <- ggplot(datasetM, aes(x=Acquaintance))
 m <- m + geom_histogram(aes(y=..density..), colour="black", fill="white")
 m <- m + geom_density()
@@ -187,7 +190,10 @@ m <- m + geom_density()
 m
 ```
 
+
+
 ```{r}
+# Binomial ?
 m <- ggplot(datasetM, aes(x=Total.Reach))
 m <- m + geom_histogram(aes(y=..density..), colour="black", fill="white") + geom_density()
 # m <- m + coord_cartesian(xlim = c(0, 40), ylim=c(0,33)) + scale_x_continuous(breaks = seq(0, 40, 1)) 
