@@ -1,4 +1,4 @@
-"Marketing-Statistical" Project for the Summer Semester 2015
+'Data Analysis' Project during the Spring Semester '15
 ===============
 
 
@@ -18,9 +18,9 @@
 
 ### Ideas ?
 
-1.	Merkmale (Feature) - Finished
-2.  Haufigkeiten (Frequencies, e.g. histograms) - Finished
-3.  Correlation -> Done
+1.	Merkmale (Feature ?, i.e. types of variable, e.g. discrete, continues etc.)
+2.  Haufigkeiten (Frequencies, e.g. histograms)
+3.  Correlation
 4.  Cluster Ana.
 5.  Linear Model
 
