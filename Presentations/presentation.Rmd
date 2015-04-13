@@ -6,7 +6,6 @@ output:
   ioslides_presentation:
     fig_height: 6
     fig_width: 8
-    highlight: zenburn
     logo: /srv/shiny-server/SemesterProject/Presentations/pictures/hs_logo_besser.png
     smaller: yes
     transition: faster
