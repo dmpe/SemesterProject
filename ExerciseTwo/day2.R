@@ -93,8 +93,13 @@ plot(lm(Likes~Comments, data=datasetM))
 # http://www.r-bloggers.com/r-function-of-the-day-cut/
 
 # breaks = seq(180, 1840, by = 260)
-rota2 <- cut(datasetM$User.Engage,5,  dig.lab = 4)
-table(rota2)
+rota2 <- cut(datasetM$X.Match, 40, dig.lab = 4)
+barplot(table(rota2))
+
+m <- ggplot(rota2, aes(x=Total.Reach))
+m <- m + geom_histogram(aes(y=..density..), colour="black", fill="white")
+m <- m + geom_density()
+m
 
 # an Prof
 # Wie die Ergebsniess am Ende aussehen sollen
@@ -114,17 +119,20 @@ pca <- prcomp(datasetM[2:11], scale = TRUE)
 summary(pca)
 ```
 
+names(datasetM[2:13])
+
+"Acquaintance"
+"Total.Reach"
+"Gender"
 
 
 
+sapply(datasetM, hist)
 
 
+2,5,8, 11
 
-
-
-
-
-
+summary(datasetM)
 
 
 
