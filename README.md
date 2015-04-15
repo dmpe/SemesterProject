@@ -21,8 +21,9 @@
 1.	Merkmale (Feature ?, i.e. types of variable, e.g. discrete, continues etc.)
 2.  Haufigkeiten (Frequencies, e.g. histograms)
 3.  Correlation
-4.  Cluster Ana.
-5.  Linear Model
+4.  Linear Model
+5.  Cluster Ana.
+
 
 
 
