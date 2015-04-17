@@ -17,7 +17,6 @@ output:
 ### Load libraries.
 
 ```{r}
-
 library("xlsx")
 library(mi)
 library("ggplot2")
@@ -100,8 +99,6 @@ mlv(datasetM$User.Engage, method = "mfv")
 cbind(type = typecast(datasetM))
 
 ```
-
-
 
 ### How many cases of each variable do we have ? 
 
