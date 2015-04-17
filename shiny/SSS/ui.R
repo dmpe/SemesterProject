@@ -12,7 +12,9 @@ shinyUI(fluidPage(
 
   # Application title
   titlePanel("Un-explained Data -> Interactively"),
-
+  helpText("Mistakes can occur !"),
+  hr(),
+           
   # Sidebar with a slider input for number of bins
   sidebarLayout(
     sidebarPanel(
