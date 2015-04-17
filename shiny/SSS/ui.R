@@ -4,9 +4,7 @@
 #
 # http://shiny.rstudio.com
 #
-# library(xlsx)
 library(shiny)
-# datasetM <- read.xlsx("/srv/shiny-server/SemesterProject/Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
 
 shinyUI(fluidPage(
 
@@ -23,12 +21,15 @@ shinyUI(fluidPage(
                   min = 1,
                   max = 50,
                   value = 10), 
-      selectInput("selection", "Choose a book:", choices = colnames(datasetM[2:11]))
+      selectInput("selection", "Choose a column:", choices = colnames(datasetM.withoutFour)),
+      p("Click to choose the column and then display histogram and density."), 
+      p("With love from D.P. :", a("http://shiny.rstudio.com"), a("https://github.com/dmpe/SemesterProject"))
     ),
 
     # Show a plot of the generated distribution
     mainPanel(
-      plotOutput("distPlot")
+      plotOutput("distPlot"),       
+      plotOutput("distPlot2")
     )
   )
 ))
