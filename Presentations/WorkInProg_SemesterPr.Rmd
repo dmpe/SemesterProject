@@ -96,7 +96,7 @@ mlv(datasetM$User.Engage, method = "mfv")
 ```{r}
 # mi.info(datasetM) ## larger output
 
-cbind(type = typecast(datasetM))
+# cbind(type = typecast(datasetM))
 
 ```
 
