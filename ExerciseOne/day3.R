@@ -10,29 +10,36 @@ library("ggthemes")
 library(reshape2)
 library(gridExtra)
 library(corrplot)
+library(car)
 
 datasetM <- read.xlsx("Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
-
 datasetM.withoutFour <- datasetM[, !names(datasetM) %in% c("Experience", "Gender", "Duration", "Post.ID")]
-
-# datasetM.withoutFour <- datasetM[, c(1,2,3,4)]
-
-dasda <- c(1:9)
-asdasr <- !(dasda %in% c(4:5))
-asdasr
 
 # Correlation
 # http://cran.r-project.org/web/packages/corrplot/vignettes/corrplot-intro.html
-corrplot(cor(datasetM.withoutFour), order = "hclust", type = "lower",  method = "number")
-cor(datasetM.withoutFour, method = "kendall")
-cor(datasetM.withoutFour, method = "spearman")
+# http://stackoverflow.com/questions/15409820/indexing-a-correlation-matrix
+corrrePart <- cor(datasetM.withoutFour)
+corrplot(corrrePart, order = "hclust", type = "lower",  method = "number")
 
+corrrePart[lower.tri(corrrePart)] <- NA
+corrrePart <- data.frame(corrrePart)
+which(corrrePart > 0.7, arr.ind=TRUE)
+
+rowMeans(corrrePart, na.rm = T) 
+# I took over 0.7 !!!
+scatterplot(datasetM.withoutFour$Likes, datasetM.withoutFour$User.Engage)
+scatterplot(datasetM.withoutFour$Comments, datasetM.withoutFour$User.Engage)
+scatterplot(datasetM.withoutFour$Likes, datasetM.withoutFour$Earned.Reach)
+scatterplot(datasetM.withoutFour$Likes, datasetM.withoutFour$Total.Reach)
+scatterplot(datasetM.withoutFour$Comments, datasetM.withoutFour$Total.Reach)
 scatterplot(datasetM.withoutFour$Total.Reach, datasetM.withoutFour$Fanpage.Reach)
-abline(lm(Total.Reach~Fanpage.Reach, data = datasetM.withoutFour), col="red") # regression line (y~x) 
+scatterplot(datasetM.withoutFour$Earned.Reach, datasetM.withoutFour$Total.Reach)
+scatterplot(datasetM.withoutFour$Acquaintance, datasetM.withoutFour$User.NW)
+
+
+plot(datasetM.withoutFour$Total.Reach, datasetM.withoutFour$Fanpage.Reach)
+abline(lm(Fanpage.Reach~Total.Reach, data = datasetM.withoutFour), col="red") # regression line (y~x) 
+
 plot(datasetM.withoutFour$Earned.Reach, datasetM.withoutFour$Likes)
 plot(datasetM.withoutFour$Acquaintance, datasetM.withoutFour$User.NW)
 
-# dr1 <- dr1 + coord_cartesian(xlidr1 = c(0, 40), ylidr1=c(0,33)) + scale_x_continuous(breaks = seq(0, 40, 1)) 
-# dr1 <- dr1 + scale_y_continuous(breaks = seq(0, 33, 1))
-# dr1 <- dr1 + geodr1_vline(xintercept = dr1ean(datasetM$Likes), size = 2, colour = "red")
-dr1
