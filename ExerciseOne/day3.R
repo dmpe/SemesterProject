@@ -2,22 +2,20 @@ library(xlsx)
 library(mi)
 library(Hmisc)
 library(ggplot2)
-library(cluster)
-library(NbClust)
-library(ggplot2)
 library(clustrd)
 library("ggthemes")
 library(reshape2)
-library(gridExtra)
 library(corrplot)
 library(car)
-
-datasetM <- read.xlsx("Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
-datasetM.withoutFour <- datasetM[, !names(datasetM) %in% c("Experience", "Gender", "Duration", "Post.ID")]
 
 # Correlation
 # http://cran.r-project.org/web/packages/corrplot/vignettes/corrplot-intro.html
 # http://stackoverflow.com/questions/15409820/indexing-a-correlation-matrix
+
+datasetM <- read.xlsx("Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
+datasetM.withoutFour <- datasetM[, !names(datasetM) %in% c("Experience", "Gender", "Duration", "Post.ID")]
+
+
 corrrePart <- cor(datasetM.withoutFour)
 corrplot(corrrePart, order = "hclust", type = "lower",  method = "number")
 

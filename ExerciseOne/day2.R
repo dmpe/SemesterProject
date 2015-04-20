@@ -4,7 +4,6 @@ library(Hmisc)
 library(ggplot2)
 library(cluster)
 library(NbClust)
-library(ggplot2)
 library(clustrd)
 library("ggthemes")
 library(reshape2)
@@ -109,25 +108,22 @@ m
 
 
 
-Principal Component Analysis
-
-```{r}
-pca <- prcomp(datasetM[2:11], scale = TRUE)
-summary(pca)
-```
+# Principal Component Analysis
+# 
+# ```{r}
+# pca <- prcomp(datasetM[2:11], scale = TRUE)
+# summary(pca)
+# ```
 
 names(datasetM[2:13])
-
-"Acquaintance"
-"Total.Reach"
-"Gender"
-
-
+# 
+# "Acquaintance"
+# "Total.Reach"
+# "Gender"
 
 sapply(datasetM, hist)
 
-
-2,5,8, 11
+# 2,5,8, 11
 
 summary(datasetM)
 
