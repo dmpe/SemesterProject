@@ -114,7 +114,6 @@ table(datasetM$Duration)
 ```{r}
 # http://cran.r-project.org/web/packages/corrplot/vignettes/corrplot-intro.html
 without4 <- datasetM[, !names(datasetM) %in% c("Post.ID", "Experience", "Gender", "Duration")]
-
 corrplot(cor(without4), order = "hclust", type = "lower", method = "number")
 ```
 
@@ -199,7 +198,6 @@ m
 
 
 
-
 ```{r}
 # 'Comments' histogram ?
 
@@ -270,7 +268,8 @@ fanEarned
 <http://cran.r-project.org/web/views/Distributions.html>
 <http://digitheadslabnotebook.blogspot.de/2011/02/using-r-for-introductory-statistics.html>
 
-
+Behind VPN - will not work. Don't even try.
+<http://shiny.b40.cz/SemesterProject/shiny/SSS/>
 
 
 
