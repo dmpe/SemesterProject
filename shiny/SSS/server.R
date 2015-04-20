@@ -1,10 +1,3 @@
-
-# This is the server logic for a Shiny web application.
-# You can find out more about building applications with Shiny here:
-#
-# http://shiny.rstudio.com
-#
-
 library(shiny)
 library(ggplot2)
 library(DT)
@@ -18,8 +11,9 @@ shinyServer(function(input, output) {
     m
   })
   
+  # https://rstudio.github.io/DT/
   output$x1 = DT::renderDataTable({
-    datatable(datasetM.withoutFour)
+    datatable(datasetM.withoutFour, rownames = row.names(datasetM))
   })
   
   output$distPlot2 <- renderPlot({
