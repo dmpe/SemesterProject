@@ -22,8 +22,8 @@ summary(data.NYS)
 # cols <- c("premium","change","newprice")
 # colnames(data.NYS) <- cols
 
-data.NYS2 <- plyr::rename(data.NYS, replace = c("Registration Number" = "ID", "First Name" = "F.Name", "Last Name" = "L.Name", "Company Name" = "Comp.Name", "Street 1" = "Street_1", "Street 2" = "Street_2", "Zip Plus Four" = "Zip_2", "Phone Number" = "Phone", "Email Address" = "Email", "Year Admitted" = "Year_Adm", "Judicial Department of Admission" = "JDoA", "Law School" = "Law_School", "Next Registration" = "Next_Reg"))
-
+colnames(data.NYS) <- c("ID", "F.Name")
+data.NYS <- plyr::rename(data.NYS, c("Last Name" = "L.Name", "Company Name" = "Comp.Name", "Street 1" = "Street_1", "Street 2" = "Street_2", "Zip Plus Four" = "Zip_2", "Phone Number" = "Phone", "Email Address" = "Email", "Year Admitted" = "Year_Adm", "Judicial Department of Admission" = "JDoA", "Law School" = "Law_School", "Next Registration" = "Next_Reg"))
 
 data.NYS <- dplyr::rename(data.NYS, "Registration Number" = "ID")
 
