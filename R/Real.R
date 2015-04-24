@@ -1,5 +1,6 @@
 library(readr)
 library(stringr)
+library(stringi)
 library(plyr)
 library(dplyr)
 #####################
@@ -20,11 +21,19 @@ colnames(data.NYS) <- c("ID", "F.Name", "L.Name", "Comp.Name", "Street_1", "Stre
 data.NYS <- tbl_df(data.NYS)
 # names(data.NYS)
 # problems(data.NYS)
-# summary(data.NYS)
+# summary(data.NY)
 
 
 splitted.email <- stri_split_fixed(data.NYS$Email, "@", 2, omit_empty = NA, simplify = TRUE) 
-splitted.email <- na.omit(asdf)
+splitted.email <- data.frame(na.omit(splitted.email))
+colnames(splitted.email) <- c("NickName", "Organisation")
+
+splitted.email.2 <- data.frame(table(tolower(splitted.email$Organisation)))
+splitted.email.2 <- plyr::arrange(splitted.email.2, desc(splitted.email.2$Freq))
+
+splitted.email.2["bloomberg.com",]
+
+# head(splitted.email)
 
 tbl()
 filter(data.NYS, data.NYS$Email == str_detect(data.NYS$Email, "bloomberg"))
