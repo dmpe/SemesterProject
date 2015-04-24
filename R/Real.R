@@ -23,7 +23,8 @@ data.NYS <- tbl_df(data.NYS)
 # summary(data.NYS)
 
 
-asdf <- str_split_fixed(data.NYS$Email, "@", 2) 
+splitted.email <- stri_split_fixed(data.NYS$Email, "@", 2, omit_empty = NA, simplify = TRUE) 
+splitted.email <- na.omit(asdf)
 
 tbl()
 filter(data.NYS, data.NYS$Email == str_detect(data.NYS$Email, "bloomberg"))
