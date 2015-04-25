@@ -47,14 +47,15 @@ johns <- law_school[grep("johns|john's", law_school$Var1, ignore.case=T),]
 count(johns)
 
 data.NYS$Comp.Name <- str_replace_all(tolower(data.NYS$Comp.Name), "[&,]", "")
-com_name <- data.frame(table(data.NYS$Comp.Name))
+data.NYS$Comp.Name <- str_replace_all(tolower(data.NYS$Comp.Name), "llp", "")
+
+com_name <- data.frame(table(str_trim(data.NYS$Comp.Name)))
 com_name <- plyr::arrange(com_name, desc(com_name$Freq))
 
-com_name.plot <- ggplot(data=com_name[1:20,], aes(x=reorder(Var1, Freq), y=Freq)) 
+com_name.plot <- ggplot(data=com_name[1:20,], aes(x=reorder(Var1, Freq), y=Freq)) + coord_flip()
 com_name.plot <- com_name.plot + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size = 14))
-com_name.plot <- com_name.plot+ coord_flip()
+com_name.plot <- com_name.plot + ylab("How many lawyers do companies have registered in NYC ?") + xlab("Companies")
 com_name.plot
-
 
 tbl()
 filter(data.NYS, data.NYS$Email == str_detect(data.NYS$Email, "bloomberg"))
