@@ -1,0 +1,124 @@
+---
+title: "NYC Attorney Registrations."
+author: "Dmitrij Petrov"
+date: "24. 4. 2015"
+output:
+  html_document:
+    fig_caption: yes
+    fig_height: 6
+    fig_width: 8
+    highlight: textmate
+    theme: journal
+---
+
+## Goal
+Look at the US NYS Attorney Registrations. 
+
+Source of data : <https://data.ny.gov/Transparency/NYS-Attorney-Registrations/eqw2-r5nb>
+
+## Get the data
+
+First we load some libraries.
+
+```{r}
+library(readr)
+library(stringr)
+library(stringi)
+library(plyr)
+library(dplyr)
+library(ggplot2)
+```
+
+I used CSV file downloaded from their website. Using `readr` package I skip 2 columns which are low interest to me and finally present a summary statistics. Here I am going to deal with characters only.
+
+```{r}
+
+data.NYS <- readr::read_csv("/srv/shiny-server/SemesterProject/Data/NYS_Attorney_Registrations.csv",
+                            col_types = list("Zip" = col_character(), "Zip Plus Four" = col_character(), 
+                                             "Suffix" = col_skip(), "Middle Name" = col_skip()))
+
+summary(data.NYS)
+```
+
+## Data cleansing
+
+Because data contain blank cells, I need to replace "" (basically nothing - empty spaces) with NAs. Then I also rename columns.
+
+```{r}
+data.NYS[data.NYS == ""] <- NA
+colnames(data.NYS) <- c("ID", "F.Name", "L.Name", "Comp.Name", "Street_1", "Street_2", "City", "State", "Zip", "Zip_2", "Country", "County",  "Phone", "Email", "Year_Adm", "JDoA", "Law_School", "Status", "Next_Reg")
+```
+
+### What kind of email providers lawyers used to register ?
+
+Using `stringi` package we split Email column into a matrix. Then we omit As (i.e. those cells that we replaced above) and "convert" the matrix to a data frame. Letters before @ get "NickName" column name and after @ "Organisation". Because people cannot fill in their email properly (or maybe because of <http://rickrobinson.files.wordpress.com/2012/10/it-systems.jpg>). As a result I need to use `tolower` function.
+
+Finally using `table` function I get frequencies of email providers. [#Google](https://www.google.de/search?q=gmail+is+unique) leads.
+
+```{r}
+splitted.email <- stri_split_fixed(data.NYS$Email, "@", 2, omit_empty = NA, simplify = TRUE) 
+splitted.email <- data.frame(na.omit(splitted.email))
+colnames(splitted.email) <- c("NickName", "Organisation")
+
+splitted.email <- data.frame(table(tolower(splitted.email$Organisation)))
+splitted.email <- plyr::arrange(splitted.email, desc(splitted.email$Freq))
+head(splitted.email, 15)
+```
+
+Not so many law firm, right. Actually just two (not counting the government itself, of course): <http://www.legal-aid.org/en/home.aspx> and <http://www.skadden.com/>
+
+### What kind of law school did people attend ?
+
+Here I can use same code, but what is far more interesting is that people fill in their law school totally differently. Well, I get that from the foreigners but what about "Harvard", "Harvard Law School" and "Harvard University"" (very US-centric) ...... Just look at that. I mean common... 
+
+```{r}
+law_school <- data.frame(table(tolower(data.NYS$Law_School)))
+law_school <- plyr::arrange(law_school, desc(law_school$Freq))
+head(law_school, 15)
+```
+
+Four lawyers even wrote "harvard 1950". Furthermore, there are e.g. 551 occurences of harvard in the `Law_School` column. The most interessting fact to me was that some people cannot even spell properly their law school name. I wouldn't want to go to such lawyers :(  [OMG](http://www.freemake.com/blog/wp-content/uploads/2012/08/SpellRite-1.gif)
+
+Source for code below: <http://www.r-bloggers.com/select-operations-on-r-data-frames/>
+```{r}
+harvard <- law_school[grep("harvard", law_school$Var1, ignore.case=T),]
+head(harvard)
+count(harvard)
+
+newyork <- law_school[grep("new york", law_school$Var1, ignore.case=T),]
+head(newyork)
+count(newyork)
+
+law_school[grep("new york law shool", law_school$Var1, ignore.case=T),]
+
+brooklyn <- law_school[grep("brooklyn", law_school$Var1, ignore.case=T),]
+head(brooklyn)
+count(brooklyn)
+
+johns <- law_school[grep("johns|john's", law_school$Var1, ignore.case=T),]
+head(johns)
+count(johns)
+
+```
+
+### Where does lawyers work
+
+
+
+```{r}
+law_school <- data.frame(table(tolower(data.NYS$Law_School)))
+law_school <- plyr::arrange(law_school, desc(law_school$Freq))
+```
+
+
+
+
+
+
+## About the author 
+
+I am student from Germany who is interested in Asia (and its small nations).
+
+*  https://www.linkedin.com/in/dmitrijpetrov
+
+*  https://indestat.wordpress.com/contact-me/
