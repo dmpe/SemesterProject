@@ -42,8 +42,9 @@ y<-rnorm(n,x,4)
 plot(x,y)
 abline(0,1)
 
-
-
+# https://solomonmessing.wordpress.com/2014/01/19/visualization-series-the-scatterplot-or-how-to-use-data-so-you-dont-get-ripped-off/
+data("diamonds")
+head(diamonds)
 
 
 
