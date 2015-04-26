@@ -83,30 +83,27 @@ Four lawyers even wrote "harvard 1950". Furthermore, there are e.g. 551 unique o
 Source for code below: <http://www.r-bloggers.com/select-operations-on-r-data-frames/>
 ```{r}
 harvard <- law_school[grep("harvard", law_school$Var1, ignore.case=T),]
-head(harvard)
-count(harvard)
+dim(harvard) # first - observations; second - variables (columns)
 
 newyork <- law_school[grep("new york", law_school$Var1, ignore.case=T),]
 head(newyork)
-count(newyork)
+dim(newyork)
 
 law_school[grep("new york law shool", law_school$Var1, ignore.case=T),] # FAIL
 
-head(data.NYS[grep("pricewaterhoecoopers", data.NYS$Comp.Name, ignore.case=T), 1:5]) # FAIL
-
 brooklyn <- law_school[grep("brooklyn", law_school$Var1, ignore.case=T),]
 head(brooklyn)
-count(brooklyn)
+dim(brooklyn)
 
 johns <- law_school[grep("johns|john's", law_school$Var1, ignore.case=T),]
 head(johns)
-count(johns)
+dim(johns)
 
 ```
 
-### Where does lawyers work ?
+### Where do lawyers work ?
 
-Sadly enought, I first need to get rid of "unique" [business entities](https://en.wikipedia.org/wiki/Types_of_business_entity#United_States) abbreviations, symbols such as '&' - ',' - '()' and names. Data are very raw, here indeed. Then I create a bar plot with TOP 20 names of companies and their number of lawyers registered in New York City.
+Sadly enought, I first need to get rid of "unique" [business entities](https://en.wikipedia.org/wiki/Types_of_business_entity#United_States), abbreviations, symbols such as '&' - ',' - '()' and totaly wrong names. Data are as one could have seen very raw indeed. Then I create a bar plot with TOP 20 names of companies and their number of lawyers registered in New York City.
 
 ```{r}
 data.NYS$Comp.Name <- tolower(data.NYS$Comp.Name)
@@ -114,13 +111,12 @@ patternsToLookFor <- c("corporation.", "corp", "corp.", "group", "pllc", "p.a.",
 patTTT <- paste(patternsToLookFor, collapse = '|')
 
 
-# Just an idea how to proceed
+# Just an idea how to proceed (Old version)
 
 # checkAndCleanFormatting <- function(x) {
 #   x <- stri_trim_both(x)  
 #   for(i in 1:length(x)) {
 #     if(stri_detect_regex(x[i],patTTT) == TRUE) {
-#       # print("yes, the string does contain some of patterns above")
 #       x[i] <- stri_replace_first_regex(x[i], patTTT, "")
 #     }
 #   }
@@ -129,40 +125,38 @@ patTTT <- paste(patternsToLookFor, collapse = '|')
 
 # Much more faster version (with C behind it)
 # Run the function twice for better handling of all (edge) cases
-for(i in 1:2) {
-data.NYS$Comp.Name <- sapply(as.character(data.NYS$Comp.Name), function(x) {
-  if ( is.na(x) == T) {
-    x <- NA
-  } else {
-    x <- stri_replace_first_fixed(x, "&", "and")
-    x <- stri_replace_last_regex(x, ",", "")
-    if(stri_detect_regex(x, patTTT) == TRUE) {
-      x <- str_replace(x, patTTT, "") 
+#for(i in 1:2) {
+  data.NYS$Comp.Name <- sapply(as.character(data.NYS$Comp.Name), function(x) {
+    if (is.na(x) == T) {
+      x <- NA
+    } else {
+      x <- stri_replace_first_fixed(x, "&", "and")
+      x <- stri_replace_last_regex(x, ",", "")
+      if(stri_detect_regex(x, patTTT) == TRUE) {
+        x <- str_replace(x, patTTT, "") # C type version of replace function is weird
+      }
+      x <- stri_trim_both(x)
     }
-    x <- stri_trim_both(x)
-  }
-})
-}
-
-
-
+  })
+#}
 ```
 
+Now plot the histogram of number of lawyers and companies they work in. Beware that not all cases are handled here as for example there is `davis polk and wardwell london` which however is NOT counted as (/assigned to) `davis polk and wardwell`!!! Thus the number are not exact. See below for a prime example.
 
 ```{r}
 com_name <- data.frame(table(stri_trim_both(data.NYS$Comp.Name)))
 com_name <- plyr::arrange(com_name, desc(com_name$Freq))
 
-com_name.plot <- ggplot(data=com_name[1:20,], aes(x=reorder(Var1, Freq), y=Freq)) + coord_flip(ylim= c(400,830))
+com_name.plot <- ggplot(data=com_name[1:20,], aes(x=reorder(Var1, Freq), y=Freq)) + coord_flip(ylim= c(400,900))
 com_name.plot <- com_name.plot + geom_bar(stat = "identity") + theme(axis.text.y = element_text(size = 14), axis.text.x = element_text(size = 14)) 
 com_name.plot <- com_name.plot + ylab("How many registered lawyers do companies have in NYC ?") + xlab("Companies")
-com_name.plot <- com_name.plot + scale_y_continuous(breaks = seq(400, 830, 50))
+com_name.plot <- com_name.plot + scale_y_continuous(breaks = seq(400, 900, 50))
 com_name.plot
 ```
 
 ```{r}
-apple <- com_name[grep("davis polk", com_name$Var1, ignore.case=T),]
-
+dvspw <- com_name[grep("davis polk", com_name$Var1, ignore.case=T),]
+dvspw
 ```
 
 
@@ -176,8 +170,6 @@ f500 <- html("http://www.zyxware.com/articles/4344/list-of-fortune-500-companies
   html_table(header = TRUE)
 f500 <- f500[1:100, ]
 ```
-
-
 
 
 ## About the author 
