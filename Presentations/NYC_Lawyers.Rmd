@@ -106,23 +106,29 @@ count(johns)
 
 ### Where does lawyers work ?
 
-Sadly enought, I first need to get rid of "unique" [business entities](https://en.wikipedia.org/wiki/Types_of_business_entity#United_States) abbreviations, plus some more e.g. '&' - ',' - '()'. Then I create a bar plot with TOP 20 names of companies and their number of lawyers registered in New York City.
+Sadly enought, I first need to get rid of "unique" [business entities](https://en.wikipedia.org/wiki/Types_of_business_entity#United_States) abbreviations, symbols such as '&' - ',' - '()' and names. Data are very raw, here indeed. Then I create a bar plot with TOP 20 names of companies and their number of lawyers registered in New York City.
 
 ```{r}
-data.NYS$Comp.Name <- str_replace_all(tolower(data.NYS$Comp.Name), "[&,]", "")
-data.NYS$Comp.Name <- str_replace_all(tolower(data.NYS$Comp.Name), "llp", "")
-data.NYS$Comp.Name <- str_replace_all(tolower(data.NYS$Comp.Name), "llc", "")
-data.NYS$Comp.Name <- str_replace_all(tolower(data.NYS$Comp.Name), "l.l.c.", "")
-data.NYS$Comp.Name <- str_replace_all(tolower(data.NYS$Comp.Name), "ltd.", "")
-data.NYS$Comp.Name <- str_replace_all(tolower(data.NYS$Comp.Name), "l.l.p.", "")
-data.NYS$Comp.Name <- str_replace_all(tolower(data.NYS$Comp.Name), "us", "")
-data.NYS$Comp.Name <- str_replace_all(tolower(data.NYS$Comp.Name), "inc.", "")
-data.NYS$Comp.Name <- str_replace_all(tolower(data.NYS$Comp.Name), "inc", "")
-data.NYS$Comp.Name <- str_replace_all(tolower(data.NYS$Comp.Name), "p.c.", "")
-data.NYS$Comp.Name <- str_replace_all(tolower(data.NYS$Comp.Name), "plc", "")
-data.NYS$Comp.Name <- str_replace_all(tolower(data.NYS$Comp.Name), "l.p.", "")
-data.NYS$Comp.Name <- str_replace_all(tolower(data.NYS$Comp.Name), "()", "")
-data.NYS$Comp.Name <- str_replace_all(tolower(data.NYS$Comp.Name), "p.a.", "")
+data.NYS$Comp.Name <- tolower(data.NYS$Comp.Name)
+
+data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "[&,]", "")
+data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "llp", "")
+data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "llc", "")
+data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "l.l.c.", "")
+data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "ltd.", "")
+data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "l.l.p.", "")
+data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "us", "")
+data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "inc.", "")
+data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "inc", "")
+data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "p.c.", "")
+data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "plc", "")
+data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "l.p.", "")
+data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "()", "")
+data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "p.a.", "")
+data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "pllc", "")
+data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "corp.", "")
+data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "corp", "")
+data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "corporation.", "")
 
 com_name <- data.frame(table(str_trim(data.NYS$Comp.Name)))
 com_name <- plyr::arrange(com_name, desc(com_name$Freq))
@@ -135,7 +141,7 @@ com_name.plot
 ```
 
 ```{r}
-apple <- com_name[grep("google", com_name$Var1, ignore.case=T),]
+apple <- com_name[grep("amazon", com_name$Var1, ignore.case=T),]
 
 ```
 
