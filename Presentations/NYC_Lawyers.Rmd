@@ -12,7 +12,7 @@ output:
 ---
 
 ## Goal
-Look at the US NYS Attorney Registrations. 
+Look at the US NYC Attorney Registrations for interesting informations. 
 
 Source of data : <https://data.ny.gov/Transparency/NYS-Attorney-Registrations/eqw2-r5nb>
 
@@ -22,8 +22,8 @@ First we load some libraries.
 
 ```{r}
 library(readr)
-library(stringr)
 library(stringi)
+library(stringr)
 library(plyr)
 library(dplyr)
 library(ggplot2)
@@ -78,7 +78,7 @@ law_school <- plyr::arrange(law_school, desc(law_school$Freq))
 head(law_school, 15)
 ```
 
-Four lawyers even wrote "harvard 1950". Furthermore, there are e.g. 551 occurences of harvard in the `Law_School` column. The most interessting fact to me was that some people cannot even spell properly their law school name. I wouldn't want to go to such lawyers :(  [OMG](http://www.freemake.com/blog/wp-content/uploads/2012/08/SpellRite-1.gif)
+Four lawyers even wrote "harvard 1950". Furthermore, there are e.g. 551 unique occurences of `harvard` in the `Law_School` column. The most interessting fact to me was that some people cannot even spell properly their law school name (or company they work in). I wouldn't want to go to such lawyers :(  [OMG](http://www.freemake.com/blog/wp-content/uploads/2012/08/SpellRite-1.gif)
 
 Source for code below: <http://www.r-bloggers.com/select-operations-on-r-data-frames/>
 ```{r}
@@ -90,9 +90,9 @@ newyork <- law_school[grep("new york", law_school$Var1, ignore.case=T),]
 head(newyork)
 count(newyork)
 
-law_school[grep("new york law shool", law_school$Var1, ignore.case=T),]
+law_school[grep("new york law shool", law_school$Var1, ignore.case=T),] # FAIL
 
-head(data.NYS[grep("pricewaterhoecoopers", data.NYS$Comp.Name, ignore.case=T),])
+head(data.NYS[grep("pricewaterhoecoopers", data.NYS$Comp.Name, ignore.case=T), 1:5]) # FAIL
 
 brooklyn <- law_school[grep("brooklyn", law_school$Var1, ignore.case=T),]
 head(brooklyn)
@@ -110,27 +110,47 @@ Sadly enought, I first need to get rid of "unique" [business entities](https://e
 
 ```{r}
 data.NYS$Comp.Name <- tolower(data.NYS$Comp.Name)
+patternsToLookFor <- c("corporation.", "corp", "corp.", "group", "pllc", "p.a.", "llp","l.p.", "llc", "l.l.c.", "l.l.p.", "ltd.","inc.", "inc", "us", "p.c.", "pc", "plc")
+patTTT <- paste(patternsToLookFor, collapse = '|')
 
-data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "[&,]", "")
-data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "llp", "")
-data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "llc", "")
-data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "l.l.c.", "")
-data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "ltd.", "")
-data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "l.l.p.", "")
-data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "us", "")
-data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "inc.", "")
-data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "inc", "")
-data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "p.c.", "")
-data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "plc", "")
-data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "l.p.", "")
-data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "()", "")
-data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "p.a.", "")
-data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "pllc", "")
-data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "corp.", "")
-data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "corp", "")
-data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "corporation.", "")
 
-com_name <- data.frame(table(str_trim(data.NYS$Comp.Name)))
+# Just an idea how to proceed
+
+# checkAndCleanFormatting <- function(x) {
+#   x <- stri_trim_both(x)  
+#   for(i in 1:length(x)) {
+#     if(stri_detect_regex(x[i],patTTT) == TRUE) {
+#       # print("yes, the string does contain some of patterns above")
+#       x[i] <- stri_replace_first_regex(x[i], patTTT, "")
+#     }
+#   }
+#   x <- stri_trim_both(x)
+# }
+
+# Much more faster version (with C behind it)
+# Run the function twice for better handling of all (edge) cases
+for(i in 1:2) {
+data.NYS$Comp.Name <- sapply(as.character(data.NYS$Comp.Name), function(x) {
+  if ( is.na(x) == T) {
+    x <- NA
+  } else {
+    x <- stri_replace_first_fixed(x, "&", "and")
+    x <- stri_replace_last_regex(x, ",", "")
+    if(stri_detect_regex(x, patTTT) == TRUE) {
+      x <- str_replace(x, patTTT, "") 
+    }
+    x <- stri_trim_both(x)
+  }
+})
+}
+
+
+
+```
+
+
+```{r}
+com_name <- data.frame(table(stri_trim_both(data.NYS$Comp.Name)))
 com_name <- plyr::arrange(com_name, desc(com_name$Freq))
 
 com_name.plot <- ggplot(data=com_name[1:20,], aes(x=reorder(Var1, Freq), y=Freq)) + coord_flip(ylim= c(400,830))
@@ -141,7 +161,7 @@ com_name.plot
 ```
 
 ```{r}
-apple <- com_name[grep("amazon", com_name$Var1, ignore.case=T),]
+apple <- com_name[grep("davis polk", com_name$Var1, ignore.case=T),]
 
 ```
 

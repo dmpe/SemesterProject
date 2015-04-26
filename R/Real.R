@@ -1,6 +1,6 @@
 library(readr)
-library(stringr)
 library(stringi)
+library(stringr)
 library(plyr)
 library(ggplot2)
 library(dplyr)
@@ -15,7 +15,7 @@ data.NYS <- readr::read_csv("/srv/shiny-server/SemesterProject/Data/NYS_Attorney
 
 data.NYS[data.NYS == ""] <- NA
 colnames(data.NYS) <- c("ID", "F.Name", "L.Name", "Comp.Name", "Street_1", "Street_2", "City", "State", "Zip", "Zip_2", "Country", "County",  "Phone", "Email", "Year_Adm", "JDoA", "Law_School", "Status", "Next_Reg")
-data.NYS <- colwise(function(x){str_trim(x, side = "both")})(data.NYS)
+data.NYS <- colwise(function(x){stri_trim_both(x)})(data.NYS)
 # data.NYS <- tbl_df(data.NYS)
 # names(data.NYS)
 # problems(data.NYS)
@@ -42,68 +42,56 @@ data.NYS <- colwise(function(x){str_trim(x, side = "both")})(data.NYS)
 # johns <- law_school[grep("johns|john's", law_school$Var1, ignore.case=T),]
 # count(johns)
 
-# data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "[&,]", "")
-# data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "llp", "")
-# data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "llc", "")
-# data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "l.l.c.", "")
-# data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "ltd.", "")
-# data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "l.l.p.", "")
-# data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "us", "")
-# data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "inc.", "")
-# data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "inc", "")
-# data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "p.c.", "")
-# data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "plc", "")
-# data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "l.p.", "")
-# data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "()", "")
-# data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "p.a.", "")
-# data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "pllc", "")
-# data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "corp.", "")
-# data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "corp", "")
-# data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "corporation.", "")
-
 data.NYS$Comp.Name <- tolower(data.NYS$Comp.Name)
-stringsToCheck <- c("corporation.", "corp", "corp.", "group", "pllc", "p.a.", "llp","l.p.", "llc", "l.l.c.", "l.l.p.", "ltd.","inc.", "inc", "us", "p.c.", "plc")
+stringsToCheck <- c("corporation.", "corp", "corp.", "group", "pllc", "p.a.", "llp","l.p.", "lp", "llc", "l.l.c.", "l.l.p.",
+                    "ltd.","inc.", "inc", "p.c.", "pc", "plc")
 patTTT <- paste(stringsToCheck, collapse = '|')
+testingString <- as.character(na.omit(data.NYS$Comp.Name))
+
+
 # zatim nefung "[&,]"
 checkAndCleanFormatting <- function(x) {
-  x <- str_trim(x, side = "both")  
+  x <- stri_trim_both(x)  
   # print(length(x))
   for(i in 1:length(x)) {
-    if(str_detect(x[i],patTTT) == TRUE) {
+    if(stri_detect_regex(x[i],patTTT) == TRUE) {
       # print("yes, the string does contain some of them")
       x[i] <- str_replace(x[i], patTTT, "")
     }
   }
-  x <- str_trim(x, side = "both")
+  x <- stri_trim_both(x)
 }
 
-testingString <- as.character(na.omit(data.NYS$Comp.Name))
-testingString <- checkAndCleanFormatting(testingString)
+# testingString <- checkAndCleanFormatting(testingString)
+# testingStringSmall <- testingString[1:100000]
+# for(i in 1:3) {
+data.NYS$Comp.Name <- sapply(as.character(data.NYS$Comp.Name), function(x) {
+  if ( is.na(x) == T) {
+    x <- NA
+  } else {
+    x <- stri_replace_first_fixed(x, "&", "and")
+    x <- stri_replace_last_regex(x, ",", "")
+    if(stri_detect_regex(x, patTTT) == TRUE) {
+      x <- str_replace(x, patTTT, "") 
+    }
+    x <- stri_trim_both(x)
+  }
+})
+# }
 
-str_extract(testingString, stringsToCheck)
-
-
-sapply(testingString, function(x) sapply(stringsToCheck, str_extract, string = x))
-
-sapply(testingString, function(x) {
-  any(sapply(stringsToCheck, str_detect, string = x))
-}) 
+saddawda <- data.frame(testingString)
 
 
 
+# sapply(testingString, function(x) sapply(stringsToCheck, str_extract, string = x))
+# sapply(testingString[1:20], function(x) {
+#   any(sapply(stringsToCheck, str_detect, string = x))
+# }) 
 
-# 
-#       # position[i,] <<- str_locate(x[i], paste(stringsToCheck, collapse = '|'))
-# position[] <<- data.frame(position)
-#       print(position)
 
-#str_sub(x[[i]], position )
+
+
 # data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "[&,]", "")
-# 
-# 
-# # data.NYS$Comp.Name <- str_replace_all(tolower(data.NYS$Comp.Name), c("p.a.","()","l.p.", "plc", "p.c.", "inc", "inc.", 
-# #                                                                      "us", "l.l.p.", "ltd.", "l.l.c.", "llc", "llp", "[&,]") , "")
-# # data.NYS <- with(data.NYS, data.NYS[!(Comp.Name == "" | is.na(Comp.Name)), ]), 
 # 
 # com_name <- data.frame(table(str_trim(data.NYS$Comp.Name)))
 # com_name <- plyr::arrange(com_name, desc(com_name$Freq))
