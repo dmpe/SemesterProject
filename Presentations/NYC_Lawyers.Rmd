@@ -7,8 +7,8 @@ output:
     fig_caption: yes
     fig_height: 6
     fig_width: 8
-    highlight: textmate
-    theme: journal
+    highlight: tango
+    theme: cerulean
 ---
 
 ## Goal
@@ -33,7 +33,6 @@ library(rvest)
 I used CSV file downloaded from their website. Using `readr` package I skip 2 columns which are low interest to me and finally present a summary statistics. Here I am going to deal with characters only.
 
 ```{r}
-
 data.NYS <- readr::read_csv("/srv/shiny-server/SemesterProject/Data/NYS_Attorney_Registrations.csv",
                             col_types = list("Zip" = col_character(), "Zip Plus Four" = col_character(), 
                                              "Suffix" = col_skip(), "Middle Name" = col_skip()))
@@ -107,7 +106,7 @@ Sadly enought, I first need to get rid of "unique" [business entities](https://e
 
 ```{r}
 data.NYS$Comp.Name <- tolower(data.NYS$Comp.Name)
-patternsToLookFor <- c("corporation.", "corp", "corp.", "group", "pllc", "p.a.", "llp","l.p.", "llc", "l.l.c.", "l.l.p.", "ltd.","inc.", "inc", "us", "p.c.", "pc", "plc")
+patternsToLookFor <- c("corporation.", "corp", "corp.", "group", "pllc", "p.a.", "llp","l.p.", "llc", "l.l.c.", "l.l.p.", "ltd.","inc.", "inc", "p.c.", "pc", "plc")
 patTTT <- paste(patternsToLookFor, collapse = '|')
 
 
@@ -126,18 +125,18 @@ patTTT <- paste(patternsToLookFor, collapse = '|')
 # Much more faster version (with C behind it)
 # Run the function twice for better handling of all (edge) cases
 #for(i in 1:2) {
-  data.NYS$Comp.Name <- sapply(as.character(data.NYS$Comp.Name), function(x) {
-    if (is.na(x) == T) {
-      x <- NA
-    } else {
-      x <- stri_replace_first_fixed(x, "&", "and")
-      x <- stri_replace_last_regex(x, ",", "")
-      if(stri_detect_regex(x, patTTT) == TRUE) {
-        x <- str_replace(x, patTTT, "") # C type version of replace function is weird
-      }
-      x <- stri_trim_both(x)
+data.NYS$Comp.Name <- sapply(as.character(data.NYS$Comp.Name), function(x) {
+  if (is.na(x) == T) {
+    x <- NA
+  } else {
+    x <- stri_replace_first_fixed(x, "&", "and")
+    if(stri_detect_regex(x, patTTT) == TRUE) {
+      x <- str_replace(x, patTTT, "") # C type version of replace function is weird
     }
-  })
+    x <- stri_replace_last_regex(x, ",", "")
+    x <- stri_trim_both(x)
+  }
+})
 #}
 ```
 
