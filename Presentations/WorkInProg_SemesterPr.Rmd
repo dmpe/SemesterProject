@@ -17,10 +17,10 @@ output:
 ### Load libraries.
 
 ```{r}
-library("xlsx")
+library(xlsx)
 library(mi)
-library("ggplot2")
-library("modeest")
+library(ggplot2)
+library(modeest)
 library(corrplot)
 ```
 
