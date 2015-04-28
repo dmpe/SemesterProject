@@ -136,5 +136,6 @@ f500.com$Names <- sapply(as.character(f500.com$Names), function(x) {
 # }
 
 right.join <- right_join(com_name, f500.com, by = c("Var1" = "Names"))
+right.join <- plyr::arrange(right.join, desc(right.join$Freq))
 
 

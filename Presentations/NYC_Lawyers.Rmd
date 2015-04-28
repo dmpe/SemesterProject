@@ -107,8 +107,7 @@ Sadly enought, I first need to get rid of "unique" [business entities](https://e
 ```{r}
 data.NYS$Comp.Name <- tolower(data.NYS$Comp.Name)
 
-stringsToCheck <- c("corporation.", "corporation", "corp", "corp.", "group", "gmbh", "company", "pllc", "llp", "llc", "l.l.c.", "l.l.p.",
-                    "ltd.","inc.", "inc", "plc", "p.c.", "pc", "p.a.", "l.p.", "lp", "co.", "l.p")
+stringsToCheck <- c("corporation.", "corporation", "incorporated", "corp", "corp.", "group", "gmbh", "company", "pllc", "llp", "llc", "l.l.c.", "l.l.p.", "ltd.","inc.", "inc", "plc", "p.c.", "pc", "p.a.", "l.p.", "lp", "co.", "l.p")
 patTTT <- paste(stringsToCheck, collapse = '|')
 
 
@@ -132,7 +131,8 @@ for(i in 1:2) {
       x <- NA
     } else {
       x <- stri_replace_first_fixed(x, "&", "and")
-      x <- stri_replace_last_regex(x, ",", "") # fixed ????
+      x <- stri_replace_last_fixed(x, "and", "")
+      x <- stri_replace_last_regex(x, ",", "") 
       if(stri_detect_regex(x, patTTT) == TRUE) {
         x <- str_replace(x, patTTT, "") 
       }
@@ -140,6 +140,7 @@ for(i in 1:2) {
     }
   })
 }
+
 
 ```
 
@@ -151,7 +152,9 @@ com_name <- plyr::arrange(com_name, desc(com_name$Freq))
 com_name$Var1 <- as.character(com_name$Var1)
 
 com_name.plot <- ggplot(data=com_name[1:20,], aes(x=reorder(Var1, Freq), y=Freq)) + coord_flip(ylim= c(400,900))
-com_name.plot <- com_name.plot + geom_bar(stat = "identity") + theme(axis.text.y = element_text(size = 14), axis.text.x = element_text(size = 14)) 
+com_name.plot <- com_name.plot + geom_bar(stat = "identity") + theme(
+  axis.text.y = element_text(size = 14), 
+  axis.text.x = element_text(size = 14)) 
 com_name.plot <- com_name.plot + ylab("How many registered lawyers do companies have in NYC ?") + xlab("Companies")
 com_name.plot <- com_name.plot + scale_y_continuous(breaks = seq(400, 900, 50))
 com_name.plot
@@ -159,7 +162,7 @@ com_name.plot
 
 ```{r}
 dvspw <- com_name[grep("citi", com_name$Var1, ignore.case=T),]
-dvspw
+head(dvspw, 10)
 ```
 
 Most of firms in the list are law offices. But what about [Fortune 500](https://fortune.com/global500/) companies ? How many lawyers do they have? Actually I will want to select only first 100, and plot them again.
@@ -193,12 +196,19 @@ f500.com$Names <- sapply(as.character(f500.com$Names), function(x) {
 })
 ```
 
+Now I will join both previous data sets - 'company names' from original data set with the list Fortune 500 companies (actually just 100).
 
 ```{r}
-
+right.join <- right_join(com_name, f500.com, by = c("Var1" = "Names"))
+right.join <- plyr::arrange(right.join, desc(right.join$Freq))
+head(right.join, 15)
 ```
 
 
+```{r}
+optesa <- right.join[grep("google|apple|microsoft|att|verizon|comcast|cbs|oracle|intel|chevron|nike|facebook|amazon|directv|dish|boeing", right.join$Var1, ignore.case=T),]
+optesa
+```
 
 
 
