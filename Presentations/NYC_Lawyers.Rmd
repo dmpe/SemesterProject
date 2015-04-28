@@ -102,7 +102,7 @@ dim(johns)
 
 ### Where do lawyers work ?
 
-Sadly enought, I first need to get rid of "unique" [business entities](https://en.wikipedia.org/wiki/Types_of_business_entity#United_States), abbreviations, symbols such as '&' - ',' - '()' and totaly wrong names. Data are as one could have seen very raw indeed. Then I create a bar plot with TOP 20 names of companies and their number of lawyers registered in New York City.
+Sadly enought, I first need to get rid of "unique" [business entities](https://en.wikipedia.org/wiki/Types_of_business_entity#United_States), abbreviations, symbols such as '&' - ',' - '()' or totaly wrong names. The reason is that data are - as one could have seen - very raw indeed.
 
 ```{r}
 data.NYS$Comp.Name <- tolower(data.NYS$Comp.Name)
@@ -140,7 +140,7 @@ data.NYS$Comp.Name <- sapply(as.character(data.NYS$Comp.Name), function(x) {
 #}
 ```
 
-Now plot the histogram of number of lawyers and companies they work in. Beware that not all cases are handled here as for example there is `davis polk and wardwell london` which however is NOT counted as (/assigned to) `davis polk and wardwell`!!! Thus the number are not exact. See below for a prime example.
+Then I create a bar plot with TOP 20 names of companies and their number of lawyers registered in New York City. Beware that not all cases are handled by the function above, e.g. there is `davis polk and wardwell london` which however is NOT counted as (/assigned to) `davis polk and wardwell`!!! Thus the number are not exact. See below for a prime example.
 
 ```{r}
 com_name <- data.frame(table(stri_trim_both(data.NYS$Comp.Name)))
@@ -158,17 +158,30 @@ dvspw <- com_name[grep("davis polk", com_name$Var1, ignore.case=T),]
 dvspw
 ```
 
+Most of firms in the list are law offices. But what about [Fortune 500](https://fortune.com/global500/) companies ? How many lawyers do they have? Actually I will want to select only first 100, and plot them again.
 
-Most of firms in the list are law offices. But what about [Fortune 500](https://fortune.com/global500/) companies ? How many lawyers do they have? 
-
-First, I will get current 2014 list of F500, for example [here](http://www.zyxware.com/articles/4344/list-of-fortune-500-companies-and-their-websites). 
+First, I will get the current 2014 list of F500, for example [here](http://www.zyxware.com/articles/4344/list-of-fortune-500-companies-and-their-websites).
 
 ```{r}
 f500 <- html("http://www.zyxware.com/articles/4344/list-of-fortune-500-companies-and-their-websites") %>%
   html_node(".data-table") %>%
   html_table(header = TRUE)
-f500 <- f500[1:100, ]
+f500 <- f500[1:100, ] 
 ```
+
+
+```{r}
+
+```
+
+
+```{r}
+
+```
+
+
+
+
 
 
 ## About the author 

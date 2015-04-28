@@ -34,16 +34,16 @@ datasetM <- read.xlsx("/srv/shiny-server/SemesterProject/Data/DataSet_01.xlsx", 
 
 Post.ID - ID of a Facebook post
 
-User Engagement - Number of ((Likes + Comments) diveded by Total Reach) multiplied by 100 000
+User Engagement - Number of ((Likes + Comments) diveded by Total Reach) multiplied by 100 000 -> "Besuchererfahrung" (e.g Website)
 
-Acquaintance - User NW *	%Match
+Acquaintance - User NW *	%Match  -> "Bekanntschaft" (Beziehung bestimmte Sender und Gemeinschaft)
  <https://www.academia.edu/2758533/Personal_acquaintance_measure_distinguishing_among_friends_and_good_and_bad_customers>
  
-Experience - 
+Experience - "Konsumenten-Erfahrung" (Neues Kunde vs. sehr lang) (1 sehr viel; 0 keine Erfah.)
 
-Likes -
+Likes - ... of Facebook post
 
-Comments -
+Comments - 
 
 Fanpage Reach -
 

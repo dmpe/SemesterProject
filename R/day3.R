@@ -34,6 +34,8 @@ scatterplot(datasetM.withoutFour$Total.Reach, datasetM.withoutFour$Fanpage.Reach
 scatterplot(datasetM.withoutFour$Earned.Reach, datasetM.withoutFour$Total.Reach)
 scatterplot(datasetM.withoutFour$Acquaintance, datasetM.withoutFour$User.NW)
 
+scatterplot(datasetM.withoutFour$Acquaintance, datasetM.withoutFour$User.Engage)
+scatterplot(datasetM$User.Engage, datasetM$Experience)
 
 plot(datasetM.withoutFour$Total.Reach, datasetM.withoutFour$Fanpage.Reach)
 abline(lm(Fanpage.Reach~Total.Reach, data = datasetM.withoutFour), col="red") # regression line (y~x) 

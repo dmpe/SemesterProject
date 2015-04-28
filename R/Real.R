@@ -88,9 +88,6 @@ saddawda <- data.frame(testingString)
 #   any(sapply(stringsToCheck, str_detect, string = x))
 # }) 
 
-
-
-
 # data.NYS$Comp.Name <- str_replace_all(data.NYS$Comp.Name, "[&,]", "")
 # 
 # com_name <- data.frame(table(str_trim(data.NYS$Comp.Name)))
@@ -104,19 +101,19 @@ saddawda <- data.frame(testingString)
 # 
 # 
 # 
-# f500 <- html("http://www.zyxware.com/articles/4344/list-of-fortune-500-companies-and-their-websites") %>%
-#   html_node(".data-table") %>%
-#   html_table(header = TRUE)
-# f500 <- f500[1:100, ]
-# 
-# f500.com <- data.frame(Names = tolower(f500$Company))
-# 
-# f500.com$Names <- str_replace_all(f500.com$Names, "inc", "")
-# f500.com$Names <- str_replace_all(f500.com$Names, "inc.", "")
-# f500.com$Names <- str_replace_all(f500.com$Names, "l.p.", "")
-# f500.com$Names <- str_replace_all(f500.com$Names, "[.,]", "")
-# 
-# 
+f500 <- html("http://www.zyxware.com/articles/4344/list-of-fortune-500-companies-and-their-websites") %>%
+  html_node(".data-table") %>%
+  html_table(header = TRUE)
+f500 <- f500[1:100, ]
+
+f500.com <- data.frame(Names = tolower(f500$Company))
+
+f500.com$Names <- str_replace_all(f500.com$Names, "inc", "")
+f500.com$Names <- str_replace_all(f500.com$Names, "inc.", "")
+f500.com$Names <- str_replace_all(f500.com$Names, "l.p.", "")
+f500.com$Names <- str_replace_all(f500.com$Names, "[.,]", "")
+
+
 # com_name$Var1 <- as.character(com_name$Var1)
 # rightj <- right_join(com_name, f500.com, by = c("Var1" = "Names"))
 # 
