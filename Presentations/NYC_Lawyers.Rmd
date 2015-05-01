@@ -42,7 +42,7 @@ summary(data.NYS)
 
 ## Data cleansing
 
-Because data contain blank cells, I need to replace "" (basically nothing - empty spaces) with NAs. Then I also rename columns.
+Because data contain blank cells, I need to replace "" (empty spaces) with NAs. Then I also rename some columns.
 
 ```{r}
 data.NYS[data.NYS == ""] <- NA
@@ -65,7 +65,7 @@ splitted.email <- plyr::arrange(splitted.email, desc(splitted.email$Freq))
 head(splitted.email, 15)
 ```
 
-Not so many law firm, right. Actually just two (not counting the government itself, of course): <http://www.legal-aid.org/en/home.aspx> and <http://www.skadden.com/>
+Not so many law firm, right. Actually just two (not counting the government itself, of course): <http://www.legal-aid.org/en/home.aspx> and <http://www.skadden.com/>. The [later one](https://en.wikipedia.org/wiki/List_of_100_largest_law_firms_by_revenue) is also the second largest law firm by revenue. The former one is not even a law office, merely a non-profit helping poor people! 
 
 ### What kind of law school did people attend ?
 
@@ -82,22 +82,21 @@ Four lawyers even wrote "harvard 1950". Furthermore, there are e.g. 551 unique o
 Source for code below: <http://www.r-bloggers.com/select-operations-on-r-data-frames/>
 ```{r}
 harvard <- law_school[grep("harvard", law_school$Var1, ignore.case=T),]
-dim(harvard) # first - observations; second - variables (columns)
+head(harvard)
 
 newyork <- law_school[grep("new york", law_school$Var1, ignore.case=T),]
 head(newyork)
-dim(newyork)
-
-law_school[grep("new york law shool", law_school$Var1, ignore.case=T),] # FAIL
 
 brooklyn <- law_school[grep("brooklyn", law_school$Var1, ignore.case=T),]
 head(brooklyn)
-dim(brooklyn)
 
 johns <- law_school[grep("johns|john's", law_school$Var1, ignore.case=T),]
 head(johns)
-dim(johns)
 
+# first - observations -> rows; second - variables -> columns
+rbind(johns = dim(johns),brooklyn = dim(brooklyn), ny = dim(newyork), harvard = dim(harvard))
+
+law_school[grep("new york law shool", law_school$Var1, ignore.case=T),] # FAIL
 ```
 
 ### Where do lawyers work ?
@@ -140,29 +139,27 @@ for(i in 1:2) {
     }
   })
 }
-
-
 ```
 
-Then I create a bar plot with TOP 20 names of companies and their number of lawyers registered in New York City. Beware that not all cases are handled by the function above, e.g. there is `davis polk and wardwell london` which however is NOT counted as (/assigned to) `davis polk and wardwell`!!! Thus the number are not exact. See below for a prime example.
+Then I create a bar plot with TOP 20 names of companies and their number of lawyers registered in New York City. Beware that not all cases are handled by the function above, e.g. there is `davis polk and wardwell london` which however is NOT counted as (/assigned to) `davis polk and wardwell`!!! Thus numbers are not exact. See below for a prime example.
 
 ```{r}
 com_name <- data.frame(table(stri_trim_both(data.NYS$Comp.Name)))
 com_name <- plyr::arrange(com_name, desc(com_name$Freq))
 com_name$Var1 <- as.character(com_name$Var1)
 
-com_name.plot <- ggplot(data=com_name[1:20,], aes(x=reorder(Var1, Freq), y=Freq)) + coord_flip(ylim= c(400,900))
-com_name.plot <- com_name.plot + geom_bar(stat = "identity") + theme(
-  axis.text.y = element_text(size = 14), 
-  axis.text.x = element_text(size = 14)) 
+com_name.plot <- ggplot(data=com_name[1:20,], aes(x=reorder(Var1, Freq), y=Freq)) 
+com_name.plot <- com_name.plot + geom_bar(stat = "identity") + coord_flip(ylim= c(400,900)) + theme(
+                      axis.text.y = element_text(size = 14), 
+                      axis.text.x = element_text(size = 14)) 
 com_name.plot <- com_name.plot + ylab("How many registered lawyers do companies have in NYC ?") + xlab("Companies")
 com_name.plot <- com_name.plot + scale_y_continuous(breaks = seq(400, 900, 50))
 com_name.plot
 ```
 
 ```{r}
-dvspw <- com_name[grep("citi", com_name$Var1, ignore.case=T),]
-head(dvspw, 10)
+companysNames <- com_name[grep("citi", com_name$Var1, ignore.case=T),]
+head(companysNames, 10)
 ```
 
 Most of firms in the list are law offices. But what about [Fortune 500](https://fortune.com/global500/) companies ? How many lawyers do they have? Actually I will want to select only first 100, and plot them again.
@@ -204,12 +201,24 @@ right.join <- plyr::arrange(right.join, desc(right.join$Freq))
 head(right.join, 15)
 ```
 
+Find me some widely known companies inside the F500 and show me their number of lawyers.  
 
 ```{r}
-optesa <- right.join[grep("google|apple|microsoft|att|verizon|comcast|cbs|oracle|intel|chevron|nike|facebook|amazon|directv|dish|boeing", right.join$Var1, ignore.case=T),]
+optesa <- right.join[grep("google|apple|microsoft|att|verizon|comcast|cbs|oracle|intel|chevron|nike|facebook|amazon|directv|dish|boeing",  right.join$Var1, ignore.case=T),]
 optesa
 ```
 
+No bad for Google and AT&T considering its merger with [DirectTV](http://www.forbes.com/sites/greatspeculations/2015/03/25/att-directv-deal-to-attract-less-scrutiny-than-the-comcast-twc-deal/). However, let's plot them all.
+
+```{r}
+com_name2.plot <- ggplot(data=right.join[1:30,], aes(x=reorder(Var1, Freq), y=Freq)) + coord_flip(ylim= c(10,400))
+com_name2.plot <- com_name2.plot + geom_bar(stat = "identity") + theme(
+  axis.text.y = element_text(size = 14), 
+  axis.text.x = element_text(size = 14)) 
+com_name2.plot <- com_name2.plot + ylab("How many registered lawyers do companies have in NYC ?") + xlab("Companies")
+com_name2.plot <- com_name2.plot + scale_y_continuous(breaks = seq(10, 400, 40))
+com_name2.plot
+```
 
 
 
