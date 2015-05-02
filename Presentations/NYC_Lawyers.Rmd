@@ -9,16 +9,17 @@ output:
     fig_width: 8
     highlight: tango
     theme: cerulean
+    toc: yes
 ---
 
 ## Goal
-Look at the US NYC Attorney Registrations for interesting informations. 
+Look at the US New York City Attorney Registrations for interesting informations. 
 
-Source of data : <https://data.ny.gov/Transparency/NYS-Attorney-Registrations/eqw2-r5nb>
+Source: <https://data.ny.gov/Transparency/NYS-Attorney-Registrations/eqw2-r5nb>
 
 ## Get the data
 
-First we load some libraries.
+First I need to load some libraries.
 
 ```{r}
 library(readr)
@@ -30,7 +31,9 @@ library(ggplot2)
 library(rvest)
 ```
 
-I used CSV file downloaded from their website. Using `readr` package I skip 2 columns which are low interest to me and finally present a summary statistics. Here I am going to deal with characters only.
+I used CSV file downloaded from their website, but I also assume one could use <https://github.com/Chicago/RSocrata> to fetch data too. 
+
+Nevertheless, by using `readr` package I skip 2 columns which are low interest to me and finally present a summary statistics. As, you can see, here I am going to deal with characters only.
 
 ```{r}
 data.NYS <- readr::read_csv("/srv/shiny-server/SemesterProject/Data/NYS_Attorney_Registrations.csv",
@@ -42,44 +45,45 @@ summary(data.NYS)
 
 ## Data cleansing
 
-Because data contain blank cells, I need to replace "" (empty spaces) with NAs. Then I also rename some columns.
+Because data contain blank cells, I need to replace "" (empty spaces) with NAs. Then I also rename some columns (to make them shorter).
 
 ```{r}
 data.NYS[data.NYS == ""] <- NA
 colnames(data.NYS) <- c("ID", "F.Name", "L.Name", "Comp.Name", "Street_1", "Street_2", "City", "State", "Zip", "Zip_2", "Country", "County",  "Phone", "Email", "Year_Adm", "JDoA", "Law_School", "Status", "Next_Reg")
 ```
 
-### What kind of email providers lawyers used to register ?
+### 1Q:  What kind of email providers lawyers used to register ?
 
-Using `stringi` package we split Email column into a matrix. Then we omit As (i.e. those cells that we replaced above) and "convert" the matrix to a data frame. Letters before @ get "NickName" column name and after @ "Organisation". Because people cannot fill in their email properly (or maybe because of <http://rickrobinson.files.wordpress.com/2012/10/it-systems.jpg>). As a result I need to use `tolower` function.
+Using `stringi` package I split Email column into a matrix. Then I omit NAs rows (i.e. those cells that I replaced above) and by applying `tolower` function (which changing names to lower case) "convert" the matrix to a data frame. Letters before @ get a "NickName" column name and after @ an "Organisation". 
+Beware people cannot fill in their email properly (maybe because of <http://rickrobinson.files.wordpress.com/2012/10/it-systems.jpg> or being to lazy)!
 
 Finally using `table` function I get frequencies of email providers. [#Google](https://www.google.de/search?q=gmail+is+unique) leads.
 
 ```{r}
 splitted.email <- stri_split_fixed(data.NYS$Email, "@", 2, omit_empty = NA, simplify = TRUE) 
-splitted.email <- data.frame(na.omit(splitted.email))
+splitted.email <- data.frame(na.omit(tolower(splitted.email)))
 colnames(splitted.email) <- c("NickName", "Organisation")
 
-splitted.email <- data.frame(table(tolower(splitted.email$Organisation)))
+splitted.email <- as.data.frame(table(splitted.email$Organisation))
 splitted.email <- plyr::arrange(splitted.email, desc(splitted.email$Freq))
 head(splitted.email, 15)
 ```
 
-Not so many law firm, right. Actually just two (not counting the government itself, of course): <http://www.legal-aid.org/en/home.aspx> and <http://www.skadden.com/>. The [later one](https://en.wikipedia.org/wiki/List_of_100_largest_law_firms_by_revenue) is also the second largest law firm by revenue. The former one is not even a law office, merely a non-profit helping poor people! 
+Not so many law firms, right. Actually just two (not counting the government itself, of course): <http://www.legal-aid.org/en/home.aspx> and <http://www.skadden.com/>. The [later one](https://en.wikipedia.org/wiki/List_of_100_largest_law_firms_by_revenue) is also the **second largest law firm by revenue**. The former one is not even a law office, **merely a non-profit helping poor people**! 
 
-### What kind of law school did people attend ?
+### 2Q: What kind of law school did people attend ?
 
 Here I can use same code, but what is far more interesting is that people fill in their law school totally differently. Well, I get that from the foreigners but what about "Harvard", "Harvard Law School" and "Harvard University"" (very US-centric) ...... Just look at that. I mean common... 
 
 ```{r}
-law_school <- data.frame(table(tolower(data.NYS$Law_School)))
+law_school <- as.data.frame(table(tolower(data.NYS$Law_School)))
 law_school <- plyr::arrange(law_school, desc(law_school$Freq))
 head(law_school, 15)
 ```
 
-Four lawyers even wrote "harvard 1950". Furthermore, there are e.g. 551 unique occurences of `harvard` in the `Law_School` column. The most interessting fact to me was that some people cannot even spell properly their law school name (or company they work in). I wouldn't want to go to such lawyers :(  [OMG](http://www.freemake.com/blog/wp-content/uploads/2012/08/SpellRite-1.gif)
+4 lawyers even wrote "harvard 1950". Furthermore, there are e.g. 551 unique occurences of `harvard` in the `Law_School` column. The most interessting fact to me was that some people cannot even spell their law school name (or company they work in) properly. I wouldn't want to go to such lawyers :(  [OMG](http://www.freemake.com/blog/wp-content/uploads/2012/08/SpellRite-1.gif)
 
-Source for code below: <http://www.r-bloggers.com/select-operations-on-r-data-frames/>
+Source: <http://www.r-bloggers.com/select-operations-on-r-data-frames/>
 ```{r}
 harvard <- law_school[grep("harvard", law_school$Var1, ignore.case=T),]
 head(harvard)
@@ -99,9 +103,11 @@ rbind(johns = dim(johns),brooklyn = dim(brooklyn), ny = dim(newyork), harvard = 
 law_school[grep("new york law shool", law_school$Var1, ignore.case=T),] # FAIL
 ```
 
-### Where do lawyers work ?
+### 3Q: Where do lawyers work ?
 
 Sadly enought, I first need to get rid of "unique" [business entities](https://en.wikipedia.org/wiki/Types_of_business_entity#United_States), abbreviations, symbols such as '&' - ',' - '()' or totaly wrong names. The reason is that data are - as one could have seen - very raw indeed.
+
+All of that is done by running a function using other functions of `stringi` (and `stringr` too) library. Even though it uses C behind it, it is still very slow (with some optimalisations too - e.g. sapply) and even requires to be run twice because of the pattern which is complicated and not bullet-proof.
 
 ```{r}
 data.NYS$Comp.Name <- tolower(data.NYS$Comp.Name)
@@ -126,14 +132,14 @@ patTTT <- paste(stringsToCheck, collapse = '|')
 # Run the function twice for better handling of all (edge) cases
 for(i in 1:2) {
   data.NYS$Comp.Name <- sapply(as.character(data.NYS$Comp.Name), function(x) {
-    if ( is.na(x) == T) {
-      x <- NA
+    if (is.na(x) == TRUE) {
+      x <- NA # if NA then put there 'NA' string
     } else {
       x <- stri_replace_first_fixed(x, "&", "and")
       x <- stri_replace_last_fixed(x, "and", "")
       x <- stri_replace_last_regex(x, ",", "") 
       if(stri_detect_regex(x, patTTT) == TRUE) {
-        x <- str_replace(x, patTTT, "") 
+        x <- str_replace(x, patTTT, "") # not from stringi because of weird behaviour
       }
       x <- stri_trim_both(x)
     }
@@ -141,10 +147,10 @@ for(i in 1:2) {
 }
 ```
 
-Then I create a bar plot with TOP 20 names of companies and their number of lawyers registered in New York City. Beware that not all cases are handled by the function above, e.g. there is `davis polk and wardwell london` which however is NOT counted as (/assigned to) `davis polk and wardwell`!!! Thus numbers are not exact. See below for a prime example.
+Once, companies names are cleaned, I create a bar plot with TOP 20 names of companies and their number of lawyers registered in the New York City. Beware that not all cases are handled by the function above, e.g. there is `davis polk and wardwell london` which however is NOT counted as (/assigned to) `davis polk and wardwell`!!! Thus numbers are not exact. See below for a prime example.
 
 ```{r}
-com_name <- data.frame(table(stri_trim_both(data.NYS$Comp.Name)))
+com_name <- as.data.frame(table(stri_trim_both(data.NYS$Comp.Name)))
 com_name <- plyr::arrange(com_name, desc(com_name$Freq))
 com_name$Var1 <- as.character(com_name$Var1)
 
@@ -157,9 +163,15 @@ com_name.plot <- com_name.plot + scale_y_continuous(breaks = seq(400, 900, 50))
 com_name.plot
 ```
 
+Yeeh, citi captures just about everything.
+
 ```{r}
 companysNames <- com_name[grep("citi", com_name$Var1, ignore.case=T),]
 head(companysNames, 10)
+```
+
+```{r, echo=FALSE}
+
 ```
 
 Most of firms in the list are law offices. But what about [Fortune 500](https://fortune.com/global500/) companies ? How many lawyers do they have? Actually I will want to select only first 100, and plot them again.
