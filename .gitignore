@@ -6,5 +6,6 @@
 *.html
 *.css
 *.js
+/rsconnect/
 Presentations/WorkInProg_SemesterPr_files/
 NYS_Attorney_Registrations.csv

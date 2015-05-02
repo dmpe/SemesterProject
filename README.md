@@ -1,7 +1,6 @@
 'Data Analysis' Project during the Spring Semester '15
 ===============
 
-
 ### Content:
 
 - Exercises with R
@@ -24,6 +23,8 @@
 4.  Linear Model
 5.  Cluster Ana.
 
+### RPubs
 
+As a small exercise I have created <http://rpubs.com/F789GH/NYCAttorneyRegistrations>. 
 
 
