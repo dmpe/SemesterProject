@@ -1,4 +1,4 @@
-'Data Analysis' Project during the Spring Semester '15
+Statistical 'Data Analysis' Project during the Spring Semester '15
 ===============
 
 ### Content:
@@ -25,6 +25,13 @@
 
 ### RPubs
 
-As a small exercise I have created <http://rpubs.com/F789GH/NYCAttorneyRegistrations>. 
+As a small exercise I have created <http://rpubs.com/F789GH/NYCAttorneyRegistrations> (unnecessary for the project). 
+
+### Two data sets, called as :
+Service Community - Fokus auf Kundenleistungen 
+Produkt Community - Fokus auf Produkte - Meinung uber Produkten abgeben
 
 
+
+
+Durantion - kurz und lang

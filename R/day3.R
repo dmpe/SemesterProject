@@ -1,5 +1,5 @@
 library(xlsx)
-library(mi)
+library(plyr)
 library(Hmisc)
 library(ggplot2)
 library(clustrd)
@@ -12,14 +12,16 @@ library(car)
 # http://stackoverflow.com/questions/15409820/indexing-a-correlation-matrix
 
 datasetM <- read.xlsx("Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
-datasetM.withoutFour <- datasetM[, !names(datasetM) %in% c("Experience", "Gender", "Duration", "Post.ID")]
+datasetM <- plyr::rename(datasetM, c("Total.Reach" = "TotalReach"))
+datasetM$ServiceDataSet <- 0
+datasetM.withoutFour <- datasetM[, !names(datasetM) %in% c("Experience", "Gender", "Duration", "Post.ID", "ServiceDataSet", "Earned.Reach", "Fanpage.Reach")]
 
 
 corrrePart <- cor(datasetM.withoutFour)
 corrplot(corrrePart, order = "hclust", type = "lower",  method = "number")
 
 corrrePart[lower.tri(corrrePart)] <- NA
-corrrePart <- data.frame(corrrePart)
+# corrrePart <- data.frame(corrrePart)
 which(corrrePart > 0.7, arr.ind=TRUE)
 
 rowMeans(corrrePart, na.rm = T) 
@@ -35,6 +37,12 @@ scatterplot(datasetM.withoutFour$Acquaintance, datasetM.withoutFour$User.NW)
 
 scatterplot(datasetM.withoutFour$Acquaintance, datasetM.withoutFour$User.Engage)
 scatterplot(datasetM$User.Engage, datasetM$Experience)
+
+scatterplot(datasetM$Experience, datasetM$User.Engage)
+
+cor(datasetM$User.Engage, datasetM$Experience)
+
+
 
 plot(datasetM.withoutFour$Total.Reach, datasetM.withoutFour$Fanpage.Reach)
 abline(lm(Fanpage.Reach~Total.Reach, data = datasetM.withoutFour), col="red") # regression line (y~x) 
