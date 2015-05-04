@@ -3,6 +3,7 @@ library(mi)
 library(Hmisc)
 library(ggplot2)
 library(clustrd)
+library("ggthemes")
 library(reshape2)
 library(corrplot)
 library(car)
@@ -41,19 +42,4 @@ abline(lm(Fanpage.Reach~Total.Reach, data = datasetM.withoutFour), col="red") # 
 
 plot(datasetM.withoutFour$Earned.Reach, datasetM.withoutFour$Likes)
 plot(datasetM.withoutFour$Acquaintance, datasetM.withoutFour$User.NW)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
