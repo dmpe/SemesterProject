@@ -2,7 +2,7 @@ library(shiny)
 # https://github.com/rstudio/shiny-examples/blob/master/063-superzip-example/ui.R
 # http://shiny.rstudio.com/articles/layout-guide.html
 
-shinyUI(navbarPage("Un-explained Data", id="nav",
+shinyUI(navbarPage("Semester Project Data", id="nav",
                    tabPanel("DT + Histograms",
                             
                             #titlePanel("Un-explained Data -> Interactively"),
@@ -16,8 +16,8 @@ shinyUI(navbarPage("Un-explained Data", id="nav",
                                 p("Click to choose the column and then display histogram and density."), 
                                 p("With love from D.P. :"), 
                                 a("http://shiny.rstudio.com"), 
-                                a("https://github.com/dmpe/SemesterProject")
-                                
+                                a("https://github.com/dmpe/SemesterProject"),
+                                width = 3
                               ),
                               mainPanel(
                                 plotOutput("distPlot"),       
@@ -27,20 +27,53 @@ shinyUI(navbarPage("Un-explained Data", id="nav",
                             )
                             
                    ), 
-                   tabPanel("DT + Histograms",
+                   tabPanel("Correlation and Scatterplot - Service",
                             sidebarLayout(
                               sidebarPanel(
                                 selectInput("selection1", "Choose a column 1:", choices = colnames(datasetM.withoutFour)),
-                                selectInput("selection2", "Choose a column 2:", choices = colnames(datasetM)),
+                                selectInput("selection2", "Choose a column 2:", choices = colnames(datasetM.withoutFour)),
                                 
-                                p("Click to choose the column and then display histogram and density."), 
+                                p("Click to choose the columns and then display correlations (with regression)."), 
                                 p("With love from D.P. :"), 
                                 a("http://shiny.rstudio.com"), 
-                                a("https://github.com/dmpe/SemesterProject")
+                                a("https://github.com/dmpe/SemesterProject"),
+                                width = 3
+                                
                               ),
                               mainPanel(
-                                plotOutput("scat"),
-                                plotOutput("correlation")
+                                fluidRow(
+                                  column(8,
+                                         plotOutput("scat") #, width = "600px"
+                                  ),
+                                  column(4, 
+                                         plotOutput("correlation", width = "450px") #, width = "80%"
+                                  )
+                                )
+                              )
+                            )
+                   ),
+                   tabPanel("Correlation and Scatterplot - Product",
+                            sidebarLayout(
+                              sidebarPanel(
+                                selectInput("selection3", "Choose a column 3:", choices = colnames(dataset.product.withoutFour)),
+                                selectInput("selection4", "Choose a column 4:", choices = colnames(dataset.product.withoutFour)),
+                                
+                                p("Click to choose the columns and then display correlations (with regression)."), 
+                                p("With love from D.P. :"), 
+                                a("http://shiny.rstudio.com"), 
+                                a("https://github.com/dmpe/SemesterProject"),
+                                width = 3
+                                
+                              ),
+                              mainPanel(
+                                fluidRow(
+                                  column(8,
+                                         plotOutput("scatProduct") #, width = "600px"
+                                  ),
+                                  column(4, 
+                                         plotOutput("correlationProduct", width = "450px") #, width = "80%"
+                                  )
+                                )
                               )
                             )
                    )

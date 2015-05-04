@@ -26,16 +26,20 @@ shinyServer(function(input, output) {
   
   output$scat <- renderPlot({
     scatterplot(datasetM.withoutFour[, input$selection1], datasetM.withoutFour[, input$selection2], xlab = "x - 1", ylab = "y - 2")
-    # scatterplot(datasetM$User.Engage, datasetM$Experience)
   })
   
   output$correlation <- renderPlot({
     corrrePart <- cor(datasetM.withoutFour)
     corrplot(corrrePart, order = "hclust", type = "lower",  method = "number")
-    
-    corrrePart[lower.tri(corrrePart)] <- NA
-    corrrePart <- data.frame(corrrePart)
-    corrrePart
+  })
+  
+  output$scatProduct <- renderPlot({
+    scatterplot(dataset.product.withoutFour[, input$selection3], dataset.product.withoutFour[, input$selection4], xlab = "x - 3", ylab = "y - 4")
+  })
+  
+  output$correlationProduct <- renderPlot({
+    corrrePart <- cor(dataset.product.withoutFour)
+    corrplot(corrrePart, order = "hclust", type = "lower",  method = "number")
   })
   
 })
