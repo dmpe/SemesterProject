@@ -22,33 +22,33 @@ corrplot(corrrePart, order = "hclust", type = "lower",  method = "number")
 
 corrrePart[lower.tri(corrrePart)] <- NA
 # corrrePart <- data.frame(corrrePart)
-which(corrrePart > 0.7, arr.ind=TRUE)
+# which(corrrePart > 0.7, arr.ind=TRUE)
 
-rowMeans(corrrePart, na.rm = T) 
+# rowMeans(corrrePart, na.rm = T) 
 # I took over 0.7 !!!
-scatterplot(datasetM.withoutFour$Likes, datasetM.withoutFour$User.Engage)
-scatterplot(datasetM.withoutFour$Comments, datasetM.withoutFour$User.Engage)
-scatterplot(datasetM.withoutFour$Likes, datasetM.withoutFour$Earned.Reach)
-scatterplot(datasetM.withoutFour$Likes, datasetM.withoutFour$Total.Reach)
-scatterplot(datasetM.withoutFour$Comments, datasetM.withoutFour$Total.Reach)
-scatterplot(datasetM.withoutFour$Total.Reach, datasetM.withoutFour$Fanpage.Reach)
-scatterplot(datasetM.withoutFour$Earned.Reach, datasetM.withoutFour$Total.Reach)
-scatterplot(datasetM.withoutFour$Acquaintance, datasetM.withoutFour$User.NW)
+# scatterplot(datasetM.withoutFour$Likes, datasetM.withoutFour$User.Engage)
+# scatterplot(datasetM.withoutFour$Comments, datasetM.withoutFour$User.Engage)
+# scatterplot(datasetM.withoutFour$Likes, datasetM.withoutFour$Earned.Reach)
+# scatterplot(datasetM.withoutFour$Likes, datasetM.withoutFour$Total.Reach)
+# scatterplot(datasetM.withoutFour$Comments, datasetM.withoutFour$Total.Reach)
+# scatterplot(datasetM.withoutFour$Total.Reach, datasetM.withoutFour$Fanpage.Reach)
+# scatterplot(datasetM.withoutFour$Earned.Reach, datasetM.withoutFour$Total.Reach)
+# scatterplot(datasetM.withoutFour$Acquaintance, datasetM.withoutFour$User.NW)
+# 
+# scatterplot(datasetM.withoutFour$Acquaintance, datasetM.withoutFour$User.Engage)
+# scatterplot(datasetM$User.Engage, datasetM$Experience)
+# 
+# scatterplot(datasetM$Experience, datasetM$User.Engage)
+# 
+# cor(datasetM$User.Engage, datasetM$Experience)
 
-scatterplot(datasetM.withoutFour$Acquaintance, datasetM.withoutFour$User.Engage)
-scatterplot(datasetM$User.Engage, datasetM$Experience)
 
-scatterplot(datasetM$Experience, datasetM$User.Engage)
-
-cor(datasetM$User.Engage, datasetM$Experience)
-
-
-
-plot(datasetM.withoutFour$Total.Reach, datasetM.withoutFour$Fanpage.Reach)
-abline(lm(Fanpage.Reach~Total.Reach, data = datasetM.withoutFour), col="red") # regression line (y~x) 
-
-plot(datasetM.withoutFour$Earned.Reach, datasetM.withoutFour$Likes)
-plot(datasetM.withoutFour$Acquaintance, datasetM.withoutFour$User.NW)
+# 
+# plot(datasetM.withoutFour$Total.Reach, datasetM.withoutFour$Fanpage.Reach)
+# abline(lm(Fanpage.Reach~Total.Reach, data = datasetM.withoutFour), col="red") # regression line (y~x) 
+# 
+# plot(datasetM.withoutFour$Earned.Reach, datasetM.withoutFour$Likes)
+# plot(datasetM.withoutFour$Acquaintance, datasetM.withoutFour$User.NW)
 
 
 
