@@ -1,7 +1,7 @@
 ---
 title: 'R: Presenting unlimited power for statistics'
-author: "Dmitrij Petrov, R.G., S.M., J.F.M.S."
-date: "1.6.2015"
+author: "Dmitrij Petrov, Jeanne Falonne Magne Signe, Mesut Sahin, Rahman Gökbulut"
+date: "25.6.2015"
 output:
   ioslides_presentation:
     fig_height: 6
@@ -14,37 +14,36 @@ output:
     highlight: zenburn
 ---
 
-## Agenda | 24 Slides | 12 Minutes | 4 Code snippets | 4 People
+## Agenda | 24 Folien | 15 Minuten | 4 Menschen | 1 Resultat
 
-1. Introduc. to the Project
-2. Introduc. to R
-3. Dataset/Topic
-4. Explanatory Data Analysis
-5. Outcomes
+1. Einführung in das Projekt
+2. Einführung ins R
+3. Unseren Datensatze
+4. Explorative Datenanalyse (EDA)
+5. Resultate
 
-## Introduction to R
+## Einführung in das Projekt
 
 ```{r}
 
 ```
 
 
-## Slide with R Code and Output
+## Einführung ins R
 
-```{r, echo=TRUE, eval=TRUE}
-library(xlsx)
-```
 
 ## Read, Load and Parse Excel dataset
 
 ```{r}
-
-datasetM <- read.xlsx("/srv/shiny-server/SemesterProject/Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
+library(xlsx)
+dataset.S <- read.xlsx("/srv/shiny-server/SemesterProject/Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
+dataset.P <- read.xlsx("/srv/shiny-server/SemesterProject/Data/DataSet_Product.xlsx", sheetIndex = 1, endRow=302)
 
 ```
 
-## Thank you for your attention
 
-Created with [R Markdown](http://rmarkdown.rstudio.com/) & [ioslides](http://rmarkdown.rstudio.com/ioslides_presentation_format.html) by RStudio
+## Danke
+
+PS: Presentation wurde mit [R Markdown](http://rmarkdown.rstudio.com/) erstellt.
 
 
