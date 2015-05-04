@@ -25,7 +25,7 @@ shinyServer(function(input, output) {
   })
   
   output$scat <- renderPlot({
-    scatterplot(datasetM.withoutFour[, input$selection1], datasetM.withoutFour[, input$selection2])
+    scatterplot(datasetM.withoutFour[, input$selection1], datasetM.withoutFour[, input$selection2], xlab = "x - 1", ylab = "y - 2")
     # scatterplot(datasetM$User.Engage, datasetM$Experience)
   })
   

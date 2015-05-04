@@ -30,8 +30,8 @@ shinyUI(navbarPage("Un-explained Data", id="nav",
                    tabPanel("DT + Histograms",
                             sidebarLayout(
                               sidebarPanel(
-                                selectInput("selection1", "Choose a column:", choices = colnames(datasetM.withoutFour)),
-                                selectInput("selection2", "Choose a column:", choices = colnames(datasetM)),
+                                selectInput("selection1", "Choose a column 1:", choices = colnames(datasetM.withoutFour)),
+                                selectInput("selection2", "Choose a column 2:", choices = colnames(datasetM)),
                                 
                                 p("Click to choose the column and then display histogram and density."), 
                                 p("With love from D.P. :"), 
