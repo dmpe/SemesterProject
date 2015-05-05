@@ -29,8 +29,13 @@ As a small exercise I have created <http://rpubs.com/F789GH/NYCAttorneyRegistrat
 
 ### Two data sets, called as :
 
-- Service Community - Fokus auf Kundenleistungen 
-- Produkt Community - Fokus auf Produkte - Meinung uber Produkten abgeben
+- Service Community - Fokus auf Kundenleistungen (DataSet_01.xlsx)
+- Produkt Community - Fokus auf Produkte - Meinung uber Produkten abgeben (DataSet_Product.xlsx)
 
+#### Notes zum Diesntag, 12.5
 
-Durantion - kurz und lang
+- Presentation mit Rmarkdown (gestalltung, gleich online, alles Deutsch. ) -> (Person)
+- [Shiny](http://shiny.b40.cz/SemesterProject/shiny/SSS/) nutzen ? ggf. wie mit PP verbinden
+- Grafiken - welche(Haufigkeiten....auf dem papier malen, womit, ...)
+- Zusammenhange suchen -> Clustern nach Gender, Datensatz, experience, 
+
