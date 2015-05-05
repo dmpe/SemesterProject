@@ -4,7 +4,6 @@ library(shiny)
 
 shinyUI(navbarPage("Semester Project Data", id="nav",
                    tabPanel("DT + Histograms",
-                            
                             #titlePanel("Un-explained Data -> Interactively"),
                             helpText("Mistakes can occur !"),
                             sidebarLayout(
@@ -76,5 +75,20 @@ shinyUI(navbarPage("Semester Project Data", id="nav",
                                 )
                               )
                             )
+                   ),
+                   tabPanel("Only Correlations", 
+                            sidebarLayout(
+                              sidebarPanel(
+                                p("Click to choose the columns and then display correlations (with regression)."), 
+                                p("With love from D.P. :"), 
+                                a("http://shiny.rstudio.com"), 
+                                a("https://github.com/dmpe/SemesterProject"),
+                                width = 3
+                              ),
+                              mainPanel(
+                                plotOutput("onlyCorrelation")
+                              )
+                            )
                    )
 ))
+

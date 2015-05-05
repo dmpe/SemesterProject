@@ -14,13 +14,13 @@ library(car)
 datasetM <- read.xlsx("Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
 datasetM <- plyr::rename(datasetM, c("Total.Reach" = "TotalReach"))
 datasetM$ServiceDataSet <- 0
-datasetM.withoutFour <- datasetM[, !names(datasetM) %in% c("Experience", "Gender", "Duration", "Post.ID", "ServiceDataSet", "Earned.Reach", "Fanpage.Reach")]
+datasetM.correlation <- datasetM[, !names(datasetM) %in% c("Duration", "X.Match","Post.ID", "ServiceDataSet", "Earned.Reach", "Fanpage.Reach", "TotalReach", "User.NW")]
 
 
-corrrePart <- cor(datasetM.withoutFour)
+corrrePart <- cor(datasetM.correlation)
 corrplot(corrrePart, order = "hclust", type = "lower",  method = "number")
 
-corrrePart[lower.tri(corrrePart)] <- NA
+# corrrePart[lower.tri(corrrePart)] <- NA
 # corrrePart <- data.frame(corrrePart)
 # which(corrrePart > 0.7, arr.ind=TRUE)
 
@@ -49,19 +49,3 @@ corrrePart[lower.tri(corrrePart)] <- NA
 # 
 # plot(datasetM.withoutFour$Earned.Reach, datasetM.withoutFour$Likes)
 # plot(datasetM.withoutFour$Acquaintance, datasetM.withoutFour$User.NW)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

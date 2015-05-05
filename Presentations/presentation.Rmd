@@ -24,9 +24,6 @@ output:
 
 ## Einführung in das Projekt
 
-```{r}
-
-```
 
 
 ## Einführung ins R
