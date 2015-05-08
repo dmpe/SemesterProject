@@ -55,30 +55,13 @@ sp
 
 
 
-product[corrrePart %in% product] - corrrePart[corrrePart %in% product]
 
 corrrePart[lower.tri(corrrePart)] <- NA
 product[lower.tri(product)] <- NA
-
-outer(corrrePart, product, "-")
-
-dasdsdawr <- t(apply(corrrePart, 1, function(x) corrrePart-product))
-
-sweep(corrrePart,2,c(0,0,product))
-
 as.data.frame(corrrePart) - as.data.frame(product)
 
-as.data.frame(product)
-x <- 1:9; names(x) <- x
-# Multiplication & Power Tables
-x %o% x
-y <- 2:8; names(y) <- paste(y,":", sep = "")
-outer(y, x, "^")
-
-
-
-
-
-
+# outer(corrrePart, product, "-")
+# dasdsdawr <- t(apply(corrrePart, 1, function(x) corrrePart-product))
+# sweep(corrrePart,2,c(0,0,product))
 
 
