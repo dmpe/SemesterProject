@@ -38,4 +38,4 @@ As a small exercise I have created <http://rpubs.com/F789GH/NYCAttorneyRegistrat
 - [Shiny](http://shiny.b40.cz/SemesterProject/shiny/SSS/) nutzen ? ggf. wie mit PP verbinden
 - Grafiken - welche(Haufigkeiten....auf dem papier malen, womit, ...)
 - Zusammenhange suchen -> Clustern nach Gender, Datensatz, experience, 
-
+- <https://rpubs.com/czarrar/facemem_connectivity_r>
