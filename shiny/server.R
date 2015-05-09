@@ -62,8 +62,9 @@ shinyServer(function(input, output) {
     # https://gist.github.com/jcheng5/3239667
     sp <- ggplot(joinedDataSets.without, aes_string(x=input$selection5, y=input$selection6)) + geom_point(shape=1) + stat_smooth(method = "lm")
     facets <- paste(input$selection7, '~', input$selection8)
-    sp <- sp + facet_grid(facets)
-    sp
+    if (facets != '. ~ .')
+      sp <- sp + facet_grid(facets)
+    print(sp)
   })
   
 })
