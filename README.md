@@ -46,6 +46,7 @@ As a small exercise I have created <http://rpubs.com/F789GH/NYCAttorneyRegistrat
 - R.G.
 - M.S.
 - J.F.M.S.
+
 ---
 
 WAS  | WER
