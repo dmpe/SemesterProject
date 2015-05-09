@@ -50,7 +50,7 @@ As a small exercise I have created <http://rpubs.com/F789GH/NYCAttorneyRegistrat
 
 WAS  | WER
 ------------- | -------------
-PP  | D.P. + alle
+PP  | alle (Haupt Verant.: )
 Zusammenhange suchen  |  + 
 Shiny + more  | D.P. + 
 
