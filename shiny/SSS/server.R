@@ -30,8 +30,7 @@ shinyServer(function(input, output) {
   })
   
   output$correlation <- renderPlot({
-    corrrePart <- cor(datasetM.withoutFour)
-    corrplot(corrrePart, order = "hclust", type = "lower",  method = "number")
+    corrplot(dataset.product.correlation.cor, order = "hclust", type = "lower",  method = "number")
   })
   
   output$scatProduct <- renderPlot({
@@ -39,8 +38,7 @@ shinyServer(function(input, output) {
   })
   
   output$correlationProduct <- renderPlot({
-    corrrePart <- cor(dataset.product.withoutFour)
-    corrplot(corrrePart, order = "hclust", type = "lower",  method = "number")
+    corrplot(dataset.product.correlation.cor, order = "hclust", type = "lower",  method = "number")
   })
   
   output$onlyCorrelation <- renderPlot({
