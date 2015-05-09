@@ -22,9 +22,10 @@ joinedDataSets <- full_join(dataset.product, datasetM)
 joinedDataSets.without <- joinedDataSets[, !names(joinedDataSets) %in% c("Duration", "Post.ID", "Earned.Reach", "Fanpage.Reach", "User.NW", "X.Match")]
 
 joinedDataSets.without$TypeDataSet <- ifelse(is.na(joinedDataSets.without$ProductDataSet), joinedDataSets.without$ServiceDataSet, joinedDataSets.without$ProductDataSet)
-# sapply(joinedDataSets.without, class)
 
+# sapply(joinedDataSets.without, class)
 # TypeDataSet vertical, horizontal Gender
+
 joinedDataSets.without$Gender[joinedDataSets.without$Gender==0] <- "Woman"
 joinedDataSets.without$Gender[joinedDataSets.without$Gender==1] <- "Man"
 
