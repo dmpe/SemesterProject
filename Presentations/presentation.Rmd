@@ -1,6 +1,6 @@
 ---
-title: 'R: Presenting unlimited power for statistics'
-author: "Dmitrij Petrov, Jeanne Falonne Magne Signe, Mesut Sahin, Rahman Gökbulut"
+title: 'Statistisches Marketing mit R'
+author: "Dmitrij Petrov, Rahman Gökbulut, Mesut Sahin, Jeanne Falonne Magne Signe"
 date: "25.6.2015"
 output:
   ioslides_presentation:
@@ -20,13 +20,19 @@ output:
 2. Einführung ins R
 3. Unseren Datensatze
 4. Explorative Datenanalyse (EDA)
+    + Interaktive Applikation mit `Shiny Framework`
+    + test
 5. Resultate
 
 ## Einführung in das Projekt
 
 
 
+
+
 ## Einführung ins R
+
+
 
 
 ## Read, Load and Parse Excel dataset
@@ -39,8 +45,8 @@ dataset.P <- read.xlsx("/srv/shiny-server/SemesterProject/Data/DataSet_Product.x
 ```
 
 
-## Danke
+## Wir danke Ihnen
 
-PS: Presentation wurde mit [R Markdown](http://rmarkdown.rstudio.com/) erstellt.
+Diese Presentation wurde mit [R Markdown](http://rmarkdown.rstudio.com/) erstellt.
 
 

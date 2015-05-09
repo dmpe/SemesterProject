@@ -16,11 +16,11 @@ Statistical 'Data Analysis' Project during the Spring Semester '15
 
 ### Ideas ?
 
-1.	Merkmale (Feature ?, i.e. types of variable, e.g. discrete, continues etc.)
-2.  Haufigkeiten (Frequencies, e.g. histograms)
-3.  Correlation
-4.  Linear Model
-5.  Cluster Ana.
+- Merkmale (Feature ?, i.e. types of variable, e.g. discrete, continues etc.)
+- Haufigkeiten (Frequencies, e.g. histograms)
+- Correlation
+- Linear Model
+- Cluster Ana.
 
 ### RPubs
 
@@ -33,13 +33,30 @@ As a small exercise I have created <http://rpubs.com/F789GH/NYCAttorneyRegistrat
 
 #### Notes zum Diesntag, 12.5
 
-- Presentation mit Rmarkdown (gestalltung, gleich online, alles Deutsch. ) -> (Person)
-- [Shiny](http://shiny.b40.cz/SemesterProject/shiny/SSS/) nutzen ? ggf. wie mit PP verbinden
-- Grafiken - welche(Haufigkeiten....auf dem papier malen, womit, ...)
-- Zusammenhange suchen -> Clustern nach Gender, Datensatz, experience, 
-- Vyresit problem s Prezentaci od JFMS -> bude mit zacatek tu nejmensi praci
-- Linear Model -> nekdo
-- (Cluster Ana.) -> nekdo
+* Presentation mit Rmarkdown (gestalltung, gleich online, alles Deutsch. )
+    + Vyresit problem s Prezentaci od JFMS -> bude mit zacatek tu nejmensi praci
+* [Shiny](http://shiny.b40.cz/SemesterProject/shiny/) nutzen ? ggf. wie mit PP verbinden
+* Grafiken - welche(Haufigkeiten....auf dem papier malen, womit, ...)
+* Zusammenhange suchen -> Clustern nach Gender, Datensatz, experience etc.
+    + Linear Model
+    + Cluster Ana.
+
+---
+- Me
+- R.G.
+- M.S.
+- J.F.M.S.
+---
+
+WAS  | WER
+------------- | -------------
+PP  | D.P. + alle
+Zusammenhange suchen  |  + 
+Shiny + more  | D.P. + 
+
+
+
+
 
 #### Links
 
