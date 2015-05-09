@@ -14,8 +14,8 @@ shinyUI(navbarPage("Semester Project Data", id="nav",
                                 
                                 p("Click to choose the column and then display histogram and density."), 
                                 p("With love from D.P. :"), 
-                                a("http://shiny.rstudio.com"), 
-                                a("https://github.com/dmpe/SemesterProject"),
+                                a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
+                                a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
                                 width = 3
                               ),
                               mainPanel(
@@ -26,7 +26,7 @@ shinyUI(navbarPage("Semester Project Data", id="nav",
                             )
                             
                    ), 
-                   tabPanel("Correlation and Scatterplot - Service",
+                   tabPanel("Cor./Scat. - Service",
                             sidebarLayout(
                               sidebarPanel(
                                 selectInput("selection1", "Choose a column 1:", choices = colnames(datasetM.withoutFour)),
@@ -34,9 +34,9 @@ shinyUI(navbarPage("Semester Project Data", id="nav",
                                 
                                 p("Click to choose the columns and then display correlations (with regression)."), 
                                 p("With love from D.P. :"), 
-                                a("http://shiny.rstudio.com"), 
-                                a("https://github.com/dmpe/SemesterProject"),
-                                width = 3
+                                a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
+                                a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
+                                width = 2
                                 
                               ),
                               mainPanel(
@@ -51,7 +51,7 @@ shinyUI(navbarPage("Semester Project Data", id="nav",
                               )
                             )
                    ),
-                   tabPanel("Correlation and Scatterplot - Product",
+                   tabPanel("Cor./Scat. - Product",
                             sidebarLayout(
                               sidebarPanel(
                                 selectInput("selection3", "Choose a column 3:", choices = colnames(dataset.product.withoutFour)),
@@ -59,8 +59,8 @@ shinyUI(navbarPage("Semester Project Data", id="nav",
                                 
                                 p("Click to choose the columns and then display correlations (with regression)."), 
                                 p("With love from D.P. :"), 
-                                a("http://shiny.rstudio.com"), 
-                                a("https://github.com/dmpe/SemesterProject"),
+                                a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
+                                a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
                                 width = 3
                                 
                               ),
@@ -76,17 +76,33 @@ shinyUI(navbarPage("Semester Project Data", id="nav",
                               )
                             )
                    ),
-                   tabPanel("Only Correlations", 
+                   tabPanel("Diff. in Cor.", 
                             sidebarLayout(
                               sidebarPanel(
                                 p("Click to choose the columns and then display correlations (with regression)."), 
                                 p("With love from D.P. :"), 
-                                a("http://shiny.rstudio.com"), 
-                                a("https://github.com/dmpe/SemesterProject"),
-                                width = 3
+                                a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
+                                a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
+                                width = 2
                               ),
                               mainPanel(
-                                plotOutput("onlyCorrelation")
+                                plotOutput("onlyCorrelation", width = "1300px"),
+                                plotOutput("onlyCorrelation2")
+                                
+                              )
+                            )
+                   ), 
+                   tabPanel("Faceting, e.g. Gender etc.", 
+                            sidebarLayout(
+                              sidebarPanel(
+                                p("Click to choose the columns and then display correlations (with regression)."), 
+                                p("With love from D.P. :"), 
+                                a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
+                                a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
+                                width = 2
+                              ),
+                              mainPanel(
+                                plotOutput("Facet")
                               )
                             )
                    )

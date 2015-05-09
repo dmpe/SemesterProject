@@ -3,6 +3,7 @@ library(ggplot2)
 library(DT)
 library(car)
 library(corrplot)
+library(RColorBrewer)
 
 shinyServer(function(input, output) {
   
@@ -44,10 +45,29 @@ shinyServer(function(input, output) {
   
   output$onlyCorrelation <- renderPlot({
     # corrrePart2 <- cor(datasetM.correlation)
-#     product2 <- cor(dataset.product.correlation)
+    #     product2 <- cor(dataset.product.correlation)
     par(mfrow = c(1,2))
     corrplot(cor(dataset.product.correlation), order = "hclust", type="lower", method="number")
     corrplot(cor(datasetM.correlation), order = "hclust", type = "lower",  method = "number")
+  })
+  
+  output$onlyCorrelation2 <- renderPlot({
+    #     datasetM.correlation.cor[lower.tri(datasetM.correlation.cor)] <- NA
+    #     dataset.product.correlation.cor[lower.tri(dataset.product.correlation.cor)] <- NA
+    cols <- rev(colorRampPalette(brewer.pal(10, "RdBu"))(20))
+    rozdil <- datasetM.correlation.cor - dataset.product.correlation.cor
+    corrplot.mixed(rozdil, lower = "number",  upper = "circle",  diag='n', outline=T, col=cols, tl.pos="lt", addgrid.col="grey", cl.lim=c(-0.5,0.5), cl.length=length(cols)/2+1)
+  })
+  
+  output$Facet <- renderPlot({
+    sp <- ggplot(joinedDataSets.without, aes(x=Likes, y=User.Engage)) + geom_point(shape=1) + stat_smooth(method = "lm")
+    sp <- sp + facet_grid(TypeDataSet ~ Gender)
+    sp
+    
+    
+    sp <- ggplot(joinedDataSets.without, aes(x=Likes, y=User.Engage)) + geom_point(shape=1) + stat_smooth(method = "lm")
+    sp <- sp + facet_grid(Experience ~ Gender)
+    sp
   })
   
 })

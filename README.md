@@ -7,7 +7,6 @@ Statistical 'Data Analysis' Project during the Spring Semester '15
 - Code scripts for our project
 - Final `R Markdown` ioslide presentation (sadly, in German)
 
-
 ### Authors:
 
 - Me
@@ -38,4 +37,5 @@ As a small exercise I have created <http://rpubs.com/F789GH/NYCAttorneyRegistrat
 - [Shiny](http://shiny.b40.cz/SemesterProject/shiny/SSS/) nutzen ? ggf. wie mit PP verbinden
 - Grafiken - welche(Haufigkeiten....auf dem papier malen, womit, ...)
 - Zusammenhange suchen -> Clustern nach Gender, Datensatz, experience, 
+- Vyresit problem s Prezentaci od JFMS -> bude mit zacatek tu nejmensi praci
 - <https://rpubs.com/czarrar/facemem_connectivity_r>

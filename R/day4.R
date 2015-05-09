@@ -58,7 +58,8 @@ sp
 
 corrrePart[lower.tri(corrrePart)] <- NA
 product[lower.tri(product)] <- NA
-as.data.frame(corrrePart) - as.data.frame(product)
+
+rozdil <- as.data.frame(corrrePart) - as.data.frame(product)
 
 # outer(corrrePart, product, "-")
 # dasdsdawr <- t(apply(corrrePart, 1, function(x) corrrePart-product))
