@@ -45,8 +45,8 @@ shinyServer(function(input, output) {
     # corrrePart2 <- cor(datasetM.correlation)
     #     product2 <- cor(dataset.product.correlation)
     par(mfrow = c(1,2))
-    corrplot(cor(dataset.product.correlation), order = "hclust", type="lower", method="number")
-    corrplot(cor(datasetM.correlation), order = "hclust", type = "lower",  method = "number")
+    corrplot(dataset.product.correlation.cor, order = "hclust", type="lower", method="number")
+    corrplot(datasetM.correlation.cor, order = "hclust", type = "lower",  method = "number")
   })
   
   output$onlyCorrelation2 <- renderPlot({
