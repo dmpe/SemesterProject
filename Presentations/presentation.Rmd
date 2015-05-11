@@ -6,7 +6,7 @@ output:
   ioslides_presentation:
     fig_height: 6
     fig_width: 8
-    logo: /srv/shiny-server/SemesterProject/Presentations/pictures/hs_logo_besser.png
+    logo: pictures/hs_logo_besser.png
     smaller: yes
     transition: faster
     widescreen: yes
@@ -20,8 +20,10 @@ output:
 2. Einführung ins R
 3. Unseren Datensatze
 4. Explorative Datenanalyse (EDA)
+    + Was, Warum, Wieso
+    + Historgramme/Bar Plots
+    + Scatter plots
     + Interaktive Applikation mit `Shiny Framework`
-    + test
 5. Resultate
 
 ## Einführung in das Projekt
@@ -32,17 +34,22 @@ output:
 
 ## Einführung ins R
 
+- http://en.wikipedia.org/wiki/Pareto_chart
 
 
+## Unseren Datensatze
 
-## Read, Load and Parse Excel dataset
-
-```{r}
+```{r, eval=FALSE}
 library(xlsx)
 dataset.S <- read.xlsx("/srv/shiny-server/SemesterProject/Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
 dataset.P <- read.xlsx("/srv/shiny-server/SemesterProject/Data/DataSet_Product.xlsx", sheetIndex = 1, endRow=302)
 
 ```
+
+
+## Explorative Datenanalyse (EDA)
+
+![pics](http://upload.wikimedia.org/wikipedia/en/b/ba/Data_visualization_process_v1.png)
 
 
 ## Wir danke Ihnen
