@@ -14,42 +14,104 @@ output:
     highlight: zenburn
 ---
 
-## Agenda | 24 Folien | 15 Minuten | 4 Menschen | 1 Resultat
+## Agenda | 24 Folien | 20 Minuten | 4 Teilnehmer | 3 Resultate
 
 1. Einführung in das Projekt
-2. Einführung ins R
-3. Unseren Datensatze
+2. Unseren Datensatze
+3. Einführung ins R
 4. Explorative Datenanalyse (EDA)
-    + Was, Warum, Wieso
-    + Historgramme/Bar Plots
-    + Scatter plots
+    + "Explo" was ?
+    + Correlation & 1 Historgramm (reine R) & 1 Streudiagramm (R + `ggplot2`)
     + Interaktive Applikation mit `Shiny Framework`
-5. Resultate
+5. Ergebnisse
 
 ## Einführung in das Projekt
 
+- Was, Ziele
+- gleich auf DS
 
 
 
-
-## Einführung ins R
-
-- http://en.wikipedia.org/wiki/Pareto_chart
+## Unseren Datensätze
 
 
-## Unseren Datensatze
 
-```{r, eval=FALSE}
-library(xlsx)
-dataset.S <- read.xlsx("/srv/shiny-server/SemesterProject/Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
-dataset.P <- read.xlsx("/srv/shiny-server/SemesterProject/Data/DataSet_Product.xlsx", sheetIndex = 1, endRow=302)
+## R's Geschichte
 
-```
+>- 1976 in Bell Labs entwickelt *John Chambers et al.* eine program. Sprache namens *S*
+
+>- Bell Labs ->  Insightful Corp. ('93) -> Lucent Technologies ('04) -> Alcatel-Lucent ('06) 
+
+>- Insightful Corp. (**S-PLUS**) -> TIBCO ('08)
+
+>- R entsteht von *Ross Ihaka* and *Robert Gentleman* in 1991, erst aber 2000 **stabil**
+
+>- Seit 1995 unter GNU General Public License und aktiv von **R Core Group** weiter entwickelt
+
+>- Heute 2 Implementierungen: **S-PLUS** (commerziell) und **R** (GNU project)
+
+## R's Heute
+
+>- Geschrieben in **C** & Fortan & R
+
+>- Syntax ist sehr **ähnlich** zu S(-PLUS)
+
+>- Sehr **schlank**; Funktionalität in modularen Pakete aufgeteilt
+
+>- Excelente Grafik Fähigkeiten, jedoch schwache Unterstutzung von 3D (besonders GPU)
+
+>- Objekte, Variablen, Daten etc. sind explizit in **RAM** gespeichert
+
+>- Funktionalität basiert auf Basis der **Nachfrage** und der **Nutzerbeiträge**.
 
 
 ## Explorative Datenanalyse (EDA)
+- http://en.wikipedia.org/wiki/Pareto_chart
 
 ![pics](http://upload.wikimedia.org/wikipedia/en/b/ba/Data_visualization_process_v1.png)
+
+
+## Datensatze laden
+
+```{r, message=FALSE, cache=TRUE}
+library(xlsx)
+library(ggplot2)
+library(reshape2)
+library(plyr)
+library(dplyr)
+
+dataset.S <- read.xlsx("../Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
+dataset.P <- read.xlsx("../Data/DataSet_Product.xlsx", sheetIndex = 1, endRow=302)
+
+```
+
+## Summary Statistics
+
+```{r, cache=TRUE}
+summary(dataset.S)
+```
+
+
+## Korrelation
+
+```{r, message=FALSE, out.width="550px", cache=TRUE}
+library(corrplot)
+
+datasetS.kleiner <- dataset.S[, !names(dataset.S) %in% c("Gender", "Duration", "Experience", "Post.ID")]
+datasetS.kleiner.cor <- cor(datasetS.kleiner)
+corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
+```
+
+
+
+## Resultate
+
+
+## Quellen
+- https://github.com/rdpeng/courses/blob/master/02_RProgramming/OverviewHistoryR/index.md
+- http://en.wikipedia.org/wiki/R_%28programming_language%29
+- http://rmarkdown.rstudio.com/
+- http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf
 
 
 ## Wir danke Ihnen
