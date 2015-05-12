@@ -2,17 +2,15 @@ library(shiny)
 # https://github.com/rstudio/shiny-examples/blob/master/063-superzip-example/ui.R
 # http://shiny.rstudio.com/articles/layout-guide.html
 
-shinyUI(navbarPage("Semester Project Data", id="nav",
+shinyUI(navbarPage("Semester Project Interactivelly", id="nav",
                    tabPanel("DT + Histograms",
-                            #titlePanel("Un-explained Data -> Interactively"),
                             sidebarLayout(
                               sidebarPanel(
-                                sliderInput("bins", "Number of bins:", min = 1, max = 50, value = 10), 
+                                p("Click to choose the column and then display histogram and density."), 
                                 
+                                sliderInput("bins", "Number of bins:", min = 1, max = 50, value = 10), 
                                 selectInput("selection", "Choose a column:", choices = colnames(datasetM.withoutFour)),
                                 
-                                p("Click to choose the column and then display histogram and density."), 
-                                p("With love from D.P. :"), 
                                 a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
                                 a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
                                 width = 3
@@ -56,8 +54,7 @@ shinyUI(navbarPage("Semester Project Data", id="nav",
                    tabPanel("Diff. in Cor.", 
                             sidebarLayout(
                               sidebarPanel(
-                                p("Click to choose the columns and then display correlations (with regression)."), 
-                                p("With love from D.P. :"), 
+                                p("Click to choose the columns and then display correlations."), 
                                 a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
                                 a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
                                 width = 2
@@ -65,7 +62,6 @@ shinyUI(navbarPage("Semester Project Data", id="nav",
                               mainPanel(
                                 plotOutput("onlyCorrelation", width = "1300px"),
                                 plotOutput("onlyCorrelation2")
-                                
                               )
                             )
                    ), 
@@ -75,11 +71,10 @@ shinyUI(navbarPage("Semester Project Data", id="nav",
                                 selectInput("selection5", "Choose first dataset to consider - 5:", choices = colnames(joinedDataSets.without)),
                                 selectInput("selection6", "Choose second dataset to consider - 6:", choices = colnames(joinedDataSets.without)),
                                 
-#                                 selectInput("selection7", "Facet Grid - Var 7:", choices = colnames(joinedDataSets.without)),
-#                                 selectInput("selection8", "Facet Grid - Var 8:", choices = colnames(joinedDataSets.without)),
-#                                 
+                                #                                 selectInput("selection7", "Facet Grid - Var 7:", choices = colnames(joinedDataSets.without)),
+                                #                                 selectInput("selection8", "Facet Grid - Var 8:", choices = colnames(joinedDataSets.without)),
+                                #                                 
                                 p("Click to choose the columns and then display correlations (with regression)."), 
-                                p("With love from D.P. :"), 
                                 a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
                                 a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
                                 width = 3

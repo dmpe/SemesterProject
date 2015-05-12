@@ -5,7 +5,7 @@ Statistical 'Data Analysis' Project during the Spring Semester '15
 
 - Exercises with R
 - Code scripts & Data for our project
-- Final `R Markdown` ioslide presentation (sadly, in German)
+- Final `R Markdown` ioslide presentation (in German, though)
 
 ### Authors:
 
@@ -13,14 +13,6 @@ Statistical 'Data Analysis' Project during the Spring Semester '15
 - R.G.
 - M.S.
 - J.F.M.S.
-
-### Ideas ?
-
-- Merkmale (Feature ?, i.e. types of variable, e.g. discrete, continues etc.)
-- Haufigkeiten (Frequencies, e.g. histograms)
-- Correlation
-- Linear Model
-- Cluster Ana.
 
 ### RPubs
 
@@ -41,27 +33,16 @@ As a small exercise I have created <http://rpubs.com/F789GH/NYCAttorneyRegistrat
         + Linear Model
         + (Cluster Ana.)
         + Grafiken - welche(Haufigkeiten... womit, ...)
-* [Shiny](http://shiny.b40.cz/SemesterProject/shiny/) nutzen ? ggf. wie mit PP verbinden
-
-
----
-- Me
-- R.G.
-- M.S.
-- J.F.M.S.
-
----
-
-WAS  | WER
-------------- | -------------
-PP  | alle (Haupt Verant.: )
-Zusammenhange suchen (EDA)  |  + 
-Shiny + more  | Haupt Verant.: D.P. + 
-
-
-
-
+        + [Shiny](http://shiny.b40.cz/SemesterProject/shiny/) nutzen ? ggf. wie mit PP verbinden
 
 #### Links
 
 - <https://rpubs.com/czarrar/facemem_connectivity_r>
+
+### Ideas ?
+
+- Merkmale (Feature ?, i.e. types of variable, e.g. discrete, continues etc.)
+- Haufigkeiten (Frequencies, e.g. histograms)
+- Correlation
+- Linear Model
+- Cluster Ana.

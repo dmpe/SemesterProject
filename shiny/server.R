@@ -39,7 +39,7 @@ shinyServer(function(input, output) {
   })
   
   output$correlationProduct <- renderPlot({
-    corrplot(dataset.product.correlation.cor, order = "hclust", type = "lower",  method = "number")
+    corrplot(dataset.product.correlation.cor, order = "hclust", hclust.method = "ward", type = "lower",  method = "number")
   })
   
   output$onlyCorrelation <- renderPlot({

@@ -6,25 +6,24 @@ output:
   ioslides_presentation:
     fig_height: 6
     fig_width: 8
+    highlight: null
     logo: pictures/hs_logo_besser.png
     smaller: yes
     transition: faster
     widescreen: yes
-  slidy_presentation:
-    highlight: zenburn
 ---
 
 ## Agenda | 24 Folien | 20 Minuten | 4 Teilnehmer | 3 Resultate
 
-1. Einführung in das Projekt (JFMS)
-2. Unseren Datensatze (RG)
-3. Einführung ins R (DP)
-4. Explorative Datenanalyse (EDA) (MS)
-    + "Explo" was ? (MS)
-    + Korrelation (JFMS)
-    + 1 Historgramm (reine R) & 1 Streudiagramm (R + `ggplot2`) (RG+MS)
-    + Interaktive Applikation mit `Shiny Framework` (DP)
-5. Ergebnisse/Zusammenfassung (jemand)
+1. Einführung in das Projekt
+2. Unseren Datensatze
+3. Einführung ins R
+4. Explorative Datenanalyse (EDA)
+    + "Explo" was ?
+    + Korrelation
+    + Historgramm (in reine R) vs Streudiagramm (R + `ggplot2`)
+    + Interaktive Applikation mit `Shiny Framework`
+5. Ergebnisse/Zusammenfassung
 
 ## Einführung in das Projekt
 
@@ -37,21 +36,21 @@ output:
 
 
 
-## R's Geschichte
+## Bischen Geschichte
 
->- 1976 in Bell Labs entwickelt *John Chambers et al.* eine program. Sprache namens *S*
+>- 1976 in Bell Labs entwickelt *John Chambers et al.* eine program. Sprache namens **S**
 
 >- Bell Labs ->  Insightful Corp. ('93) -> Lucent Technologies ('04) -> Alcatel-Lucent ('06) 
 
 >- Insightful Corp. (**S-PLUS**) -> TIBCO ('08)
 
->- R entsteht von *Ross Ihaka* and *Robert Gentleman* in 1991, erst aber 2000 **stabil**
+>- R entsteht von *Ross Ihaka* and *Robert Gentleman* in 1991, seit 1995 unter GNU General Public License
 
->- Seit 1995 unter GNU General Public License und aktiv von **R Core Group** weiter entwickelt
+>- Erst aber 2000 **stabil** und aktiv von **R Core Group** weiter entwickelt geworden ist 
 
->- Heute 2 Implementierungen: **S-PLUS** (commerziell) und **R** (GNU project)
+>- Heute 2 Implementierungen: **S-PLUS** (commerziel) und **R** (GNU project)
 
-## R's Heute
+## R
 
 >- Geschrieben in **C** & Fortan & R
 
@@ -65,7 +64,7 @@ output:
 
 >- Funktionalität basiert auf Basis der **Nachfrage** und der **Nutzerbeiträge**
 
->- Zusammen mit Python sehr popular bei den *Data Scientist fur Data Mining*
+>- Heute sehr popular bei **Data Scientists fur Data Mining** Zwecke, statt *Excel* etc. 
 
 
 ## Explorative Datenanalyse (EDA)
@@ -106,8 +105,16 @@ corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
 ```
 
 
+## Interaktive Applikation mit `Shiny Framework`
 
-## Resultate
+>- Ziel: Ausprobieren wie/ob man mit Shiny Framework fur R arbeiten kann
+
+>- Shiny App. besteht aus 2 Dateien: **UI.R** und **SERVER.R**
+
+>- Live Demo: <http://shiny.b40.cz/SemesterProject/shiny>
+
+
+## Resultate / Fazit
 
 
 ## Quellen
@@ -117,12 +124,12 @@ corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
 - http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf
 
 
-## Wir danke Ihnen
+## Wir danke fur die Aufmerksamkeit !
 
-### Unsere Werkzeuge
-- In dem Projekt haben wir die:
-  + [RStudio ist die beste IDE fur R](https://www.rstudio.com)
-  + Diese Presentation wurde mit [R Markdown](http://rmarkdown.rstudio.com/) erstellt.)
-  + Web Applikations Framework for R -> [Shiny]()
+### Folgenden Werkzeuge wurden benutzt:
+   + Die Beste IDE fur R - [RStudio](http://www.rstudio.com)
+   + Diese Presentation wurde mit [R Markdown](http://rmarkdown.rstudio.com/) erstellt.
+   + Web Applikations Framework fur R - [Shiny](http://shiny.rstudio.com/)
+   + <https://github.com/dmpe/SemesterProject>
 
 
