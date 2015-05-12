@@ -5,7 +5,6 @@ library(shiny)
 shinyUI(navbarPage("Semester Project Data", id="nav",
                    tabPanel("DT + Histograms",
                             #titlePanel("Un-explained Data -> Interactively"),
-                            helpText("Mistakes can occur !"),
                             sidebarLayout(
                               sidebarPanel(
                                 sliderInput("bins", "Number of bins:", min = 1, max = 50, value = 10), 
@@ -31,9 +30,10 @@ shinyUI(navbarPage("Semester Project Data", id="nav",
                               sidebarPanel(
                                 selectInput("selection1", "Choose a column 1:", choices = colnames(datasetM.withoutFour)),
                                 selectInput("selection2", "Choose a column 2:", choices = colnames(datasetM.withoutFour)),
+                                selectInput("selection3", "Choose a column 3:", choices = colnames(dataset.product.withoutFour)),
+                                selectInput("selection4", "Choose a column 4:", choices = colnames(dataset.product.withoutFour)),
                                 
                                 p("Click to choose the columns and then display correlations (with regression)."), 
-                                p("With love from D.P. :"), 
                                 a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
                                 a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
                                 width = 2
@@ -42,34 +42,12 @@ shinyUI(navbarPage("Semester Project Data", id="nav",
                               mainPanel(
                                 fluidRow(
                                   column(8,
-                                         plotOutput("scat") #, width = "600px"
-                                  ),
-                                  column(4, 
-                                         plotOutput("correlation", width = "450px") #, width = "80%"
-                                  )
-                                )
-                              )
-                            )
-                   ),
-                   tabPanel("Cor./Scat. - Product",
-                            sidebarLayout(
-                              sidebarPanel(
-                                selectInput("selection3", "Choose a column 3:", choices = colnames(dataset.product.withoutFour)),
-                                selectInput("selection4", "Choose a column 4:", choices = colnames(dataset.product.withoutFour)),
-                                
-                                p("Click to choose the columns and then display correlations (with regression)."), 
-                                p("With love from D.P. :"), 
-                                a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
-                                a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
-                                width = 3
-                                
-                              ),
-                              mainPanel(
-                                fluidRow(
-                                  column(8,
+                                         plotOutput("scat"), # width = "600px"
                                          plotOutput("scatProduct") #, width = "600px"
+                                         
                                   ),
                                   column(4, 
+                                         plotOutput("correlation", width = "450px"), # width = "80%"
                                          plotOutput("correlationProduct", width = "450px") #, width = "80%"
                                   )
                                 )
