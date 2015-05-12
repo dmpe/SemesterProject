@@ -25,7 +25,7 @@ shinyUI(navbarPage("Semester Project Data", id="nav",
                             )
                             
                    ), 
-                   tabPanel("Cor./Scat. - Service",
+                   tabPanel("Cor./Scat. - Service/Produkt",
                             sidebarLayout(
                               sidebarPanel(
                                 selectInput("selection1", "Choose a column 1:", choices = colnames(datasetM.withoutFour)),

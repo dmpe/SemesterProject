@@ -16,14 +16,15 @@ output:
 
 ## Agenda | 24 Folien | 20 Minuten | 4 Teilnehmer | 3 Resultate
 
-1. Einführung in das Projekt
-2. Unseren Datensatze
-3. Einführung ins R
-4. Explorative Datenanalyse (EDA)
-    + "Explo" was ?
-    + Correlation & 1 Historgramm (reine R) & 1 Streudiagramm (R + `ggplot2`)
-    + Interaktive Applikation mit `Shiny Framework`
-5. Ergebnisse
+1. Einführung in das Projekt (JFMS)
+2. Unseren Datensatze (RG)
+3. Einführung ins R (DP)
+4. Explorative Datenanalyse (EDA) (MS)
+    + "Explo" was ? (MS)
+    + Korrelation (JFMS)
+    + 1 Historgramm (reine R) & 1 Streudiagramm (R + `ggplot2`) (RG+MS)
+    + Interaktive Applikation mit `Shiny Framework` (DP)
+5. Ergebnisse/Zusammenfassung (jemand)
 
 ## Einführung in das Projekt
 
@@ -62,7 +63,9 @@ output:
 
 >- Objekte, Variablen, Daten etc. sind explizit in **RAM** gespeichert
 
->- Funktionalität basiert auf Basis der **Nachfrage** und der **Nutzerbeiträge**.
+>- Funktionalität basiert auf Basis der **Nachfrage** und der **Nutzerbeiträge**
+
+>- Zusammen mit Python sehr popular bei den *Data Scientist fur Data Mining*
 
 
 ## Explorative Datenanalyse (EDA)
@@ -116,6 +119,8 @@ corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
 
 ## Wir danke Ihnen
 
-Diese Presentation wurde mit [R Markdown](http://rmarkdown.rstudio.com/) erstellt.
+- Diese Presentation wurde mit [R Markdown](http://rmarkdown.rstudio.com/) erstellt.
+- In dem Projekt haben wir die:
++
 
 
