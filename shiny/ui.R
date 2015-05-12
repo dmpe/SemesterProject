@@ -76,9 +76,9 @@ shinyUI(navbarPage("Semester Project Data", id="nav",
                                 selectInput("selection5", "Choose first dataset to consider - 5:", choices = colnames(joinedDataSets.without)),
                                 selectInput("selection6", "Choose second dataset to consider - 6:", choices = colnames(joinedDataSets.without)),
                                 
-                                selectInput("selection7", "Facet Grid - Var 7:", choices = colnames(joinedDataSets.without)),
-                                selectInput("selection8", "Facet Grid - Var 8:", choices = colnames(joinedDataSets.without)),
-                                
+#                                 selectInput("selection7", "Facet Grid - Var 7:", choices = colnames(joinedDataSets.without)),
+#                                 selectInput("selection8", "Facet Grid - Var 8:", choices = colnames(joinedDataSets.without)),
+#                                 
                                 p("Click to choose the columns and then display correlations (with regression)."), 
                                 p("With love from D.P. :"), 
                                 a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
