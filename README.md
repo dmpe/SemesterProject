@@ -34,12 +34,15 @@ As a small exercise I have created <http://rpubs.com/F789GH/NYCAttorneyRegistrat
 #### Notes zum Diesntag, 12.5
 
 * Presentation mit Rmarkdown (gestalltung, gleich online, alles Deutsch. )
-    + Vyresit problem s Prezentaci od JFMS -> bude mit zacatek tu nejmensi praci
+    + Aufteilen
+        + Intro allg (JFMS ?) (Vyresit JFMS -> bude mit zacatek tu nejmensi praci -> jinak velky nejistota)
+        + Intro to R (D.P.)
+    + Zusammenhange (EDA) suchen -> Clustern nach Gender, Datensatz, experience etc. ()
+        + Linear Model
+        + Cluster Ana.
+        + Grafiken - welche(Haufigkeiten....auf dem papier malen, womit, ...)
 * [Shiny](http://shiny.b40.cz/SemesterProject/shiny/) nutzen ? ggf. wie mit PP verbinden
-* Grafiken - welche(Haufigkeiten....auf dem papier malen, womit, ...)
-* Zusammenhange suchen -> Clustern nach Gender, Datensatz, experience etc.
-    + Linear Model
-    + Cluster Ana.
+
 
 ---
 - Me
@@ -52,8 +55,8 @@ As a small exercise I have created <http://rpubs.com/F789GH/NYCAttorneyRegistrat
 WAS  | WER
 ------------- | -------------
 PP  | alle (Haupt Verant.: )
-Zusammenhange suchen  |  + 
-Shiny + more  | D.P. + 
+Zusammenhange suchen (EDA)  | Haupt Verant.: + 
+Shiny + more  | Haupt Verant.: D.P. + 
 
 
 
