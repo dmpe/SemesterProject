@@ -119,8 +119,10 @@ corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
 
 ## Wir danke Ihnen
 
-- Diese Presentation wurde mit [R Markdown](http://rmarkdown.rstudio.com/) erstellt.
+### Unsere Werkzeuge
 - In dem Projekt haben wir die:
-+
+  + [RStudio ist die beste IDE fur R](https://www.rstudio.com)
+  + Diese Presentation wurde mit [R Markdown](http://rmarkdown.rstudio.com/) erstellt.)
+  + Web Applikations Framework for R -> [Shiny]()
 
 

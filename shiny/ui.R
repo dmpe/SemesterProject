@@ -23,7 +23,6 @@ shinyUI(navbarPage("Semester Project Data", id="nav",
                                 DT::dataTableOutput('x1')
                               )
                             )
-                            
                    ), 
                    tabPanel("Cor./Scat. - Service/Produkt",
                             sidebarLayout(
