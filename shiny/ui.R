@@ -25,10 +25,10 @@ shinyUI(navbarPage("Semester Project Interactivelly", id="nav",
                    tabPanel("Cor./Scat. - Service/Produkt",
                             sidebarLayout(
                               sidebarPanel(
-                                selectInput("selection1", "Choose a column 1:", choices = colnames(datasetM.withoutFour)),
-                                selectInput("selection2", "Choose a column 2:", choices = colnames(datasetM.withoutFour)),
-                                selectInput("selection3", "Choose a column 3:", choices = colnames(dataset.product.withoutFour)),
-                                selectInput("selection4", "Choose a column 4:", choices = colnames(dataset.product.withoutFour)),
+                                selectInput("selection1", "Choose a column x-1:", choices = colnames(datasetM.withoutFour)),
+                                selectInput("selection2", "Choose a column y-2:", choices = colnames(datasetM.withoutFour)),
+                                selectInput("selection3", "Choose a column x-3:", choices = colnames(dataset.product.withoutFour)),
+                                selectInput("selection4", "Choose a column y-4:", choices = colnames(dataset.product.withoutFour)),
                                 
                                 p("Click to choose the columns and then display correlations (with regression)."), 
                                 a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
@@ -61,8 +61,8 @@ shinyUI(navbarPage("Semester Project Interactivelly", id="nav",
                               ),
                               mainPanel(
                                 plotOutput("onlyCorrelation", width = "1300px"),
-                                # plotOutput("onlyCorrelation2"),
-                                verbatimTextOutput("vsechno")
+                                verbatimTextOutput("vsechno"),
+                                plotOutput("onlyCorrelation2")
                               )
                             )
                    ), 
