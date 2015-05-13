@@ -64,7 +64,7 @@ output:
 
 >- Funktionalität basiert auf Basis der **Nachfrage** und der **Nutzerbeiträge**
 
->- Heute sehr popular bei **Data Scientists fur Data Mining** Zwecke, statt *Excel* etc. 
+>- Heute sehr popular bei **Data Scientists fur Data Mining** Zwecke, statt *SAS, SPSS* etc. (siehe TIOBE Index). 
 
 
 ## Explorative Datenanalyse (EDA)

@@ -61,7 +61,8 @@ shinyUI(navbarPage("Semester Project Interactivelly", id="nav",
                               ),
                               mainPanel(
                                 plotOutput("onlyCorrelation", width = "1300px"),
-                                plotOutput("onlyCorrelation2")
+                                # plotOutput("onlyCorrelation2"),
+                                verbatimTextOutput("vsechno")
                               )
                             )
                    ), 
