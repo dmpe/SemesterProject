@@ -17,8 +17,7 @@ shinyUI(navbarPage("Semester Project Interactivelly", id="nav",
                               ),
                               mainPanel(
                                 plotOutput("distPlot"),       
-                                plotOutput("distPlot2"), 
-                                DT::dataTableOutput('x1')
+                                plotOutput("distPlot2")
                               )
                             )
                    ), 
@@ -82,6 +81,19 @@ shinyUI(navbarPage("Semester Project Interactivelly", id="nav",
                               ),
                               mainPanel(
                                 plotOutput("Facet")
+                              )
+                            )
+                   ), 
+                   tabPanel("Dataset Table",
+                            sidebarLayout(
+                              sidebarPanel(
+                                p("Click to choose the columns and then display correlations (with regression)."), 
+                                a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
+                                a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
+                                width = 3
+                              ), 
+                              mainPanel(
+                                DT::dataTableOutput('x1')
                               )
                             )
                    )
