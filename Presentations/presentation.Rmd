@@ -115,8 +115,8 @@ corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
 >- **Ziel**: Ausprobieren, wie/ob man mit `Shiny` & `R` arbeiten kann
 
 >- Jede Shiny App. besteht aus min. 2 Dateien: 
-    + **UI.R** -> User-Interface `R` Skript steuert das Layout und Aussehen der App ("Wie sieht meine App im Browser").
-    + **SERVER.R** -> Die server `R` Skript enthält Befehle z.B. zur Berechnungen, Histogramm
+    + **UI.R**: User-Interface `R` Skript steuert das Layout und Aussehen der App ("Wie sieht meine App im Browser").
+    + **SERVER.R**: Server `R` Skript enthält Befehle z.B. zur Berechnungen, Grafiken usw ("Was macht die ?").
 
 >- <span style="color: red">Live DEMO</span>: <http://shiny.b40.cz/SemesterProject/shiny>
 
