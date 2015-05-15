@@ -65,7 +65,7 @@ shinyUI(navbarPage("Semester Project Interactivelly", id="nav",
                               )
                             )
                    ), 
-                   tabPanel("Faceting, e.g. Gender etc.", 
+                   tabPanel("Faceting, e.g. Gender", 
                             sidebarLayout(
                               sidebarPanel(
                                 selectInput("selection5", "Choose first dataset to consider - 5:", choices = colnames(joinedDataSets.without)),
@@ -84,10 +84,9 @@ shinyUI(navbarPage("Semester Project Interactivelly", id="nav",
                               )
                             )
                    ), 
-                   tabPanel("Dataset Table",
+                   tabPanel("Dataset - Table",
                             sidebarLayout(
                               sidebarPanel(
-                                p("Click to choose the columns and then display correlations (with regression)."), 
                                 a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
                                 a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
                                 width = 2

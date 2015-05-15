@@ -18,7 +18,7 @@ shinyServer(function(input, output) {
   # https://rstudio.github.io/DT/
   
   output$x1 = DT::renderDataTable({
-    datatable(joinedDataSets.without, rownames = row.names(joinedDataSets.without))
+    DT:datatable(joinedDataSets.without, rownames = row.names(joinedDataSets.without))
   })
   
   output$distPlot2 <- renderPlot({
