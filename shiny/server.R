@@ -84,4 +84,8 @@ shinyServer(function(input, output) {
     rozdil3
   })
   
+  output$ppdataset <- renderPrint({
+    print("Produkt Dataset")
+  })
+  
 })

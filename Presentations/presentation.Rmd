@@ -38,11 +38,11 @@ output:
 
 ## Ein Bischen Geschichte
 
->- 1976 in Bell Labs entwickelt *John Chambers et al.* eine program. Sprache namens **`S`**
+>- 1976 in Bell Labs entwickelt *John Chambers et al.* eine program. Sprache namens `S`
 
 >- Bell Labs ->  Insightful Corp. ('93) -> Lucent Technologies ('04) -> Alcatel-Lucent ('06) 
 
->- Insightful Corp. (**`S-PLUS`**) -> TIBCO ('08)
+>- Insightful Corp. (`S-PLUS`) -> TIBCO ('08)
 
 >- `R` entsteht von *Ross Ihaka* and *Robert Gentleman* in **1991**, seit 1995 unter GNU General Public License
 
@@ -90,6 +90,7 @@ dataset.P <- read.xlsx("../Data/DataSet_Product.xlsx", sheetIndex = 1, endRow=30
 ## Summary Statistics
 
 ```{r, cache=TRUE}
+options(width=100)
 summary(dataset.S)
 ```
 
@@ -105,11 +106,17 @@ corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
 ```
 
 
-## Interaktive Applikation mit `Shiny Framework`
+## App mit `Shiny Framework`
 
->- Ziel: Ausprobieren wie/ob man mit Shiny Framework fur R arbeiten kann
+>- Web Framework für interaktiven Anwendungen
 
->- Jede Shiny App. besteht aus min. 2 Dateien: **UI.R** und **SERVER.R**
+>- **Keine** Kenntnisse von HTML, CSS, oder JavaScript benötigt
+
+>- **Ziel**: Ausprobieren wie/ob man mit `Shiny` & `R` arbeiten kann
+
+>- Jede Shiny App. besteht aus min. 2 Dateien: 
+    + **UI.R** -> User-Interface `R` Skript steuert das Layout und Aussehen der App ("Wie sieht meine App im Browser").
+    + **SERVER.R** -> Die server `R` Skript enthält Befehle z.B. zur Berechnungen, Histogramm
 
 >- <span style="color: red">Live DEMO</span>: <http://shiny.b40.cz/SemesterProject/shiny>
 
