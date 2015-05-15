@@ -108,11 +108,11 @@ corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
 
 ## App mit `Shiny Framework`
 
->- Web Framework für interaktiven Anwendungen
+>- Web Framework für interaktive Anwendungen
 
 >- **Keine** Kenntnisse von HTML, CSS, oder JavaScript benötigt
 
->- **Ziel**: Ausprobieren wie/ob man mit `Shiny` & `R` arbeiten kann
+>- **Ziel**: Ausprobieren, wie/ob man mit `Shiny` & `R` arbeiten kann
 
 >- Jede Shiny App. besteht aus min. 2 Dateien: 
     + **UI.R** -> User-Interface `R` Skript steuert das Layout und Aussehen der App ("Wie sieht meine App im Browser").
