@@ -90,7 +90,7 @@ shinyUI(navbarPage("Semester Project Interactivelly", id="nav",
                                 p("Click to choose the columns and then display correlations (with regression)."), 
                                 a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
                                 a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
-                                width = 3
+                                width = 2
                               ), 
                               mainPanel(
                                 DT::dataTableOutput('x1')
