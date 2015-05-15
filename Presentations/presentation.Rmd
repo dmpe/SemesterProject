@@ -17,11 +17,11 @@ output:
 
 1. Einführung in das Projekt
 2. Unseren Datensatze
-3. Einführung ins R
+3. Einführung ins `R`
 4. Explorative Datenanalyse (EDA)
     + "Explo" was ?
     + Korrelation
-    + Historgramm (in reine R) vs Streudiagramm (R + `ggplot2`)
+    + Historgramm (in reine `R`) vs Streudiagramm (`R` + `ggplot2`)
     + Interaktive Applikation mit `Shiny Framework`
 5. Ergebnisse/Zusammenfassung
 
@@ -36,35 +36,35 @@ output:
 
 
 
-## Bischen Geschichte
+## Ein Bischen Geschichte
 
->- 1976 in Bell Labs entwickelt *John Chambers et al.* eine program. Sprache namens **S**
+>- 1976 in Bell Labs entwickelt *John Chambers et al.* eine program. Sprache namens **`S`**
 
 >- Bell Labs ->  Insightful Corp. ('93) -> Lucent Technologies ('04) -> Alcatel-Lucent ('06) 
 
->- Insightful Corp. (**S-PLUS**) -> TIBCO ('08)
+>- Insightful Corp. (**`S-PLUS`**) -> TIBCO ('08)
 
->- R entsteht von *Ross Ihaka* and *Robert Gentleman* in 1991, seit 1995 unter GNU General Public License
+>- `R` entsteht von *Ross Ihaka* and *Robert Gentleman* in **1991**, seit 1995 unter GNU General Public License
 
->- Erst aber 2000 **stabil** und aktiv von **R Core Group** weiter entwickelt geworden ist 
+>- Erst aber 2000 **stabil** und aktiv von **R Core Group** weiter entwickelt
 
->- Heute 2 Implementierungen: **S-PLUS** (commerziel) und **R** (GNU project)
+>- Heute 2 Implementierungen: `S-PLUS` (commerziel) und **`R`** (GNU project)
 
 ## R
 
->- Geschrieben in **C** & Fortan & R
+>- Geschrieben in **`C`** (35%) & `Fortan` (24%) & `R` (38%)
 
 >- Syntax ist sehr **ähnlich** zu S(-PLUS)
 
 >- Sehr **schlank**; Funktionalität in modularen Pakete aufgeteilt
 
->- Excelente Grafik Fähigkeiten, jedoch schwache Unterstutzung von 3D (besonders GPU)
+>- Excelente Grafik Fähigkeiten, jedoch (ziemlich) schwache Unterstutzung von 3D
 
->- Objekte, Variablen, Daten etc. sind explizit in **RAM** gespeichert
+>- Objekte, Variablen, **Daten** etc. sind explizit in **RAM** gespeichert (100 Mil. x 5 Matrix ~ 4 GB RAM)
 
 >- Funktionalität basiert auf Basis der **Nachfrage** und der **Nutzerbeiträge**
 
->- Heute sehr popular bei **Data Scientists fur Data Mining** Zwecke, statt *SAS, SPSS* etc. (siehe TIOBE Index). 
+>- Heute sehr popular bei **Data Scientists fur Data Mining** Zwecke, statt *SAS, SPSS, Stata* usw. (TIOBE Index). 
 
 
 ## Explorative Datenanalyse (EDA)
@@ -109,9 +109,9 @@ corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
 
 >- Ziel: Ausprobieren wie/ob man mit Shiny Framework fur R arbeiten kann
 
->- Shiny App. besteht aus 2 Dateien: **UI.R** und **SERVER.R**
+>- Jede Shiny App. besteht aus min. 2 Dateien: **UI.R** und **SERVER.R**
 
->- Live Demo: <http://shiny.b40.cz/SemesterProject/shiny>
+>- <span style="color: red">Live DEMO</span>: <http://shiny.b40.cz/SemesterProject/shiny>
 
 
 ## Resultate / Fazit
@@ -122,14 +122,14 @@ corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
 - http://en.wikipedia.org/wiki/R_%28programming_language%29
 - http://rmarkdown.rstudio.com/
 - http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf
+- http://www.stat.yale.edu/~mjk56/temp/bigmemory-vignette.pdf
 
-
-## Wir danke fur die Aufmerksamkeit !
+## Wir danken fur die Aufmerksamkeit !
 
 ### Folgenden Werkzeuge wurden benutzt:
-   + Die Beste IDE fur R - [RStudio](http://www.rstudio.com)
    + Diese Presentation wurde mit [R Markdown](http://rmarkdown.rstudio.com/) erstellt.
-   + Web Applikations Framework fur R - [Shiny](http://shiny.rstudio.com/)
+   + Die Beste IDE fur R - [RStudio](http://www.rstudio.com)
+   + Web Applikations Framework fur R - [Shiny @ RStudio](http://shiny.rstudio.com/)
    + <https://github.com/dmpe/SemesterProject>
 
-
+<img src="https://cdn.tutsplus.com/net/uploads/2013/08/github-collab-retina-preview.gif" width="250" height="250">
