@@ -36,27 +36,29 @@ output:
 
 
 
-## Ein Bischen Geschichte
+## Ein Bischen Geschichte von `S` & `R`
 
 >- 1976 in Bell Labs entwickelt *John Chambers et al.* eine program. Sprache namens `S`
 
 >- Bell Labs ->  Insightful Corp. ('93) -> Lucent Technologies ('04) -> Alcatel-Lucent ('06) 
 
->- Insightful Corp. (`S-PLUS`) -> TIBCO ('08)
+>- Insightful Corp. (`S-PLUS`) -> TIBCO Spotfire ('08)
+
+>- `R` ist Implementierung von `S` (ahlich wie `io.js` zu `Node.js`)
 
 >- `R` entsteht von *Ross Ihaka* and *Robert Gentleman* in **1991**, seit 1995 unter GNU General Public License
 
 >- Erst aber 2000 **stabil** und aktiv von **R Core Group** weiter entwickelt
 
->- Heute 2 Implementierungen: `S-PLUS` (commerziel) und **`R`** (GNU project)
+>- Heute >2 Implementierungen: `S-PLUS` (commerziel) und **`R`** (GNU project)
 
 ## R
 
 >- Geschrieben in **`C`** (35%) & `Fortan` (24%) & `R` (38%)
 
->- Syntax ist sehr **ähnlich** zu S(-PLUS)
+>- Syntax ist sehr **ähnlich** zu S-PLUS
 
->- Sehr **schlank**; Funktionalität in modularen Pakete aufgeteilt
+>- Sehr **schlank**; Funktionalität in modularen Pakete aufgeteilt (CRAN)
 
 >- Excelente Grafik Fähigkeiten, jedoch (ziemlich) schwache Unterstutzung von 3D
 
@@ -64,7 +66,7 @@ output:
 
 >- Funktionalität basiert auf Basis der **Nachfrage** und der **Nutzerbeiträge**
 
->- Heute sehr popular bei **Data Scientists fur Data Mining** Zwecke, statt *SAS, SPSS, Stata* usw. (TIOBE Index). 
+>- Heute sehr popular bei **Data Scientists fur Data Mining** Zwecke, statt *SAS, SPSS, Stata* usw. (z.B. TIOBE Index). 
 
 
 ## Explorative Datenanalyse (EDA)
@@ -106,17 +108,17 @@ corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
 ```
 
 
-## App mit `Shiny Framework`
+## App mit `Shiny Framework` (Juni 2012)
 
 >- Web Framework für interaktive Anwendungen
 
 >- **Keine** Kenntnisse von HTML, CSS, oder JavaScript benötigt
 
->- **Ziel**: Ausprobieren, wie/ob man mit `Shiny` & `R` arbeiten kann
+>- **Ziel**: Ausprobieren, wie man mit `Shiny` & `R` arbeiten kann
 
 >- Jede Shiny App. besteht aus min. 2 Dateien: 
     + **UI.R**: User-Interface `R` Skript steuert das Layout und Aussehen der App ("Wie sieht meine App im Browser").
-    + **SERVER.R**: Server `R` Skript enthält Befehle z.B. zur Berechnungen, Grafiken usw ("Was macht die ?").
+    + **SERVER.R**: Server `R` Skript enthält Befehle z.B. zur Berechnungen, Grafiken usw. ("Was macht die ?").
 
 >- <span style="color: red">Live DEMO</span>: <http://shiny.b40.cz/SemesterProject/shiny>
 
@@ -139,4 +141,5 @@ corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
    + Web Applikations Framework fur R - [Shiny @ RStudio](http://shiny.rstudio.com/)
    + <https://github.com/dmpe/SemesterProject>
 
+<img src="http://www.rstudio.com/wp-content/uploads/2014/03/blue-250.png">
 <img src="https://cdn.tutsplus.com/net/uploads/2013/08/github-collab-retina-preview.gif" width="250" height="250">
