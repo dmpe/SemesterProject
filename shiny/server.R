@@ -89,11 +89,13 @@ shinyServer(function(input, output) {
   })
   
   output$renderqqPlot2 <- renderPlot({
-    qqplot.data(input$selection15)
+    qqnorm(datasetM[, input$selection15])
+    qqline(datasetM[, input$selection15])
   })
   
   output$renderqqPlot <- renderPlot({
-    qqplot.data(input$selection16)
+    qqnorm(dataset.product[, input$selection16])
+    qqline(dataset.product[, input$selection16])
   })
 
   

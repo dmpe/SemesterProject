@@ -11,17 +11,12 @@ shinyUI(navbarPage("Semester Project Interactivelly", id="nav",
                                 sliderInput("bins", "Number of bins:", min = 1, max = 50, value = 10), 
                                 selectInput("selection", "Choose a column:", choices = colnames(datasetM.withoutFour)),
                                 
-                                selectInput("selection15", "Choose a column Service:", choices = colnames(datasetM)),
-                                selectInput("selection16", "Choose a column Produkt:", choices = colnames(dataset.product)),
-                                
                                 a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
                                 a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
                                 width = 3
                               ),
                               mainPanel(
-                                plotOutput("distPlot"), 
-                                plotOutput("renderqqPlot"),  
-                                plotOutput("renderqqPlot2"),      
+                                plotOutput("distPlot"),       
                                 plotOutput("distPlot2")
                               )
                             )
@@ -56,18 +51,21 @@ shinyUI(navbarPage("Semester Project Interactivelly", id="nav",
                               )
                             )
                    ),
-                   tabPanel("Diff. in Cor.", 
+                   tabPanel("QQ-Plots",
                             sidebarLayout(
                               sidebarPanel(
-                                p("Click to choose the columns and then display correlations."), 
+                                p("Click to choose the column and then display histogram and density."), 
+                                
+                                selectInput("selection15", "Choose a column Service:", choices = colnames(datasetM)),
+                                selectInput("selection16", "Choose a column Produkt:", choices = colnames(dataset.product)),
+                                
                                 a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
                                 a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
-                                width = 2
+                                width = 3
                               ),
                               mainPanel(
-                                plotOutput("onlyCorrelation", width = "1300px"),
-                                verbatimTextOutput("vsechno"),
-                                plotOutput("onlyCorrelation2")
+                                plotOutput("renderqqPlot"),  
+                                plotOutput("renderqqPlot2")
                               )
                             )
                    ), 
@@ -87,6 +85,21 @@ shinyUI(navbarPage("Semester Project Interactivelly", id="nav",
                               ),
                               mainPanel(
                                 plotOutput("Facet")
+                              )
+                            )
+                   ), 
+                   tabPanel("Diff. in Cor.", 
+                            sidebarLayout(
+                              sidebarPanel(
+                                p("Click to choose the columns and then display correlations."), 
+                                a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
+                                a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
+                                width = 2
+                              ),
+                              mainPanel(
+                                plotOutput("onlyCorrelation", width = "1300px"),
+                                verbatimTextOutput("vsechno"),
+                                plotOutput("onlyCorrelation2")
                               )
                             )
                    ), 
