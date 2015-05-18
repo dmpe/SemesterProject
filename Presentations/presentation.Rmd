@@ -27,8 +27,14 @@ output:
 
 ## Einführung in das Projekt
 
-- Was, Ziele
-- gleich auf DS
+>- defition der Begriff "electronic word of mouth" oder electronische Mundpropaganda.  
+>_ Soziale Netzwerke
+>- Austauch von Information Zwischen Mensche
+>-günstigste und wirkungsvollste Marketingsinstrument
+
+>-  Ziel
+>- Analyse der Wirkung des Mundpropaganda durch R
+>- zusammenhang zwischen bekanntheitgrad, erfahrung und Kundenbildung
 
 
 
@@ -98,6 +104,21 @@ summary(dataset.S)
 
 
 ## Korrelation
+>- was ist korrelation?
+
+>- Korrelation ist eine eindeutige Beziehung zwischen zwei Merkmalen
+
+>- was sagt die korrelation?
+
+>- Die Korrelationszahl drückt die Stärke der Korrelation in einer Ziffer aus.
+
+>- Wert der Korrelation 0-1
+1. K = 1 "Starke  korrelation"
+2. k = 0,5 "schwache korrelation"
+3. k = 0 "keine Korrelation"
+4. k = -0,5 "schwache  und negative Korrelation"
+
+## r sCRIPT
 
 ```{r, message=FALSE, out.width="550px", cache=TRUE}
 library(corrplot)
@@ -132,6 +153,8 @@ corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
 - http://rmarkdown.rstudio.com/
 - http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf
 - http://www.stat.yale.edu/~mjk56/temp/bigmemory-vignette.pdf
+- https://netzgemeinschaft.wordpress.com/2011/02/02/ewom-der-wert-der-kundenempfehlung-part-i/
+
 
 ## Wir danken fur die Aufmerksamkeit !
 
