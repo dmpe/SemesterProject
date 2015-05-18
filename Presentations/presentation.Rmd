@@ -72,7 +72,8 @@ output:
 
 >- Funktionalität basiert auf Basis der **Nachfrage** und der **Nutzerbeiträge**
 
->- Heute sehr popular bei **Data Scientists fur Data Mining** Zwecke, statt *SAS, SPSS, Stata* usw. (z.B. TIOBE Index). 
+>- Heute sehr popular bei **Data Scientists fur Data Mining** Zwecke, statt *SAS, Stata* usw. (z.B. TIOBE Index). 
+
 
 ## `Shiny Framework`
 
@@ -83,7 +84,7 @@ output:
 >- **Ziel**: Ausprobieren, wie man mit `Shiny` & `R` arbeiten kann
 
 >- Jede Shiny App. besteht aus min. 2 Dateien: 
-    + **UI.R**: User-Interface `R` Skript steuert das Layout und Aussehen der App ("Wie sieht meine App im Browser").
+    + **UI.R**: User-Interface `R` Skript steuert das Layout und Aussehen ("Wie sieht meine App im Browser aus").
     + **SERVER.R**: Server `R` Skript enthält Befehle z.B. zur Berechnungen, Grafiken usw. ("Was macht die ?").
 
 >- <span style="color: red">Live DEMO</span>: <http://shiny.b40.cz/SemesterProject/shiny>
@@ -103,7 +104,6 @@ library(dplyr)
 
 dataset.S <- read.xlsx("../Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
 dataset.P <- read.xlsx("../Data/DataSet_Product.xlsx", sheetIndex = 1, endRow=302)
-
 ```
 
 ## Summary Statistics

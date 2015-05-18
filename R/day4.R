@@ -76,7 +76,7 @@ qqplot.data <- function (vec) # argument: vector of numbers
   
   d <- data.frame(resids = vec)
   
-  ggplot(datasetM$User.Engage, aes(sample = datasetM$User.Engage)) + stat_qq() + geom_abline(slope = slope, intercept = int)
+  ggplot(d, aes(sample = resids)) + stat_qq() + geom_abline(slope = slope, intercept = int)
   
 }
 
