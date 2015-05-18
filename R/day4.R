@@ -65,4 +65,47 @@ rozdil <- as.data.frame(corrrePart) - as.data.frame(product)
 # dasdsdawr <- t(apply(corrrePart, 1, function(x) corrrePart-product))
 # sweep(corrrePart,2,c(0,0,product))
 
+# https://stackoverflow.com/questions/4357031/qqnorm-and-qqline-in-ggplot2
+qqplot.data <- function (vec) # argument: vector of numbers
+{
+  # following four lines from base R's qqline()
+  y <- quantile(vec[!is.na(vec)], c(0.25, 0.75))
+  x <- qnorm(c(0.25, 0.75))
+  slope <- diff(y)/diff(x)
+  int <- y[1L] - slope * x[1L]
+  
+  d <- data.frame(resids = vec)
+  
+  ggplot(d, aes(sample = resids)) + stat_qq() + geom_abline(slope = slope, intercept = int)
+  
+}
+
+
+
+
+
+
+
+qqplot.data(datasetM$User.Engage)
+qqplot.data(datasetM$Acquaintance)
+qqplot.data(datasetM$Experience)
+
+qqplot.data(dataset.product$User.Engage)
+qqplot.data(dataset.product$Acquaintance)
+qqplot.data(dataset.product$Experience)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -1,5 +1,6 @@
 library(xlsx)
 library(dplyr)
+library(ggplot2)
 
 datasetM <- read.xlsx("/srv/shiny-server/SemesterProject/Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
 datasetM.withoutFour <- datasetM[, !names(datasetM) %in% c("Experience", "Gender", "Duration", "Post.ID")]
@@ -30,3 +31,16 @@ joinedDataSets.without$Gender[joinedDataSets.without$Gender==1] <- "Man"
 
 joinedDataSets.without$TypeDataSet[joinedDataSets.without$TypeDataSet==0] <- "Service"
 joinedDataSets.without$TypeDataSet[joinedDataSets.without$TypeDataSet==1] <- "Produkt"
+
+
+qqplot.data <- function (vec) {
+  # following four lines from base R's qqline()
+  y <- quantile(vec[!is.na(vec)], c(0.25, 0.75))
+  x <- qnorm(c(0.25, 0.75))
+  slope <- diff(y)/diff(x)
+  int <- y[1L] - slope * x[1L]
+  
+  d <- data.frame(resids = vec)
+  
+  ggplot(d, aes(sample = resids)) + stat_qq() + geom_abline(slope = slope, intercept = int)
+}

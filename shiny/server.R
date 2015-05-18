@@ -88,4 +88,13 @@ shinyServer(function(input, output) {
     print("Produkt Dataset")
   })
   
+  output$renderqqPlot2 <- renderPlot({
+    qqplot.data(input$selection15)
+  })
+  
+  output$renderqqPlot <- renderPlot({
+    qqplot.data(input$selection16)
+  })
+
+  
 })
