@@ -35,6 +35,10 @@ As a small exercise I have created <http://rpubs.com/F789GH/NYCAttorneyRegistrat
         + Grafiken - welche(Haufigkeiten... womit, ...)
         + [Shiny](http://shiny.b40.cz/SemesterProject/shiny/) nutzen ? ggf. wie mit PP verbinden
 
+
+###
+wann nimmt Fx der Wert zw. 0-1
+
 #### Links
 
 - <https://rpubs.com/czarrar/facemem_connectivity_r>

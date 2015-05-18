@@ -18,19 +18,19 @@ output:
 1. Einführung in das Projekt
 2. Unseren Datensatze
 3. Einführung ins `R`
+4. Interaktive Applikation mit `Shiny Framework`
 4. Explorative Datenanalyse (EDA)
     + "Explo" was ?
-    + Korrelation
-    + Historgramm (in reine `R`) vs Streudiagramm (`R` + `ggplot2`)
-    + Interaktive Applikation mit `Shiny Framework`
+    + Korrelation (Streudiagramm)
+    + Historgramm (QQ-Plot, Normalverteilung) 
 5. Ergebnisse/Zusammenfassung
 
 ## Einführung in das Projekt
 
 >- defition der Begriff "electronic word of mouth" oder electronische Mundpropaganda.  
->_ Soziale Netzwerke
+>- Soziale Netzwerke
 >- Austauch von Information Zwischen Mensche
->-günstigste und wirkungsvollste Marketingsinstrument
+>- günstigste und wirkungsvollste Marketingsinstrument
 
 >-  Ziel
 >- Analyse der Wirkung des Mundpropaganda durch R
@@ -146,6 +146,8 @@ corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
 
 ## Resultate / Fazit
 
+Wie gut sind die 
+Was verlaslich sind die Ergebsniesse von Korrelation
 
 ## Quellen
 - https://github.com/rdpeng/courses/blob/master/02_RProgramming/OverviewHistoryR/index.md
