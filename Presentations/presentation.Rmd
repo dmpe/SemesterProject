@@ -74,16 +74,27 @@ output:
 
 >- Heute sehr popular bei **Data Scientists fur Data Mining** Zwecke, statt *SAS, SPSS, Stata* usw. (z.B. TIOBE Index). 
 
+## `Shiny Framework`
+
+>- R/Web Framework für interaktive Anwendungen
+
+>- **Keine** Kenntnisse von HTML, CSS, oder JavaScript benötigt
+
+>- **Ziel**: Ausprobieren, wie man mit `Shiny` & `R` arbeiten kann
+
+>- Jede Shiny App. besteht aus min. 2 Dateien: 
+    + **UI.R**: User-Interface `R` Skript steuert das Layout und Aussehen der App ("Wie sieht meine App im Browser").
+    + **SERVER.R**: Server `R` Skript enthält Befehle z.B. zur Berechnungen, Grafiken usw. ("Was macht die ?").
+
+>- <span style="color: red">Live DEMO</span>: <http://shiny.b40.cz/SemesterProject/shiny>
 
 ## Explorative Datenanalyse (EDA)
-- http://en.wikipedia.org/wiki/Pareto_chart
 
-![pics](http://upload.wikimedia.org/wikipedia/en/b/ba/Data_visualization_process_v1.png)
-
+<img src="http://upload.wikimedia.org/wikipedia/en/b/ba/Data_visualization_process_v1.png" height="550" weight="660">
 
 ## Datensatze laden
 
-```{r, message=FALSE, cache=TRUE}
+```{r, message=FALSE, cache=TRUE, echo=FALSE}
 library(xlsx)
 library(ggplot2)
 library(reshape2)
@@ -97,30 +108,24 @@ dataset.P <- read.xlsx("../Data/DataSet_Product.xlsx", sheetIndex = 1, endRow=30
 
 ## Summary Statistics
 
-```{r, cache=TRUE}
+```{r, cache=TRUE, echo=FALSE}
 options(width=100)
 summary(dataset.S)
 ```
 
 
 ## Korrelation
->- was ist korrelation?
 
->- Korrelation ist eine eindeutige Beziehung zwischen zwei Merkmalen
-
->- was sagt die korrelation?
-
->- Die Korrelationszahl drückt die Stärke der Korrelation in einer Ziffer aus.
+>- Korrelation beschreibt eine Beziehung zwischen zwei Merkmalen, welches in einer Zahl ausgedruckt ist.
 
 >- Wert der Korrelation 0-1
-1. K = 1 "Starke  korrelation"
-2. k = 0,5 "schwache korrelation"
-3. k = 0 "keine Korrelation"
-4. k = -0,5 "schwache  und negative Korrelation"
+1. p = 1 "Starke (possitive/negative) Korrelation"
+2. p = 0,5 "Schwache (possitive/negative) Korrelation"
+3. p = 0 "Keine Korrelation"
 
-## r sCRIPT
+## Korrelations Plot
 
-```{r, message=FALSE, out.width="550px", cache=TRUE}
+```{r, message=FALSE, out.width="550px", cache=TRUE, echo=FALSE}
 library(corrplot)
 
 datasetS.kleiner <- dataset.S[, !names(dataset.S) %in% c("Gender", "Duration", "Experience", "Post.ID")]
@@ -129,19 +134,6 @@ corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
 ```
 
 
-## App mit `Shiny Framework` (Juni 2012)
-
->- Web Framework für interaktive Anwendungen
-
->- **Keine** Kenntnisse von HTML, CSS, oder JavaScript benötigt
-
->- **Ziel**: Ausprobieren, wie man mit `Shiny` & `R` arbeiten kann
-
->- Jede Shiny App. besteht aus min. 2 Dateien: 
-    + **UI.R**: User-Interface `R` Skript steuert das Layout und Aussehen der App ("Wie sieht meine App im Browser").
-    + **SERVER.R**: Server `R` Skript enthält Befehle z.B. zur Berechnungen, Grafiken usw. ("Was macht die ?").
-
->- <span style="color: red">Live DEMO</span>: <http://shiny.b40.cz/SemesterProject/shiny>
 
 
 ## Resultate / Fazit
