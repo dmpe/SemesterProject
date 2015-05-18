@@ -79,13 +79,13 @@ output:
 
 >- R/Web Framework für interaktive Anwendungen
 
->- **Keine** Kenntnisse von HTML, CSS, oder JavaScript benötigt
-
 >- **Ziel**: Ausprobieren, wie man mit `Shiny` & `R` arbeiten kann
 
+>- **Keine** Kenntnisse von HTML, CSS, oder JavaScript benötigt
+
 >- Jede Shiny App. besteht aus min. 2 Dateien: 
-    + **UI.R**: User-Interface `R` Skript steuert das Layout und Aussehen ("Wie sieht meine App im Browser aus").
-    + **SERVER.R**: Server `R` Skript enthält Befehle z.B. zur Berechnungen, Grafiken usw. ("Was macht die ?").
+    + **UI.R**: User-Interface `R` Skript steuert das **Layout und Aussehen**.
+    + **SERVER.R**: Server `R` Skript enthält Befehle z.B. zur **Berechnungen, Grafiken** usw.
 
 >- <span style="color: red">Live DEMO</span>: <http://shiny.b40.cz/SemesterProject/shiny>
 

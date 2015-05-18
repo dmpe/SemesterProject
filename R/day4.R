@@ -90,11 +90,35 @@ qqplot.data(dataset.product$Experience)
 
 
 
+## User Engage
+qqnorm(datasetM$User.Engage)
+qqline(datasetM$User.Engage)
+
+qqnorm((datasetM$User.Engage^2-1)/2)
+qqline((datasetM$User.Engage^2-1)/2)
+
+qqnorm((datasetM$User.Engage^3-1)/3)
+qqline((datasetM$User.Engage^3-1)/3)
+
+qqnorm((datasetM$User.Engage^4-1)/4)
+qqline((datasetM$User.Engage^4-1)/4)
 
 
+qqnorm(datasetM$Acquaintance)
+qqline(datasetM$Acquaintance)
+
+qqnorm((datasetM$Acquaintance^2-1)/2)
+qqline((datasetM$Acquaintance^2-1)/2)
+
+qqnorm((datasetM$Acquaintance^3-1)/3)
+qqline((datasetM$Acquaintance^3-1)/3)
+
+qqnorm((datasetM$Acquaintance^4-1)/4)
+qqline((datasetM$Acquaintance^4-1)/4)
 
 
-
+qqnorm(log(datasetM$Acquaintance))
+qqline(log(datasetM$Acquaintance))
 
 
 
