@@ -15,15 +15,14 @@ output:
 
 ## Agenda | 24 Folien | 20 Minuten | 4 Teilnehmer | 3 Resultate
 
-1. Einführung in das Projekt
-2. Unseren Datensatze
-3. Einführung ins `R`
-4. Interaktive Applikation mit `Shiny Framework`
+1. Einführung in das Projekt    F
+2. Einführung ins `R`           F
+3. Interaktive Applikation mit `Shiny Framework`    P
 4. Explorative Datenanalyse (EDA)
-    + "Explo" was ?
-    + Korrelation (Streudiagramm)
-    + Historgramm (QQ-Plot, Normalverteilung) 
-5. Ergebnisse/Zusammenfassung
+    + "Explo" was ?                 M
+    + Korrelation (Streudiagramm)   R
+    + Historgramm (QQ-Plot, Normalverteilung)   M 
+5. Ergebnisse/Zusammenfassung   P
 
 ## Einführung in das Projekt
 
@@ -37,8 +36,11 @@ output:
 >- zusammenhang zwischen bekanntheitgrad, erfahrung und Kundenbildung
 
 
-
-## Unseren Datensätze
+- Erklarung von den 3 Begriffen ( Experience, Acqutaince, User Engage)
+- Mithilfe R Zusammenhang der Daten überprüft
+- Beide Datensätze erklären ( Service , Product)
+- Ziel des Projektes 
+- ....
 
 
 
