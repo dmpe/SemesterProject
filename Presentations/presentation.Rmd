@@ -70,7 +70,7 @@ output:
 
 >- Excelente Grafik Fähigkeiten, jedoch (ziemlich) schwache Unterstutzung von 3D
 
->- Objekte, Variablen, **Daten** etc. sind explizit in **RAM** gespeichert (100 Mil. x 5 Matrix ~ 4 GB RAM)
+>- Objekte, **Daten** etc. sind explizit in **RAM** gespeichert (100 Mil. x 5 Matrix ~ 4 GB RAM)
 
 >- Funktionalität basiert auf Basis der **Nachfrage** und der **Nutzerbeiträge**
 
@@ -150,7 +150,7 @@ Was verlaslich sind die Ergebsniesse von Korrelation
 - http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf
 - http://www.stat.yale.edu/~mjk56/temp/bigmemory-vignette.pdf
 - https://netzgemeinschaft.wordpress.com/2011/02/02/ewom-der-wert-der-kundenempfehlung-part-i/
-
+- https://www-conf.slac.stanford.edu/xldb2015/Talks2015/9_Tues_Chambers-XLDBConference.pdf
 
 ## Wir danken fur die Aufmerksamkeit !
 
