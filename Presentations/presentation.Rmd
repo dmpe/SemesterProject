@@ -151,6 +151,7 @@ Was verlaslich sind die Ergebsniesse von Korrelation
 - http://www.stat.yale.edu/~mjk56/temp/bigmemory-vignette.pdf
 - https://netzgemeinschaft.wordpress.com/2011/02/02/ewom-der-wert-der-kundenempfehlung-part-i/
 - https://www-conf.slac.stanford.edu/xldb2015/Talks2015/9_Tues_Chambers-XLDBConference.pdf
+- https://github.com/rstudio/webinars/blob/master/2015-05/How-to-start-Shiny-1/01-How-to-start.pdf
 
 ## Wir danken fur die Aufmerksamkeit !
 
