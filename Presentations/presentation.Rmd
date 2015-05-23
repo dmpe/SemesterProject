@@ -83,7 +83,7 @@ output:
 
 >- **Ziel**: Ausprobieren, wie man mit `Shiny` & `R` arbeiten kann
 
->- **Keine** Kenntnisse von HTML, CSS, oder JavaScript benötigt
+>- **Keine** Kenntnisse von HTML, CSS, oder JavaScript werden benötigt
 
 >- Jede Shiny App. besteht aus min. 2 Dateien: 
     + **UI.R**: R Skript steuert das **Layout und Aussehen**.
@@ -99,10 +99,6 @@ output:
 
 ```{r, message=FALSE, cache=TRUE, echo=FALSE}
 library(xlsx)
-library(ggplot2)
-library(reshape2)
-library(plyr)
-library(dplyr)
 
 dataset.S <- read.xlsx("../Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
 dataset.P <- read.xlsx("../Data/DataSet_Product.xlsx", sheetIndex = 1, endRow=302)
@@ -129,6 +125,7 @@ summary(dataset.S)
 
 ```{r, message=FALSE, out.width="550px", cache=TRUE, echo=FALSE}
 library(corrplot)
+library(ggplot2)
 
 datasetS.kleiner <- dataset.S[, !names(dataset.S) %in% c("Gender", "Duration", "Experience", "Post.ID")]
 datasetS.kleiner.cor <- cor(datasetS.kleiner)
@@ -142,8 +139,8 @@ corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
 
 Ziel  | Fazit
 ------------- | -------------
-  + Content Cell  | Content Cell
-  + Content Cell  | Content Cell
+   + Content Cell  | Content Cell
+   + Content Cell  | Content Cell
 
 Wie gut sind die 
 Was verlaslich sind die Ergebsniesse von Korrelation
@@ -161,8 +158,8 @@ Was verlaslich sind die Ergebsniesse von Korrelation
 ## Wir danken für die Aufmerksamkeit !
 
 ### Folgenden Werkzeuge wurden benutzt:
-   + Diese Presentation wurde mit [R Markdown](http://rmarkdown.rstudio.com/) erstellt.
-   + Die Beste IDE für R - [RStudio](http://www.rstudio.com)
+   + Presentation wurde mit [R Markdown](http://rmarkdown.rstudio.com/) erstellt.
+   + Beste IDE für R - [RStudio](http://www.rstudio.com)
    + Web Applikations Framework für R - [Shiny @ RStudio](http://shiny.rstudio.com/) -> <https://github.com/dmpe/SemesterProject>
 
 <img src="http://www.rstudio.com/wp-content/uploads/2014/03/blue-250.png">
