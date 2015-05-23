@@ -82,9 +82,9 @@ output:
 
 >- R/Web Framework für interaktive Anwendungen
 
->- **Ziel**: Ausprobieren, wie man mit `Shiny` & `R` arbeiten kann
+>- **"Keine"** HTML/CSS/JavaScript Kenntnisse werden benötigt (basiert auf Twitter's Bootstrap)
 
->- **Keine** HTML/CSS/JavaScript Kenntnisse werden benötigt (basiert auf Twitter's Bootstrap)
+>- **Ziel**: Ausprobieren, wie man mit `Shiny` & `R` arbeiten kann
 
 >- Jede Shiny App. besteht aus min. 2 Dateien: 
     + **UI.R**: steuert das **Layout und Aussehen**.
@@ -161,7 +161,8 @@ Was verlaslich sind die Ergebsniesse von Korrelation
 ### Folgenden Werkzeuge wurden benutzt:
    + Presentation wurde mit [R Markdown](http://rmarkdown.rstudio.com/) erstellt.
    + Beste IDE für R - [RStudio](http://www.rstudio.com)
-   + Web Applikations Framework für R - [Shiny @ RStudio](http://shiny.rstudio.com/) -> <https://github.com/dmpe/SemesterProject>
+   + Web Applikations Framework für R - [Shiny @ RStudio](http://shiny.rstudio.com/)
+   + <https://github.com/dmpe/SemesterProject>
 
 <img src="http://www.rstudio.com/wp-content/uploads/2014/03/blue-250.png">
-<img src="https://cdn.tutsplus.com/net/uploads/2013/08/github-collab-retina-preview.gif" width="250" height="250">
+<img src="https://cdn.tutsplus.com/net/uploads/2013/08/github-collab-retina-preview.gif" width="200" height="200">
