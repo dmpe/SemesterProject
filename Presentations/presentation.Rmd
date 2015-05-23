@@ -1,5 +1,5 @@
 ---
-title: 'Statistisches Marketing mit R'
+title: 'Semester Projekt: Daten Analyse mit R'
 author: "Dmitrij Petrov, Rahman Gökbulut, Mesut Sahin, Jeanne Falonne Magne Signe"
 date: "25.6.2015"
 output:
@@ -52,9 +52,9 @@ output:
 
 >- Insightful Corp. (`S-PLUS`) -> TIBCO Spotfire ('08)
 
->- `R` ist Implementierung von `S` (ahlich wie `io.js` zu `Node.js`)
+>- `R` ist Implementierung von `S` (ählich wie `io.js` zu `Node.js`)
 
->- `R` entsteht von *Ross Ihaka* and *Robert Gentleman* in **1991**, seit 1995 unter GNU General Public License
+>- `R` entsteht von *Ross Ihaka* and *Robert Gentleman* in **1991**, seit 1995 unter **GNU General Public License**
 
 >- Erst aber 2000 **stabil** und aktiv von **R Core Group** weiter entwickelt
 
@@ -68,13 +68,13 @@ output:
 
 >- Sehr **schlank**; Funktionalität in modularen Pakete aufgeteilt (CRAN)
 
->- Excelente Grafik Fähigkeiten, jedoch (ziemlich) schwache Unterstutzung von 3D
+>- Excelente Grafik Fähigkeiten, jedoch (ziemlich) schwache Unterstützung von 3D
 
 >- Objekte, **Daten** etc. sind explizit in **RAM** gespeichert (100 Mil. x 5 Matrix ~ 4 GB RAM)
 
 >- Funktionalität basiert auf Basis der **Nachfrage** und der **Nutzerbeiträge**
 
->- Heute sehr popular bei **Data Scientists fur Data Mining** Zwecke, statt *SAS, Stata* usw. (z.B. TIOBE Index). 
+>- Heute sehr populär bei **Forschern für Data Mining** Zwecke, statt *Excel, Stata* usw. (z.B. TIOBE Index). 
 
 
 ## `Shiny Framework`
@@ -86,8 +86,8 @@ output:
 >- **Keine** Kenntnisse von HTML, CSS, oder JavaScript benötigt
 
 >- Jede Shiny App. besteht aus min. 2 Dateien: 
-    + **UI.R**: User-Interface `R` Skript steuert das **Layout und Aussehen**.
-    + **SERVER.R**: Server `R` Skript enthält Befehle z.B. zur **Berechnungen, Grafiken** usw.
+    + **UI.R**: R Skript steuert das **Layout und Aussehen**.
+    + **SERVER.R**: R Skript enthält Befehle z.B. zur **Berechnungen, Grafiken** usw.
 
 >- <span style="color: red">Live DEMO</span>: <http://shiny.b40.cz/SemesterProject/shiny>
 
@@ -140,6 +140,11 @@ corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
 
 ## Resultate / Fazit
 
+Ziel  | Fazit
+------------- | -------------
+  + Content Cell  | Content Cell
+  + Content Cell  | Content Cell
+
 Wie gut sind die 
 Was verlaslich sind die Ergebsniesse von Korrelation
 
@@ -153,13 +158,12 @@ Was verlaslich sind die Ergebsniesse von Korrelation
 - https://www-conf.slac.stanford.edu/xldb2015/Talks2015/9_Tues_Chambers-XLDBConference.pdf
 - https://github.com/rstudio/webinars/blob/master/2015-05/How-to-start-Shiny-1/01-How-to-start.pdf
 
-## Wir danken fur die Aufmerksamkeit !
+## Wir danken für die Aufmerksamkeit !
 
 ### Folgenden Werkzeuge wurden benutzt:
    + Diese Presentation wurde mit [R Markdown](http://rmarkdown.rstudio.com/) erstellt.
-   + Die Beste IDE fur R - [RStudio](http://www.rstudio.com)
-   + Web Applikations Framework fur R - [Shiny @ RStudio](http://shiny.rstudio.com/)
-   + <https://github.com/dmpe/SemesterProject>
+   + Die Beste IDE für R - [RStudio](http://www.rstudio.com)
+   + Web Applikations Framework für R - [Shiny @ RStudio](http://shiny.rstudio.com/) -> <https://github.com/dmpe/SemesterProject>
 
 <img src="http://www.rstudio.com/wp-content/uploads/2014/03/blue-250.png">
 <img src="https://cdn.tutsplus.com/net/uploads/2013/08/github-collab-retina-preview.gif" width="250" height="250">
