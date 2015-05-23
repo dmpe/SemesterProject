@@ -8,6 +8,9 @@
 *.js
 Presentations/WorkInProg_SemesterPr_files/
 Presentations/rsconnect
+Presentations/presentation_files
+Presentations/presentation_cache
 Presentations/files
 Presentations/cache
+
 NYS_Attorney_Registrations.csv
