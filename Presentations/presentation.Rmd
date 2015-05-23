@@ -1,5 +1,5 @@
 ---
-title: 'Semester Projekt: Daten Analyse mit R'
+title: 'Daten Analyse mit R'
 author: "Dmitrij Petrov, Rahman Gökbulut, Mesut Sahin, Jeanne Falonne Magne Signe"
 date: "25.6.2015"
 output:
@@ -83,11 +83,11 @@ output:
 
 >- **Ziel**: Ausprobieren, wie man mit `Shiny` & `R` arbeiten kann
 
->- **Keine** Kenntnisse von HTML, CSS, oder JavaScript werden benötigt
+>- **Keine** HTML/CSS/JavaScript Kenntnisse werden benötigt (basiert auf Twitter's Bootstrap)
 
 >- Jede Shiny App. besteht aus min. 2 Dateien: 
-    + **UI.R**: R Skript steuert das **Layout und Aussehen**.
-    + **SERVER.R**: R Skript enthält Befehle z.B. zur **Berechnungen, Grafiken** usw.
+    + **UI.R**: steuert das **Layout und Aussehen**.
+    + **SERVER.R**: enthält Befehle z.B. zur **Berechnungen, Grafiken** usw.
 
 >- <span style="color: red">Live DEMO</span>: <http://shiny.b40.cz/SemesterProject/shiny>
 
