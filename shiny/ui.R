@@ -54,7 +54,7 @@ shinyUI(navbarPage("Semester Project Interactivelly", id="nav",
                    tabPanel("QQ-Plots",
                             sidebarLayout(
                               sidebarPanel(
-                                p("Click to choose the column and then display histogram and density."), 
+                                p("Click to choose the column and then display qq-plots."), 
                                 
                                 selectInput("selection15", "Choose a column Service:", choices = colnames(datasetM)),
                                 selectInput("selection16", "Choose a column Produkt:", choices = colnames(dataset.product)),

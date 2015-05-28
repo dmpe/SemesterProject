@@ -47,19 +47,14 @@ output:
 
 ## Ein Bischen Geschichte von `S` & `R`
 
->- 1976 in Bell Labs entwickelt *John Chambers et al.* eine program. Sprache namens `S`
-
->- Bell Labs ->  Insightful Corp. ('93) -> Lucent Technologies ('04) -> Alcatel-Lucent ('06) 
-
->- Insightful Corp. (`S-PLUS`) -> TIBCO Spotfire ('08)
-
->- `R` ist Implementierung von `S` (ählich wie `io.js` zu `Node.js`)
+>- `R` ist Implementierung von `S` (*John Chambers et al.* @ Bell Labs 1976)
 
 >- `R` entsteht von *Ross Ihaka* and *Robert Gentleman* in **1991**, seit 1995 unter **GNU General Public License**
 
 >- Erst aber 2000 **stabil** und aktiv von **R Core Group** weiter entwickelt
 
->- Heute >2 Implementierungen: `S-PLUS` (commerziel) und **`R`** (GNU project)
+>- Heute >2 Implementierungen: `S-PLUS` (commerziel) und **`R`** (GNU project) 
+    + mit vielen weiteren Distributionen: `Revolution R Open` ($MSFT), `Oracle R Enterprise`
 
 ## R
 
@@ -67,7 +62,7 @@ output:
 
 >- Syntax ist sehr **ähnlich** zu S-PLUS
 
->- Sehr **schlank**; Funktionalität in modularen Pakete aufgeteilt (CRAN)
+>- Sehr **schlank**; Funktionalität in modularen Pakete aufgeteilt (CRAN/MRAN/Bioconductor/GitHub)
 
 >- Excelente Grafik Fähigkeiten, jedoch (ziemlich) schwache Unterstützung von 3D
 
@@ -82,7 +77,7 @@ output:
 
 >- R/Web Framework für interaktive Anwendungen
 
->- **"Keine"** HTML/CSS/JavaScript Kenntnisse werden benötigt (basiert auf Twitter's Bootstrap)
+>- HTML/CSS/JavaScript Kenntnisse werden nicht benötigt (basiert auf Twitter's Bootstrap)
 
 >- **Ziel**: Ausprobieren, wie man mit `Shiny` & `R` arbeiten kann
 
@@ -138,12 +133,14 @@ corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
 
 ## Resultate / Fazit
 
-Ziel  | Fazit
+Ziel  | Resultat
 ------------- | -------------
-   + Content Cell  | Content Cell
-   + Content Cell  | Content Cell
+R einzuarbeiten | <img src="pictures/sign-check.png" width="30" height="30">
+`Shiny` untersuchen | <http://shiny.b40.cz/SemesterProject/shiny>
+Normalverteilung bestatigen/wiederlegen  | Content Cell
 
 Wie gut sind die 
+
 Was verlaslich sind die Ergebsniesse von Korrelation
 
 ## Quellen
@@ -155,6 +152,7 @@ Was verlaslich sind die Ergebsniesse von Korrelation
 - https://netzgemeinschaft.wordpress.com/2011/02/02/ewom-der-wert-der-kundenempfehlung-part-i/
 - https://www-conf.slac.stanford.edu/xldb2015/Talks2015/9_Tues_Chambers-XLDBConference.pdf
 - https://github.com/rstudio/webinars/blob/master/2015-05/How-to-start-Shiny-1/01-How-to-start.pdf
+- https://www.iconfinder.com/iconsets/small-n-flat
 
 ## Wir danken für die Aufmerksamkeit !
 
@@ -165,4 +163,4 @@ Was verlaslich sind die Ergebsniesse von Korrelation
    + <https://github.com/dmpe/SemesterProject>
 
 <img src="http://www.rstudio.com/wp-content/uploads/2014/03/blue-250.png">
-<img src="https://cdn.tutsplus.com/net/uploads/2013/08/github-collab-retina-preview.gif" width="200" height="200">
+<img src="http://cdn.tutsplus.com/net/uploads/2013/08/github-collab-retina-preview.gif" width="200" height="200">
