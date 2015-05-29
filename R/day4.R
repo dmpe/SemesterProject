@@ -16,6 +16,7 @@ source("R/day3.R")
 
 dataset.product <- read.xlsx("Data/DataSet_Product.xlsx",sheetIndex = 1 , endRow = 302)
 dataset.product$ProductDataSet <- 1
+dataset.product$User.Engage
 dataset.product.correlation <- dataset.product[, !names(dataset.product) %in% c("Duration", "Post.ID", "TotalReach", "ProductDataSet")]
 
 product <- cor(dataset.product.correlation)

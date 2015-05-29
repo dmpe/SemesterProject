@@ -20,8 +20,8 @@ output:
 2. Einführung ins `R`           F
 3. Interaktive Applikation mit `Shiny Framework`    P
 4. Explorative Datenanalyse (EDA)
-    + "Explo" was ?                 M
-    + Korrelation (Streudiagramm)   R
+    + EDA ?                 M
+    + Korrelation (Streudiagramm)   R 
     + Historgramm (QQ-Plot, Normalverteilung)   M 
 5. Ergebnisse/Zusammenfassung   P
 
@@ -63,13 +63,7 @@ output:
 
 >- Geschrieben in **`C`** (35%) & `Fortan` (24%) & `R` (38%)
 
->- Syntax ist sehr **ähnlich** zu S-PLUS
-
->- Sehr **schlank**; Funktionalität in modularen Pakete aufgeteilt (CRAN/MRAN/Bioconductor/GitHub)
-
->- Ein Werkzeug zur statischen Datenanalyse und zur grafischen Darstellung von Daten
-
->- Excelente Grafik Fähigkeiten, jedoch (ziemlich) schwache Unterstützung von 3D
+>- Sehr **schlank**; Funktionalität in modularen Pakete aufgeteilt (**CRAN**/MRAN/Bioconductor/GitHub)
 
 >- Objekte, **Daten** etc. sind explizit in **RAM** gespeichert (100 Mil. x 5 Matrix ~ 4 GB RAM)
 
@@ -94,9 +88,10 @@ output:
 
 ## Explorative Datenanalyse (EDA)
 
-<img src="http://upload.wikimedia.org/wikipedia/en/b/ba/Data_visualization_process_v1.png" height="550" weight="660">
+>- EDA untersucht und begutachtet Daten, von denen nur ein geringes Wissen über deren Zusammenhänge vorliegt.
 
-## Datensatze laden
+<img src="http://upload.wikimedia.org/wikipedia/en/b/ba/Data_visualization_process_v1.png" height="450" weight="660">
+
 
 ```{r, message=FALSE, cache=TRUE, echo=FALSE}
 library(xlsx)
@@ -105,26 +100,21 @@ dataset.S <- read.xlsx("../Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
 dataset.P <- read.xlsx("../Data/DataSet_Product.xlsx", sheetIndex = 1, endRow=302)
 ```
 
-## Summary Statistics
-
-```{r, cache=TRUE, echo=FALSE}
-options(width=100)
-summary(dataset.S)
-```
-
 
 ## Korrelation
 
->- Korrelation beschreibt eine Beziehung zwischen zwei Merkmalen, welches in einer Zahl ausgedruckt ist.
+>- Beschreibt eine Beziehung zwischen eine oder mehrere Merkmalen
 
->- Wert der Korrelation 0-1
-1. p = 1 "Starke (possitive/negative) Korrelation"
-2. p = 0,5 "Schwache (possitive/negative) Korrelation"
-3. p = 0 "Keine Korrelation"
+>- Korrelation als Maß des Zusammenhangs
+    + -1   = "Starker negativer Zusammenhang"
+    + 0    = "Kein Zusammenhang"
+    + 1    = "Starker possitiver Zusammenhang"
+
+>- Korrelation beschreibt keine Ursache-Wirkung-Beziehung (keine Kausalität)
 
 ## Korrelations Plot
 
-```{r, message=FALSE, out.width="550px", cache=TRUE, echo=FALSE}
+```{r, message=FALSE, out.width="650px", cache=TRUE, echo=FALSE}
 library(corrplot)
 library(ggplot2)
 
@@ -134,6 +124,57 @@ corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
 ```
 
 
+## Streudiagramm  / Scatterplott
+
+>- ist die Graphische Darstellung von beobachteter Wertepaaren zweier statistischer Merkmale
+
+>- die Wertepaare werden in ein kartesischer Koordinatensystem eingetragen -> ergibt Punktewolke
+
+>- das Muster im Streudiagramm gibt Infos über die Abhängigkeit der beiden Merkmale
+
+
+```{r, message=FALSE, out.width="650px", cache=TRUE, echo=FALSE}
+library(car)
+
+scatterplot(datasetS.kleiner$Acquaintance, datasetS.kleiner$User.Engage, xlab = "x - 1", ylab = "y - 2")
+```
+
+
+## Histogram
+
+>- Ein Histogramm ist eine graphische Darstellung der Häufigkeitsverteilung metrisch skalierter Merkmale. 
+
+**Anwendung**
+
+>- Anwendung finden Histogramme in der beschreibende Statistik und in der Bildverarbeitung. Man verwendet Histogramme beispielsweise dann
+    + wenn man den Verlauf der Häufigkeitsverteilung sehen möchte und nicht nur zusammenfassende Daten wie den Mittelwerte und die Standardabweichung,
+    + wenn man vermutet, dass mehrere Faktoren einen Prozess beeinflussen, und man diese nachweisen will,
+    + wenn man sinnvolle Spezifikationsgrenzen für einen Prozess definieren möchte.
+
+## QQ-Plot
+
+>- Ein Quantile-Quantile-Plot ist ein exploratives, grafisches Werkzeug, in dem die Quantile zweier statistischer Variablen gegeneinander abgetragen werden, um ihre Verteilungen zu vergleichen und zu uberprüfen .
+
+>- Ergeben die Punkte (annähernd) eine Gerade, kann man vermuten, dass den beiden Merkmalen die gleiche Verteilung zu Grunde liegt. 
+
+```{r, message=FALSE, cache=TRUE, echo=FALSE}
+
+qqnorm(datasetS.kleiner$User.Engage)
+qqline(datasetS.kleiner$User.Engage)
+
+```
+
+
+
+
+```{r, message=FALSE, cache=TRUE, echo=FALSE}
+library(ggplot2)
+
+m <- ggplot(datasetS.kleiner, aes(x=Acquaintance))
+m <- m + geom_histogram(aes(y=..density..), colour="black", fill="white")
+m <- m + geom_density()
+m
+```
 
 
 ## Resultate / Fazit
@@ -162,10 +203,10 @@ Was verlaslich sind die Ergebsniesse von Korrelation
 ## Wir danken für die Aufmerksamkeit !
 
 ### Folgenden Werkzeuge wurden benutzt:
-   + Presentation wurde mit [R Markdown](http://rmarkdown.rstudio.com/) erstellt.
-   + Beste IDE für R - [RStudio](http://www.rstudio.com)
-   + Web Applikations Framework für R - [Shiny @ RStudio](http://shiny.rstudio.com/)
-   + <https://github.com/dmpe/SemesterProject>
++ Presentation wurde mit [R Markdown](http://rmarkdown.rstudio.com/) erstellt.
++ Beste IDE für R - [RStudio](http://www.rstudio.com)
++ Web Applikations Framework für R - [Shiny @ RStudio](http://shiny.rstudio.com/)
++ <https://github.com/dmpe/SemesterProject>
 
 <img src="http://www.rstudio.com/wp-content/uploads/2014/03/blue-250.png">
 <img src="http://cdn.tutsplus.com/net/uploads/2013/08/github-collab-retina-preview.gif" width="200" height="200">
