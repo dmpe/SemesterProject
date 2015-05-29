@@ -14,7 +14,7 @@ output:
     widescreen: yes
 ---
 
-## Agenda | 24 Folien | 20 Minuten | 4 Teilnehmer | 1 Resultat
+## Agenda | 20 Folien | 20 Minuten | 4 Teilnehmer
 
 1. Einführung in das Projekt    
 2. Einführung ins `R`           
