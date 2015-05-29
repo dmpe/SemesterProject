@@ -61,9 +61,9 @@ Zielen:
 
 >- Geschrieben in **`C`** (35%) & `Fortan` (24%) & `R` (38%)
 
->- Sehr **schlank**; Funktionalität in modularen Pakete aufgeteilt (**CRAN**/Bioconductor/GitHub)
+>- Sehr **schlank** -> Funktionalität in modularen Pakete aufgeteilt (**CRAN**/Bioconductor/GitHub)
 
->- Objekte, **Daten** etc. sind explizit in **RAM** gespeichert (100 Mil. x 5 Matrix ~ 4 GB RAM)
+>- Objekte, **Daten** etc. sind explizit in **RAM** gespeichert (100 Mil. x 5 Matrix ~ 4 GB RAM [5])
 
 >- Funktionalität basiert auf Basis der **Nachfrage** und der **Nutzerbeiträge**
 
@@ -195,6 +195,7 @@ Was verlaslich sind die Ergebsniesse von Korrelation
 1. https://github.com/rdpeng/courses/blob/master/02_RProgramming/OverviewHistoryR/index.md
 2. http://en.wikipedia.org/wiki/R_%28programming_language%29
 4. http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf
+5. http://www.stat.yale.edu/~mjk56/temp/bigmemory-vignette.pdf
 7. https://www-conf.slac.stanford.edu/xldb2015/Talks2015/9_Tues_Chambers-XLDBConference.pdf
 8. https://github.com/rstudio/webinars/blob/master/2015-05/How-to-start-Shiny-1/01-How-to-start.pdf
 9. https://www.iconfinder.com/iconsets/small-n-flat
