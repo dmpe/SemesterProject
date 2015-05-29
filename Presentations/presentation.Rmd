@@ -27,15 +27,18 @@ output:
 
 ## Einführung in das Projekt
 
->- defition der Begriff "electronic word of mouth" oder electronische Mundpropaganda.  
->- Soziale Netzwerke
->- Austauch von Information Zwischen Mensche
->- günstigste und wirkungsvollste Marketingsinstrument
+>- Datenanalyse  mit der Programmiersprache R
 
->-  Ziel
->- Analyse der Wirkung des Mundpropaganda durch R
->- zusammenhang zwischen bekanntheitgrad, erfahrung und Kundenbildung
+>- Mermal:
 
+1. Bekanntheitsgrad(acquaintance)
+2. Kundenbindung(User engagement)
+3. Erfahrung(experience)
+
+>- Zielen
+
+1. Zusammenhang zwischen die Merkmal
+2. Daten Transformation
 
 - Erklarung von den 3 Begriffen ( Experience, Acqutaince, User Engage)
 - Mithilfe R Zusammenhang der Daten überprüft
@@ -49,7 +52,7 @@ output:
 
 >- `R` ist Implementierung von `S` (*John Chambers et al.* @ Bell Labs 1976)
 
->- `R` entsteht von *Ross Ihaka* and *Robert Gentleman* in **1991**, seit 1995 unter **GNU General Public License**
+>- Pionier von *Ross Ihaka* and *Robert Gentleman* in **1991**, seit 1995 unter **GNU General Public License**
 
 >- Erst aber 2000 **stabil** und aktiv von **R Core Group** weiter entwickelt
 
@@ -63,6 +66,8 @@ output:
 >- Syntax ist sehr **ähnlich** zu S-PLUS
 
 >- Sehr **schlank**; Funktionalität in modularen Pakete aufgeteilt (CRAN/MRAN/Bioconductor/GitHub)
+
+>- Ein Werkzeug zur statischen Datenanalyse und zur grafischen Darstellung von Daten
 
 >- Excelente Grafik Fähigkeiten, jedoch (ziemlich) schwache Unterstützung von 3D
 
