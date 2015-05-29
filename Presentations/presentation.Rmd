@@ -88,7 +88,7 @@ output:
 
 ## Explorative Datenanalyse (EDA)
 
->- EDA untersucht und begutachtet Daten, von denen nur ein geringes Wissen über deren Zusammenhänge vorliegt.
+EDA untersucht und begutachtet Daten, von denen nur ein geringes Wissen über deren Zusammenhänge vorliegt.
 
 <img src="http://upload.wikimedia.org/wikipedia/en/b/ba/Data_visualization_process_v1.png" height="450" weight="660">
 
@@ -132,7 +132,6 @@ corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
 
 >- das Muster im Streudiagramm gibt Infos über die Abhängigkeit der beiden Merkmale
 
-
 ```{r, message=FALSE, out.width="650px", cache=TRUE, echo=FALSE}
 library(car)
 
@@ -142,18 +141,18 @@ scatterplot(datasetS.kleiner$Acquaintance, datasetS.kleiner$User.Engage, xlab = 
 
 ## Histogram
 
->- Ein Histogramm ist eine graphische Darstellung der Häufigkeitsverteilung metrisch skalierter Merkmale. 
+>- Ist eine graphische Darstellung der Häufigkeitsverteilung metrisch skalierter Merkmale. 
 
 **Anwendung**
 
->- Anwendung finden Histogramme in der beschreibende Statistik und in der Bildverarbeitung. Man verwendet Histogramme beispielsweise dann
-    + wenn man den Verlauf der Häufigkeitsverteilung sehen möchte und nicht nur zusammenfassende Daten wie den Mittelwerte und die Standardabweichung,
-    + wenn man vermutet, dass mehrere Faktoren einen Prozess beeinflussen, und man diese nachweisen will,
-    + wenn man sinnvolle Spezifikationsgrenzen für einen Prozess definieren möchte.
+>- in der beschreibende Statistik und in der Bildverarbeitung
+    + wenn man den Verlauf der Häufigkeitsverteilung sehen möchte
+    + wenn man vermutet, dass mehrere Faktoren einen Prozess beeinflussen, und man diese nachweisen will
+    + wenn man sinnvolle Spezifikationsgrenzen für einen Prozess definieren möchte
 
 ## QQ-Plot
 
->- Ein Quantile-Quantile-Plot ist ein exploratives, grafisches Werkzeug, in dem die Quantile zweier statistischer Variablen gegeneinander abgetragen werden, um ihre Verteilungen zu vergleichen und zu uberprüfen .
+>- Ist ein exploratives, grafisches Werkzeug, in dem die Quantile zweier statistischer Variablen gegeneinander abgetragen werden, um ihre Verteilungen zu vergleichen und zu uberprüfen .
 
 >- Ergeben die Punkte (annähernd) eine Gerade, kann man vermuten, dass den beiden Merkmalen die gleiche Verteilung zu Grunde liegt. 
 
