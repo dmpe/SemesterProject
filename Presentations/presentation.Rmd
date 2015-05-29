@@ -71,13 +71,13 @@ Zielen:
 
 ## Shiny Framework
 
->- R & Web Framework für interaktive Anwendungen
+>- R framework für interaktive Web Anwendungen
 
 >- Basiert auf Twitter's `Bootstrap` ("*the most popular HTML, CSS, and JS framework*" [17])
 
->- **Ziel**: Wie arbeitet man mit `Shiny` & `R` ?
+>- **Ziel**: Wie arbeitet man mit `Shiny` ?
 
->- Jede Shiny App. besteht aus min. 2 Dateien: 
+>- Jede Shiny App. besteht aus: 
     + **UI.R** -> steuert das **Layout und Aussehen**.
     + **SERVER.R** -> enthält Befehle z.B. zur **Berechnungen, Grafiken** usw.
 
@@ -168,14 +168,13 @@ m
 
 ## QQ-Plot
 
->- Ist ein exploratives, grafisches Werkzeug, in dem die Quantile zweier statistischer Variablen gegeneinander abgetragen werden, um ihre Verteilungen zu vergleichen und zu uberprüfen
+>- Grafisches Werkzeug, in dem die Quantile zweier statistischer Variablen gegeneinander abgetragen werden, um ihre Verteilungen zu vergleichen und zu uberprüfen [11]
 
 >- Ergeben die Punkte (annähernd) eine Gerade, kann man vermuten, dass den beiden Merkmalen die gleiche Verteilung zu Grunde liegt
 
 ## QQ-Plot von User Engagement
 
 ```{r, message=FALSE, out.width="650px", out.heigh="450px", cache=TRUE, echo=FALSE}
-
 qqnorm(datasetS.kleiner$User.Engage)
 qqline(datasetS.kleiner$User.Engage)
 ```

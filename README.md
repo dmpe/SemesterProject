@@ -1,11 +1,11 @@
-Statistical 'Data Analysis' Project during the Spring Semester '15
+'Data Analysis' Project during the Spring Semester '15
 ===============
 
 ### Content:
 
 - Exercises with R
 - Code scripts & Data for our project
-- Final `R Markdown` ioslide presentation (in German, though)
+- Final `RMarkdown` ioslide presentation (in German, though)
 
 ### Authors:
 
@@ -13,10 +13,6 @@ Statistical 'Data Analysis' Project during the Spring Semester '15
 - R.G.
 - M.S.
 - J.F.M.S.
-
-### RPubs
-
-As a small exercise I have created <http://rpubs.com/F789GH/NYCAttorneyRegistrations> (unnecessary for the project). 
 
 ### Two data sets, called as :
 
@@ -36,17 +32,13 @@ As a small exercise I have created <http://rpubs.com/F789GH/NYCAttorneyRegistrat
         + [Shiny](http://shiny.b40.cz/SemesterProject/shiny/) nutzen ? ggf. wie mit PP verbinden
 
 
-###
-wann nimmt Fx der Wert zw. 0-1
-
-#### Links
-
-- <https://rpubs.com/czarrar/facemem_connectivity_r>
-
 ### Ideas ?
 
 - Merkmale (Feature ?, i.e. types of variable, e.g. discrete, continues etc.)
 - Haufigkeiten (Frequencies, e.g. histograms)
 - Correlation
-- Linear Model
-- Cluster Ana.
+
+### RPubs
+
+- As a small exercise I have created <http://rpubs.com/F789GH/NYCAttorneyRegistrations> (unnecessary for the project). 
+- <https://rpubs.com/czarrar/facemem_connectivity_r>
