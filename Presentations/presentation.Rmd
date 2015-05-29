@@ -14,15 +14,15 @@ output:
     widescreen: yes
 ---
 
-## Agenda | 24 Folien | 20 Minuten | 4 Teilnehmer | 1 Resultate
+## Agenda | 24 Folien | 20 Minuten | 4 Teilnehmer | 1 Resultat
 
 1. Einführung in das Projekt    
 2. Einführung ins `R`           
-3. Interaktive Applikation mit `Shiny Framework`  
-4. Explorative Datenanalyse
+3. Explorative Datenanalyse
     + EDA 
     + Korrelation (Streudiagramm)   
-    + Historgramm (QQ-Plot, Normalverteilung) 
+    + Historgramm (Normalverteilung, QQ-Plot) 
+4. Interaktive Applikation mit `Shiny Framework` 
 5. Ergebnisse/Zusammenfassung 
 
 ## Einführung in das Projekt
@@ -31,9 +31,9 @@ Datenanalyse  mit der Programmiersprache R
 
 Mermal:
 
-1. Bekanntheitsgrad(acquaintance)
-2. Kundenbindung(User engagement)
-3. Erfahrung(experience)
+1. Bekanntschaft/Kenntniss (Acquaintance)
+2. Benutzer Engagement
+3. Erfahrung (Experience)
 
 Zielen:
 
@@ -46,40 +46,40 @@ Zielen:
 - Ziel des Projektes 
 - ....
 
-## Ein Bischen Geschichte von `S` & `R`
+## Geschichte von `S` & `R`
 
->- `R` ist Implementierung von `S` (*John Chambers et al.* @ Bell Labs 1976)
+>- `R` ist eine Implementierung von `S` (*John Chambers et al.* @ Bell Labs 1976)
 
 >- Pionier von *Ross Ihaka* and *Robert Gentleman* in **1991**, seit 1995 unter **GNU General Public License**
 
 >- Erst aber 2000 **stabil** und aktiv von **R Core Group** weiter entwickelt
 
 >- Heute >2 Implementierungen: `S-PLUS` (commerziel) und **`R`** (GNU project) 
-    + mit vielen weiteren Distributionen: ($MSFT) `Revolution R Open`, `Oracle R Enterprise`
+    + mit vielen weiteren Distributionen: `Revolution R Open`, `Oracle R Enterprise`
 
 ## R
 
 >- Geschrieben in **`C`** (35%) & `Fortan` (24%) & `R` (38%)
 
->- Sehr **schlank**; Funktionalität in modularen Pakete aufgeteilt (**CRAN**/MRAN/Bioconductor/GitHub)
+>- Sehr **schlank**; Funktionalität in modularen Pakete aufgeteilt (**CRAN**/Bioconductor/GitHub)
 
 >- Objekte, **Daten** etc. sind explizit in **RAM** gespeichert (100 Mil. x 5 Matrix ~ 4 GB RAM)
 
 >- Funktionalität basiert auf Basis der **Nachfrage** und der **Nutzerbeiträge**
 
->- Heute sehr populär bei **Forschern für Data Mining** Zwecke, statt *Excel, Stata* usw. (z.B. TIOBE Index). 
+>- Heute populär bei **Forschern für Data Mining** Zwecke, statt *Excel, Stata* usw. (z.B. TIOBE Index [15]). 
 
-## `Shiny Framework`
+## Shiny Framework
 
->- R/Web Framework für interaktive Anwendungen
+>- R & Web Framework für interaktive Anwendungen
 
->- Basiert auf Twitter's Bootstrap framework ("the most popular HTML, CSS, and JS framework")
+>- Basiert auf Twitter's `Bootstrap` ("*the most popular HTML, CSS, and JS framework*" [17])
 
->- **Ziel**: Wie man mit `Shiny` & `R` arbeiten kann ?
+>- **Ziel**: Wie arbeitet man mit `Shiny` & `R` ?
 
 >- Jede Shiny App. besteht aus min. 2 Dateien: 
-    + **UI.R**: steuert das **Layout und Aussehen**.
-    + **SERVER.R**: enthält Befehle z.B. zur **Berechnungen, Grafiken** usw.
+    + **UI.R** -> steuert das **Layout und Aussehen**.
+    + **SERVER.R** -> enthält Befehle z.B. zur **Berechnungen, Grafiken** usw.
 
 >- <span style="color: red">Live DEMO</span>: <http://shiny.b40.cz/SemesterProject/shiny>
 
@@ -97,12 +97,10 @@ dataset.S <- read.xlsx("../Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
 dataset.P <- read.xlsx("../Data/DataSet_Product.xlsx", sheetIndex = 1, endRow=302)
 ```
 
-
 ## Korrelation
 
 >- Beschreibt eine Beziehung zwischen ein oder mehreren Merkmalen
-
->- Korrelation beschreibt keine Ursache-Wirkung-Beziehung (keine Kausalität)
+    + gibt aber **keine** Ursache-Wirkung-Beziehung (keine Kausalität)
 
 >- Korrelation als Maß des Zusammenhangs
     + -1   = "Starker negativer Zusammenhang"
@@ -111,43 +109,62 @@ dataset.P <- read.xlsx("../Data/DataSet_Product.xlsx", sheetIndex = 1, endRow=30
 
 ## Korrelations Plot
 
-```{r, message=FALSE, out.width="650px", out.height="550px", cache=TRUE, echo=FALSE}
+```{r, message=FALSE, out.width="640px", out.height="530px", cache=TRUE, echo=FALSE, fig.align='center'}
 library(corrplot)
-library(ggplot2)
 
 datasetS.kleiner <- dataset.S[, !names(dataset.S) %in% c("Gender", "Duration", "Experience", "Post.ID")]
 datasetS.kleiner.cor <- cor(datasetS.kleiner)
 corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
 ```
 
+## Streudiagramm  (Scatter Plot)
 
-## Streudiagramm  / Scatterplott
-
->- Ist die Graphische Darstellung von beobachteter Wertepaaren zweier statistischer Merkmale [13]
+>- *"Ist die graphische Darstellung von beobachteter Wertepaaren zweier statistischer Merkmale*" [13]
 
 >- Die Wertepaare werden in ein kartesischer Koordinatensystem eingetragen -> ergibt Punktwolke
 
->- Das Muster im Streudiagramm gibt Infos über die Abhängigkeit der beiden Merkmale
+>- Das Muster gibt Infos über die Abhängigkeit der beiden Merkmale
 
-## Streudiagramm
+## Diagramm von Acquaintance & User Engage.
 
-```{r, message=FALSE, out.width="650px", cache=TRUE, echo=FALSE}
+```{r, message=FALSE, out.width="670px", cache=TRUE, echo=FALSE, fig.align='center'}
 library(car)
 
-scatterplot(datasetS.kleiner$Acquaintance, datasetS.kleiner$User.Engage, xlab = "x - 1", ylab = "y - 2")
+scatterplot(datasetS.kleiner$Acquaintance, datasetS.kleiner$User.Engage, xlab = "Acquaintance", ylab = "User Engagement")
 ```
 
+## Histogramm
 
-## Histogram
-
->- Ist eine graphische Darstellung der Häufigkeitsverteilung metrisch skalierter Merkmale. 
+"*Ist eine graphische Darstellung der Häufigkeitsverteilung metrisch skalierter Merkmale.*" [14]
 
 **Anwendung**
 
->- In der beschreibende Statistik und in der Bildverarbeitung
+- u.a. in der beschreibende Statistik
     + wenn man den Verlauf der Häufigkeitsverteilung sehen möchte
     + wenn man vermutet, dass mehrere Faktoren einen Prozess beeinflussen, und man diese nachweisen will
-    + wenn man sinnvolle Spezifikationsgrenzen für einen Prozess definieren möchte
+
+## Histogramm von User Engagement
+
+```{r, message=FALSE, out.width="650px", out.heigh="450px", cache=TRUE, echo=FALSE}
+library(ggplot2)
+
+m1 <- ggplot(datasetS.kleiner, aes(x=User.Engage))
+m1 <- m1 + geom_histogram(colour="black", fill="white")
+m1
+```
+
+## Normalverteilung
+
+*Unterstellt eine symmetrische Verteilungsform numerischer Daten und wird auch **gaußsche Glockenkurve** genannt* [16] <- NUEU
+
+```{r, message=FALSE, cache=TRUE, echo=FALSE, out.width="650px", out.heigh="430px"}
+library(ggplot2)
+
+m <- ggplot(datasetS.kleiner, aes(x=User.Engage))
+m <- m + geom_histogram(aes(y=..density..), colour="black", fill="white")
+m <- m + geom_density()
+m
+```
 
 ## QQ-Plot
 
@@ -155,43 +172,29 @@ scatterplot(datasetS.kleiner$Acquaintance, datasetS.kleiner$User.Engage, xlab = 
 
 >- Ergeben die Punkte (annähernd) eine Gerade, kann man vermuten, dass den beiden Merkmalen die gleiche Verteilung zu Grunde liegt
 
-```{r, message=FALSE, out.width="650px",out.heigh="450px", cache=TRUE, echo=FALSE}
+## QQ-Plot von User Engagement
+
+```{r, message=FALSE, out.width="650px", out.heigh="450px", cache=TRUE, echo=FALSE}
 
 qqnorm(datasetS.kleiner$User.Engage)
 qqline(datasetS.kleiner$User.Engage)
 ```
 
 
-## Normalverteilung
+## Fazit
 
-Unterstellt eine symmetrische Verteilungsform numerischer Daten und wird auch **gaußsche Glockenkurve** genannt
-
-```{r, message=FALSE, cache=TRUE, echo=FALSE}
-library(ggplot2)
-
-m <- ggplot(datasetS.kleiner, aes(x=Acquaintance))
-m <- m + geom_histogram(aes(y=..density..), colour="black", fill="white")
-m <- m + geom_density()
-m
-```
-
-
-## Resultate / Fazit
-
-Ziel  | Resultat
-------------- | -------------
-Normalverteilung bestatigen/wiederlegen  | Content Cell
-in `R` & `Shiny` einzuarbeiten | <http://shiny.b40.cz/SemesterProject/shiny>
+* Unsere Ziele am Anfang & im Laufe des Projekts :
+    + In `R` uns einzuarbeiten (z.B. auch verschiedenen Prackages zu nutzen)
+    + Untersuchung von Daten auf die Zusammenhange (e.g. durch Korrelation, Normalverteilung)
+    + Normalverteilung zusatzlich durch QQ-Plots zu bestatigen
+    
 
 Was verlaslich sind die Ergebsniesse von Korrelation
 
 ## Quellen
 1. https://github.com/rdpeng/courses/blob/master/02_RProgramming/OverviewHistoryR/index.md
 2. http://en.wikipedia.org/wiki/R_%28programming_language%29
-3. http://rmarkdown.rstudio.com/
 4. http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf
-5. http://www.stat.yale.edu/~mjk56/temp/bigmemory-vignette.pdf
-6. https://netzgemeinschaft.wordpress.com/2011/02/02/ewom-der-wert-der-kundenempfehlung-part-i/
 7. https://www-conf.slac.stanford.edu/xldb2015/Talks2015/9_Tues_Chambers-XLDBConference.pdf
 8. https://github.com/rstudio/webinars/blob/master/2015-05/How-to-start-Shiny-1/01-How-to-start.pdf
 9. https://www.iconfinder.com/iconsets/small-n-flat
@@ -199,6 +202,10 @@ Was verlaslich sind die Ergebsniesse von Korrelation
 11. http://en.wikipedia.org/wiki/Q%E2%80%93Q_plot
 12. http://de.wikipedia.org/wiki/Explorative_Datenanalyse
 13. http://de.wikipedia.org/wiki/Streudiagramm
+14. http://de.wikipedia.org/wiki/Histogramm
+15. http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html
+16. http://de.statista.com/statistik/lexikon/definition/95/normalverteilung/
+17. http://getbootstrap.com/
 
 ## Wir danken für die Aufmerksamkeit !
 
