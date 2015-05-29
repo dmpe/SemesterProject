@@ -16,14 +16,14 @@ output:
 
 ## Agenda | 24 Folien | 20 Minuten | 4 Teilnehmer | 3 Resultate
 
-1. Einführung in das Projekt    F
-2. Einführung ins `R`           F
-3. Interaktive Applikation mit `Shiny Framework`    P
-4. Explorative Datenanalyse (EDA)
-    + EDA ?                 M
-    + Korrelation (Streudiagramm)   R 
-    + Historgramm (QQ-Plot, Normalverteilung)   M 
-5. Ergebnisse/Zusammenfassung   P
+1. Einführung in das Projekt    
+2. Einführung ins `R`           
+3. Interaktive Applikation mit `Shiny Framework`  
+4. Explorative Datenanalyse
+    + EDA 
+    + Korrelation (Streudiagramm)   
+    + Historgramm (QQ-Plot, Normalverteilung) 
+5. Ergebnisse/Zusammenfassung 
 
 ## Einführung in das Projekt
 
