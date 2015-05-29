@@ -14,7 +14,7 @@ output:
     widescreen: yes
 ---
 
-## Agenda | 24 Folien | 20 Minuten | 4 Teilnehmer | 3 Resultate
+## Agenda | 24 Folien | 20 Minuten | 4 Teilnehmer | 1 Resultate
 
 1. Einführung in das Projekt    
 2. Einführung ins `R`           
@@ -27,15 +27,15 @@ output:
 
 ## Einführung in das Projekt
 
->- Datenanalyse  mit der Programmiersprache R
+Datenanalyse  mit der Programmiersprache R
 
->- Mermal:
+Mermal:
 
 1. Bekanntheitsgrad(acquaintance)
 2. Kundenbindung(User engagement)
 3. Erfahrung(experience)
 
->- Zielen
+Zielen:
 
 1. Zusammenhang zwischen die Merkmal
 2. Daten Transformation
@@ -46,8 +46,6 @@ output:
 - Ziel des Projektes 
 - ....
 
-
-
 ## Ein Bischen Geschichte von `S` & `R`
 
 >- `R` ist Implementierung von `S` (*John Chambers et al.* @ Bell Labs 1976)
@@ -57,7 +55,7 @@ output:
 >- Erst aber 2000 **stabil** und aktiv von **R Core Group** weiter entwickelt
 
 >- Heute >2 Implementierungen: `S-PLUS` (commerziel) und **`R`** (GNU project) 
-    + mit vielen weiteren Distributionen: `Revolution R Open` ($MSFT), `Oracle R Enterprise`
+    + mit vielen weiteren Distributionen: ($MSFT) `Revolution R Open`, `Oracle R Enterprise`
 
 ## R
 
@@ -71,14 +69,13 @@ output:
 
 >- Heute sehr populär bei **Forschern für Data Mining** Zwecke, statt *Excel, Stata* usw. (z.B. TIOBE Index). 
 
-
 ## `Shiny Framework`
 
 >- R/Web Framework für interaktive Anwendungen
 
->- HTML/CSS/JavaScript Kenntnisse werden nicht benötigt (basiert auf Twitter's Bootstrap)
+>- Basiert auf Twitter's Bootstrap framework ("the most popular HTML, CSS, and JS framework")
 
->- **Ziel**: Ausprobieren, wie man mit `Shiny` & `R` arbeiten kann
+>- **Ziel**: Wie man mit `Shiny` & `R` arbeiten kann ?
 
 >- Jede Shiny App. besteht aus min. 2 Dateien: 
     + **UI.R**: steuert das **Layout und Aussehen**.
@@ -88,7 +85,7 @@ output:
 
 ## Explorative Datenanalyse (EDA)
 
-EDA untersucht und begutachtet Daten, von denen nur ein geringes Wissen über deren Zusammenhänge vorliegt.
+"*EDA untersucht und begutachtet Daten, von denen nur ein geringes Wissen über deren Zusammenhänge vorliegt.*" [12]
 
 <img src="http://upload.wikimedia.org/wikipedia/en/b/ba/Data_visualization_process_v1.png" height="450" weight="660">
 
@@ -103,18 +100,18 @@ dataset.P <- read.xlsx("../Data/DataSet_Product.xlsx", sheetIndex = 1, endRow=30
 
 ## Korrelation
 
->- Beschreibt eine Beziehung zwischen eine oder mehrere Merkmalen
+>- Beschreibt eine Beziehung zwischen ein oder mehreren Merkmalen
+
+>- Korrelation beschreibt keine Ursache-Wirkung-Beziehung (keine Kausalität)
 
 >- Korrelation als Maß des Zusammenhangs
     + -1   = "Starker negativer Zusammenhang"
     + 0    = "Kein Zusammenhang"
     + 1    = "Starker possitiver Zusammenhang"
 
->- Korrelation beschreibt keine Ursache-Wirkung-Beziehung (keine Kausalität)
-
 ## Korrelations Plot
 
-```{r, message=FALSE, out.width="650px", cache=TRUE, echo=FALSE}
+```{r, message=FALSE, out.width="650px", out.height="550px", cache=TRUE, echo=FALSE}
 library(corrplot)
 library(ggplot2)
 
@@ -126,11 +123,13 @@ corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
 
 ## Streudiagramm  / Scatterplott
 
->- ist die Graphische Darstellung von beobachteter Wertepaaren zweier statistischer Merkmale
+>- Ist die Graphische Darstellung von beobachteter Wertepaaren zweier statistischer Merkmale [13]
 
->- die Wertepaare werden in ein kartesischer Koordinatensystem eingetragen -> ergibt Punktewolke
+>- Die Wertepaare werden in ein kartesischer Koordinatensystem eingetragen -> ergibt Punktwolke
 
->- das Muster im Streudiagramm gibt Infos über die Abhängigkeit der beiden Merkmale
+>- Das Muster im Streudiagramm gibt Infos über die Abhängigkeit der beiden Merkmale
+
+## Streudiagramm
 
 ```{r, message=FALSE, out.width="650px", cache=TRUE, echo=FALSE}
 library(car)
@@ -145,7 +144,7 @@ scatterplot(datasetS.kleiner$Acquaintance, datasetS.kleiner$User.Engage, xlab = 
 
 **Anwendung**
 
->- in der beschreibende Statistik und in der Bildverarbeitung
+>- In der beschreibende Statistik und in der Bildverarbeitung
     + wenn man den Verlauf der Häufigkeitsverteilung sehen möchte
     + wenn man vermutet, dass mehrere Faktoren einen Prozess beeinflussen, und man diese nachweisen will
     + wenn man sinnvolle Spezifikationsgrenzen für einen Prozess definieren möchte
@@ -181,24 +180,25 @@ m
 
 Ziel  | Resultat
 ------------- | -------------
-R einzuarbeiten | <img src="pictures/sign-check.png" width="30" height="30">
-`Shiny` untersuchen | <http://shiny.b40.cz/SemesterProject/shiny>
 Normalverteilung bestatigen/wiederlegen  | Content Cell
-
-Wie gut sind die 
+in `R` & `Shiny` einzuarbeiten | <http://shiny.b40.cz/SemesterProject/shiny>
 
 Was verlaslich sind die Ergebsniesse von Korrelation
 
 ## Quellen
-- https://github.com/rdpeng/courses/blob/master/02_RProgramming/OverviewHistoryR/index.md
-- http://en.wikipedia.org/wiki/R_%28programming_language%29
-- http://rmarkdown.rstudio.com/
-- http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf
-- http://www.stat.yale.edu/~mjk56/temp/bigmemory-vignette.pdf
-- https://netzgemeinschaft.wordpress.com/2011/02/02/ewom-der-wert-der-kundenempfehlung-part-i/
-- https://www-conf.slac.stanford.edu/xldb2015/Talks2015/9_Tues_Chambers-XLDBConference.pdf
-- https://github.com/rstudio/webinars/blob/master/2015-05/How-to-start-Shiny-1/01-How-to-start.pdf
-- https://www.iconfinder.com/iconsets/small-n-flat
+1. https://github.com/rdpeng/courses/blob/master/02_RProgramming/OverviewHistoryR/index.md
+2. http://en.wikipedia.org/wiki/R_%28programming_language%29
+3. http://rmarkdown.rstudio.com/
+4. http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf
+5. http://www.stat.yale.edu/~mjk56/temp/bigmemory-vignette.pdf
+6. https://netzgemeinschaft.wordpress.com/2011/02/02/ewom-der-wert-der-kundenempfehlung-part-i/
+7. https://www-conf.slac.stanford.edu/xldb2015/Talks2015/9_Tues_Chambers-XLDBConference.pdf
+8. https://github.com/rstudio/webinars/blob/master/2015-05/How-to-start-Shiny-1/01-How-to-start.pdf
+9. https://www.iconfinder.com/iconsets/small-n-flat
+10. http://de.wikipedia.org/wiki/Quantile-Quantile-Plot
+11. http://en.wikipedia.org/wiki/Q%E2%80%93Q_plot
+12. http://de.wikipedia.org/wiki/Explorative_Datenanalyse
+13. http://de.wikipedia.org/wiki/Streudiagramm
 
 ## Wir danken für die Aufmerksamkeit !
 
