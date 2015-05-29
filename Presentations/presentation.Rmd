@@ -152,19 +152,20 @@ scatterplot(datasetS.kleiner$Acquaintance, datasetS.kleiner$User.Engage, xlab = 
 
 ## QQ-Plot
 
->- Ist ein exploratives, grafisches Werkzeug, in dem die Quantile zweier statistischer Variablen gegeneinander abgetragen werden, um ihre Verteilungen zu vergleichen und zu uberprüfen .
+>- Ist ein exploratives, grafisches Werkzeug, in dem die Quantile zweier statistischer Variablen gegeneinander abgetragen werden, um ihre Verteilungen zu vergleichen und zu uberprüfen
 
->- Ergeben die Punkte (annähernd) eine Gerade, kann man vermuten, dass den beiden Merkmalen die gleiche Verteilung zu Grunde liegt. 
+>- Ergeben die Punkte (annähernd) eine Gerade, kann man vermuten, dass den beiden Merkmalen die gleiche Verteilung zu Grunde liegt
 
-```{r, message=FALSE, cache=TRUE, echo=FALSE}
+```{r, message=FALSE, out.width="650px",out.heigh="450px", cache=TRUE, echo=FALSE}
 
 qqnorm(datasetS.kleiner$User.Engage)
 qqline(datasetS.kleiner$User.Engage)
-
 ```
 
 
+## Normalverteilung
 
+Unterstellt eine symmetrische Verteilungsform numerischer Daten und wird auch **gaußsche Glockenkurve** genannt
 
 ```{r, message=FALSE, cache=TRUE, echo=FALSE}
 library(ggplot2)
