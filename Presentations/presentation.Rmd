@@ -69,20 +69,6 @@ Zielen:
 
 >- Heute populär bei **Forschern für Data Mining** Zwecke, statt *Excel, Stata* usw. (z.B. TIOBE Index [15]). 
 
-## Shiny Framework
-
->- R framework für interaktive Web Anwendungen
-
->- Basiert auf Twitter's `Bootstrap` ("*the most popular HTML, CSS, and JS framework*" [17])
-
->- **Ziel**: Wie arbeitet man mit `Shiny` ?
-
->- Jede Shiny App. besteht aus: 
-    + **UI.R** -> steuert das **Layout und Aussehen**.
-    + **SERVER.R** -> enthält Befehle z.B. zur **Berechnungen, Grafiken** usw.
-
->- <span style="color: red">Live DEMO</span>: <http://shiny.b40.cz/SemesterProject/shiny>
-
 ## Explorative Datenanalyse (EDA)
 
 "*EDA untersucht und begutachtet Daten, von denen nur ein geringes Wissen über deren Zusammenhänge vorliegt.*" [12]
@@ -179,6 +165,19 @@ qqnorm(datasetS.kleiner$User.Engage)
 qqline(datasetS.kleiner$User.Engage)
 ```
 
+## Shiny Framework
+
+>- R framework für interaktive Web Anwendungen
+
+>- Basiert auf Twitter's `Bootstrap` ("*the most popular HTML, CSS, and JS framework*" [17])
+
+>- **Ziel**: Wie arbeitet man mit `Shiny` ?
+
+>- Jede Shiny App. besteht aus: 
+    + **UI.R** -> steuert das **Layout und Aussehen**.
+    + **SERVER.R** -> enthält Befehle z.B. zur **Berechnungen, Grafiken** usw.
+
+>- <span style="color: red">Live DEMO</span>: <http://shiny.b40.cz/SemesterProject/shiny>
 
 ## Fazit
 
