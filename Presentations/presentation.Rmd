@@ -190,6 +190,23 @@ qqline(datasetS.kleiner$User.Engage)
 
 ## Fazit
 
+
+```{r}
+library(DiagrammeR)
+
+mermaid("
+graph LR
+  A-->B
+  A-->C
+  C-->E
+  B-->D
+  C-->D
+  D-->F
+  E-->F
+")
+
+```
+
 * Unsere Ziele :
     + In `R` einzuarbeiten (z.B. auch verschiedenen Packages zu nutzen)
     + Zusammenhange in den Daten untersuchen (e.g. durch Korrelation, Normalverteilung)
