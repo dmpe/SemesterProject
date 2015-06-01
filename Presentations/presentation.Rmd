@@ -191,18 +191,17 @@ qqline(datasetS.kleiner$User.Engage)
 ## Fazit
 
 
-```{r}
+```{r, echo=FALSE, message=FALSE, out.width="650px", out.heigh="450px"}
 library(DiagrammeR)
 
 mermaid("
-graph LR
-  A-->B
-  A-->C
-  C-->E
-  B-->D
-  C-->D
-  D-->F
-  E-->F
+graph TD
+  A-->B[Einarbeitung in R]
+  A[Start]-->C[EDA]
+  C[EDA]-->D[Korrelation]
+  D-->E[Normalverteilung bestatigen]
+  E-->F[Potenz Transformation]
+  F-->G[Regression]
 ")
 
 ```
