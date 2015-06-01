@@ -1,7 +1,7 @@
 ---
 title: 'Daten Analyse mit R'
 author: "Dmitrij Petrov, Rahman Gökbulut, Mesut Sahin, Jeanne Falonne Magne Signe"
-date: "25.6.2015"
+date: "2.7.2015"
 output:
   ioslides_presentation:
     fig_height: 6
@@ -22,7 +22,7 @@ output:
     + EDA 
     + Korrelation (Streudiagramm)   
     + Historgramm (Normalverteilung, QQ-Plot)
-    + Lineares Model (Regression)
+    + Lineare Regression (OLS & MLE)
 4. Interaktive Applikation mit `Shiny Framework` 
 5. Ergebnisse/Zusammenfassung 
 
@@ -166,11 +166,17 @@ qqnorm(datasetS.kleiner$User.Engage)
 qqline(datasetS.kleiner$User.Engage)
 ```
 
+## Lineare Regression
+
+## Methode der kleinsten Quadrate
+
+## Maximum-Likelihood-Methode
+
 ## Shiny Framework
 
 >- R framework für interaktive Web Anwendungen
 
->- Basiert auf Twitter's `Bootstrap` ("*the most popular HTML, CSS, and JS framework*" [17])
+>- Basiert auf Twitter's `Bootstrap` HTML/CSS/JS framework ([17])
 
 >- **Ziel**: Wie arbeitet man mit `Shiny` ?
 
@@ -182,11 +188,11 @@ qqline(datasetS.kleiner$User.Engage)
 
 ## Fazit
 
-* Unsere Ziele am Anfang & im Laufe des Projekts :
-    + In `R` uns einzuarbeiten (z.B. auch verschiedenen Prackages zu nutzen)
-    + Untersuchung von Daten auf die Zusammenhange (e.g. durch Korrelation, Normalverteilung)
-    + Normalverteilung zusatzlich durch QQ-Plots zu bestatigen
-    
+* Unsere Ziele :
+    + In `R` einzuarbeiten (z.B. auch verschiedenen Packages zu nutzen)
+    + Zusammenhange in den Daten untersuchen (e.g. durch Korrelation, Normalverteilung)
+    + Normalverteilung durch QQ-Plots zu bestatigen
+    + Zwei Arten der Regression zu 
 
 Was verlaslich sind die Ergebsniesse von Korrelation
 

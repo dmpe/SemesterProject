@@ -78,7 +78,7 @@ LL <- function(beta0, beta1, mu, sigma) {
   -sum(R)
 }
 
-fit <- lm(Acquaintance ~ User.Engage, data = joinedDataSets.without)
+fit <- lm(User.Engage ~ Acquaintance, data = joinedDataSets.without)
 fit
 
 # The maximum-likelihood estimates for the slope (beta1) and intercept (beta0) are not too bad. 
@@ -92,7 +92,7 @@ logLik(fit2)
 fit3 <-mle2(LL, start = list(beta0 = 101.4, beta1 = 0.36, mu = 0, sigma = 1))
 fit3
 
-confidenceEllipse(lm(Acquaintance ~ User.Engage, data = joinedDataSets.without), levels = 0.99)
+confidenceEllipse(lm(User.Engage ~ Acquaintance, data = joinedDataSets.without), levels = 0.99)
 confidenceEllipse(mle(LL, start = list(beta0 = 101.4, beta1 = 0.36, sigma=1), fixed = list(mu = 0), nobs = length(xAQ2)))
 
 source("http://sites.stat.psu.edu/~dhunter/R/confidence.band.r")
