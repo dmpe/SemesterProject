@@ -47,7 +47,7 @@ Zielen:
 - Ziel des Projektes 
 - ....
 
-## Geschichte von `S` & `R`
+## Geschichte von R
 
 >- `R` ist eine Implementierung von `S` (*John Chambers et al.* @ Bell Labs 1976)
 
@@ -81,7 +81,7 @@ Zielen:
 library(xlsx)
 
 dataset.S <- read.xlsx("../Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
-dataset.P <- read.xlsx("../Data/DataSet_Product.xlsx", sheetIndex = 1, endRow=302)
+# dataset.P <- read.xlsx("../Data/DataSet_Product.xlsx", sheetIndex = 1, endRow=302)
 ```
 
 ## Korrelation
@@ -144,6 +144,8 @@ m1
 
 *Unterstellt eine symmetrische Verteilungsform numerischer Daten und wird auch **gaußsche Glockenkurve** genannt* [16] <- NUEU
 
+## Normalverteilung von User Engagement
+
 ```{r, message=FALSE, cache=TRUE, echo=FALSE, out.width="650px", out.heigh="430px"}
 library(ggplot2)
 
@@ -176,7 +178,7 @@ qqline(datasetS.kleiner$User.Engage)
 
 >- R framework für interaktive Web Anwendungen
 
->- Basiert auf Twitter's `Bootstrap` HTML/CSS/JS framework ([17])
+>- Basiert auf Twitter's `Bootstrap` Web framework [17]
 
 >- **Ziel**: Wie arbeitet man mit `Shiny` ?
 
@@ -192,7 +194,7 @@ qqline(datasetS.kleiner$User.Engage)
     + In `R` einzuarbeiten (z.B. auch verschiedenen Packages zu nutzen)
     + Zusammenhange in den Daten untersuchen (e.g. durch Korrelation, Normalverteilung)
     + Normalverteilung durch QQ-Plots zu bestatigen
-    + Zwei Arten der Regression zu 
+    + 2 Regressions-Methoden zu 
 
 Was verlaslich sind die Ergebsniesse von Korrelation
 
@@ -216,8 +218,8 @@ Was verlaslich sind die Ergebsniesse von Korrelation
 ## Wir danken für die Aufmerksamkeit !
 
 ### Folgenden Werkzeuge wurden benutzt:
-+ Presentation wurde mit [R Markdown](http://rmarkdown.rstudio.com/) erstellt.
-+ Beste IDE für R - [RStudio](http://www.rstudio.com)
++ Presentation mit [R Markdown](http://rmarkdown.rstudio.com/) erstellt.
++ Die Beste IDE für R - [RStudio](http://www.rstudio.com)
 + Web Applikations Framework für R - [Shiny @ RStudio](http://shiny.rstudio.com/)
 + <https://github.com/dmpe/SemesterProject>
 

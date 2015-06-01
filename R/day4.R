@@ -137,7 +137,28 @@ qqline(log(datasetM$Acquaintance))
 
 
 
+##############################
+library(DiagrammeR)
+
+# Create a node data frame
+nodes <- create_nodes(nodes = c("a", "b", "c", "d"),
+               label = FALSE,
+               type = "lower",
+               style = "filled",
+               color = "aqua",
+               shape = c("circle", "circle", "rectangle", "rectangle"),
+               data = c(3.5, 2.6, 9.4, 2.7))
+
+edges <- create_edges(edge_from = c("a", "b", "c"),
+               edge_to = c("d", "c", "a"),
+               relationship = "leading_to")
 
 
+graph <-create_graph(nodes_df = nodes,
+               edges_df = edges,
+               node_attrs = "fontname = Helvetica",
+               edge_attrs = c("color = blue", "arrowsize = 2"))
+
+render_graph(graph)
 
 
