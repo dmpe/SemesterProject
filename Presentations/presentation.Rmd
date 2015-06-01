@@ -21,7 +21,8 @@ output:
 3. Explorative Datenanalyse
     + EDA 
     + Korrelation (Streudiagramm)   
-    + Historgramm (Normalverteilung, QQ-Plot) 
+    + Historgramm (Normalverteilung, QQ-Plot)
+    + Lineares Model (Regression)
 4. Interaktive Applikation mit `Shiny Framework` 
 5. Ergebnisse/Zusammenfassung 
 

@@ -8,6 +8,8 @@ library(car)
 library(dplyr)
 library(plyr)
 
+set.seed(5157)
+
 source("R/day3.R")
 # https://stat.ethz.ch/pipermail/r-help/2011-February/269918.html
 # http://www.cookbook-r.com/Graphs/Facets_%28ggplot2%29/
@@ -92,8 +94,19 @@ qqplot.data(dataset.product$Experience)
 
 
 ## User Engage
-qqnorm(datasetM$User.Engage)
-qqline(datasetM$User.Engage)
+qqnorm(joinedDataSets.without$User.Engage)
+qqline(joinedDataSets.without$User.Engage)
+
+
+qqnorm((datasetM$User.Engage^(-1)-1)/-1)
+qqline((datasetM$User.Engage^(-1)-1)/-1)
+
+cor(qqnorm((joinedDataSets.without$User.Engage^1-1)/1)$x, qqnorm((joinedDataSets.without$User.Engage^1-1)/1)$y)
+
+cor(qqnorm((joinedDataSets.without$User.Engage^2-1)/2)$x, qqnorm((joinedDataSets.without$User.Engage^2-1)/2)$y)
+cor(qqnorm((datasetM$User.Engage^1-1)/1)$x, qqnorm((datasetM$User.Engage^1-1)/1)$y)
+cor(qqnorm((datasetM$User.Engage^1-1)/1)$x, qqnorm((datasetM$User.Engage^1-1)/1)$y)
+cor(qqnorm((datasetM$User.Engage^1-1)/1)$x, qqnorm((datasetM$User.Engage^1-1)/1)$y)
 
 qqnorm((datasetM$User.Engage^2-1)/2)
 qqline((datasetM$User.Engage^2-1)/2)
