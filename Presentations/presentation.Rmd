@@ -208,7 +208,7 @@ graph TD
 7. https://www-conf.slac.stanford.edu/xldb2015/Talks2015/9_Tues_Chambers-XLDBConference.pdf
 8. https://github.com/rstudio/webinars/blob/master/2015-05/How-to-start-Shiny-1/01-How-to-start.pdf
 9. https://www.iconfinder.com/iconsets/small-n-flat
-10. http://de.wikipedia.org/wiki/{Quantile-Quantile-Plot, Explorative_Datenanalyse, Streudiagramm, Histogramm}
+10. http://de.wikipedia.org/wiki/ {Quantile-Quantile-Plot, Explorative_Datenanalyse, Streudiagramm, Histogramm}
 11. http://en.wikipedia.org/wiki/Q%E2%80%93Q_plot
 15. http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html
 16. http://de.statista.com/statistik/lexikon/definition/95/normalverteilung/
@@ -218,7 +218,7 @@ graph TD
 
 ### Folgenden Werkzeuge wurden benutzt:
 + Presentation mit [R Markdown](http://rmarkdown.rstudio.com/) erstellt.
-+ Die Beste IDE für R - [RStudio](http://www.rstudio.com)
++ Die Beste IDE - [RStudio](http://www.rstudio.com)
 + Web Applikations Framework für R - [Shiny @ RStudio](http://shiny.rstudio.com/)
 + <https://github.com/dmpe/SemesterProject>
 
