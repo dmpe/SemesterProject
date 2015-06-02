@@ -1,5 +1,5 @@
 ---
-title: 'Daten Analyse mit R'
+title: 'Datenanalyse mit R'
 author: "Dmitrij Petrov, Rahman Gökbulut, Mesut Sahin, Jeanne Falonne Magne Signe"
 date: "2.7.2015"
 output:
@@ -28,24 +28,18 @@ output:
 
 ## Einführung in das Projekt
 
-Datenanalyse  mit der Programmiersprache R
+- **Ziel**:
+    + Mithilfe `R` verschiedene Zusammenhang in den Daten suchen & überprüfen
 
-Mermal:
 
-1. Bekanntschaft/Kenntniss (Acquaintance)
-2. Benutzer Engagement
-3. Erfahrung (Experience)
-
-Zielen:
-
-1. Zusammenhang zwischen die Merkmal
-2. Daten Transformation
-
-- Erklarung von den 3 Begriffen ( Experience, Acqutaince, User Engage)
-- Mithilfe R Zusammenhang der Daten überprüft
-- Beide Datensätze erklären ( Service , Product)
-- Ziel des Projektes 
-- ....
+>- **Daten**:
+    + 2 Datensatze aus Marketing Bereich: "Produkt" & "Service"
+   
+    
+>- **3 Mermale**:
+    - Bekanntschaft/Kenntniss (Acquaintance)
+    - User Engagement
+    - Erfahrung (Experience)
 
 ## Geschichte von R
 
@@ -72,7 +66,7 @@ Zielen:
 
 ## Explorative Datenanalyse (EDA)
 
-"*EDA untersucht und begutachtet Daten, von denen nur ein geringes Wissen über deren Zusammenhänge vorliegt.*" [12]
+"*EDA untersucht und begutachtet Daten, von denen nur ein geringes Wissen über deren Zusammenhänge vorliegt.*" [10]
 
 <img src="http://upload.wikimedia.org/wikipedia/en/b/ba/Data_visualization_process_v1.png" height="450" weight="660">
 
@@ -106,7 +100,7 @@ corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
 
 ## Streudiagramm  (Scatter Plot)
 
->- *"Ist die graphische Darstellung von beobachteter Wertepaaren zweier statistischer Merkmale*" [13]
+>- *"Ist die graphische Darstellung von beobachteter Wertepaaren zweier statistischer Merkmale*" [10]
 
 >- Die Wertepaare werden in ein kartesischer Koordinatensystem eingetragen -> ergibt Punktwolke
 
@@ -122,7 +116,7 @@ scatterplot(datasetS.kleiner$Acquaintance, datasetS.kleiner$User.Engage, xlab = 
 
 ## Histogramm
 
-"*Ist eine graphische Darstellung der Häufigkeitsverteilung metrisch skalierter Merkmale.*" [14]
+"*Ist eine graphische Darstellung der Häufigkeitsverteilung metrisch skalierter Merkmale.*" [10]
 
 **Anwendung**
 
@@ -190,29 +184,21 @@ qqline(datasetS.kleiner$User.Engage)
 
 ## Fazit
 
-
 ```{r, echo=FALSE, message=FALSE, out.width="650px", out.heigh="450px"}
 library(DiagrammeR)
 
-mermaid("
+DiagrammeR("
 graph TD
-  A-->B[Einarbeitung in R]
-  A[Start]-->C[EDA]
-  C[EDA]-->D[Korrelation]
-  D-->E[Normalverteilung bestatigen]
+  A[Start]-->B[Einarbeitung in R]
+  B-->H[u.a.  z.B. in Shiny]
+  A-->C[Explorative Datenanalyse]
+  C-->D[Korrelation]
+  D-->E[Normalverteilung]
   E-->F[Potenz Transformation]
   F-->G[Regression]
 ")
 
 ```
-
-* Unsere Ziele :
-    + In `R` einzuarbeiten (z.B. auch verschiedenen Packages zu nutzen)
-    + Zusammenhange in den Daten untersuchen (e.g. durch Korrelation, Normalverteilung)
-    + Normalverteilung durch QQ-Plots zu bestatigen
-    + 2 Regressions-Methoden zu 
-
-Was verlaslich sind die Ergebsniesse von Korrelation
 
 ## Quellen
 1. https://github.com/rdpeng/courses/blob/master/02_RProgramming/OverviewHistoryR/index.md
@@ -222,11 +208,8 @@ Was verlaslich sind die Ergebsniesse von Korrelation
 7. https://www-conf.slac.stanford.edu/xldb2015/Talks2015/9_Tues_Chambers-XLDBConference.pdf
 8. https://github.com/rstudio/webinars/blob/master/2015-05/How-to-start-Shiny-1/01-How-to-start.pdf
 9. https://www.iconfinder.com/iconsets/small-n-flat
-10. http://de.wikipedia.org/wiki/Quantile-Quantile-Plot
+10. http://de.wikipedia.org/wiki/{Quantile-Quantile-Plot, Explorative_Datenanalyse, Streudiagramm, Histogramm}
 11. http://en.wikipedia.org/wiki/Q%E2%80%93Q_plot
-12. http://de.wikipedia.org/wiki/Explorative_Datenanalyse
-13. http://de.wikipedia.org/wiki/Streudiagramm
-14. http://de.wikipedia.org/wiki/Histogramm
 15. http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html
 16. http://de.statista.com/statistik/lexikon/definition/95/normalverteilung/
 17. http://getbootstrap.com/
