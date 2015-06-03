@@ -35,7 +35,6 @@ output:
 >- **Daten**:
     + 2 Datensätze aus Marketing-Bereich: "Produkt" & "Service"
    
-    
 >- **3 Mermale**:
     - Bekanntschaft/Kenntniss (Acquaintance)
     - User Engagement
