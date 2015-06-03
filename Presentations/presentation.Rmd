@@ -54,7 +54,7 @@ output:
 
 ## R
 
->- Geschrieben in **`C`** (35%) & `Fortan` (24%) & `R` (38%)
+>- Geschrieben in **`C`** (35%) & **`Fortan`** (24%) & **`R`** (38%)
 
 >- Sehr **schlank** -> Funktionalität in modularen Pakete aufgeteilt (**CRAN**/Bioconductor/GitHub)
 
@@ -80,7 +80,7 @@ dataset.S <- read.xlsx("../Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
 
 ## Korrelation
 
->- Beschreibt eine Beziehung zwischen ein oder mehreren Merkmalen
+- Beschreibt eine Beziehung zwischen ein oder mehreren Merkmalen
     + gibt aber **keine** Ursache-Wirkung-Beziehung (keine Kausalität)
 
 >- Korrelation als Maß des Zusammenhangs
@@ -100,7 +100,7 @@ corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
 
 ## Streudiagramm  (Scatter Plot)
 
->- *"Ist die graphische Darstellung von beobachteter Wertepaaren zweier statistischer Merkmale*" [10]
+- *"Ist die graphische Darstellung von beobachteter Wertepaaren zweier statistischer Merkmale*" [10]
 
 >- Die Wertepaare werden in ein kartesischer Koordinatensystem eingetragen -> ergibt Punktwolke
 
@@ -158,6 +158,10 @@ m
 ## QQ-Plot von User Engagement
 
 ```{r, message=FALSE, out.width="650px", out.heigh="450px", cache=TRUE, echo=FALSE}
+library(car)
+
+# qqPlot(datasetS.kleiner$User.Engage, dist="norm", envelope=.95)
+
 qqnorm(datasetS.kleiner$User.Engage)
 qqline(datasetS.kleiner$User.Engage)
 ```
