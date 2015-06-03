@@ -29,11 +29,11 @@ output:
 ## Einführung in das Projekt
 
 - **Ziel**:
-    + Mithilfe `R` verschiedene Zusammenhang in den Daten suchen & überprüfen
-
+    + Mithilfe `R` verschiedene Zusammenhänge in den Daten suchen & überprüfen
+        + konzentration auf Normalverteilung und Regression
 
 >- **Daten**:
-    + 2 Datensatze aus Marketing Bereich: "Produkt" & "Service"
+    + 2 Datensätze aus Marketing-Bereich: "Produkt" & "Service"
    
     
 >- **3 Mermale**:

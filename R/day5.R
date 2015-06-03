@@ -11,6 +11,7 @@ set.seed(5157)
 #######
 
 testList <- as.list(runif(1000, 0.000, 1.000))
+testList <- as.list(seq(0.0001, 1, length = 1000))
 
 ########################### Produkt
 cor.list.UE.produkt <- NULL
@@ -79,11 +80,11 @@ LL <- function(beta0, beta1, mu, sigma) {
 }
 
 fit <- lm(User.Engage ~ Acquaintance, data = joinedDataSets.without)
-fit
+summary(fit)
 
 # The maximum-likelihood estimates for the slope (beta1) and intercept (beta0) are not too bad. 
 fit2 <- mle(LL, start = list(beta0 = 101.4, beta1 = 0.36, sigma=1), fixed = list(mu = 0), nobs = length(xAQ2))
-fit2
+summary(fit2)
 
 AIC(fit2)
 BIC(fit2)
@@ -103,9 +104,10 @@ abline(fit, col = "red")
 
 
 
+summary(p1 <- powerTransform(User.Engage ~ Acquaintance, data = joinedDataSets.without))
 
 
 
-
-
-
+boxCox(User.Engage ~ Acquaintance, data = joinedDataSets.without, lambda = seq(0, 1, length = 100))
+boxCox(User.Engage ~ Acquaintance, data = datasetM.correlation, lambda = seq(0, 1, length = 100))
+boxCox(User.Engage ~ Acquaintance, data = dataset.product.correlation, lambda = seq(0, 1, length = 100))
