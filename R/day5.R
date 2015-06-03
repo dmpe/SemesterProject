@@ -98,8 +98,7 @@ logLik(fit2)
 fit3 <-mle2(LL, start = list(beta0 = 101.4, beta1 = 0.36, mu = 0, sigma = 1))
 fit3
 
-confidenceEllipse(lm(User.Engage ~ Acquaintance, data = joinedDataSets.without), levels = 0.95)
-confidenceEllipse(mle(LL, start = list(beta0 = 101.4, beta1 = 0.36, sigma=1), fixed = list(mu = 0), nobs = length(yAQ2)))
+confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = 0.95)
 
 source("http://sites.stat.psu.edu/~dhunter/R/confidence.band.r")
 confidence.band(fit)
