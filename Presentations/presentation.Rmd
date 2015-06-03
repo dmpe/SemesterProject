@@ -14,7 +14,7 @@ output:
     widescreen: yes
 ---
 
-## Agenda | 20 Folien | 20 Minuten | 4 Teilnehmer
+## Agenda | 24 Folien | 20 Minuten | 4 Teilnehmer
 
 1. Einführung in das Projekt    
 2. Einführung ins `R`           
@@ -43,7 +43,7 @@ output:
 
 ## Geschichte von R
 
->- `R` ist eine Implementierung von `S` (*John Chambers et al.* @ Bell Labs 1976)
+- `R` ist eine Implementierung von `S` (*John Chambers et al.* @ Bell Labs 1976)
 
 >- Pionier von *Ross Ihaka* and *Robert Gentleman* in **1991**, seit 1995 unter **GNU General Public License**
 
@@ -54,7 +54,7 @@ output:
 
 ## R
 
->- Geschrieben in **`C`** (35%) & **`Fortan`** (24%) & **`R`** (38%)
+- Geschrieben in **`C`** (35%) & **`Fortan`** (24%) & **`R`** (38%)
 
 >- Sehr **schlank** -> Funktionalität in modularen Pakete aufgeteilt (**CRAN**/Bioconductor/GitHub)
 
@@ -108,8 +108,10 @@ corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
 
 ## Diagramm von Acquaintance & User Engage.
 
-```{r, message=FALSE, out.width="670px", cache=TRUE, echo=FALSE, fig.align='center'}
+```{r, message=FALSE, out.width="650px", cache=TRUE, echo=FALSE, fig.align='center'}
 library(car)
+
+print(round(cor(datasetS.kleiner$Acquaintance, datasetS.kleiner$User.Engage), 4))
 
 scatterplot(datasetS.kleiner$Acquaintance, datasetS.kleiner$User.Engage, xlab = "Acquaintance", ylab = "User Engagement")
 ```
@@ -126,7 +128,7 @@ scatterplot(datasetS.kleiner$Acquaintance, datasetS.kleiner$User.Engage, xlab = 
 
 ## Histogramm von User Engagement
 
-```{r, message=FALSE, out.width="650px", out.heigh="450px", cache=TRUE, echo=FALSE}
+```{r, message=FALSE, out.width="650px", out.heigh="450px", cache=TRUE, echo=FALSE, fig.align='center'}
 library(ggplot2)
 
 m1 <- ggplot(datasetS.kleiner, aes(x=User.Engage))
@@ -140,7 +142,7 @@ m1
 
 ## Normalverteilung von User Engagement
 
-```{r, message=FALSE, cache=TRUE, echo=FALSE, out.width="650px", out.heigh="430px"}
+```{r, message=FALSE, cache=TRUE, echo=FALSE, out.width="650px", out.heigh="430px", fig.align='center'}
 library(ggplot2)
 
 m <- ggplot(datasetS.kleiner, aes(x=User.Engage))
@@ -151,20 +153,25 @@ m
 
 ## QQ-Plot
 
->- Grafisches Werkzeug, in dem die Quantile zweier statistischer Variablen gegeneinander abgetragen werden, um ihre Verteilungen zu vergleichen und zu uberprüfen [11]
+- Grafisches Werkzeug, in dem die Quantile zweier statistischer Variablen gegeneinander abgetragen werden, um ihre Verteilungen zu vergleichen und zu uberprüfen [11]
 
 >- Ergeben die Punkte (annähernd) eine Gerade, kann man vermuten, dass den beiden Merkmalen die gleiche Verteilung zu Grunde liegt
 
 ## QQ-Plot von User Engagement
 
-```{r, message=FALSE, out.width="650px", out.heigh="450px", cache=TRUE, echo=FALSE}
+```{r, message=FALSE, out.width="650px", out.heigh="450px", cache=TRUE, echo=FALSE, fig.align='center'}
 library(car)
 
 # qqPlot(datasetS.kleiner$User.Engage, dist="norm", envelope=.95)
+# Or ggplot2 http://docs.ggplot2.org/current/stat_qq.html
 
 qqnorm(datasetS.kleiner$User.Engage)
 qqline(datasetS.kleiner$User.Engage)
 ```
+
+## Box-Cox Transformation
+
+
 
 ## Lineare Regression
 
@@ -174,7 +181,7 @@ qqline(datasetS.kleiner$User.Engage)
 
 ## Shiny Framework
 
->- R framework für interaktive Web Anwendungen
+- R framework für interaktive Web Anwendungen
 
 >- Basiert auf Twitter's `Bootstrap` Web framework [17]
 
@@ -188,18 +195,24 @@ qqline(datasetS.kleiner$User.Engage)
 
 ## Fazit
 
-```{r, echo=FALSE, message=FALSE, out.width="650px", out.heigh="450px"}
+```{r, echo=FALSE, message=FALSE, out.width="650px", out.heigh="450px", fig.align='center'}
 library(DiagrammeR)
 
 DiagrammeR("
 graph TD
-  A[Start]-->B[Einarbeitung in R]
-  B-->H[u.a.  z.B. in Shiny]
-  A-->C[Explorative Datenanalyse]
-  C-->D[Korrelation]
-  D-->E[Normalverteilung]
-  E-->F[Potenz Transformation]
-  F-->G[Regression]
+  subgraph R Sprache
+    A[Start]==>B[Einarbeitung in R]
+    B==>H[u.a.  z.B. in Shiny]
+    H==>I
+    end
+  subgraph Datenanalyse
+    A==>C[Explorative Datenanalyse]
+    C==>D[Korrelation]
+    D==>E[Normalverteilung]
+    E==>F[Potenz Transformation]
+    F==>G[Regression]
+    G==>I[Ende]
+    end
 ")
 
 ```
@@ -207,16 +220,15 @@ graph TD
 ## Quellen
 1. https://github.com/rdpeng/courses/blob/master/02_RProgramming/OverviewHistoryR/index.md
 2. http://en.wikipedia.org/wiki/R_%28programming_language%29
-4. http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf
-5. http://www.stat.yale.edu/~mjk56/temp/bigmemory-vignette.pdf
-7. https://www-conf.slac.stanford.edu/xldb2015/Talks2015/9_Tues_Chambers-XLDBConference.pdf
-8. https://github.com/rstudio/webinars/blob/master/2015-05/How-to-start-Shiny-1/01-How-to-start.pdf
-9. https://www.iconfinder.com/iconsets/small-n-flat
-10. http://de.wikipedia.org/wiki/ {Quantile-Quantile-Plot, Explorative_Datenanalyse, Streudiagramm, Histogramm}
-11. http://en.wikipedia.org/wiki/Q%E2%80%93Q_plot
-15. http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html
-16. http://de.statista.com/statistik/lexikon/definition/95/normalverteilung/
-17. http://getbootstrap.com/
+3. http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf
+4. http://www.stat.yale.edu/~mjk56/temp/bigmemory-vignette.pdf
+5. https://www-conf.slac.stanford.edu/xldb2015/Talks2015/9_Tues_Chambers-XLDBConference.pdf
+6. https://github.com/rstudio/webinars/blob/master/2015-05/How-to-start-Shiny-1/01-How-to-start.pdf
+8. http://de.wikipedia.org/wiki/ {Quantile-Quantile-Plot, Explorative_Datenanalyse, Streudiagramm, Histogramm}
+9. http://en.wikipedia.org/wiki/Q%E2%80%93Q_plot
+10. http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html
+11. http://de.statista.com/statistik/lexikon/definition/95/normalverteilung/
+12. http://getbootstrap.com/
 
 ## Wir danken für die Aufmerksamkeit !
 
