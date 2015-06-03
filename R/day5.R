@@ -8,6 +8,7 @@ set.seed(5157)
 # http://www.r4all.org/maximum-likelihood-1/
 # https://faculty.washington.edu/ezivot/econ424/maxLik.pdf
 # http://www.exegetic.biz/blog/2013/08/fitting-a-model-by-maximum-likelihood/
+# http://polisci2.ucsd.edu/dhughes/teaching/MLE_in_R.pdf
 #######
 
 testList <- as.list(runif(1000, 0.000, 1.000))
@@ -67,24 +68,28 @@ testList[[which.max(cor.list.AQ == max(cor.list.AQ))]]
 ################################ MLE
 ################################
 
-xAQ2 <- joinedDataSets.without$Acquaintance^0.4444462-1/0.4444462
 yAQ2 <- joinedDataSets.without$User.Engage^0.4909343-1/0.4909343
+xAQ2 <- joinedDataSets.without$Acquaintance^0.4444462-1/0.4444462
+
+mean(yAQ2)
+sd(yAQ2)
 
 xAQ <- qqnorm((joinedDataSets.without$Acquaintance^0.4444462-1)/0.4444462)$x
 yAQ <- qqnorm((joinedDataSets.without$Acquaintance^0.4444462-1)/0.4444462)$y
 
 LL <- function(beta0, beta1, mu, sigma) {
-  R = xAQ2 - yAQ2 * beta1 - beta0
+  R = yAQ2 - xAQ2 * beta1 - beta0
   R = suppressWarnings(dnorm(R, mu, sigma, log = TRUE))
   -sum(R)
 }
 
-fit <- lm(User.Engage ~ Acquaintance, data = joinedDataSets.without)
+fit <- lm(yAQ2 ~ xAQ2)
 summary(fit)
 
 # The maximum-likelihood estimates for the slope (beta1) and intercept (beta0) are not too bad. 
-fit2 <- mle(LL, start = list(beta0 = 101.4, beta1 = 0.36, sigma=1), fixed = list(mu = 0), nobs = length(xAQ2))
+fit2 <- mle(LL, start = list(beta0 = 8, beta1 = 0.5, sigma=1), fixed = list(mu = 0), nobs = length(yAQ2))
 summary(fit2)
+
 
 AIC(fit2)
 BIC(fit2)
@@ -94,7 +99,7 @@ fit3 <-mle2(LL, start = list(beta0 = 101.4, beta1 = 0.36, mu = 0, sigma = 1))
 fit3
 
 confidenceEllipse(lm(User.Engage ~ Acquaintance, data = joinedDataSets.without), levels = 0.95)
-confidenceEllipse(mle(LL, start = list(beta0 = 101.4, beta1 = 0.36, sigma=1), fixed = list(mu = 0), nobs = length(xAQ2)))
+confidenceEllipse(mle(LL, start = list(beta0 = 101.4, beta1 = 0.36, sigma=1), fixed = list(mu = 0), nobs = length(yAQ2)))
 
 source("http://sites.stat.psu.edu/~dhunter/R/confidence.band.r")
 confidence.band(fit)
@@ -111,3 +116,20 @@ summary(p1 <- powerTransform(User.Engage ~ Acquaintance, data = joinedDataSets.w
 boxCox(User.Engage ~ Acquaintance, data = joinedDataSets.without, lambda = seq(0, 1, length = 100))
 boxCox(User.Engage ~ Acquaintance, data = datasetM.correlation, lambda = seq(0, 1, length = 100))
 boxCox(User.Engage ~ Acquaintance, data = dataset.product.correlation, lambda = seq(0, 1, length = 100))
+
+
+
+
+
+
+
+
+yAQ3 <- joinedDataSets.without$User.Engage^0.4909343-1/0.4909343
+mean(yAQ3)
+sd(yAQ3)
+LdL <- function(mu, sigma) {
+  R = suppressWarnings(dnorm(yAQ3, mu, sigma, log=TRUE))
+  -sum(R)
+}
+mle(LdL, start = list(mu = 21, sigma=7))
+
