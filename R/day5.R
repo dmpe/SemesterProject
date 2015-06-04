@@ -118,7 +118,8 @@ boxCox(User.Engage ~ Acquaintance, data = datasetM.correlation, lambda = seq(0, 
 boxCox(User.Engage ~ Acquaintance, data = dataset.product.correlation, lambda = seq(0, 1, length = 100))
 
 
-
+ncvTest(lm(User.Engage ~ Acquaintance, data = joinedDataSets.without))
+spreadLevelPlot(lm(User.Engage ~ Acquaintance, data = joinedDataSets.without))
 
 
 

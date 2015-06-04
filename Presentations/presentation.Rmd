@@ -168,29 +168,41 @@ qqnorm(datasetS.kleiner$User.Engage)
 qqline(datasetS.kleiner$User.Engage)
 ```
 
-## Box-Cox Transformation
+## Box-Cox (Potenz) Transformation
+
+<img src="http://upload.wikimedia.org/math/9/c/4/9c4e7d20d90c16d8ddb739e3508c62cb.png">
+
+- Mehrere Anwendungen, aber u.a. bei der Transformation auf Normalverteilung
+
+- **Frage**: Finde *Lambda* welches zu der grosste Korrelation fuhrt. 
+
+>- Gemeinsamen Datensatz
+    + 0.49 bei User Engagement
+    + 0.44 bei Acquaintance
+
+>- "Nice to have" fur das Lineare Modell, da sonst haben wir problem mit dem Modell.
+
+## Lin. Reg.: Methode der kleinsten Quadrate (OLS)
 
 
 
-## Lineare Regression
+## Lin. Reg.: Maximum-Likelihood-Methode (MLE)
 
-## Methode der kleinsten Quadrate
 
-## Maximum-Likelihood-Methode
 
 ## Shiny Framework
 
 - R framework für interaktive Web Anwendungen
 
->- Basiert auf Twitter's `Bootstrap` Web framework [17]
-
->- **Ziel**: Wie arbeitet man mit `Shiny` ?
-
->- Jede Shiny App. besteht aus: 
+- Jede Shiny App. besteht aus: 
     + **UI.R** -> steuert das **Layout und Aussehen**.
     + **SERVER.R** -> enthält Befehle z.B. zur **Berechnungen, Grafiken** usw.
 
->- <span style="color: red">Live DEMO</span>: <http://shiny.b40.cz/SemesterProject/shiny>
+- Basiert auf Twitter's `Bootstrap` Web framework [17]
+
+- **Ziel**: Wie arbeitet man mit `Shiny` ?
+
+- <span style="color: red">Live DEMO</span>: <http://shiny.b40.cz/SemesterProject/shiny>
 
 ## Fazit
 
@@ -208,6 +220,13 @@ qqline(datasetS.kleiner$User.Engage)
 10. http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html
 11. http://de.statista.com/statistik/lexikon/definition/95/normalverteilung/
 12. http://getbootstrap.com/
+13. http://onlinestatbook.com/2/transformations/box-cox.html
+14. https://stat.ethz.ch/education/semesters/WS_2006_07/asr/Stat.pdf
+http://people.duke.edu/~rnau/testing.htm
+http://www.ime.usp.br/~abe/lista/pdfm9cJKUmFZp.pdf
+http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.469.7176&rep=rep1&type=pdf
+http://de.wikipedia.org/wiki/Homoskedastizit%C3%A4t_und_Heteroskedastizit%C3%A4t
+http://blog.minitab.com/blog/statistics-and-quality-data-analysis/dont-be-a-victim-of-statistical-hippopotomonstrosesquipedaliophobia
 
 ## Wir danken für die Aufmerksamkeit !
 
