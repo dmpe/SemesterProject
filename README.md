@@ -37,6 +37,8 @@
 - Merkmale (Feature ?, i.e. types of variable, e.g. discrete, continues etc.)
 - Haufigkeiten (Frequencies, e.g. histograms)
 - Correlation
+- Normal distribution
+- Linear Modell (MLE)
 
 ### RPubs
 

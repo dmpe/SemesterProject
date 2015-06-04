@@ -9,6 +9,7 @@ set.seed(5157)
 # https://faculty.washington.edu/ezivot/econ424/maxLik.pdf
 # http://www.exegetic.biz/blog/2013/08/fitting-a-model-by-maximum-likelihood/
 # http://polisci2.ucsd.edu/dhughes/teaching/MLE_in_R.pdf
+# https://de.mathworks.com/help/stats/mle.html
 #######
 
 testList <- as.list(runif(1000, 0.000, 1.000))
