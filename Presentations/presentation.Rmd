@@ -194,27 +194,7 @@ qqline(datasetS.kleiner$User.Engage)
 
 ## Fazit
 
-```{r, echo=FALSE, message=FALSE, out.width="650px", out.heigh="450px", fig.align='center'}
-library(DiagrammeR)
-
-DiagrammeR("
-graph TD
-  subgraph R Sprache
-    A[Start]==>B[Einarbeitung in R]
-    B==>H[u.a.  z.B. in Shiny]
-    H==>I
-    end
-  subgraph Datenanalyse
-    A==>C[Explorative Datenanalyse]
-    C==>D[Korrelation]
-    D==>E[Normalverteilung]
-    E==>F[Potenz Transformation]
-    F==>G[Regression]
-    G==>I[Ende]
-    end
-")
-
-```
+<img src="project_pos.png" width="400" height="700">
 
 ## Quellen
 1. https://github.com/rdpeng/courses/blob/master/02_RProgramming/OverviewHistoryR/index.md
