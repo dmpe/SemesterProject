@@ -194,7 +194,7 @@ qqline(datasetS.kleiner$User.Engage)
 
 ## Fazit
 
-<img src="project_pos.png" width="400" height="700">
+<img src="pictures/project_pos.png" height="550" style="display: block;margin-left: auto;margin-right: auto;">
 
 ## Quellen
 1. https://github.com/rdpeng/courses/blob/master/02_RProgramming/OverviewHistoryR/index.md
