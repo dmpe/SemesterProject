@@ -137,7 +137,11 @@ m1
 
 ## Normalverteilung
 
-*Unterstellt eine symmetrische Verteilungsform numerischer Daten und wird auch **gaußsche Glockenkurve** genannt* [16] <- NUEU
+- Die Normalverteilung (Glockenkurve oder Gauß-Kurve) bezeichnet eine wichtige Form der Wahrscheinlichkeistverteilung.
+  + Kurvenverlauf  ist symmetrisch.
+  + Median und Mittelwert identisch.
+  + Aussehen und Eigenschaft wird von Zwei Parameter bestimmt
+    + Erwartungswert und Varianz. [20, 21]
 
 ## Normalverteilung von User Engagement
 
@@ -152,9 +156,8 @@ m
 
 ## QQ-Plot
 
-- Grafisches Werkzeug, in dem die Quantile zweier statistischer Variablen gegeneinander abgetragen werden, um ihre Verteilungen zu vergleichen und zu uberprüfen [11]
-
->- Ergeben die Punkte (annähernd) eine Gerade, kann man vermuten, dass den beiden Merkmalen die gleiche Verteilung zu Grunde liegt
+- Mit dem QQ-Plot kann man auf graphischem Wege beurteilen, ob Messwerte Realisierungen einer normalverteilten Zufallsvariablen sind.
+  + Wenn diese Punkte annähernd auf einer Geraden liegen, sind die Daten näherungsweise normalverteilt, ansonsten nicht. [22]
 
 ## QQ-Plot von User Engagement
 
@@ -227,6 +230,11 @@ http://www.ime.usp.br/~abe/lista/pdfm9cJKUmFZp.pdf
 http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.469.7176&rep=rep1&type=pdf
 http://de.wikipedia.org/wiki/Homoskedastizit%C3%A4t_und_Heteroskedastizit%C3%A4t
 http://blog.minitab.com/blog/statistics-and-quality-data-analysis/dont-be-a-victim-of-statistical-hippopotomonstrosesquipedaliophobia
+
+
+20. http://flexikon.doccheck.com/de/Normalverteilung
+21. http://matheguru.com/stochastik/31-normalverteilung.html
+22. http://psymet03.sowi.uni-mainz.de/meinharg/Lehre/WS2008_2009/StatistikI/UE_2008_12_11.pdf
 
 ## Wir danken für die Aufmerksamkeit !
 
