@@ -142,6 +142,8 @@ m1
   + Median und Mittelwert identisch.
   + Aussehen und Eigenschaft wird von Zwei Parameter bestimmt
     + Erwartungswert und Varianz. [20, 21]
+    
+<img src="pictures/norm.jpg">
 
 ## Normalverteilung von User Engagement
 
