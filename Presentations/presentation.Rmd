@@ -22,7 +22,7 @@ output:
     + EDA 
     + Korrelation (Streudiagramm)   
     + Historgramm (Normalverteilung, QQ-Plot)
-    + Lineare Regression (OLS & MLE)
+    + Lineare Regression (OLS)
 4. Interaktive Applikation mit `Shiny Framework` 
 5. Ergebnisse/Zusammenfassung 
 
@@ -30,7 +30,7 @@ output:
 
 - **Ziel**:
     + Mithilfe `R` verschiedene Zusammenhänge in den Daten suchen & überprüfen
-        + konzentration auf Normalverteilung und Regression
+        + Konzentration auf Normalverteilung und Suche nach dem Linearem Model
 
 >- **Daten**:
     + 2 Datensätze aus Marketing-Bereich: "Produkt" & "Service"
@@ -166,9 +166,6 @@ m
 ```{r, message=FALSE, out.width="650px", out.heigh="450px", cache=TRUE, echo=FALSE, fig.align='center'}
 library(car)
 
-# qqPlot(datasetS.kleiner$User.Engage, dist="norm", envelope=.95)
-# Or ggplot2 http://docs.ggplot2.org/current/stat_qq.html
-
 qqnorm(datasetS.kleiner$User.Engage)
 qqline(datasetS.kleiner$User.Engage)
 ```
@@ -191,8 +188,7 @@ qqline(datasetS.kleiner$User.Engage)
 
 
 
-## Lin. Reg.: Maximum-Likelihood-Methode (MLE)
-
+## Ellipse
 
 
 ## Shiny Framework
