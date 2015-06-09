@@ -1,3 +1,5 @@
+# https://stats.stackexchange.com/questions/9898/how-to-plot-an-ellipse-from-eigenvalues-and-eigenvectors-in-r
+
 mat  <- matrix(1, length(xAQ2), 2)
 eigens <- eigen(ellip2)
 ellip2 <- t(ellip) %*% ellip
@@ -24,6 +26,6 @@ arrows(0, 0, b * evecs[ , 2][3], b * evecs[ , 2][2])
 
 
 
-ellipse(c(0, 0), shape=ellip2, radius=0.98, col="red", lty=2)
+dataEllipse(ellip2[,1], ellip2[,2])
 
 

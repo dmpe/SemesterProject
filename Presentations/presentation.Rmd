@@ -67,7 +67,7 @@ output:
 
 "*EDA untersucht und begutachtet Daten, von denen nur ein geringes Wissen über deren Zusammenhänge vorliegt.*" [10]
 
-<img src="http://upload.wikimedia.org/wikipedia/en/b/ba/Data_visualization_process_v1.png" height="450" weight="660">
+<img src="http://upload.wikimedia.org/wikipedia/en/b/ba/Data_visualization_process_v1.png" height="450" weight="660" style="display: block;margin-left: auto;margin-right: auto;">
 
 
 ```{r, message=FALSE, cache=TRUE, echo=FALSE}
