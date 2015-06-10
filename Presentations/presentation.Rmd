@@ -311,19 +311,23 @@ qqline(datasetS.kleiner$User.Engage)
 </mrow>
 </math>
 
-- Mehrere Anwendungen, aber u.a. bei der Transformation auf Normalverteilung
+- Mehrere Anwendungen, u.a. bei der Transformation auf Normalverteilung
 
 - **Frage**: Finde *Lambda* welches zu der grosste Korrelation fuhrt. 
 
->- Gemeinsamen Datensatz
-    + 0.49 bei User Engagement
-    + 0.44 bei Acquaintance
+- *Lambda* Resultate
 
->- "Nice to have" fur das Lineare Modell, da sonst haben wir problem mit dem Modell.
+Variable | Produkt  | Service  | Joined
+--------- | ---------- | ------------- | -----------
+User Engage | 0.497 | 0.0005 | 0.490
+Acquaintance  | 0.895 | 0.139 | 0.445
+
+- "Nice to have" fur das Lineare Modell, da sonst haben wir problem mit dem Modell.
 
 ## Lin. Reg.: Methode der kleinsten Quadrate (OLS)
 
 > Sei $y=\;\beta_0+\beta_1\ast x+\xi$ und $\xi$ sei $\\N(\mu,\;\sigma^2)$ verteilt. 
+> 
 > Dann ist ein 100(1-$\alpha$)% Konfidenzgebiet fur $\beta$ gegeben durch 
 >
 > $(\beta-\widehat\beta)'\;z\;'z\;(\beta-\widehat\beta)\;\leq2\;s^2\;
@@ -336,6 +340,10 @@ qqline(datasetS.kleiner$User.Engage)
 
 ## Ellipse
 
+```{r, message=FALSE, out.width="650px", out.heigh="450px", cache=TRUE, echo=FALSE, fig.align='center'}
+library(car)
+
+```
 
 ## Shiny Framework
 
