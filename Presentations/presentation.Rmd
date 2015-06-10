@@ -30,7 +30,7 @@ output:
 
 - **Ziel**:
     + Mithilfe `R` verschiedene Zusammenhänge in den Daten suchen & überprüfen
-        + Konzentration auf Normalverteilung und Suche nach dem Linearem Model
+        + Konzentration auf **Normalverteilung** und Suche nach dem **Linearem Modell**
 
 >- **Daten**:
     + 2 Datensätze aus Marketing-Bereich: "Produkt" & "Service"
@@ -143,7 +143,60 @@ m1
   + Aussehen und Eigenschaft wird von Zwei Parameter bestimmt
     + Erwartungswert und Varianz. [20, 21]
     
-<img src="pictures/norm.jpg">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<mrow class="MJX-TeXAtom-ORD">
+  <mstyle displaystyle="true" scriptlevel="0">
+    <mi>f</mi>
+    <mo stretchy="false">(</mo>
+    <mi>x</mi>
+    <mo>;</mo>
+    <mi>μ<!-- μ --></mi>
+    <mo>,</mo>
+    <msup>
+      <mi>σ<!-- σ --></mi>
+      <mn>2</mn>
+    </msup>
+    <mo stretchy="false">)</mo>
+    <mo>=</mo>
+    <mfrac>
+      <mn>1</mn>
+      <mrow>
+        <mi>σ<!-- σ --></mi>
+        <msqrt>
+          <mn>2</mn>
+          <mi>π<!-- π --></mi>
+        </msqrt>
+      </mrow>
+    </mfrac>
+    <msup>
+      <mi>e</mi>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mo>−<!-- − --></mo>
+        <mfrac>
+          <mn>1</mn>
+          <mn>2</mn>
+        </mfrac>
+        <msup>
+          <mrow>
+            <mo>(</mo>
+            <mfrac>
+              <mrow>
+                <mi>x</mi>
+                <mo>−<!-- − --></mo>
+                <mi>μ<!-- μ --></mi>
+              </mrow>
+              <mi>σ<!-- σ --></mi>
+            </mfrac>
+            <mo>)</mo>
+          </mrow>
+          <mn>2</mn>
+        </msup>
+      </mrow>
+    </msup>
+  </mstyle>
+</mrow>
+</math>
+
 
 ## Normalverteilung von User Engagement
 
@@ -172,7 +225,91 @@ qqline(datasetS.kleiner$User.Engage)
 
 ## Box-Cox (Potenz) Transformation
 
-<img src="http://upload.wikimedia.org/math/9/c/4/9c4e7d20d90c16d8ddb739e3508c62cb.png">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<mrow class="MJX-TeXAtom-ORD">
+  <mstyle displaystyle="true" scriptlevel="0">
+    <msubsup>
+      <mi>y</mi>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mi>i</mi>
+      </mrow>
+      <mrow class="MJX-TeXAtom-ORD">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mo stretchy="false">(</mo>
+          <mi>λ<!-- λ --></mi>
+          <mo stretchy="false">)</mo>
+        </mrow>
+      </mrow>
+    </msubsup>
+    <mo>=</mo>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mrow>
+        <mo>{</mo>
+        <mtable columnalign="left left" rowspacing="1em 0.2em" columnspacing="1em" displaystyle="false">
+          <mtr>
+            <mtd>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mstyle displaystyle="true" scriptlevel="0">
+                  <mfrac>
+                    <mrow>
+                      <msubsup>
+                        <mi>y</mi>
+                        <mrow class="MJX-TeXAtom-ORD">
+                          <mi>i</mi>
+                        </mrow>
+                        <mrow class="MJX-TeXAtom-ORD">
+                          <mi>λ<!-- λ --></mi>
+                        </mrow>
+                      </msubsup>
+                      <mo>−<!-- − --></mo>
+                      <mn>1</mn>
+                    </mrow>
+                    <mi>λ<!-- λ --></mi>
+                  </mfrac>
+                </mstyle>
+              </mrow>
+            </mtd>
+            <mtd>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mtext>if&nbsp;</mtext>
+              </mrow>
+              <mi>λ<!-- λ --></mi>
+              <mo>≠<!-- ≠ --></mo>
+              <mn>0</mn>
+              <mo>,</mo>
+            </mtd>
+          </mtr>
+          <mtr>
+            <mtd>
+              <mi>ln</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mo stretchy="false">(</mo>
+                <msub>
+                  <mi>y</mi>
+                  <mrow class="MJX-TeXAtom-ORD">
+                    <mi>i</mi>
+                  </mrow>
+                </msub>
+                <mo stretchy="false">)</mo>
+              </mrow>
+            </mtd>
+            <mtd>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mtext>if&nbsp;</mtext>
+              </mrow>
+              <mi>λ<!-- λ --></mi>
+              <mo>=</mo>
+              <mn>0</mn>
+              <mo>,</mo>
+            </mtd>
+          </mtr>
+        </mtable>
+        <mo fence="true" stretchy="true"></mo>
+      </mrow>
+    </mrow>
+  </mstyle>
+</mrow>
+</math>
 
 - Mehrere Anwendungen, aber u.a. bei der Transformation auf Normalverteilung
 
