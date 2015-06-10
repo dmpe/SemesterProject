@@ -97,6 +97,6 @@ shinyServer(function(input, output) {
     qqnorm(dataset.product[, input$selection16])
     qqline(dataset.product[, input$selection16])
   })
-
+  
   
 })

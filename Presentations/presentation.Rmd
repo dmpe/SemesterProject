@@ -186,7 +186,16 @@ qqline(datasetS.kleiner$User.Engage)
 
 ## Lin. Reg.: Methode der kleinsten Quadrate (OLS)
 
-
+> Sei $y=\;\beta_0+\beta_1\ast x+\xi$ und $\xi$ sei $\\N(\mu,\;\sigma^2)$ verteilt. 
+> Dann ist ein 100(1-$\alpha$)% Konfidenzgebiet fur $\beta$ gegeben durch 
+>
+> $(\beta-\widehat\beta)'\;z\;'z\;(\beta-\widehat\beta)\;\leq2\;s^2\;
+> F_{2,\;n-2}\;(\alpha)$ wo 
+>
+> $\\s^2\;=\;\frac{\widehat\xi\;'\;\widehat\xi}{n-2}$
+>
+> $\\F_{2,\;n-2}\;=\;$ F-Verteilung mit 2 und n-2 Freiheitsgraden
+> 
 
 ## Ellipse
 

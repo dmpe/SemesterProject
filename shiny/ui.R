@@ -64,8 +64,8 @@ shinyUI(navbarPage("Semester Project Interactivelly", id="nav",
                                 width = 3
                               ),
                               mainPanel(
-                                plotOutput("renderqqPlot"),  
-                                plotOutput("renderqqPlot2")
+                                plotOutput("renderqqPlot2"),  
+                                plotOutput("renderqqPlot")
                               )
                             )
                    ), 
