@@ -19,9 +19,10 @@ output:
 1. Einführung in das Projekt    
 2. Einführung ins `R`           
 3. Explorative Datenanalyse
-    + EDA 
-    + Korrelation (Streudiagramm)   
-    + Historgramm (Normalverteilung, QQ-Plot)
+    + Korrelation
+    + Historgramm
+    + Normalverteilung
+    + Potenz Transformation (Box-Cox)
     + Lineare Regression (OLS)
 4. Interaktive Applikation mit `Shiny Framework` 
 5. Ergebnisse/Zusammenfassung 
