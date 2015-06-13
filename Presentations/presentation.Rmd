@@ -19,10 +19,9 @@ output:
 1. Einführung in das Projekt    
 2. Einführung ins `R`           
 3. Explorative Datenanalyse
-    + Korrelation
-    + Historgramm
+    + Korrelation & Historgramm
     + Normalverteilung (+ QQ-Plot)
-    + Potenz Transformation (Box-Cox)
+    + Potenz (Box-Cox) Transformation 
     + Lineare Regression (OLS)
 4. Interaktive Applikation mit `Shiny Framework` 
 5. Ergebnisse/Zusammenfassung 
@@ -120,7 +119,7 @@ scatterplot(datasetS.kleiner$Acquaintance, datasetS.kleiner$User.Engage, xlab = 
 
 - u.a. in der beschreibende Statistik
     + wenn man den Verlauf der Häufigkeitsverteilung sehen möchte
-    + wenn man vermutet, dass mehrere Faktoren einen Prozess beeinflussen, und man diese nachweisen will
+    + wenn man vermutet, dass mehrere Faktoren einen Prozess beeinflussen, und man diese nachweisen will ??????????
 
 ## Histogramm von User Engagement
 
@@ -311,28 +310,26 @@ qqline(datasetS.kleiner$User.Engage)
 
 - **Frage**: Finde *Lambda* welches zu der grosste Korrelation fuhrt 
 
-- *Lambda* Resultate:
+- *Lambdas*:
 
 Variable | Produkt  | Service  | Joined
 --------- | ---------- | ------------- | -----------
 User Engage | 0.497 | 0.0005 | 0.490
 Acquaintance  | 0.895 | 0.139 | 0.445
 
-- "Nice to have" fur das Lineare Modell, da sonst haben wir problem mit dem Modell.
-
 ## Lin. Reg.: Methode der kleinsten Quadrate (OLS)
 
 > Sei $y=\;\beta_0+\beta_1\ast x+\xi$ und $\xi$ sei $\\N(\mu,\;\sigma^2)$ verteilt. 
 > 
-> Dann ist ein 100(1-$\alpha$)% Konfidenzgebiet fur $\beta$ gegeben durch 
->
-> $(\beta-\widehat\beta)'\;z\;'z\;(\beta-\widehat\beta)\;\leq2\;s^2\;
-> F_{2,\;n-2}\;(\alpha)$ wo 
+> Dann ist ein 100(1-$\alpha$)% Konfidenzgebiet fur $\beta$ gegeben durch
+> $(\beta-\widehat\beta)'\;z\;'z\;(\beta-\widehat\beta)\;\leq2\;s^2\;F_{2,\;n-2}\;(\alpha)$ wo 
 >
 > $\\s^2\;=\;\frac{\widehat\xi\;'\;\widehat\xi}{n-2}$
 >
 > $\\F_{2,\;n-2}\;=\;$ F-Verteilung mit 2 und n-2 Freiheitsgraden
 > 
+
+- "Nice to have" fur das Lineare Modell, da sonst haben wir problem mit dem Modell.
 
 ## Ellipse
 
