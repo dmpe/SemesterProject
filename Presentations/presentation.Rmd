@@ -29,17 +29,13 @@ output:
 ## Einführung in das Projekt
 
 - **Ziel**:
-    + Mithilfe `R` verschiedene Zusammenhänge in den Daten suchen & überprüfen
-        + Konzentration auf **Normalverteilung** und Suche nach dem **Linearem Modell**
-
+    + Mithilfe von `R` Modellierung der Beziehungen zwischen Variablen 
+        + Quantifizierung ihres Zusammenhangs
+        + Konzentration auf **Normalverteilung** und Erstellung eines **Lineares Modells** $y=\beta_0 +\beta_1 x + e$
+                                                                  
 >- **Daten**:
-    + 2 Datensätze aus Marketing-Bereich: "Produkt" & "Service"
+    <img src = "pictures/tabulka.png" width = "900">
    
->- **3 Mermale**:
-    - Bekanntschaft/Kenntniss (Acquaintance)
-    - User Engagement
-    - Erfahrung (Experience)
-
 ## Geschichte von R
 
 - `R` ist eine Implementierung von `S` (*John Chambers et al.* @ Bell Labs 1976)
