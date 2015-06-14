@@ -7,16 +7,13 @@ output:
     fig_height: 6
     fig_retina: null
     fig_width: 8
-    highlight: null
     logo: pictures/hs_logo_besser.png
-    smaller: yes
+    smaller: no
     transition: faster
     widescreen: yes
-    self_contained: false
-    css : "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"
 ---
 
-## Agenda | 24 Folien | 20 Minuten | 4 Teilnehmer
+## Agenda | 23 Folien | 20 Minuten | 4 Teilnehmer
 
 1. Einführung in das Projekt    
 2. Einführung ins `R`           
@@ -33,55 +30,36 @@ output:
 - **Ziel**:
     + Mithilfe von `R` Modellierung der Beziehungen zwischen Variablen 
         + Quantifizierung ihres Zusammenhangs
-        + Konzentration auf die Erstellung eines **Lineares Modells** $y=\beta_0 +\beta_1 x + e$
+        + Konzentration auf die Erstellung eines **Lineares Modells**: $y=\beta_0 +\beta_1 x + e$
                                                                   
 - **Daten**:
-
-<div class="table-responsive"> 
-<table class="table table-bordered">
-<tbody>
-<tr>
-<th>Merkmal</th>
-<th>Typ</th>
-</tr>
-<tr>
-<td>User Engagement</td>
-<td>Metrisch</td>
-</tr>
-<tr>
-<td>Acquaintance</td>
-<td>Metrisch</td>
-</tr>
-<tr>
-<td>Experience</td>
-<td>Binar</td>
-</tr>
-</tbody>
-</table>
-</div>
+    <img src = "pictures/tabulka.png" width = "900">
 
 ## Geschichte von R
 
 - `R` ist eine Implementierung von `S` (*John Chambers et al.* @ Bell Labs 1976)
 
->- Pionier von *Ross Ihaka* and *Robert Gentleman* in **1991**, seit 1995 unter **GNU General Public License**
+>- Pionier von *Ross Ihaka* and *Robert Gentleman* in **1991**, seit 1995 unter **GNU GPL**
 
 >- Erst aber 2000 **stabil** und aktiv von **R Core Group** weiter entwickelt
 
 >- Heute >2 Implementierungen: `S-PLUS` (commerziel) und **`R`** (GNU project) 
-    + mit vielen weiteren Distributionen: `Revolution R Open`, `Oracle R Enterprise`
+    + mit vielen weiteren Distributionen: 
+        + `Revolution R Open` ($MSFT)
+        + `Oracle R Enterprise`
     
 ## R
 
 - Geschrieben in **`C`** (35%) & **`Fortan`** (24%) & **`R`** (38%)
 
->- Sehr **schlank** -> Funktionalität in modularen Pakete aufgeteilt (**CRAN**/Bioconductor/GitHub)
+>- Objekte & **Daten** werden explizit im **RAM** gespeichert 
+    + 100 Millionen x 5 Matrix ~> 4 GB RAM [5]
+    
+>- Sehr **schlank** 
+    + Funktionalität in modularen Pakete aufgeteilt (z.B. von **CRAN** oder **GitHub**)
 
->- Objekte, **Daten** etc. sind explizit in **RAM** gespeichert (100 Mil. x 5 Matrix ~ 4 GB RAM [5])
-
->- Funktionalität basiert auf Basis der **Nachfrage** und der **Nutzerbeiträge**
-
->- Heute populär bei **Forschern für Data Mining** Zwecke, statt *Excel, Stata* usw. (z.B. TIOBE Index [15]). 
+>- Heute populär bei **Forschern für Data Mining** Zwecke, statt *Stata* & *SPSS* usw. 
+    + vgl. TIOBE Index [15]
 
 ## Explorative Datenanalyse (EDA)
 
@@ -100,16 +78,16 @@ dataset.S <- read.xlsx("../Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
 ## Korrelation
 
 - Beschreibt eine Beziehung zwischen ein oder mehreren Merkmalen
-    + gibt aber **keine** Ursache-Wirkung-Beziehung (keine Kausalität)
+    + muss aber **keine** Ursache-Wirkung-Beziehung (Kausalität) bestehen
 
 >- Korrelation als Maß des Zusammenhangs
     + -1   = "Starker negativer Zusammenhang"
     + 0    = "Kein Zusammenhang"
     + 1    = "Starker possitiver Zusammenhang"
 
-## Korrelations Plot von Service
+## Korrelations Plot
 
-```{r, message=FALSE, out.width="640px", out.height="530px", cache=TRUE, echo=FALSE, fig.align='center'}
+```{r, message=FALSE, out.width="650px", out.height="530px", cache=TRUE, echo=FALSE, fig.align='center'}
 library(corrplot)
 
 datasetS.kleiner <- dataset.S[, !names(dataset.S) %in% c("Gender", "Duration", "Experience", "Post.ID")]
@@ -119,7 +97,7 @@ corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
 
 ## Streudiagramm  (Scatter Plot)
 
-- *"Ist die graphische Darstellung von beobachteter Wertepaaren zweier statistischer Merkmale*" [10]
+- *"Graphische Darstellung von beobachteter Wertepaaren zweier statistischer Merkmale*" [10]
 
 >- Die Wertepaare werden in ein kartesischer Koordinatensystem eingetragen -> ergibt Punktwolke
 
