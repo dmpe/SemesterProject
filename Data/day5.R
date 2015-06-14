@@ -68,18 +68,6 @@ for(k in 1:length(testList)) {
 }
 labda.AQ.joined <- testList[[which.max(cor.list.AQ == max(cor.list.AQ))]]
 
-######################## Manuell Betas bestimmen
-########################
-
-ellip <- matrix(1, length(xAQ2), 2)
-ellip[, 2] <- xAQ2
-
-ellip2 <- t(ellip) %*% ellip
-
-eigen(ellip2)
-
-solve(ellip2) %*% t(ellip) %*% yAQ2
-
 ############################ Scatterplots vor und nach
 ############################
 par(mfrow=c(2,3))
@@ -124,6 +112,17 @@ plot(fit)
 
 confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = 0.80)
 
+######################## Manuell Betas bestimmen
+########################
+
+ellip <- matrix(1, length(xAQ2), 2)
+ellip[, 2] <- xAQ2
+
+ellip2 <- t(ellip) %*% ellip
+
+eigen(ellip2)
+
+solve(ellip2) %*% t(ellip) %*% yAQ2
 ################################ MLE
 ################################
 
@@ -145,6 +144,8 @@ logLik(fit2)
 fit3 <-mle2(LL, start = list(beta0 = 101.4, beta1 = 0.36, mu = 0, sigma = 1))
 fit3
 
+##############################
+##############################
 # xAQ <- qqnorm((joinedDataSets.without$Acquaintance^0.4444462-1)/0.4444462)$x
 # yAQ <- qqnorm((joinedDataSets.without$Acquaintance^0.4444462-1)/0.4444462)$y
 
