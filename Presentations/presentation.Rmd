@@ -12,6 +12,8 @@ output:
     smaller: yes
     transition: faster
     widescreen: yes
+    self_contained: false
+    css : "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"
 ---
 
 ## Agenda | 24 Folien | 20 Minuten | 4 Teilnehmer
@@ -31,11 +33,33 @@ output:
 - **Ziel**:
     + Mithilfe von `R` Modellierung der Beziehungen zwischen Variablen 
         + Quantifizierung ihres Zusammenhangs
-        + Konzentration auf **Normalverteilung** und Erstellung eines **Lineares Modells** $y=\beta_0 +\beta_1 x + e$
+        + Konzentration auf die Erstellung eines **Lineares Modells** $y=\beta_0 +\beta_1 x + e$
                                                                   
->- **Daten**:
-    <img src = "pictures/tabulka.png" width = "900">
-   
+- **Daten**:
+
+<div class="table-responsive"> 
+<table class="table table-bordered">
+<tbody>
+<tr>
+<th>Merkmal</th>
+<th>Typ</th>
+</tr>
+<tr>
+<td>User Engagement</td>
+<td>Metrisch</td>
+</tr>
+<tr>
+<td>Acquaintance</td>
+<td>Metrisch</td>
+</tr>
+<tr>
+<td>Experience</td>
+<td>Binar</td>
+</tr>
+</tbody>
+</table>
+</div>
+
 ## Geschichte von R
 
 - `R` ist eine Implementierung von `S` (*John Chambers et al.* @ Bell Labs 1976)
@@ -46,7 +70,7 @@ output:
 
 >- Heute >2 Implementierungen: `S-PLUS` (commerziel) und **`R`** (GNU project) 
     + mit vielen weiteren Distributionen: `Revolution R Open`, `Oracle R Enterprise`
-
+    
 ## R
 
 - Geschrieben in **`C`** (35%) & **`Fortan`** (24%) & **`R`** (38%)
