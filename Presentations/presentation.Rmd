@@ -324,12 +324,12 @@ Acquaintance  | 0.895 | 0.139 | 0.445
 
 > Sei $y=\;\beta_0+\beta_1\ast x+\xi$ und $\xi$ sei $\\N(\mu,\;\sigma^2)$ verteilt. 
 > 
-> Dann ist ein 100(1-$\alpha$)% Konfidenzgebiet fur $\beta$ gegeben durch
-> $(\beta-\widehat\beta)'\;z\;'z\;(\beta-\widehat\beta)\;\leq2\;s^2\;F_{2,\;n-2}\;(\alpha)$ wo 
+>- Dann ist ein 100(1-$\alpha$)% Konfidenzgebiet fur $\beta$ gegeben durch
+>- $(\beta-\widehat\beta)'\;z\;'z\;(\beta-\widehat\beta)\;\leq2\;s^2\;F_{2,\;n-2}\;(\alpha)$ wo 
 >
-> $\\s^2\;=\;\frac{\widehat\xi\;'\;\widehat\xi}{n-2}$
+>- $\\s^2\;=\;\frac{\widehat\xi\;'\;\widehat\xi}{n-2}$
 >
-> $\\F_{2,\;n-2}\;=\;$ F-Verteilung mit 2 und n-2 Freiheitsgraden
+>- $\\F_{2,\;n-2}\;=\;$ F-Verteilung mit 2 und n-2 Freiheitsgraden
 > 
 
 - "Nice to have" fur das Lineare Modell, da sonst haben wir problem mit dem Modell.
@@ -349,7 +349,7 @@ library(car)
     + **UI.R** ~> steuert das **Layout und Aussehen**
     + **SERVER.R** ~> enthält Befehle z.B. zur **Berechnungen, Grafiken** usw.
 
-- Basiert auf Twitter's `Bootstrap` Web framework [17]
+- Basiert auf Twitter's `Bootstrap` Web framework
 
 - **Ziel**: Wie arbeitet man mit `Shiny` ?
 
@@ -361,16 +361,12 @@ library(car)
 
 ## Quellen
 1. https://github.com/rdpeng/courses/blob/master/02_RProgramming/OverviewHistoryR/index.md
-2. http://en.wikipedia.org/wiki/R_%28programming_language%29
-3. http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf
 4. http://www.stat.yale.edu/~mjk56/temp/bigmemory-vignette.pdf
 5. https://www-conf.slac.stanford.edu/xldb2015/Talks2015/9_Tues_Chambers-XLDBConference.pdf
 6. https://github.com/rstudio/webinars/blob/master/2015-05/How-to-start-Shiny-1/01-How-to-start.pdf
 8. http://de.wikipedia.org/wiki/ {Quantile-Quantile-Plot, Explorative_Datenanalyse, Streudiagramm, Histogramm}
-9. http://en.wikipedia.org/wiki/Q%E2%80%93Q_plot
 10. http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html
 11. http://de.statista.com/statistik/lexikon/definition/95/normalverteilung/
-12. http://getbootstrap.com/
 13. http://onlinestatbook.com/2/transformations/box-cox.html
 14. https://stat.ethz.ch/education/semesters/WS_2006_07/asr/Stat.pdf
 http://people.duke.edu/~rnau/testing.htm
@@ -388,7 +384,7 @@ http://blog.minitab.com/blog/statistics-and-quality-data-analysis/dont-be-a-vict
 
 ### Folgenden Werkzeuge wurden benutzt:
 + Presentation mit [R Markdown](http://rmarkdown.rstudio.com/) erstellt.
-+ Die Beste IDE - [RStudio](http://www.rstudio.com)
++ "Die" IDE - [RStudio](http://www.rstudio.com)
 + Web Applikations Framework für R - [Shiny @ RStudio](http://shiny.rstudio.com/)
 + <https://github.com/dmpe/SemesterProject>
 
