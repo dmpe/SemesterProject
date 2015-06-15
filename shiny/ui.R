@@ -2,7 +2,7 @@ library(shiny)
 # https://github.com/rstudio/shiny-examples/blob/master/063-superzip-example/ui.R
 # http://shiny.rstudio.com/articles/layout-guide.html
 
-shinyUI(navbarPage("Semester Project Interactivelly", id="nav",
+shinyUI(navbarPage("Project Interactivelly", id="nav",
                    tabPanel("Histograms",
                             sidebarLayout(
                               sidebarPanel(
@@ -100,7 +100,7 @@ shinyUI(navbarPage("Semester Project Interactivelly", id="nav",
                                 width = 3
                               ),
                               mainPanel(
-                                plotOutput("renderEllipse"),  
+                                plotOutput("renderEllipse")  
                               )
                             )
                    ), 

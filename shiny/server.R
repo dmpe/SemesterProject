@@ -4,6 +4,7 @@ library(DT)
 library(car)
 library(corrplot)
 library(RColorBrewer)
+library("testthat")
 options(width = 300)
 
 shinyServer(function(input, output) {
@@ -100,12 +101,11 @@ shinyServer(function(input, output) {
   
   output$renderEllipse <- renderPlot({
     
-    xAQ2 <- (dataset.product$Acquaintance^0.5-1)/0.5
-    yAQ2 <- (dataset.product$User.Engage^0.5-1)/0.5
+    xAQ2 <- (dataset.product.withoutFour$Acquaintance^0.5-1)/0.5
+    yAQ2 <- (dataset.product.withoutFour$User.Engage^0.5-1)/0.5
+    fmla <- as.formula(paste0("yAQ2 ~ xAQ2", input$sample.choice))
     
-    fit <- lm(yAQ2 ~ xAQ2)
-    
-    confidenceEllipse(fit, levels = input$levels2)
+    confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = paste0(input$levels2))
   })
   
 })
