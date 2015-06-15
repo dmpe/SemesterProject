@@ -75,9 +75,9 @@ plot(datasetM.correlation$Acquaintance, datasetM.correlation$User.Engage)
 plot(joinedDataSets.without$Acquaintance, joinedDataSets.without$User.Engage)
 plot(dataset.product$Acquaintance, dataset.product$User.Engage)
 
-plot(datasetM.correlation$Acquaintance^0.5, datasetM.correlation$User.Engage^0.5)
-plot(joinedDataSets.without$Acquaintance^0.5, joinedDataSets.without$User.Engage^0.5)
-plot(dataset.product$Acquaintance^0.5, dataset.product$User.Engage^0.5)
+plot((datasetM.correlation$Acquaintance^0.5-1)/0.5, (datasetM.correlation$User.Engage^0.5-1)/0.5)
+plot((joinedDataSets.without$Acquaintance^0.5-1)/0.5, (joinedDataSets.without$User.Engage^0.5-1)/0.5)
+plot((dataset.product$Acquaintance^0.5-1)/0.5, (dataset.product$User.Engage^0.5-1)/0.5)
 
 dev.off()
 
@@ -93,36 +93,68 @@ plot(dataset.product$Acquaintance^labda.AQ.list[[2]], dataset.product$User.Engag
 
 dev.off()
 
-
 ################################ LM
 ################################
 
 labda.UE.list <- c(labda.UE.service, labda.UE.produkt, labda.UE.joined)
 labda.AQ.list <- c(labda.AQ.service, labda.AQ.produkt, labda.AQ.joined)
 
-xAQ2 <- joinedDataSets.without$Acquaintance^labda.AQ.list[[3]]-1/labda.AQ.list[[3]]
-yAQ2 <- joinedDataSets.without$User.Engage^labda.UE.list[[3]]-1/labda.UE.list[[3]]
+xAQ2 <- (dataset.product$Acquaintance^labda.AQ.list[[3]]-1)/labda.AQ.list[[3]]
+yAQ2 <- (dataset.product$User.Engage^labda.UE.list[[3]]-1)/labda.UE.list[[3]]
+
+
+xAQ2 <- (dataset.product$Acquaintance^0.5-1)/0.5
+yAQ2 <- (dataset.product$User.Engage^0.5-1)/0.5
+
+plot(xAQ2, yAQ2)
+abline(lm(yAQ2 ~ xAQ2))
 
 mean(yAQ2)
 sd(yAQ2)
 
 fit <- lm(yAQ2 ~ xAQ2)
 summary(fit)
+fit$coefficients
 plot(fit)
-
-confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = 0.80)
 
 ######################## Manuell Betas bestimmen
 ########################
 
-ellip <- matrix(1, length(xAQ2), 2)
+ellip <- matrix(1, length(xAQ2), 2) # einfach Z
 ellip[, 2] <- xAQ2
 
 ellip2 <- t(ellip) %*% ellip
+ellip2
 
 eigen(ellip2)
 
 solve(ellip2) %*% t(ellip) %*% yAQ2
+
+# http://www.weibull.com/hotwire/issue95/relbasics95.htm
+shochzwei <- (sum(fit$residuals^2))/(300-2)
+
+Fverteilung <- 2* 199.4 * 3 
+
+
+############################### Ellipse gleichung
+###############################
+
+
+confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = 0.99)
+as.matrix(confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = 0.95))
+
+xausrechenen <- sqrt((579549.6*1196.4)/(300*579549.6-(12751.6^2)))
+
+unterwurzel <- sqrt((12751.6^2)*(-xausrechenen^2)-(300*579549.6*(-xausrechenen^2))+(579549.6*1196.4^2))
+yausrechenen <- ((-12751.6*(-xausrechenen)) + unterwurzel)/579549.6
+
+xlist <- seq(-7.8, 7.8, length = 32)
+
+for(p in 1:32) {
+  unterwurzel <- sqrt((12751.6^2)*(-xausrechenen^2)-(300*579549.6*(-xausrechenen^2))+(579549.6*1196.4^2))
+  yausrechenen <- ((-12751.6*(-xausrechenen)) + unterwurzel)/579549.6
+}
+
 ################################ MLE
 ################################
 

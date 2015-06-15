@@ -23,18 +23,17 @@ output:
     + Potenz (Box-Cox) Transformation 
     + Lineare Regression (OLS)
 4. Interaktive Applikation mit `Shiny Framework` 
-5. Ergebnisse/Zusammenfassung 
+5. Zusammenfassung 
 
 ## Einführung in das Projekt
 
 - **Ziel**:
-    + Mithilfe von `R` Modellierung der Beziehungen zwischen Variablen 
+    + Mithilfe von `R` Modellierung der Beziehungen zwischen 2 Variablen 
         + Quantifizierung ihres Zusammenhangs
         + Konzentration auf die Erstellung eines **Lineares Modells**: $y=\beta_0 +\beta_1 x + e$
                                                                   
 - **Daten**:
-    <img src = "pictures/tabulka.png" width = "900"> 
-    ??????????? wozu die dritte
+    <img src = "pictures/tabelle.jpg" width = "1000"> 
 
 ## Geschichte von R
 
@@ -139,7 +138,7 @@ m1
 - Bezeichnet eine wichtige Form der Wahrscheinlichkeistverteilung
   + Kurvenverlauf ist symmetrisch
   + *Median* und *Mittelwert* sind identisch
-  + Aussehen und Eigenschaften wirden von Erwartungswert und Varianz bestimmt [20, 21]
+  + Aussehen und Eigenschaften werden von Erwartungswert und Varianz bestimmt [20, 21]
     
 <math xmlns="http://www.w3.org/1998/Math/MathML">
 <mrow class="MJX-TeXAtom-ORD">
@@ -209,7 +208,8 @@ m
 
 ## QQ-Plot
 
-- Graphischen Weg zur Beurteilung, ob Messwerte Realisierungen einer normalverteilten Zufallsvariablen sind. ??????????????
+Ein graphischer Weg zur Beurteilung, ob Messwerte einer Verteilung Normalverteilt sind.
+
   + Wenn Punkte annähernd auf einer Geraden liegen, sind die Daten näherungsweise normalverteilt, ansonsten nicht. [22]
 
 ## QQ-Plot von User Engagement
@@ -320,19 +320,19 @@ Variable | Produkt  | Service  | Joined
 User Engagement | 0.497 | 0.0005 | 0.490
 Acquaintance  | 0.895 | 0.139 | 0.445
 
-## Lin. Reg.: Methode der kleinsten Quadrate (OLS)
+## Abschutzung der linearen Parameter
 
-> Sei $y=\;\beta_0+\beta_1\ast x+\xi$ und $\xi$ sei $\\N(\mu,\;\sigma^2)$ verteilt. 
+> Sei $y=\;\beta_0+\beta_1\ast x+\xi$ und $\xi$ sei $\\N(\mu,\;\sigma^2I)$ verteilt. 
 > 
->- Dann ist ein 100(1-$\alpha$)% Konfidenzgebiet fur $\beta$ gegeben durch
->- $(\beta-\widehat\beta)'\;z\;'z\;(\beta-\widehat\beta)\;\leq2\;s^2\;F_{2,\;n-2}\;(\alpha)$ wo 
+> Dann ist ein 100(1-$\alpha$)% Konfidenzgebiet fur $\beta$ gegeben durch
+> $(\beta-\widehat\beta)'\;z\;'z\;(\beta-\widehat\beta)\;\leq2\;s^2\;F_{2,\;n-2}\;(\alpha)$ wo 
 >
->- $\\s^2\;=\;\frac{\widehat\xi\;'\;\widehat\xi}{n-2}$
+> $\\s^2\;=\;\frac{\widehat\xi\;'\;\widehat\xi}{n-2}$
 >
->- $\\F_{2,\;n-2}\;=\;$ F-Verteilung mit 2 und n-2 Freiheitsgraden
+> $\\F_{2,\;n-2}\;=\;$ F-Verteilung mit 2 und n-2 Freiheitsgraden
 > 
 
-- "Nice to have" fur das Lineare Modell, da sonst haben wir problem mit dem Modell.
+- Muss fur das Lineare Modell, da sonst haben wir problem mit dem Modell.
 
 ## Ellipse
 
