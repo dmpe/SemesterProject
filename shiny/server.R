@@ -16,8 +16,6 @@ shinyServer(function(input, output) {
     m
   })
   
-  # https://rstudio.github.io/DT/
-  
   output$x1 = DT::renderDataTable({
     DT::datatable(joinedDataSets.without, rownames = row.names(joinedDataSets.without))
   })
@@ -103,9 +101,8 @@ shinyServer(function(input, output) {
     
     xAQ2 <- (dataset.product.withoutFour$Acquaintance^0.5-1)/0.5
     yAQ2 <- (dataset.product.withoutFour$User.Engage^0.5-1)/0.5
-    fmla <- as.formula(paste0("yAQ2 ~ xAQ2", input$sample.choice))
     
-    confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = paste0(input$levels2))
+    confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = input$levels2)
   })
   
 })

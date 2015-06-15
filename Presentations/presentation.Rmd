@@ -39,7 +39,8 @@ output:
 
 - `R` ist eine Implementierung von `S` (*John Chambers et al.* @ Bell Labs 1976)
 
->- Pionier von *Ross Ihaka* and *Robert Gentleman* in **1991**, seit 1995 unter **GNU GPL**
+>- Pionier von *Ross Ihaka* and *Robert Gentleman* in **1991**
+    + seit 1995 unter **GNU GPL**
 
 >- Erst aber 2000 **stabil** und aktiv von **R Core Group** weiter entwickelt
 
