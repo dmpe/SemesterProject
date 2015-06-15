@@ -4,7 +4,7 @@ author: "Dmitrij Petrov, Rahman Gökbulut, Mesut Sahin, Jeanne Falonne Magne Sig
 date: "2.7.2015"
 output:
   ioslides_presentation:
-    fig_height: 6
+    fig_height: 5
     fig_retina: null
     fig_width: 8
     logo: pictures/hs_logo_besser.png
@@ -70,9 +70,14 @@ output:
 
 ```{r, message=FALSE, cache=TRUE, echo=FALSE}
 library(xlsx)
-
+library(dplyr)
 dataset.S <- read.xlsx("../Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
-# dataset.P <- read.xlsx("../Data/DataSet_Product.xlsx", sheetIndex = 1, endRow=302)
+dataset.P <- read.xlsx("../Data/DataSet_Product.xlsx", sheetIndex = 1, endRow=302)
+datasetS.kleiner <- dataset.S[, !names(dataset.S) %in% c("Gender", "Duration", "Experience", "Post.ID")]
+
+joinedDataSets <- full_join(dataset.S, dataset.P)
+joinedDataSets.without <- joinedDataSets[, !names(joinedDataSets) %in% c("Duration", "Post.ID", "Earned.Reach", "Fanpage.Reach", "User.NW", "X.Match")]
+
 ```
 
 ## Korrelation
@@ -80,20 +85,14 @@ dataset.S <- read.xlsx("../Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
 - Beschreibt eine Beziehung zwischen ein oder mehreren Merkmalen
     + muss aber **keine** Ursache-Wirkung-Beziehung (Kausalität) bestehen
 
->- Korrelation als Maß des Zusammenhangs
+- Korrelation als Maß des Zusammenhangs
     + -1   = "Starker negativer Zusammenhang"
     + 0    = "Kein Zusammenhang"
     + 1    = "Starker possitiver Zusammenhang"
 
-## Korrelations Plot
-
-```{r, message=FALSE, out.width="650px", out.height="530px", cache=TRUE, echo=FALSE, fig.align='center'}
-library(corrplot)
-
-datasetS.kleiner <- dataset.S[, !names(dataset.S) %in% c("Gender", "Duration", "Experience", "Post.ID")]
-datasetS.kleiner.cor <- cor(datasetS.kleiner)
-corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
-```
+Variable/Datensatze | Produkt  | Service  | Joined
+--------- | ---------- | ------------- | -----------
+User Engagement <-> Acquaintance  | 0.70 | 0.63 | 0.54
 
 ## Streudiagramm  (Scatter Plot)
 
@@ -105,12 +104,8 @@ corrplot(datasetS.kleiner.cor, order = "hclust", type="lower", method="number")
 
 ## Diagramm von Acquaintance & User Engage.
 
-```{r, message=FALSE, out.width="640px", cache=TRUE, echo=FALSE, fig.align='center'}
-library(car)
-
-print(round(cor(datasetS.kleiner$Acquaintance, datasetS.kleiner$User.Engage), 3))
-
-scatterplot(datasetS.kleiner$Acquaintance, datasetS.kleiner$User.Engage, xlab = "Acquaintance", ylab = "User Engagement")
+```{r, message=FALSE, cache=TRUE, echo=FALSE, fig.align='center'}
+plot(datasetS.kleiner$Acquaintance, datasetS.kleiner$User.Engage, xlab = "Acquaintance", ylab = "User Engagement")
 ```
 
 ## Histogramm
@@ -125,7 +120,7 @@ scatterplot(datasetS.kleiner$Acquaintance, datasetS.kleiner$User.Engage, xlab = 
 
 ## Histogramm von User Engagement
 
-```{r, message=FALSE, out.width="680px", out.heigh="480px", cache=TRUE, echo=FALSE, fig.align='center'}
+```{r, message=FALSE, cache=TRUE, echo=FALSE, fig.align='center'}
 library(ggplot2)
 
 m1 <- ggplot(datasetS.kleiner, aes(x=User.Engage))
@@ -197,7 +192,7 @@ m1
 
 ## Normalverteilung von User Engagement
 
-```{r, message=FALSE, cache=TRUE, echo=FALSE, out.width="680px", out.heigh="480px", fig.align='center'}
+```{r, message=FALSE, cache=TRUE, echo=FALSE, fig.align='center'}
 library(ggplot2)
 
 m <- ggplot(datasetS.kleiner, aes(x=User.Engage))
@@ -208,13 +203,13 @@ m
 
 ## QQ-Plot
 
-Ein graphischer Weg zur Beurteilung, ob Messwerte einer Verteilung Normalverteilt sind.
+"*Ein graphischer Weg zur Beurteilung, ob Messwerte einer Verteilung Normalverteilt sind.*" [22]
 
-  + Wenn Punkte annähernd auf einer Geraden liegen, sind die Daten näherungsweise normalverteilt, ansonsten nicht. [22]
+  + Wenn Punkte annähernd auf einer Geraden liegen, sind die Daten näherungsweise normalverteilt, ansonsten nicht.
 
 ## QQ-Plot von User Engagement
 
-```{r, message=FALSE, out.width="680px", out.heigh="480px", cache=TRUE, echo=FALSE, fig.align='center'}
+```{r, message=FALSE, cache=TRUE, echo=FALSE, fig.align='center'}
 library(car)
 
 qqnorm(datasetS.kleiner$User.Engage)
@@ -272,7 +267,7 @@ qqline(datasetS.kleiner$User.Engage)
                 <mtext>if&nbsp;</mtext>
               </mrow>
               <mi>λ<!-- λ --></mi>
-              <mo>≠<!-- ≠ --></mo>
+              <mo>><!-- ≠ --></mo>
               <mn>0</mn>
               <mo>,</mo>
             </mtd>
@@ -320,7 +315,24 @@ Variable | Produkt  | Service  | Joined
 User Engagement | 0.497 | 0.0005 | 0.490
 Acquaintance  | 0.895 | 0.139 | 0.445
 
-## Abschutzung der linearen Parameter
+## Vor und Nach 
+
+```{r, message=FALSE, out.width="830", out.heigh="550", cache=TRUE, echo=FALSE, fig.align='center'}
+
+par(mfrow=c(2,3))
+plot(datasetS.kleiner$Acquaintance, datasetS.kleiner$User.Engage, xlab = "Acquaintance", ylab = "User Engagement")
+plot(dataset.P$Acquaintance, dataset.P$User.Engage, xlab = "Acquaintance", ylab = "User Engagement")
+plot(joinedDataSets.without$Acquaintance, joinedDataSets.without$User.Engage, xlab = "Acquaintance", ylab = "User Engagement")
+
+
+plot((datasetS.kleiner$Acquaintance^0.5-1)/0.5, (datasetS.kleiner$User.Engage^0.5-1)/0.5, xlab = "Acquaintance", ylab = "User Engagement")
+plot((dataset.P$Acquaintance^0.5-1)/0.5, (dataset.P$User.Engage^0.5-1)/0.5, xlab = "Acquaintance", ylab = "User Engagement")
+plot((joinedDataSets.without$Acquaintance^0.5-1)/0.5, (joinedDataSets.without$User.Engage^0.5-1)/0.5, xlab = "Acquaintance", ylab = "User Engagement")
+
+```
+
+
+## Abschätzung der linearen Parameter
 
 > Sei $y=\;\beta_0+\beta_1\ast x+\xi$ und $\xi$ sei $\\N(\mu,\;\sigma^2I)$ verteilt. 
 > 
@@ -332,14 +344,29 @@ Acquaintance  | 0.895 | 0.139 | 0.445
 > $\\F_{2,\;n-2}\;=\;$ F-Verteilung mit 2 und n-2 Freiheitsgraden
 > 
 
-- Muss fur das Lineare Modell, da sonst haben wir problem mit dem Modell.
-
 ## Ellipse
 
 ```{r, message=FALSE, out.width="680px", out.heigh="480px", cache=TRUE, echo=FALSE, fig.align='center'}
 library(car)
 
+
+xAQ2 <- (datasetS.kleiner$Acquaintance^0.5-1)/0.5
+yAQ2 <- (datasetS.kleiner$User.Engage^0.5-1)/0.5
+
+
+confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = 0.99)
+
 ```
+
+## Resultate
+
+```{r}
+library(car)
+
+
+
+```
+
 
 ## Shiny Framework
 
@@ -357,7 +384,7 @@ library(car)
 
 ## Fazit
 
-<img src="pictures/project_pos.jpg" height="550" style="display: block;margin-left: auto;margin-right: auto;">
+<img src="pictures/project_pos.jpg" height="545" style="display: block;margin-left: auto;margin-right: auto;">
 
 ## Quellen
 1. https://github.com/rdpeng/courses/blob/master/02_RProgramming/OverviewHistoryR/index.md

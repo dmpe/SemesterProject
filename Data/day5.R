@@ -1,6 +1,7 @@
 library(stats4)
 library(car)
 library(bbmle)
+library(dplyr)
 set.seed(5157)
 
 source("R/day4.R")
