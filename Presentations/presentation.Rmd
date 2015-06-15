@@ -331,7 +331,6 @@ plot((joinedDataSets.without$Acquaintance^0.5-1)/0.5, (joinedDataSets.without$Us
 
 ```
 
-
 ## Abschätzung der linearen Parameter
 
 > Sei $y=\;\beta_0+\beta_1\ast x+\xi$ und $\xi$ sei $\\N(\mu,\;\sigma^2I)$ verteilt. 
@@ -358,7 +357,7 @@ confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = 0.99)
 
 ```
 
-## Resultate
+## Resultate der Ellipse und Linearen Models
 
 ```{r}
 library(car)
@@ -384,7 +383,7 @@ library(car)
 
 ## Fazit
 
-<img src="pictures/project_pos.jpg" height="545" style="display: block;margin-left: auto;margin-right: auto;">
+<img src="pictures/project_pos.jpg" height="535" style="display: block;margin-left: auto;margin-right: auto;">
 
 ## Quellen
 1. https://github.com/rdpeng/courses/blob/master/02_RProgramming/OverviewHistoryR/index.md

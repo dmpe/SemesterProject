@@ -131,31 +131,31 @@ eigen(ellip2)
 
 solve(ellip2) %*% t(ellip) %*% yAQ2
 
-# http://www.weibull.com/hotwire/issue95/relbasics95.htm
-shochzwei <- (sum(fit$residuals^2))/(300-2)
-
-Fverteilung <- 2* 199.4 * 3 
-
-
 ############################### Ellipse gleichung
 ###############################
 
+# http://www.weibull.com/hotwire/issue95/relbasics95.htm
+shochzwei <- (sum(fit$residuals^2))/(300-2)
 
-confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = 0.99)
-as.matrix(confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = 0.95))
+Fverteilung <- 2 * shochzwei * 3 
 
-xausrechenen <- sqrt((579549.6*1196.4)/(300*579549.6-(12751.6^2)))
 
-unterwurzel <- sqrt((12751.6^2)*(-xausrechenen^2)-(300*579549.6*(-xausrechenen^2))+(579549.6*1196.4^2))
+confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = 0.95)
+head(as.matrix(confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = 0.95)), 10)
+
+xausrechenen <- sqrt((579549.6*Fverteilung)/(300*579549.6-(12751.6^2)))
+
+unterwurzel <- sqrt((12751.6^2)*(-xausrechenen^2)-(300*579549.6*(-xausrechenen^2))+(579549.6*Fverteilung))
 yausrechenen <- ((-12751.6*(-xausrechenen)) + unterwurzel)/579549.6
 
-xlist <- seq(-7.8, 7.8, length = 32)
+xlist <- seq(-xausrechenen, xausrechenen, length = 32)
 
-for(p in 1:32) {
-  unterwurzel <- sqrt((12751.6^2)*(-xausrechenen^2)-(300*579549.6*(-xausrechenen^2))+(579549.6*1196.4^2))
-  yausrechenen <- ((-12751.6*(-xausrechenen)) + unterwurzel)/579549.6
+for(p in 1:length(xlist)) {
+  unterwurzel[[p]] <- sqrt((12751.6^2)*(xlist[[p]]^2)-(300*579549.6*(xlist[[p]]^2))+(579549.6*Fverteilung))
+  yausrechenen[[p]] <- ((-12751.6*xlist[[p]]) - unterwurzel[[p]])/579549.6
 }
 
+yausrechenen
 ################################ MLE
 ################################
 
