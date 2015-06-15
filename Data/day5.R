@@ -139,23 +139,27 @@ shochzwei <- (sum(fit$residuals^2))/(300-2)
 
 Fverteilung <- 2 * shochzwei * 3 
 
+# https://en.wikipedia.org/wiki/Confidence_region
 
 confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = 0.95)
 head(as.matrix(confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = 0.95)), 10)
 
-xausrechenen <- sqrt((579549.6*Fverteilung)/(300*579549.6-(12751.6^2)))
+xausrechenen <- sqrt((579549.6*Fverteilung)/(300*579549.6 - (12751.6^2)))
 
-unterwurzel <- sqrt((12751.6^2)*(-xausrechenen^2)-(300*579549.6*(-xausrechenen^2))+(579549.6*Fverteilung))
-yausrechenen <- ((-12751.6*(-xausrechenen)) + unterwurzel)/579549.6
+unterwurzel <- sqrt((12751.6^2)*(xausrechenen^2)-(300*579549.6*(xausrechenen^2)) + (579549.6*Fverteilung))
+
+yausrechenen <- ((-12751.6*(xausrechenen)) + unterwurzel)/579549.6
 
 xlist <- seq(-xausrechenen, xausrechenen, length = 32)
 
+yausrechenen2 <- NULL
+unterwurzel2 <- NULL
 for(p in 1:length(xlist)) {
-  unterwurzel[[p]] <- sqrt((12751.6^2)*(xlist[[p]]^2)-(300*579549.6*(xlist[[p]]^2))+(579549.6*Fverteilung))
-  yausrechenen[[p]] <- ((-12751.6*xlist[[p]]) - unterwurzel[[p]])/579549.6
+  unterwurzel2[[p]] <- sqrt((12751.6^2)*(xlist[[p]]^2)-(300*579549.6*(xlist[[p]]^2))+(579549.6*Fverteilung))
+  yausrechenen2[[p]] <- ((-12751.6*xlist[[p]]) + unterwurzel2[[p]])/579549.6
 }
 
-yausrechenen
+yausrechenen2
 ################################ MLE
 ################################
 
@@ -181,14 +185,6 @@ fit3
 ##############################
 # xAQ <- qqnorm((joinedDataSets.without$Acquaintance^0.4444462-1)/0.4444462)$x
 # yAQ <- qqnorm((joinedDataSets.without$Acquaintance^0.4444462-1)/0.4444462)$y
-
-source("http://sites.stat.psu.edu/~dhunter/R/confidence.band.r")
-confidence.band(fit)
-
-plot(joinedDataSets.without$User.Engage, joinedDataSets.without$Acquaintance)
-abline(fit, col = "red")
-
-
 
 summary(p1 <- powerTransform(User.Engage ~ Acquaintance, data = joinedDataSets.without))
 

@@ -88,6 +88,22 @@ shinyUI(navbarPage("Semester Project Interactivelly", id="nav",
                               )
                             )
                    ), 
+                   tabPanel("Confidence Ellipse",
+                            sidebarLayout(
+                              sidebarPanel(
+                                p("Change ellipse's confidence level."), 
+                                
+                                sliderInput("levels2", "Level 0 - 99 %:", min = 1, max = 100, value = 90), 
+                                
+                                a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
+                                a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
+                                width = 3
+                              ),
+                              mainPanel(
+                                plotOutput("renderEllipse"),  
+                              )
+                            )
+                   ), 
                    tabPanel("Diff. in Cor.", 
                             sidebarLayout(
                               sidebarPanel(
