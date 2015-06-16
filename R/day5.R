@@ -107,6 +107,8 @@ yAQ2 <- (dataset.product$User.Engage^labda.UE.list[[3]]-1)/labda.UE.list[[3]]
 xAQ2 <- (dataset.product$Acquaintance^0.5-1)/0.5
 yAQ2 <- (dataset.product$User.Engage^0.5-1)/0.5
 
+fit <- lm(yAQ2 ~ xAQ2)
+
 cor(xAQ2, yAQ2)
 plot(xAQ2, yAQ2)
 abline(lm(yAQ2 ~ xAQ2))
@@ -114,7 +116,6 @@ abline(lm(yAQ2 ~ xAQ2))
 mean(yAQ2)
 sd(yAQ2)
 
-fit <- lm(yAQ2 ~ xAQ2)
 summary(fit)
 fit$coefficients
 plot(fit)
@@ -134,33 +135,55 @@ solve(ellip2) %*% t(ellip) %*% yAQ2
 
 ############################### Ellipse gleichung
 ###############################
-
+# https://en.wikipedia.org/wiki/Confidence_region
+# https://en.wikipedia.org/wiki/Ordinary_least_squares#Estimation
 # http://www.weibull.com/hotwire/issue95/relbasics95.htm
-shochzwei <- (sum(fit$residuals^2))/(300-2)
 
+shochzwei <- (sum(fit$residuals^2)) / (ellip2[1,1]-2)
 Fverteilung <- 2 * shochzwei * 3 
 
-# https://en.wikipedia.org/wiki/Confidence_region
 
 confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = 0.95)
 head(as.matrix(confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = 0.95)), 10)
 
-xausrechenen <- sqrt((579549.6*Fverteilung)/(300*579549.6 - (12751.6^2)))
+xausrechenen <- sqrt( (ellip2[2,2] * Fverteilung) / ( ellip2[1,1] * ellip2[2,2] - ellip2[1,2]^2 ))
 
-unterwurzel <- sqrt((12751.6^2)*(xausrechenen^2)-(300*579549.6*(xausrechenen^2)) + (579549.6*Fverteilung))
+## fur den y-wurzel
+## musi byt s minus jinak mi to nefunguje
+firstOne <- (ellip2[1,2]^2) * (-xausrechenen^2)
+secondOne <- ellip2[1,1] * ellip2[2,2] * -xausrechenen^2
+thridOne <- ellip2[2,2] * Fverteilung
 
-yausrechenen <- ((-12751.6*(xausrechenen)) + unterwurzel)/579549.6
+unterwurzel <- sqrt(firstOne - secondOne + thridOne)
 
-xlist <- seq(-xausrechenen, xausrechenen, length = 32)
+yausrechenen <- ( (-ellip2[1,2] * xausrechenen) + unterwurzel) / ellip2[2,2]
+yausrechenen12 <- ( (-ellip2[1,2] * -xausrechenen) - unterwurzel) / ellip2[2,2]
 
+xlist <- seq(-xausrechenen, xausrechenen, length = 64)
 yausrechenen2 <- NULL
 unterwurzel2 <- NULL
-for(p in 1:length(xlist)) {
-  unterwurzel2[[p]] <- sqrt((12751.6^2)*(xlist[[p]]^2)-(300*579549.6*(xlist[[p]]^2))+(579549.6*Fverteilung))
-  yausrechenen2[[p]] <- ((-12751.6*xlist[[p]]) + unterwurzel2[[p]])/579549.6
+
+for( p in 1:length(xlist) ) {
+  unterwurzel2[[p]] <- sqrt( (12751.6^2) * (xlist[[p]]^2) - (ellip2[1,1] * 579549.6 * (xlist[[p]]^2)) + (579549.6 * Fverteilung))
+  yausrechenen2[[p]] <- ( (-12751.6 * xlist[[p]]) + unterwurzel2[[p]]) / 579549.6
 }
 
 yausrechenen2
+
+
+
+EllipsenplotXY <- as.matrix(confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = 0.95))
+
+
+for (d in 1:52) {
+  plot(EllipsenplotXY[,1], EllipsenplotXY[,2])
+  abline(lm(EllipsenplotXY[,1] ~ EllipsenplotXY[,2]))
+}
+
+p <- ggplot(data.frame(EllipsenplotXY), aes(x = EllipsenplotXY[,1], y=EllipsenplotXY[,2])) + geom_point()
+p <- p + geom_abline(aes(intercept=EllipsenplotXY[,1], slope=EllipsenplotXY[,2]), data=data.frame(EllipsenplotXY))
+p
+
 ################################ MLE
 ################################
 

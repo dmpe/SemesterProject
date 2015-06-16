@@ -348,7 +348,9 @@ plot((joinedDataSets.without$Acquaintance^0.5-1)/0.5, (joinedDataSets.without$Us
 
 ## Ellipse "Product"
 
-- Text
+- Korrelation von zwei Variablen bestimmt die Form des elliptischen Wahrscheinlichkeitsfeld
+
+- Grosse Korrelation -> Ellipse ist sehr schmal; k(l)eine -> Kreis-formig [35]
 
 ```{r, message=FALSE, cache=TRUE, echo=FALSE, fig.align='center'}
 library(car)
@@ -385,13 +387,13 @@ scatterplot(xAQ2, yAQ2, xlab = "Acquaintance", ylab = "User Engagement", ellipse
 
 ## Shiny Framework
 
-- R framework für interaktive Web Anwendungen
+- `R` framework für interaktive Web Anwendungen
 
 - Jede `Shiny App` besteht aus: 
     + **UI.R** ~> steuert das **Layout und Aussehen**
     + **SERVER.R** ~> enthält Befehle z.B. zur **Berechnungen, Grafiken** usw.
 
-- Basiert auf Twitter's `Bootstrap` Web framework
+- Basiert auf Twitter's `Bootstrap` HTML/CSS/JS framework
 
 - **Ziel**: Wie arbeitet man mit `Shiny` ?
 
@@ -421,7 +423,7 @@ http://blog.minitab.com/blog/statistics-and-quality-data-analysis/dont-be-a-vict
 20. http://flexikon.doccheck.com/de/Normalverteilung
 21. http://matheguru.com/stochastik/31-normalverteilung.html
 22. http://psymet03.sowi.uni-mainz.de/meinharg/Lehre/WS2008_2009/StatistikI/UE_2008_12_11.pdf
-
+35. http://www.freddiemac.com/finance/smm/july98/pdfs/sol_lekk.pdf
 ## Wir danken für die Aufmerksamkeit !
 
 ### Folgenden Werkzeuge wurden benutzt:

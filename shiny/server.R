@@ -47,25 +47,36 @@ shinyServer(function(input, output) {
     corrplot(dataset.product.correlation.cor, order = "hclust", hclust.method = "ward", type = "lower",  method = "number")
   })
   
-  output$onlyCorrelation <- renderPlot({
-    # corrrePart2 <- cor(datasetM.correlation)order = "hclust",
-    # product2 <- cor(dataset.product.correlation)
-    # http://r.789695.n4.nabble.com/main-title-in-plot-outer-TRUE-cut-off-td4204006.html
-    par(mfrow = c(1, 2),omi=c(0,1,1,0.5))
-    corrplot(dataset.product.correlation.cor, type="lower", method="number") 
-    title(outer=TRUE, adj=0,main = list("Produkt Korrelation", cex=1.1, col="black", font=2), line = -1) 
-    
-    corrplot(datasetM.correlation.cor, type = "lower",  method = "number")
-    title(outer=TRUE, adj=1,main = list("Service Korrelation", cex=1.1, col="black", font=2), line = -1) 
-    
-  })
-  
-  output$onlyCorrelation2 <- renderPlot({
-    cols <- rev(colorRampPalette(brewer.pal(10, "RdBu"))(20))
-    rozdil <- datasetM.correlation.cor - dataset.product.correlation.cor
-    corrplot.mixed(rozdil, lower = "circle",  upper = "number",  diag='n', outline=T, col=cols, 
-                   tl.pos="lt", addgrid.col="grey", cl.lim=c(-0.5,0.5), cl.length=length(cols)/2+1)
-  })
+#   output$onlyCorrelation <- renderPlot({
+#     # corrrePart2 <- cor(datasetM.correlation)order = "hclust",
+#     # product2 <- cor(dataset.product.correlation)
+#     # http://r.789695.n4.nabble.com/main-title-in-plot-outer-TRUE-cut-off-td4204006.html
+#     par(mfrow = c(1, 2), omi = c(0,1,1,0.5))
+#     corrplot(dataset.product.correlation.cor, type="lower", method="number") 
+#     title(outer=TRUE, adj = 0, main = list("Produkt Korrelation", cex=1.1, col="black", font=2), line = -1) 
+#     
+#     corrplot(datasetM.correlation.cor, type = "lower",  method = "number")
+#     title(outer=TRUE, adj = 1, main = list("Service Korrelation", cex=1.1, col="black", font=2), line = -1) 
+#     
+#   })
+#   
+#   output$onlyCorrelation2 <- renderPlot({
+#     cols <- rev(colorRampPalette(brewer.pal(10, "RdBu"))(20))
+#     rozdil <- datasetM.correlation.cor - dataset.product.correlation.cor
+#     corrplot.mixed(rozdil, lower = "circle",  upper = "number",  diag='n', outline=T, col=cols, 
+#                    tl.pos="lt", addgrid.col="grey", cl.lim=c(-0.5,0.5), cl.length=length(cols)/2+1)
+#   })
+#   output$vsechno <- renderPrint({
+#     tp1 <- dataset.product.correlation.cor
+#     tp1[lower.tri(tp1)] <- NA
+#     tp2<- datasetM.correlation.cor
+#     tp2[lower.tri(tp2)] <- NA
+#     
+#     writeLines("dataset.product.correlation.cor - datasetM.correlation.cor\n")
+#     
+#     rozdil3 <- tp1 - tp2
+#     rozdil3
+#   })
   
   output$Facet <- renderPlot({
     # https://gist.github.com/jcheng5/3239667
@@ -74,18 +85,6 @@ shinyServer(function(input, output) {
     # MANUAL required
     sp <- sp + facet_grid(Gender ~ TypeDataSet)
     print(sp)
-  })
-  
-  output$vsechno <- renderPrint({
-    tp1 <- dataset.product.correlation.cor
-    tp1[lower.tri(tp1)] <- NA
-    tp2<- datasetM.correlation.cor
-    tp2[lower.tri(tp2)] <- NA
-    
-    writeLines("dataset.product.correlation.cor - datasetM.correlation.cor\n")
-    
-    rozdil3 <- tp1 - tp2
-    rozdil3
   })
   
   output$renderqqPlot2 <- renderPlot({
@@ -98,12 +97,26 @@ shinyServer(function(input, output) {
     qqline(dataset.product[, input$selection16])
   })
   
-  output$renderEllipse <- renderPlot({
-    
+  output$renderProductEllipse <- renderPlot({
     xAQ2 <- (dataset.product.withoutFour$Acquaintance^0.5-1)/0.5
     yAQ2 <- (dataset.product.withoutFour$User.Engage^0.5-1)/0.5
-    
-    confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = input$levels2)
+  
+    confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = input$levels2, main = "Product")
   })
+  
+  output$renderServiceEllipse <- renderPlot({
+    xAQ22 <- (datasetM.correlation$Acquaintance^0.5-1)/0.5
+    yAQ23 <- (datasetM.correlation$User.Engage^0.5-1)/0.5
+    
+    confidenceEllipse(lm(yAQ23 ~ xAQ22), levels = input$levels2, main = "Service")
+  })
+  
+  output$renderJoinedEllipse <- renderPlot({
+    xAQ221 <- (joinedDataSets.without$Acquaintance^0.5-1)/0.5
+    yAQ231 <- (joinedDataSets.without$User.Engage^0.5-1)/0.5
+    
+    confidenceEllipse(lm(yAQ231 ~ xAQ221), levels = input$levels2, main = "Joined")
+  })
+  
   
 })

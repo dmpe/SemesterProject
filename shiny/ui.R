@@ -89,14 +89,17 @@ shinyUI(navbarPage("Project Interactivelly", id="nav",
                               sidebarPanel(
                                 p("Change ellipse's confidence level."), 
                                 
-                                numericInput('levels2', 'Cluster count', 0.95, min = 0.10, max = 0.99),
+                                numericInput('levels2', 'Confidence level', 0.95, min = 0.10, max = 0.99),
+#                                 numericInput('levels3', 'Confidence level', 0.95, min = 0.10, max = 0.99),
                                 
                                 a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
                                 a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
                                 width = 3
                               ),
                               mainPanel(
-                                plotOutput("renderEllipse")  
+                                plotOutput("renderProductEllipse"), 
+                                plotOutput("renderServiceEllipse"), 
+                                plotOutput("renderJoinedEllipse")
                               )
                             )
                    ), 
