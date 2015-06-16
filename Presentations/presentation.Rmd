@@ -87,9 +87,9 @@ joinedDataSets.without <- joinedDataSets[, !names(joinedDataSets) %in% c("Durati
     + muss aber **keine** Ursache-Wirkung-Beziehung (Kausalität) bestehen
 
 - Korrelation als Maß des Zusammenhangs
-    + -1   = "Starker negativer Zusammenhang"
-    + 0    = "Kein Zusammenhang"
-    + 1    = "Starker possitiver Zusammenhang"
+    + **-1**   = "Starker negativer Zusammenhang"
+    + **0**    = "Kein Zusammenhang"
+    + **1**    = "Starker possitiver Zusammenhang"
 
 Variable/Datensatze | Produkt  | Service  | Joined
 --------- | ---------- | ------------- | -----------
@@ -97,9 +97,10 @@ User Engagement <-> Acquaintance  | 0.70 | 0.63 | 0.54
 
 ## Streudiagramm
 
-- *"Graphische Darstellung von beobachteter Wertepaaren zweier statistischer Merkmale*" [10]
+*"Graphische Darstellung von beobachteter Wertepaaren zweier statistischer Merkmale*" [10]
 
->- Die Wertepaare werden in ein kartesischer Koordinatensystem eingetragen -> ergibt Punktwolke
+>- Die Wertepaare werden in ein kartesischer Koordinatensystem eingetragen  
+    + ergibt eine Punktwolke
 
 >- Das Muster gibt Infos über die Abhängigkeit der beiden Merkmale
 
@@ -113,10 +114,8 @@ plot(datasetS.kleiner$Acquaintance, datasetS.kleiner$User.Engage, xlab = "Acquai
 
 "*Graphische Darstellung der Häufigkeitsverteilung metrisch skalierter Merkmale*" [10]
 
-**Anwendung**
-
-- u.a. in der beschreibende Statistik
-    + wenn man den Verlauf der Häufigkeitsverteilung sehen möchte
+- Anwendung
+    + wenn man z.B. den Verlauf der Häufigkeitsverteilung sehen möchte
     + wenn man vermutet, dass mehrere Faktoren einen Prozess beeinflussen, und man diese nachweisen will ??????????
 
 ## Histogramm von User Engagement (Service)
@@ -132,9 +131,9 @@ m1
 ## Normalverteilung
 
 - Bezeichnet eine wichtige Form der Wahrscheinlichkeistverteilung
-  + *Median* und *Mittelwert* sind identisch
-  + Aussehen und Eigenschaften werden von Erwartungswert und Varianz bestimmt [20, 21]
-  + Benuzt z.B. bei an annäherte Beschreibung von Korpergrosse, Einkommen usw. 
+    + *Median* und *Mittelwert* sind identisch
+    + Aussehen und Eigenschaften werden von Erwartungswert und Varianz bestimmt [20, 21]
+    + Benuzt z.B. bei der annäherten Beschreibung von Körpergröße, Einkommen usw. 
   
 <math xmlns="http://www.w3.org/1998/Math/MathML">
 <mrow class="MJX-TeXAtom-ORD">
@@ -205,7 +204,11 @@ m
 ## QQ-Plot
 
 "*Ein graphischer Weg zur Beurteilung, ob Messwerte einer Verteilung Normalverteilt sind.*" [22]
-  + Wenn Punkte annähernd auf einer Geraden liegen, sind die Daten näherungsweise normalverteilt, ansonsten nicht.
+
+- Deskriptive Überprüfung auf die Normalverteilung 
+    + anderen wären verschiedenen Tests, wie z.B. `Chi-Quadrat-Test`
+
+- Wenn Punkte annähernd auf einer Geraden liegen, sind die Daten näherungsweise normalverteilt, ansonsten nicht.
 
 ## QQ-Plot von User Engagement
 
@@ -306,7 +309,7 @@ qqline(datasetS.kleiner$User.Engage)
 
 - Mehrere Anwendungen, u.a. bei der Transformation auf Normalverteilung
 
-- **Frage**: Finde *Lambda* welches zu der grosste Korrelation fuhrt 
+- **Frage**: Finde *Lambda* welches zu der größten Korrelation führt
 
 - *Lambdas*:
 
@@ -345,6 +348,8 @@ plot((joinedDataSets.without$Acquaintance^0.5-1)/0.5, (joinedDataSets.without$Us
 
 ## Ellipse "Product"
 
+- Text
+
 ```{r, message=FALSE, cache=TRUE, echo=FALSE, fig.align='center'}
 library(car)
 
@@ -356,7 +361,7 @@ fit <- lm(yAQ2 ~ xAQ2)
 confidenceEllipse(fit, levels = 0.95)
 ```
 
-## 95% Konfidenzintervall 
+## 95% Konfidenzintervall des Lineares Modells
 
 ```{r, message=FALSE, cache=TRUE, echo=FALSE, fig.align='center'}
 # https://stackoverflow.com/questions/21810664/how-to-use-the-predict-function-for-creating-the-confidence-bands-in-r
@@ -366,7 +371,7 @@ source("http://sites.stat.psu.edu/~dhunter/R/confidence.band.r")
 confidence.band(fit, xlab = "Acquaintance", ylab = "User Engagement")
 ```
 
-## Regression von Transformierten "Product"
+## Regression von transformiertem "Product"
 
 ```{r, message=FALSE, cache=TRUE, echo=FALSE, fig.align='center'}
 library(car)

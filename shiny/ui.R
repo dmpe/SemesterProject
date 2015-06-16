@@ -38,9 +38,7 @@ shinyUI(navbarPage("Project Interactivelly", id="nav",
                               mainPanel(
                                 fluidRow(
                                   column(8,
-                                         verbatimTextOutput("ssdataset"),
                                          plotOutput("scat"), # width = "600px"
-                                         verbatimTextOutput("ppdataset"),
                                          plotOutput("scatProduct") #, width = "600px"
                                          
                                   ),

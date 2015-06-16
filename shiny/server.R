@@ -28,7 +28,7 @@ shinyServer(function(input, output) {
   })
   
   output$scat <- renderPlot({
-    scatterplot(datasetM.withoutFour[, input$selection1], datasetM.withoutFour[, input$selection2], xlab = "x - 1", ylab = "y - 2")
+    scatterplot(datasetM.withoutFour[, input$selection1], datasetM.withoutFour[, input$selection2], xlab = "x - 1", ylab = "y - 2", main = "Service Dataset")
   })
   
   output$correlation <- renderPlot({
@@ -36,7 +36,7 @@ shinyServer(function(input, output) {
   })
   
   output$scatProduct <- renderPlot({
-    scatterplot(dataset.product.withoutFour[, input$selection3], dataset.product.withoutFour[, input$selection4], xlab = "x - 3", ylab = "y - 4")
+    scatterplot(dataset.product.withoutFour[, input$selection3], dataset.product.withoutFour[, input$selection4], xlab = "x - 3", ylab = "y - 4", main = "Product Dataset")
   })
   
   output$correlationProduct <- renderPlot({
@@ -81,14 +81,6 @@ shinyServer(function(input, output) {
     
     rozdil3 <- tp1 - tp2
     rozdil3
-  })
-  
-  output$ppdataset <- renderPrint({
-    print("Produkt Dataset")
-  })
-  
-  output$ssdataset <- renderPrint({
-    print("Service Dataset")
   })
   
   output$renderqqPlot2 <- renderPlot({
