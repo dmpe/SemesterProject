@@ -46,7 +46,7 @@ output:
 
 >- Heute >2 Implementierungen: `S-PLUS` (commerziel) und **`R`** (GNU project) 
     + mit vielen weiteren Distributionen: 
-        + `Revolution R Open` ($MSFT)
+        + `Revolution R Open` (ab 1Q. 2015 Microsoft)
         + `Oracle R Enterprise`
     
 ## R
@@ -321,9 +321,9 @@ Acquaintance  | 0.895 | 0.139 | 0.445
 ```{r, message=FALSE, out.width="830", out.heigh="550", cache=TRUE, echo=FALSE, fig.align='center'}
 
 par(mfrow=c(2,3))
-plot(dataset.P$Acquaintance, dataset.P$User.Engage, xlab = "Acquaintance", ylab = "User Engagement")
-plot(datasetS.kleiner$Acquaintance, datasetS.kleiner$User.Engage, xlab = "Acquaintance", ylab = "User Engagement")
-plot(joinedDataSets.without$Acquaintance, joinedDataSets.without$User.Engage, xlab = "Acquaintance", ylab = "User Engagement")
+plot(dataset.P$Acquaintance, dataset.P$User.Engage, xlab = "Acquaintance", ylab = "User Engagement", main = "Product")
+plot(datasetS.kleiner$Acquaintance, datasetS.kleiner$User.Engage, xlab = "Acquaintance", ylab = "User Engagement", main = "Service")
+plot(joinedDataSets.without$Acquaintance, joinedDataSets.without$User.Engage, xlab = "Acquaintance", ylab = "User Engagement", main = "Joined")
 
 
 plot((dataset.P$Acquaintance^0.5-1)/0.5, (dataset.P$User.Engage^0.5-1)/0.5, xlab = "Acquaintance", ylab = "User Engagement")
@@ -344,7 +344,7 @@ plot((joinedDataSets.without$Acquaintance^0.5-1)/0.5, (joinedDataSets.without$Us
 > $\\F_{2,\;n-2}\;=\;$ F-Verteilung mit 2 und n-2 Freiheitsgraden
 > 
 
-## Ellipse
+## Ellipse "Product"
 
 ```{r, message=FALSE, cache=TRUE, echo=FALSE, fig.align='center'}
 library(car)
@@ -357,21 +357,25 @@ fit <- lm(yAQ2 ~ xAQ2)
 confidenceEllipse(fit, levels = 0.95)
 ```
 
-## Resultate der Ellipse und Linearen Models
+## 95% Konfidenzintervall 
 
-```{r, message=FALSE, out.width="680px", out.heigh="480px", cache=TRUE, echo=FALSE, fig.align='center'}
+```{r, message=FALSE, cache=TRUE, echo=FALSE, fig.align='center'}
 # https://stackoverflow.com/questions/21810664/how-to-use-the-predict-function-for-creating-the-confidence-bands-in-r
+
 source("http://sites.stat.psu.edu/~dhunter/R/confidence.band.r")
 
 confidence.band(fit, xlab = "Acquaintance", ylab = "User Engagement")
 ```
 
-## Regression von Transformierten "Service"
+## Regression von Transformierten "Product"
 
-```{r, message=FALSE, out.width="680px", out.heigh="480px", cache=TRUE, echo=FALSE, fig.align='center'}
+```{r, message=FALSE, cache=TRUE, echo=FALSE, fig.align='center'}
 library(car)
 
-scatterplot(xAQ2, yAQ2, xlab = "Acquaintance", ylab = "User Engagement")
+xAQ2 <- (dataset.P$Acquaintance^0.5-1)/0.5
+yAQ2 <- (dataset.P$User.Engage^0.5-1)/0.5
+
+scatterplot(xAQ2, yAQ2, xlab = "Acquaintance", ylab = "User Engagement", ellipse=TRUE, smoother= FALSE, levels= c(.5, .95), col=c(palette()[3], palette()[2], palette()[1]))
 ```
 
 

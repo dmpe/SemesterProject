@@ -107,6 +107,7 @@ yAQ2 <- (dataset.product$User.Engage^labda.UE.list[[3]]-1)/labda.UE.list[[3]]
 xAQ2 <- (dataset.product$Acquaintance^0.5-1)/0.5
 yAQ2 <- (dataset.product$User.Engage^0.5-1)/0.5
 
+cor(xAQ2, yAQ2)
 plot(xAQ2, yAQ2)
 abline(lm(yAQ2 ~ xAQ2))
 
