@@ -87,6 +87,10 @@ shinyServer(function(input, output) {
     print("Produkt Dataset")
   })
   
+  output$ssdataset <- renderPrint({
+    print("Service Dataset")
+  })
+  
   output$renderqqPlot2 <- renderPlot({
     qqnorm(datasetM[, input$selection15])
     qqline(datasetM[, input$selection15])

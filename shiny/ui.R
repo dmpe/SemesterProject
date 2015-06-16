@@ -38,6 +38,7 @@ shinyUI(navbarPage("Project Interactivelly", id="nav",
                               mainPanel(
                                 fluidRow(
                                   column(8,
+                                         verbatimTextOutput("ssdataset"),
                                          plotOutput("scat"), # width = "600px"
                                          verbatimTextOutput("ppdataset"),
                                          plotOutput("scatProduct") #, width = "600px"
@@ -104,21 +105,21 @@ shinyUI(navbarPage("Project Interactivelly", id="nav",
                               )
                             )
                    ), 
-                   tabPanel("Diff. in Cor.", 
-                            sidebarLayout(
-                              sidebarPanel(
-                                p("Click to choose the columns and then display correlations."), 
-                                a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
-                                a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
-                                width = 2
-                              ),
-                              mainPanel(
-                                plotOutput("onlyCorrelation", width = "1300px"),
-                                verbatimTextOutput("vsechno"),
-                                plotOutput("onlyCorrelation2")
-                              )
-                            )
-                   ), 
+#                    tabPanel("Diff. in Cor.", 
+#                             sidebarLayout(
+#                               sidebarPanel(
+#                                 p("Click to choose the columns and then display correlations."), 
+#                                 a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
+#                                 a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
+#                                 width = 2
+#                               ),
+#                               mainPanel(
+#                                 plotOutput("onlyCorrelation", width = "1300px"),
+#                                 verbatimTextOutput("vsechno"),
+#                                 plotOutput("onlyCorrelation2")
+#                               )
+#                             )
+#                    ), 
                    tabPanel("Dataset - Table",
                             sidebarLayout(
                               sidebarPanel(
