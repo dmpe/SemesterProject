@@ -132,10 +132,10 @@ m1
 ## Normalverteilung
 
 - Bezeichnet eine wichtige Form der Wahrscheinlichkeistverteilung
-  + Kurvenverlauf ist symmetrisch
   + *Median* und *Mittelwert* sind identisch
   + Aussehen und Eigenschaften werden von Erwartungswert und Varianz bestimmt [20, 21]
-    
+  + Benuzt z.B. bei an annäherte Beschreibung von Korpergrosse, Einkommen usw. 
+  
 <math xmlns="http://www.w3.org/1998/Math/MathML">
 <mrow class="MJX-TeXAtom-ORD">
   <mstyle displaystyle="true" scriptlevel="0">
@@ -205,7 +205,6 @@ m
 ## QQ-Plot
 
 "*Ein graphischer Weg zur Beurteilung, ob Messwerte einer Verteilung Normalverteilt sind.*" [22]
-
   + Wenn Punkte annähernd auf einer Geraden liegen, sind die Daten näherungsweise normalverteilt, ansonsten nicht.
 
 ## QQ-Plot von User Engagement
