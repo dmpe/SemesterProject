@@ -28,7 +28,9 @@ shinyServer(function(input, output) {
   })
   
   output$scat <- renderPlot({
-    scatterplot(datasetM.withoutFour[, input$selection1], datasetM.withoutFour[, input$selection2], xlab = "x - 1", ylab = "y - 2", main = "Service Dataset")
+    scatterplot(datasetM.withoutFour[, input$selection1], 
+                datasetM.withoutFour[, input$selection2], xlab = "x - 1", ylab = "y - 2", 
+                main = "Service Dataset", smoother= FALSE)
   })
   
   output$correlation <- renderPlot({
@@ -36,7 +38,9 @@ shinyServer(function(input, output) {
   })
   
   output$scatProduct <- renderPlot({
-    scatterplot(dataset.product.withoutFour[, input$selection3], dataset.product.withoutFour[, input$selection4], xlab = "x - 3", ylab = "y - 4", main = "Product Dataset")
+    scatterplot(dataset.product.withoutFour[, input$selection3], 
+                dataset.product.withoutFour[, input$selection4], xlab = "x - 3", ylab = "y - 4", 
+                main = "Product Dataset", smoother= FALSE)
   })
   
   output$correlationProduct <- renderPlot({
@@ -59,13 +63,14 @@ shinyServer(function(input, output) {
   output$onlyCorrelation2 <- renderPlot({
     cols <- rev(colorRampPalette(brewer.pal(10, "RdBu"))(20))
     rozdil <- datasetM.correlation.cor - dataset.product.correlation.cor
-    corrplot.mixed(rozdil, lower = "circle",  upper = "number",  diag='n', outline=T, col=cols, tl.pos="lt", addgrid.col="grey", cl.lim=c(-0.5,0.5), cl.length=length(cols)/2+1)
+    corrplot.mixed(rozdil, lower = "circle",  upper = "number",  diag='n', outline=T, col=cols, 
+                   tl.pos="lt", addgrid.col="grey", cl.lim=c(-0.5,0.5), cl.length=length(cols)/2+1)
   })
   
   output$Facet <- renderPlot({
     # https://gist.github.com/jcheng5/3239667
-    sp <- ggplot(joinedDataSets.without, aes_string(x=input$selection5, y=input$selection6)) + geom_point(shape=1) + stat_smooth(method = "lm")
-    #     sp <- sp + facet_grid(paste(input$selection7, '~', input$selection8))
+    sp <- ggplot(joinedDataSets.without, aes_string(x=input$selection5, y=input$selection6)) 
+    sp <- sp + geom_point(shape=1) + stat_smooth(method = "lm")
     # MANUAL required
     sp <- sp + facet_grid(Gender ~ TypeDataSet)
     print(sp)
