@@ -399,7 +399,7 @@ scatterplot(xAQ2, yAQ2, xlab = "Acquaintance", ylab = "User Engagement", ellipse
 
 ## Fazit
 
-<img src="pictures/project_pos.jpg" height="535" style="display: block;margin-left: auto;margin-right: auto;">
+<img src="pictures/fazit-tabulka.png" height="535" style="display: block;margin-left: auto;margin-right: auto;">
 
 ## Quellen
 1. https://github.com/rdpeng/courses/blob/master/02_RProgramming/OverviewHistoryR/index.md
