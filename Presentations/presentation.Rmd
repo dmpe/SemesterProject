@@ -18,7 +18,7 @@ output:
 1. Einführung in das Projekt    
 2. Einführung in `R`           
 3. Explorative Datenanalyse
-    + Korrelation & Historgramm
+    + Korrelation & Histogramm
     + Test auf Normalverteilung + QQ-Plot
     + Potenz (Box-Cox) Transformation 
     + Lineares Modell
@@ -114,7 +114,34 @@ plot(datasetS.kleiner$Acquaintance, datasetS.kleiner$User.Engage, xlab = "Acquai
 
 "*Graphische Darstellung der Häufigkeitsverteilung metrisch skalierter Merkmale*" [5]
 
-2 Formel
+$y=\beta_0 +\beta_1 x + e$
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mrow class="MJX-TeXAtom-ORD">
+    <mstyle scriptlevel="0" displaystyle="true">
+      <msub>
+        <mi>Y</mi>
+        <mi>i</mi>
+      </msub>
+      <mo>=</mo>
+      <mi>&alpha;</mi>
+      <mo>+</mo>
+      <mi>&beta;</mi>
+      <mo stretchy="false">^</mo>
+      <msub>
+        <mi>x</mi>
+        <mi>i</mi>
+      </msub>
+      <mo>+</mo>
+      <msub>
+        <mi>&epsilon;</mi>
+        <mi>i</mi>
+      </msub>
+      <mspace width="thickmathspace"/>
+      <mo>,</mo>
+    </mstyle>
+  </mrow>
+</math>
 
 - Anwendung
     + wenn man z.B. den Verlauf der Häufigkeitsverteilung sehen möchte
