@@ -13,7 +13,7 @@ output:
     widescreen: yes
 ---
 
-## Agenda | 23 Folien | 20 Minuten | 4 Teilnehmer
+## Agenda | 25 Folien | 20 Minuten | 4 Teilnehmer
 
 1. Einführung in das Projekt    
 2. Einführung ins `R`           
@@ -21,7 +21,7 @@ output:
     + Korrelation & Historgramm
     + Normalverteilung (+ QQ-Plot)
     + Potenz (Box-Cox) Transformation 
-    + Lineare Regression (OLS)
+    + Lineares Modell
 4. Interaktive Applikation mit `Shiny Framework` 
 5. Zusammenfassung 
 
@@ -57,7 +57,7 @@ output:
     + 100 Millionen x 5 Matrix ~> 4 GB RAM [3]
     
 >- Sehr **schlank** 
-    + Funktionalität in modularen Pakete aufgeteilt (z.B. von **CRAN** oder **GitHub**)
+    + Funktionalität in modularen Pakete aufgeteilt (z.B. von **CRAN** oder **GitHub** zum herunterladen)
 
 >- Heute populär bei **Forschern für Data Mining** Zwecke, statt *Stata* & *SPSS* usw. 
     + vgl. TIOBE Index [4]
@@ -384,6 +384,16 @@ yAQ2 <- (dataset.P$User.Engage^0.5-1)/0.5
 scatterplot(xAQ2, yAQ2, xlab = "Acquaintance", ylab = "User Engagement", ellipse=TRUE, smoother= FALSE, levels= c(.5, .95), col=c(palette()[3], palette()[2], palette()[1]))
 ```
 
+## Erbgniss
+
+```{r, message=FALSE, echo=FALSE}
+xAQ2 <- (dataset.P$Acquaintance^0.5-1)/0.5
+yAQ2 <- (dataset.P$User.Engage^0.5-1)/0.5
+fit <- lm(yAQ2 ~ xAQ2)
+summary(fit)
+
+```
+
 
 ## Shiny Framework
 
@@ -399,9 +409,27 @@ scatterplot(xAQ2, yAQ2, xlab = "Acquaintance", ylab = "User Engagement", ellipse
 
 - <span style="color: red">Live DEMO</span>: <http://shiny.b40.cz/SemesterProject/shiny>
 
+<div class="notes">
+
+- Programmiergerüst
+- stellt den Rahmen zur Verfügung, innerhalb dessen Programmierer eine Anwendung erstellt
+- NET, Wordpress, JQuery etc.
+
+- ekvaiatanz
+
+</div>
+
 ## Fazit
 
 <img src="pictures/fazit-tabulka.png" height="535" style="display: block;margin-left: auto;margin-right: auto;">
+
+<div class="notes">
+
+- 2 Teile, technisch + methodologischer auffasung
+
+- ekvaiatanz
+
+</div>
 
 ## Auszug aus den Quellen {.smaller}
 1. https://github.com/rdpeng/courses/blob/master/02_RProgramming/OverviewHistoryR/index.md
