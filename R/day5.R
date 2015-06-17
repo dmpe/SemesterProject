@@ -150,14 +150,14 @@ xausrechenen <- sqrt( (ellip2[2,2] * Fverteilung) / ( ellip2[1,1] * ellip2[2,2] 
 
 ## fur den y-wurzel
 ## musi byt s minus jinak mi to nefunguje
-firstOne <- (ellip2[1,2]^2) * (-xausrechenen^2)
-secondOne <- ellip2[1,1] * ellip2[2,2] * -xausrechenen^2
-thridOne <- ellip2[2,2] * Fverteilung
+firstOne <- (ellip2[1,2]^2) * (xausrechenen^2)
+secondOne <- ellip2[1,1] * ellip2[2,2] * xausrechenen^2
+thridOne <- ellip2[2,2] * Fverteilung^2
 
 unterwurzel <- sqrt(firstOne - secondOne + thridOne)
 
-yausrechenen <- ( (-ellip2[1,2] * xausrechenen) + unterwurzel) / ellip2[2,2]
-yausrechenen12 <- ( (-ellip2[1,2] * -xausrechenen) - unterwurzel) / ellip2[2,2]
+yausrechenen <- ( (-ellip2[1,2] * xausrechenen) + 0) / ellip2[2,2]
+yausrechenen12 <- ( (-ellip2[1,2] * xausrechenen) - 0) / ellip2[2,2]
 
 xlist <- seq(-xausrechenen, xausrechenen, length = 64)
 yausrechenen2 <- NULL
@@ -170,7 +170,8 @@ for( p in 1:length(xlist) ) {
 
 yausrechenen2
 
-
+# Lineares Modell Abschatzen
+# 
 
 EllipsenplotXY <- as.matrix(confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = 0.95))
 

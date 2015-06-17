@@ -108,7 +108,7 @@ shinyServer(function(input, output) {
     xAQ22 <- (datasetM.correlation$Acquaintance^0.5-1)/0.5
     yAQ23 <- (datasetM.correlation$User.Engage^0.5-1)/0.5
     
-    confidenceEllipse(lm(yAQ23 ~ xAQ22), levels = input$levels2, main = "Service")
+    confidenceEllipse(lm(yAQ23 ~ xAQ22), levels = input$levels2, main = "Service", xlim = c(25, 45), ylim = c(0.4,0.8))
   })
   
   output$renderJoinedEllipse <- renderPlot({

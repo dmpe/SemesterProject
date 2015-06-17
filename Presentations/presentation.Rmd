@@ -13,13 +13,13 @@ output:
     widescreen: yes
 ---
 
-## Agenda | 25 Folien | 20 Minuten | 4 Teilnehmer
+## Agenda
 
 1. Einführung in das Projekt    
-2. Einführung ins `R`           
+2. Einführung in `R`           
 3. Explorative Datenanalyse
     + Korrelation & Historgramm
-    + Normalverteilung (+ QQ-Plot)
+    + Test auf Normalverteilung + QQ-Plot
     + Potenz (Box-Cox) Transformation 
     + Lineares Modell
 4. Interaktive Applikation mit `Shiny Framework` 
@@ -27,13 +27,13 @@ output:
 
 ## Einführung in das Projekt
 
-- **Ziel**:
-    + Mithilfe von `R` Modellierung einer Beziehungen zwischen 2 Variablen 
-        + Quantifizierung ihres Zusammenhangs
-        + Konzentration auf die Erstellung eines **Linearen Modells**: $y=\beta_0 +\beta_1 x + e$
-                                                                  
 - **Daten**:
     <img src = "pictures/tabelle.jpg" width = "1000"> 
+
+- **Ziel**:
+    + Modellierung einer Beziehungen zwischen 2 Variablen 
+        + Quantifizierung ihres Zusammenhangs
+        + Konzentration auf eines **Linearen Modells**: $y=\beta_0 +\beta_1 x + e$
 
 ## Geschichte von R
 
@@ -56,11 +56,11 @@ output:
 >- Objekte & **Daten** werden explizit im **RAM** gespeichert 
     + 100 Millionen x 5 Matrix ~> 4 GB RAM [3]
     
->- Sehr **schlank** 
+>- Sehr **umfalgreich** 
     + Funktionalität in modularen Pakete aufgeteilt (z.B. von **CRAN** oder **GitHub** zum herunterladen)
 
->- Heute populär bei **Forschern für Data Mining** Zwecke, statt *Stata* & *SPSS* usw. 
-    + vgl. TIOBE Index [4]
+>- Heute populär bei **Forschern für Data Mining** Zwecke, statt *SPSS* usw. 
+    + (TIOBE Index, 4)
 
 ## Explorative Datenanalyse (EDA)
 
@@ -91,7 +91,7 @@ joinedDataSets.without <- joinedDataSets[, !names(joinedDataSets) %in% c("Durati
     + **0**    = "Kein Zusammenhang"
     + **1**    = "Starker possitiver Zusammenhang"
 
-Variable/Datensatze | Produkt  | Service  | Joined
+Variable / Datensätze | Produkt  | Service  | Joined
 --------- | ---------- | ------------- | -----------
 User Engagement <-> Acquaintance  | 0.70 | 0.63 | 0.54
 
@@ -114,9 +114,12 @@ plot(datasetS.kleiner$Acquaintance, datasetS.kleiner$User.Engage, xlab = "Acquai
 
 "*Graphische Darstellung der Häufigkeitsverteilung metrisch skalierter Merkmale*" [5]
 
+2 Formel
+
 - Anwendung
     + wenn man z.B. den Verlauf der Häufigkeitsverteilung sehen möchte
-    + wenn man vermutet, dass mehrere Faktoren einen Prozess beeinflussen, und man diese nachweisen will ??????????
+
+Suche lineares Modell, kriegen aber beta dach; die abschtazen 
 
 ## Histogramm von User Engagement (Service)
 
@@ -130,8 +133,9 @@ m1
 
 ## Normalverteilung
 
+ein bild: 0,1; und verteit
+
 - Bezeichnet eine wichtige Form der Wahrscheinlichkeistverteilung
-    + *Median* und *Mittelwert* sind identisch
     + Aussehen und Eigenschaften werden von Erwartungswert und Varianz bestimmt [6, 7]
     + Benuzt z.B. bei der annäherten Beschreibung von Körpergröße, Einkommen usw. 
   
@@ -190,7 +194,8 @@ m1
 </math>
 
 
-## Normalverteilung von User Engagement (Service)
+## Histogramm von User Engagement (Service)
+
 
 ```{r, message=FALSE, cache=TRUE, echo=FALSE, fig.align='center'}
 library(ggplot2)
@@ -201,14 +206,13 @@ m <- m + geom_density() + xlab("User Engagement")
 m
 ```
 
-## QQ-Plot
+## Überprüfung auf die Normalverteilung
 
-Ein graphischer Weg zur Beurteilung, ob Messwerte einer Verteilung Normalverteilt sind.
+- Veschidene Moglichekiten, wie z.B. `Chi-Quadrat-Test`, `QQ-Plot` usw.
 
-- Deskriptive Überprüfung auf die Normalverteilung 
-    + anderen wären verschiedenen Tests, wie z.B. `Chi-Quadrat-Test` usw.
-
-- Wenn Punkte annähernd auf einer Geraden liegen, sind die Daten näherungsweise normalverteilt, ansonsten nicht.
+- **QQ-Plot**: 
+    + Tatsachlichen Daten gegen die Quantilen der Normalverteilung verglichen
+    + Wenn Punkte annähernd auf einer Geraden liegen, sind die Daten näherungsweise normalverteilt
 
 ## QQ-Plot von User Engagement
 
@@ -307,9 +311,9 @@ qqline(datasetS.kleiner$User.Engage)
 </mrow>
 </math>
 
-- Mehrere Anwendungen, u.a. bei der Transformation auf Normalverteilung [8, 9]
+- **Frage**: Finde *Lambda* damit die Punkten moglichst gut auf der Gerade liegen
 
-- **Frage**: Finde *Lambda* welches zu der größten Korrelation führt
+-  So transformieren dass es zu der größten Korrelation führt
 
 - *Lambdas*:
 
@@ -336,11 +340,14 @@ plot((joinedDataSets.without$Acquaintance^0.5-1)/0.5, (joinedDataSets.without$Us
 
 ## Abschätzung der linearen Parameter
 
-> Sei $y=\;\beta_0+\beta_1\ast x+\xi$ und $\xi$ sei $\\N(\mu,\;\sigma^2I)$ verteilt. 
+> Sei $y=\;\beta_0+\beta_1\ast x+\xi$ und $\xi$ sei $\\N(0,\;\sigma^2I)$ verteilt. 
 > 
 > Dann ist ein 100(1-$\alpha$) % Konfidenzgebiet fur $\beta$ gegeben durch
-> $(\beta-\widehat\beta)'\;z\;'z\;(\beta-\widehat\beta)\;\leq2\;s^2\;F_{2,\;n-2}\;(\alpha)$ wo 
->
+> 
+> den Satz: 
+>         
+> $(\beta-\widehat\beta)'\;z\;'z\;(\beta-\widehat\beta)\;\leq2\;s^2\;F_{2,\;n-2}\;(\alpha)$
+> 
 > <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mstyle scriptlevel="0" displaystyle="true"><msup><mi>s</mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><msup><mi>&epsilon;</mi><mi mathvariant="normal" class="MJX-variant">&prime;</mi></msup><mi>&epsilon;</mi></mrow><mrow><mi>n</mi><mo>&minus;</mo><mi>p</mi></mrow></mfrac></mstyle></mrow></math>
 >
 > $\\F_{2,\;n-2}\;=\;$ F-Verteilung mit 2 und n-2 Freiheitsgraden
@@ -348,9 +355,9 @@ plot((joinedDataSets.without$Acquaintance^0.5-1)/0.5, (joinedDataSets.without$Us
 
 ## Ellipse "Product" {.smaller}
 
-- Korrelation bestimmt die Form des elliptischen Wahrscheinlichkeitsfeldes
-    + Grosse Korrelation ~> Ellipse ist sehr schmal
-    + k(l)eine ~> Kreis-formig 
+- Korrelation bestimmt die Grosse des elliptischen Wahrscheinlichkeitsfeldes
+    + Grosse Korrelation ~> Ellipse ist sehr klein
+    + Kleine Korrelation ~> Ellipse einfach gross 
 
 ```{r, message=FALSE, cache=TRUE, echo=FALSE, fig.align='center'}
 library(car)
@@ -363,7 +370,7 @@ fit <- lm(yAQ2 ~ xAQ2)
 confidenceEllipse(fit, levels = 0.95)
 ```
 
-## 95% Konfidenzintervall des Lineares Modells
+## 95% Konfidenzgebiet des Lineares Modells
 
 ```{r, message=FALSE, cache=TRUE, echo=FALSE, fig.align='center'}
 # https://stackoverflow.com/questions/21810664/how-to-use-the-predict-function-for-creating-the-confidence-bands-in-r
@@ -373,16 +380,7 @@ source("http://sites.stat.psu.edu/~dhunter/R/confidence.band.r")
 confidence.band(fit, xlab = "Acquaintance", ylab = "User Engagement")
 ```
 
-## Regression von transformiertem "Product"
-
-```{r, message=FALSE, cache=TRUE, echo=FALSE, fig.align='center'}
-library(car)
-
-xAQ2 <- (dataset.P$Acquaintance^0.5-1)/0.5
-yAQ2 <- (dataset.P$User.Engage^0.5-1)/0.5
-
-scatterplot(xAQ2, yAQ2, xlab = "Acquaintance", ylab = "User Engagement", ellipse=TRUE, smoother= FALSE, levels= c(.5, .95), col=c(palette()[3], palette()[2], palette()[1]))
-```
+95 liegt die linear modell in dem roten Bereich
 
 ## Erbgniss
 
@@ -410,6 +408,7 @@ summary(fit)
 - <span style="color: red">Live DEMO</span>: <http://shiny.b40.cz/SemesterProject/shiny>
 
 <div class="notes">
+- ellipse gleich aus, aber in der wahscheinlichekeit grosser geworden
 
 - Programmiergerüst
 - stellt den Rahmen zur Verfügung, innerhalb dessen Programmierer eine Anwendung erstellt
