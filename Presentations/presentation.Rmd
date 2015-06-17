@@ -30,17 +30,17 @@ output:
 - **Ziel**:
     + Mithilfe von `R` Modellierung einer Beziehungen zwischen 2 Variablen 
         + Quantifizierung ihres Zusammenhangs
-        + Konzentration auf die Erstellung eines **Lineares Modells**: $y=\beta_0 +\beta_1 x + e$
+        + Konzentration auf die Erstellung eines **Linearen Modells**: $y=\beta_0 +\beta_1 x + e$
                                                                   
 - **Daten**:
     <img src = "pictures/tabelle.jpg" width = "1000"> 
 
 ## Geschichte von R
 
-- `R` ist eine Implementierung von `S` (*John Chambers et al.* @ Bell Labs 1976)
+- `R` ist eine Implementierung von `S` (*John Chambers et al.* @ Bell Labs 1976) [2]
 
->- Pionier von *Ross Ihaka* and *Robert Gentleman* in **1991**
-    + seit 1995 unter **GNU GPL**
+>- Pionier von *Ross Ihaka* and *Robert Gentleman* in **1991** [1]
+    + seit 1995 unter **GNU GPL** 
 
 >- Erst aber 2000 **stabil** und aktiv von **R Core Group** weiter entwickelt
 
@@ -54,17 +54,17 @@ output:
 - Geschrieben in **`C`** (35%) & **`Fortan`** (24%) & **`R`** (38%)
 
 >- Objekte & **Daten** werden explizit im **RAM** gespeichert 
-    + 100 Millionen x 5 Matrix ~> 4 GB RAM [5]
+    + 100 Millionen x 5 Matrix ~> 4 GB RAM [3]
     
 >- Sehr **schlank** 
     + Funktionalität in modularen Pakete aufgeteilt (z.B. von **CRAN** oder **GitHub**)
 
 >- Heute populär bei **Forschern für Data Mining** Zwecke, statt *Stata* & *SPSS* usw. 
-    + vgl. TIOBE Index [15]
+    + vgl. TIOBE Index [4]
 
 ## Explorative Datenanalyse (EDA)
 
-"*Sie untersucht und begutachtet Daten, von denen nur ein geringes Wissen über deren Zusammenhänge vorliegt.*" [10]
+"*Sie untersucht und begutachtet Daten, von denen nur ein geringes Wissen über deren Zusammenhänge vorliegt.*" [5]
 
 <img src="http://upload.wikimedia.org/wikipedia/en/b/ba/Data_visualization_process_v1.png" height="450" weight="660" style="display: block;margin-left: auto;margin-right: auto;">
 
@@ -97,7 +97,7 @@ User Engagement <-> Acquaintance  | 0.70 | 0.63 | 0.54
 
 ## Streudiagramm
 
-*"Graphische Darstellung von beobachteter Wertepaaren zweier statistischer Merkmale*" [10]
+*"Graphische Darstellung von beobachteter Wertepaaren zweier statistischer Merkmale*" [5]
 
 >- Die Wertepaare werden in ein kartesischer Koordinatensystem eingetragen  
     + ergibt eine Punktwolke
@@ -112,7 +112,7 @@ plot(datasetS.kleiner$Acquaintance, datasetS.kleiner$User.Engage, xlab = "Acquai
 
 ## Histogramm
 
-"*Graphische Darstellung der Häufigkeitsverteilung metrisch skalierter Merkmale*" [10]
+"*Graphische Darstellung der Häufigkeitsverteilung metrisch skalierter Merkmale*" [5]
 
 - Anwendung
     + wenn man z.B. den Verlauf der Häufigkeitsverteilung sehen möchte
@@ -132,7 +132,7 @@ m1
 
 - Bezeichnet eine wichtige Form der Wahrscheinlichkeistverteilung
     + *Median* und *Mittelwert* sind identisch
-    + Aussehen und Eigenschaften werden von Erwartungswert und Varianz bestimmt [20, 21]
+    + Aussehen und Eigenschaften werden von Erwartungswert und Varianz bestimmt [6, 7]
     + Benuzt z.B. bei der annäherten Beschreibung von Körpergröße, Einkommen usw. 
   
 <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -203,10 +203,10 @@ m
 
 ## QQ-Plot
 
-"*Ein graphischer Weg zur Beurteilung, ob Messwerte einer Verteilung Normalverteilt sind.*" [22]
+Ein graphischer Weg zur Beurteilung, ob Messwerte einer Verteilung Normalverteilt sind.
 
 - Deskriptive Überprüfung auf die Normalverteilung 
-    + anderen wären verschiedenen Tests, wie z.B. `Chi-Quadrat-Test`
+    + anderen wären verschiedenen Tests, wie z.B. `Chi-Quadrat-Test` usw.
 
 - Wenn Punkte annähernd auf einer Geraden liegen, sind die Daten näherungsweise normalverteilt, ansonsten nicht.
 
@@ -307,7 +307,7 @@ qqline(datasetS.kleiner$User.Engage)
 </mrow>
 </math>
 
-- Mehrere Anwendungen, u.a. bei der Transformation auf Normalverteilung
+- Mehrere Anwendungen, u.a. bei der Transformation auf Normalverteilung [8, 9]
 
 - **Frage**: Finde *Lambda* welches zu der größten Korrelation führt
 
@@ -346,11 +346,11 @@ plot((joinedDataSets.without$Acquaintance^0.5-1)/0.5, (joinedDataSets.without$Us
 > $\\F_{2,\;n-2}\;=\;$ F-Verteilung mit 2 und n-2 Freiheitsgraden
 > 
 
-## Ellipse "Product"
+## Ellipse "Product" {.smaller}
 
-- Korrelation von zwei Variablen bestimmt die Form des elliptischen Wahrscheinlichkeitsfeld
-
-- Grosse Korrelation -> Ellipse ist sehr schmal; k(l)eine -> Kreis-formig [35]
+- Korrelation bestimmt die Form des elliptischen Wahrscheinlichkeitsfeldes
+    + Grosse Korrelation ~> Ellipse ist sehr schmal
+    + k(l)eine ~> Kreis-formig 
 
 ```{r, message=FALSE, cache=TRUE, echo=FALSE, fig.align='center'}
 library(car)
@@ -387,7 +387,7 @@ scatterplot(xAQ2, yAQ2, xlab = "Acquaintance", ylab = "User Engagement", ellipse
 
 ## Shiny Framework
 
-- `R` framework für interaktive Web Anwendungen
+- `R` framework für interaktive Web Anwendungen [10]
 
 - Jede `Shiny App` besteht aus: 
     + **UI.R** ~> steuert das **Layout und Aussehen**
@@ -403,27 +403,30 @@ scatterplot(xAQ2, yAQ2, xlab = "Acquaintance", ylab = "User Engagement", ellipse
 
 <img src="pictures/fazit-tabulka.png" height="535" style="display: block;margin-left: auto;margin-right: auto;">
 
-## Quellen
+## Auszug aus den Quellen {.smaller}
 1. https://github.com/rdpeng/courses/blob/master/02_RProgramming/OverviewHistoryR/index.md
-4. http://www.stat.yale.edu/~mjk56/temp/bigmemory-vignette.pdf
-5. https://www-conf.slac.stanford.edu/xldb2015/Talks2015/9_Tues_Chambers-XLDBConference.pdf
-6. https://github.com/rstudio/webinars/blob/master/2015-05/How-to-start-Shiny-1/01-How-to-start.pdf
-8. http://de.wikipedia.org/wiki/ {Quantile-Quantile-Plot, Explorative_Datenanalyse, Streudiagramm, Histogramm}
-10. http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html
-11. http://de.statista.com/statistik/lexikon/definition/95/normalverteilung/
-13. http://onlinestatbook.com/2/transformations/box-cox.html
-14. https://stat.ethz.ch/education/semesters/WS_2006_07/asr/Stat.pdf
-http://people.duke.edu/~rnau/testing.htm
-http://www.ime.usp.br/~abe/lista/pdfm9cJKUmFZp.pdf
-http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.469.7176&rep=rep1&type=pdf
-http://de.wikipedia.org/wiki/Homoskedastizit%C3%A4t_und_Heteroskedastizit%C3%A4t
-http://blog.minitab.com/blog/statistics-and-quality-data-analysis/dont-be-a-victim-of-statistical-hippopotomonstrosesquipedaliophobia
+2. https://www-conf.slac.stanford.edu/xldb2015/Talks2015/9_Tues_Chambers-XLDBConference.pdf
+3. http://www.stat.yale.edu/~mjk56/temp/bigmemory-vignette.pdf
+4. http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html
+5. http://de.wikipedia.org/wiki/ {Quantile-Quantile-Plot, Explorative_Datenanalyse, Streudiagramm, Histogramm}
+6. http://flexikon.doccheck.com/de/Normalverteilung
+7. http://matheguru.com/stochastik/31-normalverteilung.html
+8. <http://onlinestatbook.com/2/transformations/box-cox.html>
+9. <http://www.ime.usp.br/~abe/lista/pdfm9cJKUmFZp.pdf>
+10. <https://github.com/rstudio/webinars/blob/master/2015-05/How-to-start-Shiny-1/01-How-to-start.pdf>
+
+<div class="notes">
+
+Other citations include:
 
 
-20. http://flexikon.doccheck.com/de/Normalverteilung
-21. http://matheguru.com/stochastik/31-normalverteilung.html
-22. http://psymet03.sowi.uni-mainz.de/meinharg/Lehre/WS2008_2009/StatistikI/UE_2008_12_11.pdf
-35. http://www.freddiemac.com/finance/smm/july98/pdfs/sol_lekk.pdf
+- <https://stat.ethz.ch/education/semesters/WS_2006_07/asr/Stat.pdf>
+- <http://people.duke.edu/~rnau/testing.htm>
+- <http://de.statista.com/statistik/lexikon/definition/95/normalverteilung/>
+- <http://psymet03.sowi.uni-mainz.de/meinharg/Lehre/WS2008_2009/StatistikI/UE_2008_12_11.pdf>
+- <http://www.freddiemac.com/finance/smm/july98/pdfs/sol_lekk.pdf>
+</div>
+
 ## Wir danken für die Aufmerksamkeit !
 
 ### Folgenden Werkzeuge wurden benutzt:
@@ -431,6 +434,8 @@ http://blog.minitab.com/blog/statistics-and-quality-data-analysis/dont-be-a-vict
 + "Die" IDE - [RStudio](http://www.rstudio.com)
 + Web Applikations Framework für R - [Shiny @ RStudio](http://shiny.rstudio.com/)
 + <https://github.com/dmpe/SemesterProject>
+
+### <span style="color: red">Haben Sie jetzt Fragen ?</span>
 
 <img src="http://www.rstudio.com/wp-content/uploads/2014/03/blue-250.png">
 <img src="http://cdn.tutsplus.com/net/uploads/2013/08/github-collab-retina-preview.gif" width="200" height="200">
