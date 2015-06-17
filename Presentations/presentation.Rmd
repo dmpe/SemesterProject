@@ -1,6 +1,6 @@
 ---
 title: "Datenanalyse mit R"
-author: "Dmitrij Petrov, Rahman Gökbulut, Mesut Sahin, Jeanne Falonne Magne Signe"
+author: "Names"
 date: "2.7.2015"
 output:
   ioslides_presentation:

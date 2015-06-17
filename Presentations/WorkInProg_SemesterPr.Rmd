@@ -1,6 +1,6 @@
 ---
 title: 'Day 2 + Exercise Two '
-author: "Dmitrij Petrov et al."
+author: "dmpe"
 date: "1st of June 2015"
 output:
   html_document:
