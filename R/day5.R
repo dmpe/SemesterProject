@@ -72,13 +72,14 @@ labda.AQ.joined <- testList[[which.max(cor.list.AQ == max(cor.list.AQ))]]
 ############################ Scatterplots vor und nach
 ############################
 par(mfrow=c(2,3))
-plot(datasetM.correlation$Acquaintance, datasetM.correlation$User.Engage)
-plot(joinedDataSets.without$Acquaintance, joinedDataSets.without$User.Engage)
-plot(dataset.product$Acquaintance, dataset.product$User.Engage)
+plot(dataset.product$Acquaintance, dataset.product$User.Engage, xlab = "Acquaintance", ylab = "User Engagement", main = "Product")
+plot(datasetM.correlation$Acquaintance, datasetM.correlation$User.Engage, xlab = "Acquaintance", ylab = "User Engagement", main = "Service")
+plot(joinedDataSets.without$Acquaintance, joinedDataSets.without$User.Engage, xlab = "Acquaintance", ylab = "User Engagement", main = "Joined")
 
-plot((datasetM.correlation$Acquaintance^0.5-1)/0.5, (datasetM.correlation$User.Engage^0.5-1)/0.5)
-plot((joinedDataSets.without$Acquaintance^0.5-1)/0.5, (joinedDataSets.without$User.Engage^0.5-1)/0.5)
-plot((dataset.product$Acquaintance^0.5-1)/0.5, (dataset.product$User.Engage^0.5-1)/0.5)
+plot((dataset.product$Acquaintance^0.5-1)/0.5, (dataset.product$User.Engage^0.5-1)/0.5, xlab = "Acquaintance", ylab = "User Engagement")
+plot((datasetM.correlation$Acquaintance^0.5-1)/0.5, (datasetM.correlation$User.Engage^0.5-1)/0.5, xlab = "Acquaintance", ylab = "User Engagement")
+plot((joinedDataSets.without$Acquaintance^0.5-1)/0.5, (joinedDataSets.without$User.Engage^0.5-1)/0.5, xlab = "Acquaintance", ylab = "User Engagement")
+
 
 dev.off()
 
@@ -93,6 +94,8 @@ plot(joinedDataSets.without$Acquaintance^labda.AQ.list[[3]], joinedDataSets.with
 plot(dataset.product$Acquaintance^labda.AQ.list[[2]], dataset.product$User.Engage^labda.AQ.list[[2]])
 
 dev.off()
+
+
 
 ################################ LM
 ################################
