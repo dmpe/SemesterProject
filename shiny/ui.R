@@ -7,10 +7,11 @@ shinyUI(navbarPage("Project Interactivelly", id="nav",
                             sidebarLayout(
                               sidebarPanel(
                                 p("Click to choose the column and then display histogram and density."), 
-                                br("Gemeinsamen Datensatz"), 
+                                strong("Gemeinsamen Datensatz"), 
+                                br(""),
                                 
                                 selectInput("selection", "Choose a variable:", choices = colnames(datasetM.withoutFour)),
-                                sliderInput("bins", "Lambda:", min = 0.1, max = 1, value = 0.1), 
+                                sliderInput("lambda", "Lambda:", min = 0.1, max = 1, value = 0.1), 
                                 
                                 a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
                                 a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),

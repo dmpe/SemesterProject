@@ -107,7 +107,7 @@ xAQ2 <- (dataset.product$Acquaintance^labda.AQ.list[[3]]-1)/labda.AQ.list[[3]]
 yAQ2 <- (dataset.product$User.Engage^labda.UE.list[[3]]-1)/labda.UE.list[[3]]
 
 
-xAQ2 <- (dataset.product$Acquaintance^0.5-1)/0.5
+xAQ2 <- ((dataset.product$Acquaintance^0.5-1)/0.5)
 yAQ2 <- (dataset.product$User.Engage^0.5-1)/0.5
 
 fit <- lm(yAQ2 ~ xAQ2)
