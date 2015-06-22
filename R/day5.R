@@ -74,7 +74,7 @@ labda.AQ.joined <- testList[[which.max(cor.list.AQ == max(cor.list.AQ))]]
 par(mfrow=c(2,3))
 plot(dataset.product$Acquaintance, dataset.product$User.Engage, xlab = "Acquaintance", ylab = "User Engagement", main = "Product")
 plot(datasetM.correlation$Acquaintance, datasetM.correlation$User.Engage, xlab = "Acquaintance", ylab = "User Engagement", main = "Service")
-plot(joinedDataSets.without$Acquaintance, joinedDataSets.without$User.Engage, xlab = "Acquaintance", ylab = "User Engagement", main = "Joined")
+plot(joinedDataSets.without$Acquaintance, joinedDataSets.without$User.Engage, xlab = "Acquaintance", ylab = "User Engagement", main = "Gemeinsam")
 
 plot((dataset.product$Acquaintance^0.5-1)/0.5, (dataset.product$User.Engage^0.5-1)/0.5, xlab = "Acquaintance", ylab = "User Engagement")
 plot((datasetM.correlation$Acquaintance^0.5-1)/0.5, (datasetM.correlation$User.Engage^0.5-1)/0.5, xlab = "Acquaintance", ylab = "User Engagement")
@@ -148,6 +148,9 @@ Fverteilung <- 2 * shochzwei * 3
 
 confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = 0.95)
 head(as.matrix(confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = 0.95)), 10)
+
+source("http://sites.stat.psu.edu/~dhunter/R/confidence.band.r")
+confidence.band(fit, xlab = "Acquaintance", ylab = "User Engagement", main = "95% Abschätzungsgebiet des Linearen Modells")
 
 xausrechenen <- sqrt( (ellip2[2,2] * Fverteilung) / ( ellip2[1,1] * ellip2[2,2] - ellip2[1,2]^2 ))
 

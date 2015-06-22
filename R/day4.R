@@ -124,8 +124,8 @@ rozdil <- as.data.frame(corrrePart) - as.data.frame(product)
 # qqnorm((datasetM$Acquaintance^2-1)/2)
 # qqline((datasetM$Acquaintance^2-1)/2)
 # 
-# qqnorm((datasetM$Acquaintance^3-1)/3)
-# qqline((datasetM$Acquaintance^3-1)/3)
+qqnorm(datasetM$User.Engage)
+qqline(datasetM$User.Engage)
 # 
 # qqnorm((datasetM$Acquaintance^4-1)/4)
 # qqline((datasetM$Acquaintance^4-1)/4)
