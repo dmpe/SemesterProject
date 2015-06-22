@@ -4,7 +4,6 @@ library(DT)
 library(car)
 library(corrplot)
 library(RColorBrewer)
-library("testthat")
 options(width = 300)
 
 shinyServer(function(input, output) {
@@ -12,20 +11,26 @@ shinyServer(function(input, output) {
   output$distPlot <- renderPlot({
     m <- ggplot(datasetM.withoutFour, aes_string(x=input$selection))
     m <- m + geom_histogram(aes(y=..density..), colour="black", fill="white")
-    m <- m + geom_density()
+    m <- m + geom_density() + ggtitle("Service")
     m
   })
   
-  output$x1 = DT::renderDataTable({
+  output$datAtable = DT::renderDataTable({
     DT::datatable(joinedDataSets.without, rownames = row.names(joinedDataSets.without))
   })
   
   output$distPlot2 <- renderPlot({
-    # http://stackoverflow.com/questions/19531729/shiny-fill-value-not-passed-to-ggplot-correctly-in-shiny-server-error-object
-    
-    rota2 <- cut(datasetM.withoutFour[, input$selection], input$bins, dig.lab = 4)
-    barplot(table(rota2), main = input$selection, ylab="Number of occurences", xlab="Breaks")
+    m <- ggplot(datasetM.withoutFour, aes_string(x=input$selection))
+    m <- m + geom_histogram(aes(y=..density..), colour="black", fill="white")
+    m <- m + geom_density() + ggtitle("Service - Transformiert")
+    m
   })
+#   output$distPlot2 <- renderPlot({
+#     # http://stackoverflow.com/questions/19531729/shiny-fill-value-not-passed-to-ggplot-correctly-in-shiny-server-error-object
+#     
+#     rota2 <- cut(datasetM.withoutFour[, input$selection], input$bins, dig.lab = 4)
+#     barplot(table(rota2), main = input$selection, ylab="Number of occurences", xlab="Breaks")
+#   })
   
   output$scat <- renderPlot({
     scatterplot(datasetM.withoutFour[, input$selection1], 
@@ -40,7 +45,7 @@ shinyServer(function(input, output) {
   output$scatProduct <- renderPlot({
     scatterplot(dataset.product.withoutFour[, input$selection3], 
                 dataset.product.withoutFour[, input$selection4], xlab = "x - 3", ylab = "y - 4", 
-                main = "Product Dataset", smoother= FALSE)
+                main = "Produkt Dataset", smoother= FALSE)
   })
   
   output$correlationProduct <- renderPlot({
@@ -77,16 +82,16 @@ shinyServer(function(input, output) {
 #     rozdil3 <- tp1 - tp2
 #     rozdil3
 #   })
-  
-  output$Facet <- renderPlot({
-    # https://gist.github.com/jcheng5/3239667
-    sp <- ggplot(joinedDataSets.without, aes_string(x=input$selection5, y=input$selection6)) 
-    sp <- sp + geom_point(shape=1) + stat_smooth(method = "lm")
-    # MANUAL required
-    sp <- sp + facet_grid(Gender ~ TypeDataSet)
-    print(sp)
-  })
-  
+#   
+#   output$Facet <- renderPlot({
+#     # https://gist.github.com/jcheng5/3239667
+#     sp <- ggplot(joinedDataSets.without, aes_string(x=input$selection5, y=input$selection6)) 
+#     sp <- sp + geom_point(shape=1) + stat_smooth(method = "lm")
+#     # MANUAL required
+#     sp <- sp + facet_grid(Gender ~ TypeDataSet)
+#     print(sp)
+#   })
+
   output$renderqqPlot2 <- renderPlot({
     qqnorm(datasetM[, input$selection15])
     qqline(datasetM[, input$selection15])
@@ -101,7 +106,7 @@ shinyServer(function(input, output) {
     xAQ2 <- (dataset.product.withoutFour$Acquaintance^0.5-1)/0.5
     yAQ2 <- (dataset.product.withoutFour$User.Engage^0.5-1)/0.5
   
-    confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = input$levels2, main = "Product")
+    confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = input$levels2, main = "Produkt")
   })
   
   output$renderServiceEllipse <- renderPlot({
@@ -115,7 +120,7 @@ shinyServer(function(input, output) {
     xAQ221 <- (joinedDataSets.without$Acquaintance^0.5-1)/0.5
     yAQ231 <- (joinedDataSets.without$User.Engage^0.5-1)/0.5
     
-    confidenceEllipse(lm(yAQ231 ~ xAQ221), levels = input$levels2, main = "Joined")
+    confidenceEllipse(lm(yAQ231 ~ xAQ221), levels = input$levels2, main = "Gemeinsam")
   })
   
   

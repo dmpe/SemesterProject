@@ -7,9 +7,10 @@ shinyUI(navbarPage("Project Interactivelly", id="nav",
                             sidebarLayout(
                               sidebarPanel(
                                 p("Click to choose the column and then display histogram and density."), 
+                                br("Gemeinsamen Datensatz"), 
                                 
-                                sliderInput("bins", "Number of bins:", min = 1, max = 50, value = 10), 
-                                selectInput("selection", "Choose a column:", choices = colnames(datasetM.withoutFour)),
+                                selectInput("selection", "Choose a variable:", choices = colnames(datasetM.withoutFour)),
+                                sliderInput("bins", "Lambda:", min = 0.1, max = 1, value = 0.1), 
                                 
                                 a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
                                 a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
@@ -21,15 +22,16 @@ shinyUI(navbarPage("Project Interactivelly", id="nav",
                               )
                             )
                    ), 
-                   tabPanel("Cor./Scat. - Service/Produkt",
+                   tabPanel("Cor./Scat.",
                             sidebarLayout(
                               sidebarPanel(
-                                selectInput("selection1", "Choose a column x-1:", choices = colnames(datasetM.withoutFour)),
-                                selectInput("selection2", "Choose a column y-2:", choices = colnames(datasetM.withoutFour)),
-                                selectInput("selection3", "Choose a column x-3:", choices = colnames(dataset.product.withoutFour)),
-                                selectInput("selection4", "Choose a column y-4:", choices = colnames(dataset.product.withoutFour)),
-                                
                                 p("Click to choose the columns and then display correlations (with regression)."), 
+                                
+                                selectInput("selection1", "Choose a variable x-1:", choices = colnames(datasetM.withoutFour)),
+                                selectInput("selection2", "Choose a variable y-2:", choices = colnames(datasetM.withoutFour)),
+                                selectInput("selection3", "Choose a variable x-3:", choices = colnames(dataset.product.withoutFour)),
+                                selectInput("selection4", "Choose a variable y-4:", choices = colnames(dataset.product.withoutFour)),
+                                
                                 a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
                                 a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
                                 width = 2
@@ -55,8 +57,8 @@ shinyUI(navbarPage("Project Interactivelly", id="nav",
                               sidebarPanel(
                                 p("Click to choose the column and then display qq-plots."), 
                                 
-                                selectInput("selection15", "Choose a column Service:", choices = colnames(datasetM)),
-                                selectInput("selection16", "Choose a column Produkt:", choices = colnames(dataset.product)),
+                                selectInput("selection15", "Choose a variable of Service:", choices = colnames(datasetM)),
+                                selectInput("selection16", "Choose a variable of Produkt:", choices = colnames(dataset.product)),
                                 
                                 a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
                                 a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
@@ -68,13 +70,14 @@ shinyUI(navbarPage("Project Interactivelly", id="nav",
                               )
                             )
                    ), 
-                   tabPanel("Faceting, e.g. Gender", 
+                   tabPanel("Transformed", 
                             sidebarLayout(
                               sidebarPanel(
+                                p("Click to choose the columns and then display correlations (with regression)."), 
+                                
                                 selectInput("selection5", "Choose first dataset to consider - 5:", choices = colnames(joinedDataSets.without)),
                                 selectInput("selection6", "Choose second dataset to consider - 6:", choices = colnames(joinedDataSets.without)),
                                 
-                                p("Click to choose the columns and then display correlations (with regression)."), 
                                 a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
                                 a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
                                 width = 3
@@ -84,14 +87,29 @@ shinyUI(navbarPage("Project Interactivelly", id="nav",
                               )
                             )
                    ), 
+                   #                    tabPanel("Faceting, e.g. Gender", 
+                   #                             sidebarLayout(
+                   #                               sidebarPanel(
+                   #                                 selectInput("selection5", "Choose first dataset to consider - 5:", choices = colnames(joinedDataSets.without)),
+                   #                                 selectInput("selection6", "Choose second dataset to consider - 6:", choices = colnames(joinedDataSets.without)),
+                   #                                 
+                   #                                 p("Click to choose the columns and then display correlations (with regression)."), 
+                   #                                 a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
+                   #                                 a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
+                   #                                 width = 3
+                   #                               ),
+                   #                               mainPanel(
+                   #                                 plotOutput("Facet")
+                   #                               )
+                   #                             )
+                   #                    ), 
                    tabPanel("Confidence Ellipse",
                             sidebarLayout(
                               sidebarPanel(
                                 p("Change ellipse's confidence level."), 
                                 
                                 numericInput('levels2', 'Confidence level', 0.95, min = 0.10, max = 0.99),
-#                                 numericInput('levels3', 'Confidence level', 0.95, min = 0.10, max = 0.99),
-                                
+
                                 a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
                                 a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
                                 width = 3
@@ -103,32 +121,32 @@ shinyUI(navbarPage("Project Interactivelly", id="nav",
                               )
                             )
                    ), 
-#                    tabPanel("Diff. in Cor.", 
+                   #                    tabPanel("Diff. in Cor.", 
+                   #                             sidebarLayout(
+                   #                               sidebarPanel(
+                   #                                 p("Click to choose the columns and then display correlations."), 
+                   #                                 a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
+                   #                                 a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
+                   #                                 width = 2
+                   #                               ),
+                   #                               mainPanel(
+                   #                                 plotOutput("onlyCorrelation", width = "1300px"),
+                   #                                 verbatimTextOutput("vsechno"),
+                   #                                 plotOutput("onlyCorrelation2")
+                   #                               )
+                   #                             )
+                   #                    ), 
+                   tabPanel("Dataset - Table",
 #                             sidebarLayout(
 #                               sidebarPanel(
-#                                 p("Click to choose the columns and then display correlations."), 
 #                                 a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
 #                                 a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
 #                                 width = 2
-#                               ),
-#                               mainPanel(
-#                                 plotOutput("onlyCorrelation", width = "1300px"),
-#                                 verbatimTextOutput("vsechno"),
-#                                 plotOutput("onlyCorrelation2")
-#                               )
-#                             )
-#                    ), 
-                   tabPanel("Dataset - Table",
-                            sidebarLayout(
-                              sidebarPanel(
-                                a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
-                                a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
-                                width = 2
-                              ), 
+#                               ), 
                               mainPanel(
-                                DT::dataTableOutput('x1')
+                                DT::dataTableOutput('datAtable')
                               )
                             )
-                   )
+#                   )
 ))
 

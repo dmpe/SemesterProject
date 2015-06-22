@@ -17,21 +17,8 @@
 
 ### Two data sets, called as :
 
-- Service Community - Fokus auf Kundenleistungen (DataSet_01.xlsx)
-- Produkt Community - Fokus auf Produkte - Meinung uber Produkten abgeben (DataSet_Product.xlsx)
-
-#### Notes zum Diesntag, 12.5
-
-* Presentation mit Rmarkdown (gestalltung, gleich online, alles Deutsch. )
-    + Aufteilen
-        + Intro allg. (JFMS)
-        + Intro to R (D.P.)
-    + Zusammenhange (EDA) suchen -> Clustern nach Gender, Datensatz, experience etc. ()
-        + Linear Model
-        + (Cluster Ana.)
-        + Grafiken - welche(Haufigkeiten... womit, ...)
-        + [Shiny](http://shiny.b40.cz/SemesterProject/shiny/) nutzen ? ggf. wie mit PP verbinden
-
+- Service "Community" - Fokus auf Kundenleistungen (DataSet_01.xlsx)
+- Produkt "Community" - Fokus auf Produkte - Meinung uber Produkten abgeben (DataSet_Product.xlsx)
 
 ### Ideas ?
 
@@ -39,7 +26,7 @@
 - Haufigkeiten (Frequencies, e.g. histograms)
 - Correlation
 - Normal distribution
-- Linear Modell (MLE)
+- Linear Modell (LE)
 
 ### RPubs
 
