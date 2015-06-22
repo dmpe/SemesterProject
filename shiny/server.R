@@ -20,7 +20,7 @@ shinyServer(function(input, output) {
   })
   
   output$distPlot2 <- renderPlot({
-    m <- ggplot( ((datasetM.withoutFour^input$lambda-1)/input$lambda), aes_string(x = input$selection))
+    m <- ggplot( data.frame(((datasetM.withoutFour^input$lambda-1)/input$lambda)), aes_string(x = input$selection))
     m <- m + geom_histogram(aes(y=..density..), colour="black", fill="white")
     m <- m + geom_density() + ggtitle("Service - Transformiert")
     m
