@@ -9,9 +9,9 @@ options(width = 300)
 shinyServer(function(input, output) {
   
   output$distPlot <- renderPlot({
-    m <- ggplot(datasetM.withoutFour, aes_string(x=input$selection))
+    m <- ggplot(joinedDataSets.withoutMany, aes_string(x=input$selection))
     m <- m + geom_histogram(aes(y=..density..), colour="black", fill="white")
-    m <- m + geom_density() + ggtitle("Service")
+    m <- m + geom_density() + ggtitle("Gemeinsamen Datensatz")
     m
   })
   
@@ -20,9 +20,9 @@ shinyServer(function(input, output) {
   })
   
   output$distPlot2 <- renderPlot({
-    m <- ggplot( data.frame(((datasetM.withoutFour^input$lambda-1)/input$lambda)), aes_string(x = input$selection))
+    m <- ggplot( data.frame(((joinedDataSets.withoutMany^input$lambda-1)/input$lambda)), aes_string(x = input$selection))
     m <- m + geom_histogram(aes(y=..density..), colour="black", fill="white")
-    m <- m + geom_density() + ggtitle("Service - Transformiert")
+    m <- m + geom_density() + ggtitle("Gemeinsamen Datensatz - Transformiert")
     m
   })
   #   output$distPlot2 <- renderPlot({
@@ -35,7 +35,7 @@ shinyServer(function(input, output) {
   output$scat <- renderPlot({
     scatterplot(datasetM.withoutFour[, input$selection1], 
                 datasetM.withoutFour[, input$selection2], xlab = "x - 1", ylab = "y - 2", 
-                main = "Service Dataset", smoother= FALSE)
+                main = "Service", smoother = FALSE)
   })
   
   output$correlation <- renderPlot({
@@ -45,7 +45,7 @@ shinyServer(function(input, output) {
   output$scatProduct <- renderPlot({
     scatterplot(dataset.product.withoutFour[, input$selection3], 
                 dataset.product.withoutFour[, input$selection4], xlab = "x - 3", ylab = "y - 4", 
-                main = "Produkt Dataset", smoother= FALSE)
+                main = "Produkt", smoother= FALSE)
   })
   
   output$correlationProduct <- renderPlot({
@@ -93,13 +93,15 @@ shinyServer(function(input, output) {
   #   })
   
   output$renderqqPlot2 <- renderPlot({
-    qqnorm(datasetM[, input$selection15])
-    qqline(datasetM[, input$selection15])
+    qqnorm(joinedDataSets.withoutMany[, input$selection15])
+    qqline(joinedDataSets.withoutMany[, input$selection15])
   })
   
   output$renderqqPlot <- renderPlot({
-    qqnorm(dataset.product[, input$selection16])
-    qqline(dataset.product[, input$selection16])
+    reactivejoinedVar <- joinedDataSets.withoutMany[, input$selection15]
+    df.reactivejoinedVar <- (reactivejoinedVar^input$lambdaQQPlots-1)/input$lambdaQQPlots
+    qqnorm(df.reactivejoinedVar)
+    qqline(df.reactivejoinedVar)
   })
   
   output$renderProductEllipse <- renderPlot({
@@ -117,10 +119,10 @@ shinyServer(function(input, output) {
   })
   
   output$renderJoinedEllipse <- renderPlot({
-    xAQ221 <- (joinedDataSets.without$Acquaintance^0.5-1)/0.5
-    yAQ231 <- (joinedDataSets.without$User.Engage^0.5-1)/0.5
+    xAQ221 <- (joinedDataSets.withoutMany$Acquaintance^0.5-1)/0.5
+    yAQ231 <- (joinedDataSets.withoutMany$User.Engage^0.5-1)/0.5
     
-    confidenceEllipse(lm(yAQ231 ~ xAQ221), levels = input$levels2, main = "Gemeinsam")
+    confidenceEllipse(lm(yAQ231 ~ xAQ221), levels = input$levels2, main = "Gemeinsamen Datensatz")
   })
   
   

@@ -21,6 +21,7 @@ datasetM.correlation.cor <- cor(datasetM.correlation)
 
 joinedDataSets <- full_join(dataset.product, datasetM)
 joinedDataSets.without <- joinedDataSets[, !names(joinedDataSets) %in% c("Duration", "Post.ID", "Earned.Reach", "Fanpage.Reach", "User.NW", "X.Match")]
+joinedDataSets.withoutMany <- joinedDataSets[, !names(joinedDataSets) %in% c("Duration", "Post.ID", "Earned.Reach", "Fanpage.Reach", "User.NW", "X.Match", "ProductDataSet", "ServiceDataSet")]
 
 joinedDataSets.without$TypeDataSet <- ifelse(is.na(joinedDataSets.without$ProductDataSet), joinedDataSets.without$ServiceDataSet, joinedDataSets.without$ProductDataSet)
 # sapply(joinedDataSets.without, class)
