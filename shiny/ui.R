@@ -2,11 +2,11 @@ library(shiny)
 # https://github.com/rstudio/shiny-examples/blob/master/063-superzip-example/ui.R
 # http://shiny.rstudio.com/articles/layout-guide.html
 
-shinyUI(navbarPage("Project Interactivelly", id="nav",
-                   tabPanel("Histograms",
+shinyUI(navbarPage("Shiny Web", id="nav",
+                   tabPanel("Histogramme",
                             sidebarLayout(
                               sidebarPanel(
-                                p("Click to choose the column and then display histogram and density."), 
+                                #                                 p("Click to choose the column and then display histogram and density."), 
                                 strong("Gemeinsamen Datensatz"), 
                                 br(""),
                                 
@@ -26,7 +26,7 @@ shinyUI(navbarPage("Project Interactivelly", id="nav",
                    tabPanel("Cor./Scat.",
                             sidebarLayout(
                               sidebarPanel(
-                                p("Click to choose the columns and then display correlations (with regression)."), 
+                                #                                 p("Click to choose the columns and then display correlations (with regression)."), 
                                 
                                 selectInput("selection1", "Choose a variable x-1:", choices = colnames(datasetM.withoutFour)),
                                 selectInput("selection2", "Choose a variable y-2:", choices = colnames(datasetM.withoutFour)),
@@ -56,7 +56,7 @@ shinyUI(navbarPage("Project Interactivelly", id="nav",
                    tabPanel("QQ-Plots",
                             sidebarLayout(
                               sidebarPanel(
-                                p("Click to choose the column and then display qq-plots."), 
+                                #                                 p("Click to choose the column and then display qq-plots."), 
                                 strong("Gemeinsamen Datensatz"), 
                                 br(""),
                                 
@@ -89,7 +89,7 @@ shinyUI(navbarPage("Project Interactivelly", id="nav",
                    #                               )
                    #                             )
                    #                    ), 
-                   tabPanel("Confidence Ellipse",
+                   tabPanel("Konfidenz Ellipse",
                             sidebarLayout(
                               sidebarPanel(
                                 p("Change ellipse's confidence level."), 
@@ -106,7 +106,7 @@ shinyUI(navbarPage("Project Interactivelly", id="nav",
                                 plotOutput("renderJoinedEllipse")
                               )
                             )
-                   ), 
+                   )
                    #                    tabPanel("Diff. in Cor.", 
                    #                             sidebarLayout(
                    #                               sidebarPanel(
@@ -122,17 +122,17 @@ shinyUI(navbarPage("Project Interactivelly", id="nav",
                    #                               )
                    #                             )
                    #                    ), 
-                   tabPanel("Dataset - Table",
-                            #                             sidebarLayout(
-                            #                               sidebarPanel(
-                            #                                 a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
-                            #                                 a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
-                            #                                 width = 2
-                            #                               ), 
-                            mainPanel(
-                              DT::dataTableOutput('datAtable')
-                            )
-                   )
-                   #                   )
+                   #                    tabPanel("Dataset - Table",
+                   #                             #                             sidebarLayout(
+                   #                             #                               sidebarPanel(
+                   #                             #                                 a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
+                   #                             #                                 a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
+                   #                             #                                 width = 2
+                   #                             #                               ), 
+                   #                             mainPanel(
+                   #                               DT::dataTableOutput('datAtable')
+                   #                             )
+                   #                    )
+                   #                    )
 ))
 
