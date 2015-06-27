@@ -29,9 +29,9 @@ shinyUI(navbarPage("Shiny Web", id="nav",
                                 #                                 p("Click to choose the columns and then display correlations (with regression)."), 
                                 
                                 selectInput("selection1", "Choose a variable x-1:", choices = colnames(datasetM.withoutFour)),
-                                selectInput("selection2", "Choose a variable y-2:", choices = colnames(datasetM.withoutFour)),
+                                selectInput("selection2", "Choose a variable y-2:", choices = colnames(datasetM.withoutFour), selected = names(datasetM.withoutFour)[2]),
                                 selectInput("selection3", "Choose a variable x-3:", choices = colnames(dataset.product.withoutFour)),
-                                selectInput("selection4", "Choose a variable y-4:", choices = colnames(dataset.product.withoutFour)),
+                                selectInput("selection4", "Choose a variable y-4:", choices = colnames(dataset.product.withoutFour), selected = names(dataset.product.withoutFour)[2]),
                                 
                                 a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
                                 a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
