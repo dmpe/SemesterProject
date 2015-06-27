@@ -10,12 +10,12 @@ shinyUI(navbarPage("Shiny Web", id="nav",
                                 strong("Gemeinsamen Datensatz"), 
                                 br(""),
                                 
-                                selectInput("selection", "Choose a variable:", choices = colnames(joinedDataSets.withoutMany)),
+                                selectInput("selection", "Choose a variable:", selected = names(joinedDataSets.withoutMany)[2], choices = colnames(joinedDataSets.withoutMany)),
                                 sliderInput("lambda", "Lambda:", min = 0.1, max = 1, value = 1), 
                                 
                                 a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
                                 a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
-                                width = 3
+                                width = 2
                               ),
                               mainPanel(
                                 plotOutput("distPlot"),       
@@ -98,7 +98,7 @@ shinyUI(navbarPage("Shiny Web", id="nav",
                                 
                                 a(href="http://shiny.rstudio.com", "http://shiny.rstudio.com"), 
                                 a(href="https://github.com/dmpe/SemesterProject", "https://github.com/dmpe/SemesterProject"),
-                                width = 3
+                                width = 2
                               ),
                               mainPanel(
                                 plotOutput("renderProductEllipse"), 

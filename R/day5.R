@@ -72,7 +72,7 @@ labda.AQ.joined <- testList[[which.max(cor.list.AQ == max(cor.list.AQ))]]
 ############################ Scatterplots vor und nach
 ############################
 par(mfrow=c(2,3))
-plot(dataset.product$Acquaintance, dataset.product$User.Engage, xlab = "Acquaintance", ylab = "User Engagement", main = "Product")
+plot(dataset.product$Acquaintance, dataset.product$User.Engage, xlab = "Acquaintance", ylab = "User Engagement", main = "Produkt")
 plot(datasetM.correlation$Acquaintance, datasetM.correlation$User.Engage, xlab = "Acquaintance", ylab = "User Engagement", main = "Service")
 plot(joinedDataSets.without$Acquaintance, joinedDataSets.without$User.Engage, xlab = "Acquaintance", ylab = "User Engagement", main = "Gemeinsam")
 
