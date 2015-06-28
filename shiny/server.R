@@ -108,21 +108,21 @@ shinyServer(function(input, output) {
     xAQ2 <- (dataset.product.withoutFour$Acquaintance^0.5-1)/0.5
     yAQ2 <- (dataset.product.withoutFour$User.Engage^0.5-1)/0.5
     
-    confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = input$levels2, main = "Produkt", ylab = "User.Engage coefficient")
+    confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = input$levels2, main = "Produkt", ylab = "Acquaintance coefficient")
   })
   
   output$renderServiceEllipse <- renderPlot({
     xAQ22 <- (datasetM.correlation$Acquaintance^0.5-1)/0.5
     yAQ23 <- (datasetM.correlation$User.Engage^0.5-1)/0.5
     
-    confidenceEllipse(lm(yAQ23 ~ xAQ22), levels = input$levels2, main = "Service", xlim = c(25, 45), ylim = c(0.4,0.8), ylab = "User.Engage coefficient")
+    confidenceEllipse(lm(yAQ23 ~ xAQ22), levels = input$levels2, main = "Service", xlim = c(25, 45), ylim = c(0.4,0.8), ylab = "Acquaintance coefficient")
   })
   
   output$renderJoinedEllipse <- renderPlot({
     xAQ221 <- (joinedDataSets.withoutMany$Acquaintance^0.5-1)/0.5
     yAQ231 <- (joinedDataSets.withoutMany$User.Engage^0.5-1)/0.5
     
-    confidenceEllipse(lm(yAQ231 ~ xAQ221), levels = input$levels2, main = "Gemeinsamen Datensatz", ylab = "User.Engage coefficient")
+    confidenceEllipse(lm(yAQ231 ~ xAQ221), levels = input$levels2, main = "Gemeinsamen Datensatz", ylab = "Acquaintance coefficient")
   })
   
   

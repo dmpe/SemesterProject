@@ -107,17 +107,17 @@ xAQ2 <- (dataset.product$Acquaintance^labda.AQ.list[[3]]-1)/labda.AQ.list[[3]]
 yAQ2 <- (dataset.product$User.Engage^labda.UE.list[[3]]-1)/labda.UE.list[[3]]
 
 
-xAQ2 <- ((dataset.product$Acquaintance^0.5-1)/0.5)
-yAQ2 <- (dataset.product$User.Engage^0.5-1)/0.5
+xAcq <- ((dataset.product$Acquaintance^0.5-1)/0.5)
+yUserEng <- (dataset.product$User.Engage^0.5-1)/0.5
 
-fit <- lm(yAQ2 ~ xAQ2)
+fit <- lm(yUserEng ~ xAcq)
 
-cor(xAQ2, yAQ2)
-plot(xAQ2, yAQ2)
-abline(lm(yAQ2 ~ xAQ2))
+cor(xAcq, yUserEng)
+plot(xAcq, yUserEng)
+abline(lm(yUserEng ~ xAcq))
 
-mean(yAQ2)
-sd(yAQ2)
+mean(yUserEng)
+sd(yUserEng)
 
 summary(fit)
 fit$coefficients
@@ -126,8 +126,8 @@ plot(fit)
 ######################## Manuell Betas bestimmen
 ########################
 
-ellip <- matrix(1, length(xAQ2), 2) # einfach Z
-ellip[, 2] <- xAQ2
+ellip <- matrix(1, length(xAcq), 2) # einfach Z
+ellip[, 2] <- xAcq
 
 ellip2 <- t(ellip) %*% ellip
 ellip2
@@ -146,8 +146,8 @@ shochzwei <- (sum(fit$residuals^2)) / (ellip2[1,1]-2)
 Fverteilung <- 2 * shochzwei * 3 
 
 
-confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = 0.95)
-head(as.matrix(confidenceEllipse(lm(yAQ2 ~ xAQ2), levels = 0.95)), 10)
+confidenceEllipse(lm(yUserEng ~ xAcq), levels = 0.95)
+head(as.matrix(confidenceEllipse(lm(yUserEng ~ xAcq), levels = 0.95)), 10)
 
 source("http://sites.stat.psu.edu/~dhunter/R/confidence.band.r")
 confidence.band(fit, xlab = "Acquaintance", ylab = "User Engagement", main = "95% Abschätzungsgebiet des Linearen Modells")
