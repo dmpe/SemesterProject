@@ -6,7 +6,7 @@
 - Exercises with R
 - Code scripts & Data for our project
 - Final `RMarkdown` ioslide presentation (in German, though)
-    + Well, after many unsuccessfull trials we had to move to `Google Slides` [link](https://docs.google.com/presentation/d/1ihSn-672KErl9vYFiGbtgGSmXuBJes8CXsEBKu3k98o/edit?usp=sharing)
+    + Well, after many unsuccessfull trials we had to move to `Slideshare` [link](http://www.slideshare.net/F789GH/datenanalyse-mit-r)
 
 ### Authors:
 
