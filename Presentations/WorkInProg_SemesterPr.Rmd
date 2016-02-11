@@ -27,7 +27,7 @@ library(corrplot)
 ### Read excel file
 
 ```{r}
-datasetM <- read.xlsx("/srv/shiny-server/SemesterProject/Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
+datasetM <- read.xlsx("../Data/DataSet_01.xlsx", sheetIndex = 1, endRow=277)
 ```
 
 ### Meaning of variables
